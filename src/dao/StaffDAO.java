@@ -26,8 +26,8 @@ public class StaffDAO implements IStaffService {
 
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, t.getMaNhanVien());
-            st.setString(2, t.getHoVaTen());
-            st.setDate(3, (Date) t.getNgayThangNamSinh());
+            st.setString(2, t.getTenNhanVien());
+            st.setDate(3, (Date) t.getNgaySinh());
             st.setString(4, t.getGioiTinh());
             st.setInt(5, t.getMaChucVu());
             st.setString(6, t.getSdt());
@@ -97,8 +97,8 @@ public class StaffDAO implements IStaffService {
                     + "WHERE ma_nhan_vien=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, t.getMaNhanVien());
-            st.setString(2, t.getHoVaTen());
-            st.setDate(3, (Date) t.getNgayThangNamSinh());
+            st.setString(2, t.getTenNhanVien());
+            st.setDate(3, (Date) t.getNgaySinh());
             st.setString(4, t.getGioiTinh());
             st.setInt(5, t.getMaChucVu());
             st.setString(6, t.getSdt());
@@ -130,8 +130,8 @@ public class StaffDAO implements IStaffService {
                     + "WHERE ma_nhan_vien=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, t.getMaNhanVien());
-            st.setString(2, t.getHoVaTen());
-            st.setDate(3, (Date) t.getNgayThangNamSinh());
+            st.setString(2, t.getTenNhanVien());
+            st.setDate(3, (Date) t.getNgaySinh());
             st.setString(4, t.getGioiTinh());
             st.setInt(5, t.getMaChucVu());
             st.setString(6, t.getSdt());
