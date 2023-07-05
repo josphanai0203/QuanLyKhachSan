@@ -4,8 +4,6 @@
  */
 package dao;
 
-import com.mysql.cj.jdbc.PreparedStatementWrapper;
-import com.sun.jdi.connect.spi.Connection;
 import java.util.ArrayList;
 import model.Customer;
 import service.ICustomerService;
