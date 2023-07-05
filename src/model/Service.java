@@ -1,17 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
-
-/**
-
- * @author Admin
- */
 public class Service {
 
     protected int idItem;
@@ -84,7 +71,6 @@ public class Service {
     public void setPriceOut(double priceOut) {
         this.priceOut = priceOut;
     }
-
     @Override
     public String toString() {
         return "Service{" +
