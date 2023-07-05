@@ -10,6 +10,6 @@ import model.Staff;
  *
  * @author Admin
  */
-public interface IStaffServicec extends IService<Staff>{
+public interface IStaffService extends IService<Staff>{
     
 }
