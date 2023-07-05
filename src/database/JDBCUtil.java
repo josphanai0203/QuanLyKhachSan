@@ -15,7 +15,7 @@ public class JDBCUtil {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			
 			//Cac thong so
-			String url  = "jdbc:mySQL://127.0.0.1:3306/tetproj_qlksdatabase";
+			String url  = "jdbc:mySQL://103.200.23.120:3306/tetproj_qlksdatabase";
 			String userName = "tetproj_admin";
 			String password = "2c45e4VPciCy";
 			
