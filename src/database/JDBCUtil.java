@@ -15,9 +15,9 @@ public class JDBCUtil {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			
 			//Cac thong so
-			String url  = "jdbc:mySQL://localHost:3306/nhasach";
-			String userName = "root";
-			String password = "";
+			String url  = "jdbc:mySQL://127.0.0.1:3306/tetproj_qlksdatabase";
+			String userName = "tetproj_admin";
+			String password = "2c45e4VPciCy";
 			
 			//Tao ket noi
 			c = DriverManager.getConnection(url, userName, password);
@@ -36,6 +36,20 @@ public class JDBCUtil {
 			}
 		} catch (SQLException e) {
 			// TODO: handle exception
+		}
+	}
+        public static void printInfo(Connection c) {
+		try {
+			if(c != null) {
+				DatabaseMetaData dmt = c.getMetaData();
+				System.out.println(dmt.getDatabaseProductName());
+				System.out.println(dmt.getDatabaseProductVersion());
+
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
