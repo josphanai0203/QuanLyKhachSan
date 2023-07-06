@@ -1,45 +1,69 @@
 package model;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class User {
-    private String username;
-    private String password;
+
+    private int maTaiKhoan;
+    private String tenTaiKhoan;
+    private String matKhau;
     private boolean isAdmin;
 
-    public User(String username, String password, boolean isAdmin) {
-        this.username = username;
-        this.password = encryptPassword(password);
+    public User() {
+    }
+
+    public User(String tenTaiKhoan, String matKhau, boolean isAdmin) {
+        this.tenTaiKhoan = tenTaiKhoan;
+        this.matKhau = matKhau;
         this.isAdmin = isAdmin;
     }
 
-    public String getUsername() {
-        return username;
+    
+    
+    public User(int maTaiKhoan, String tenTaiKhoan, String matKhau, boolean isAdmin) {
+        this.maTaiKhoan = maTaiKhoan;
+        this.tenTaiKhoan = tenTaiKhoan;
+        this.matKhau = matKhau;
+        this.isAdmin = isAdmin;
+    }
+
+    public int getMaTaiKhoan() {
+        return maTaiKhoan;
+    }
+
+    public void setMaTaiKhoan(int maTaiKhoan) {
+        this.maTaiKhoan = maTaiKhoan;
+    }
+
+    public String getTenTaiKhoan() {
+        return tenTaiKhoan;
+    }
+
+    public void setTenTaiKhoan(String tenTaiKhoan) {
+        this.tenTaiKhoan = tenTaiKhoan;
+    }
+
+    public String getMatKhau() {
+        return matKhau;
+    }
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public boolean isAdmin() {
         return isAdmin;
     }
 
-    public boolean authenticate(String password) {
-        String encryptedPassword = encryptPassword(password);
-        return this.password.equals(encryptedPassword);
-    }
+    
 
-    private String encryptPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(password.getBytes());
-            byte[] digest = md.digest();
-            StringBuilder sb = new StringBuilder();
-            for (byte b : digest) {
-                sb.append(String.format("%02x", b & 0xff));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
-        }
+    @Override
+    public String toString() {
+        return "User{" + "maTaiKhoan=" + maTaiKhoan + ", tenTaiKhoan=" + tenTaiKhoan + ", matKhau=" + matKhau + ", isAdmin=" + isAdmin + '}';
     }
-   
 }
