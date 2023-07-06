@@ -21,18 +21,18 @@ public class StaffDAO implements IStaffService {
         int update = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO user (ma_nhan_vien, ten_nhan_vien, ngay_sinh, gioi_tinh, ma_chuc_vu, so_dien_thoai, dia_chi, ma_luong) "
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO nhan_vien (ten_nhan_vien, ngay_sinh, gioi_tinh, ma_chuc_vu, so_dien_thoai, dia_chi, ma_luong) "
+                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement st = con.prepareStatement(sql);
-            st.setInt(1, t.getMaNhanVien());
-            st.setString(2, t.getTenNhanVien());
-            st.setDate(3, (Date) t.getNgaySinh());
-            st.setString(4, t.getGioiTinh());
-            st.setInt(5, t.getMaChucVu());
-            st.setString(6, t.getSdt());
-            st.setString(7, t.getDiaChi());
-            st.setInt(8, t.getMaLuong());
+            //st.setInt(1, t.getMaNhanVien());
+            st.setString(1, t.getTenNhanVien());
+            st.setDate(2, (Date) t.getNgaySinh());
+            st.setString(3, t.getGioiTinh());
+            st.setInt(4, t.getMaChucVu());
+            st.setString(5, t.getSdt());
+            st.setString(6, t.getDiaChi());
+            st.setInt(7, t.getMaLuong());
 
             update = st.executeUpdate();
 
@@ -91,19 +91,20 @@ public class StaffDAO implements IStaffService {
         int kq = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "UPDATE nha_vien "
+            String sql = "UPDATE nhan_vien "
                     + "SET "
-                    + "ten_nhan_vien=?" + "ngay_sinh=?" + "gioi_tinh=?" + "ma_chuc_vu=?" + "so_dien_thoai=?" + "dia_chi=?" + "ma_luong=?"
-                    + "WHERE ma_nhan_vien=?";
+                    + "ten_nhan_vien=?, " + "ngay_sinh=?, " + "gioi_tinh=?, " + "ma_chuc_vu=?, " + "so_dien_thoai=?, " + "dia_chi=?, " + "ma_luong=?"
+                    + " WHERE ma_nhan_vien=?";
             PreparedStatement st = con.prepareStatement(sql);
-            st.setInt(1, t.getMaNhanVien());
-            st.setString(2, t.getTenNhanVien());
-            st.setDate(3, (Date) t.getNgaySinh());
-            st.setString(4, t.getGioiTinh());
-            st.setInt(5, t.getMaChucVu());
-            st.setString(6, t.getSdt());
-            st.setString(7, t.getDiaChi());
-            st.setInt(8, t.getMaLuong());
+            //st.setInt(1, t.getMaNhanVien());
+            st.setString(1, t.getTenNhanVien());
+            st.setDate(2, (Date) t.getNgaySinh());
+            st.setString(3, t.getGioiTinh());
+            st.setInt(4, t.getMaChucVu());
+            st.setString(5, t.getSdt());
+            st.setString(6, t.getDiaChi());
+            st.setInt(7, t.getMaLuong());
+            st.setInt(8, t.getMaNhanVien());
             //b3: thuc thi cau lenh sql	
             kq = st.executeUpdate();
             //b4: xu li 

@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/PC/Desktop/assigssment%202/src/dao/RoomDAO.java</file>
             <file>file:/C:/Users/PC/Desktop/assigssment%202/src/dao/CustomerDAO.java</file>
             <file>file:/C:/Users/PC/Desktop/assigssment%202/src/database/Test.java</file>
@@ -11,6 +12,12 @@
             <file>file:/C:/Users/PC/Desktop/assigssment%202/src/model/WareHouse.java</file>
             <file>file:/C:/Users/PC/Desktop/assigssment%202/src/dao/ItemServiceDAO.java</file>
             <file>file:/C:/Users/PC/Desktop/assigssment%202/src/model/Service.java</file>
+=======
+            <file>file:/D:/QuanLyKhachSan/src/view/LoginLayout.java</file>
+            <file>file:/D:/QuanLyKhachSan/src/service/IUser.java</file>
+            <file>file:/D:/QuanLyKhachSan/src/dao/UserDAO.java</file>
+            <file>file:/D:/QuanLyKhachSan/src/controller/UserService.java</file>
+>>>>>>> 0220642bf440029764f2f61439cafbb210fd22d4
         </group>
     </open-files>
 </project-private>
