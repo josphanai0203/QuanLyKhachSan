@@ -13,12 +13,16 @@ public class Service {
     public int conditionkhach;
 
     public int conditionkho;
+    
+    public Service(String nameItem, int conditionkhach, int quantity, double bill, int conditionkho) {
+        this(nameItem, conditionkhach, quantity, bill, conditionkho, 0.0);
+    }
 
     public Service(String nameItem, int conditionkhach, int quantity, double bill, int conditionkho, double billOut) {
         this.nameItem = nameItem;
         this.quantity = quantity;
         this.bill = bill;
-        this.billOut = billOut;
+        setBillOut(billOut);
         this.conditionkho = conditionkho;
         this.conditionkhach = conditionkhach;
 
@@ -69,6 +73,8 @@ public class Service {
     }
 
     public void setBillOut(double billOut) {
-        this.billOut = billOut;
+        if (!Double.isNaN(billOut)) {
+            this.billOut = billOut;
+        }
     }
 }
