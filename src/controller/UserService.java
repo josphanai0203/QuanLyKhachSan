@@ -22,6 +22,9 @@ public class UserService implements IUser {
     private static User currentUser;
     private static Scanner sc = new Scanner(System.in);
 
+    public UserService() {
+    }
+    
     @Override
     public boolean checkTenTaiKhoan(String tenTaiKhoan) {
         ArrayList<User> list = selectAll();
