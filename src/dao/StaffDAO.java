@@ -4,6 +4,7 @@
  */
 package dao;
 
+import controller.StaffService;
 import java.util.ArrayList;
 import model.Staff;
 import service.IStaffService;
@@ -11,7 +12,8 @@ import java.sql.*;
 import database.JDBCUtil;
 
 public class StaffDAO implements IStaffService {
-
+    public static StaffService ss = new StaffService();
+    
     public static StaffDAO getInstance() {
         return new StaffDAO();
     }
