@@ -35,8 +35,8 @@ public class TestUSerStaffDao {
 //        User s1 = new User(10, "root", "abc", false);
 //       UserDAO.getInstance().delete(s1);
 // --update--
-        User s2 = new User(3, "xyz", "xyz", true);
-        UserDAO.getInstance().update(s2);
+//        User s2 = new User(3, "xyz", "xyz", true);
+//        UserDAO.getInstance().update(s2);
 //checkTenTaiKhoan
 //        User s1 = new User("Name3", "abc", false);
 //        UserDAO.getInstance().add(s1);
