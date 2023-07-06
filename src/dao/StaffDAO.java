@@ -37,7 +37,7 @@ public class StaffDAO implements IStaffService {
             update = st.executeUpdate();
 
             System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + update + " dong bi thay doi");
+            System.out.println("Co " + update + " bi thay doi");
 
             JDBCUtil.closeConnection(con);
             return update > 0;
@@ -74,7 +74,7 @@ public class StaffDAO implements IStaffService {
 
                 Staff s1 = new Staff(ma_nhan_vien, ten_nhan_vien, ngay_sinh, gioi_tinh, ma_chuc_vu, so_dien_thoai, dia_chi, ma_luong);
                 //Staff s1 = new User(username, password, hoVaTen);
-                //kq.add(u1);
+                kq.add(s1);
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
@@ -108,8 +108,8 @@ public class StaffDAO implements IStaffService {
             //b3: thuc thi cau lenh sql	
             kq = st.executeUpdate();
             //b4: xu li 
-            System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + kq + " dong bi thay doi");
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + kq + " bi thay doi");
 
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
@@ -131,18 +131,18 @@ public class StaffDAO implements IStaffService {
                     + "WHERE ma_nhan_vien=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, t.getMaNhanVien());
-            st.setString(2, t.getTenNhanVien());
-            st.setDate(3, (Date) t.getNgaySinh());
-            st.setString(4, t.getGioiTinh());
-            st.setInt(5, t.getMaChucVu());
-            st.setString(6, t.getSdt());
-            st.setString(7, t.getDiaChi());
-            st.setInt(8, t.getMaLuong());
+//            st.setString(2, t.getTenNhanVien());
+//            st.setDate(3, (Date) t.getNgaySinh());
+//            st.setString(4, t.getGioiTinh());
+//            st.setInt(5, t.getMaChucVu());
+//            st.setString(6, t.getSdt());
+//            st.setString(7, t.getDiaChi());
+//            st.setInt(8, t.getMaLuong());
             //b3: thuc thi cau lenh sql
             kq = st.executeUpdate();
             //b4: xu li 
             System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + kq + " dong bi thay doi");
+            System.out.println("Co " + kq + " bi thay doi");
 
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
@@ -152,6 +152,11 @@ public class StaffDAO implements IStaffService {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public boolean checkSDT(String sdt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

@@ -13,6 +13,12 @@ public class User {
     public User() {
     }
 
+    public User(int maTaiKhoan) {
+        this.maTaiKhoan = maTaiKhoan;
+    }
+
+    
+    
     public User(String tenTaiKhoan, String matKhau, boolean isAdmin) {
         this.tenTaiKhoan = tenTaiKhoan;
         this.matKhau = matKhau;
