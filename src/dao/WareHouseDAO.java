@@ -1,36 +1,34 @@
 package dao;
 
 import database.JDBCUtil;
-import model.Service;
-import service.IItemService;
+import model.WareHouse;
+import service.IWareHouseService;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
-public class ItemServiceDAO implements IItemService {
-
-    public static ItemServiceDAO getInstance() {
-        return new ItemServiceDAO();
+public class WareHouseDAO implements IWareHouseService {
+    public static WareHouseDAO getInstance() {
+        return new WareHouseDAO();
     }
 
-    @Override
-    public boolean add(Service s) {
 
+    @Override
+    public boolean add(WareHouse w) {
         int update = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO dich_vu (ten_dich_vu, ma_khach_hang, so_luong, don_gia, ma_kho_hang )"
-                    + " VALUES (?, ?,?, ?, ? )";
+            String sql = "INSERT INTO kho_hang (ten_san_pham, ngay_nhap,so_luong, gia_nhap, gia_ban, han_su_dung) "
+                    + " VALUES (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement st = con.prepareStatement(sql);
-            st.setString(1, s.getNameItem());
-            st.setInt(2, s.getConditionkhach());
-            st.setInt(3, s.getQuantity());
-            st.setDouble(4, s.getBill());
-            st.setInt(5, s.getConditionkho());
+            st.setString(1, w.getnameW());
+            st.setDate(2, (Date) w.getDayIn());
+            st.setInt(3, w.getQuantity());
+            st.setDouble(4, w.getPriceIn());
+            st.setDouble(5, w.getPriceOut());
+            st.setDate(6, (Date) w.gethSD());
+
 
             update = st.executeUpdate();
 
@@ -47,11 +45,11 @@ public class ItemServiceDAO implements IItemService {
     }
 
     @Override
-    public ArrayList<Service> selectAll() {
-        ArrayList<Service> s = new ArrayList<Service>();
+    public ArrayList<WareHouse> selectAll() {
+        ArrayList<WareHouse> w = new ArrayList<WareHouse>();
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM dich_vu";
+            String sql = "SELECT * FROM kho_hang";
             PreparedStatement st = con.prepareStatement(sql);
             //b3: thuc thi cau lenh sql
             System.out.println("Ban da thuc thi: " + sql);
@@ -60,14 +58,15 @@ public class ItemServiceDAO implements IItemService {
 
             //b4: xu li
             while (rs.next()) {
-                String ten_dich_vu = rs.getString("ten_dich_vu");
-                int ma_khach_hang = rs.getInt("ma_khach_hang");
+                String ten_san_pham = rs.getString("ten_san_pham");
+                Date ngay_nhap = rs.getDate("ngay_nhap");
                 int so_luong = rs.getInt("so_luong");
-                Double don_gia = rs.getDouble("don_gia");
-                int ma_kho_hang = rs.getInt("ma_kho_hang");
-                Double thanh_tien = rs.getDouble("thanh_tien");
+                Double gia_nhap = rs.getDouble("gia_nhap");
+                Double gia_ban = rs.getDouble("gia_ban");
+                Date han_su_dung = rs.getDate("han_su_dung");
 
-                Service s1 = new Service(ten_dich_vu, ma_khach_hang, so_luong, don_gia, ma_kho_hang, thanh_tien);
+
+                WareHouse w1 = new WareHouse(ten_san_pham, ngay_nhap, so_luong, gia_nhap, gia_ban, han_su_dung);
                 //Staff s1 = new User(username, password, hoVaTen);
                 //kq.add(u1);
             }
@@ -77,23 +76,26 @@ public class ItemServiceDAO implements IItemService {
             e.printStackTrace();
         }
 
-        return s;
+        return w;
+
     }
 
     @Override
-    public boolean update(Service s) {
+    public boolean update(WareHouse w) {
         int wq = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "UPDATE dich_vu "
+            String sql = "UPDATE kho_hang "
                     + "SET "
-                    + "ten_dich_vu=?" + "ngay_nhap=?" + "so_luong=?" + "don_gia=?" + "thanh_tien=?"
-                    + "WHERE ten_dich_vu=?";
+                    + "ten_san_pham=?" + "ngay_nhap=?" + "so_luong=?" + "gia_nhap=?" + "gia_ban=?" + "han_su_dung=?"
+                    + "WHERE ten_san_pham=?";
             PreparedStatement st = con.prepareStatement(sql);
-            st.setString(1, s.getNameItem());
-            st.setInt(2, s.getQuantity());
-            st.setDouble(3, s.getBill());
-            st.setDouble(4, s.getBillOut());
+            st.setString(1, w.getnameW());
+            st.setDate(2, (Date) w.getDayIn());
+            st.setInt(3, w.getQuantity());
+            st.setDouble(4, w.getPriceIn());
+            st.setDouble(5, w.getPriceOut());
+            st.setDate(6, w.gethSD());
 
             //b3: thuc thi cau lenh sql
             wq = st.executeUpdate();
@@ -112,18 +114,20 @@ public class ItemServiceDAO implements IItemService {
     }
 
     @Override
-    public boolean delete(Service s) {
+    public boolean delete(WareHouse w) {
         int kq = 0;
         try {
             Connection con = JDBCUtil.getConnection();
 
-            String sql = "DELETE from dich_vu "
+            String sql = "DELETE from kho_hang "
                     + "WHERE =?";
             PreparedStatement st = con.prepareStatement(sql);
-            st.setString(1, s.getNameItem());
-            st.setInt(2, s.getQuantity());
-            st.setDouble(3, s.getBill());
-            st.setDouble(4, s.getBillOut());
+            st.setString(1, w.getnameW());
+            st.setDate(2, (Date) w.getDayIn());
+            st.setInt(3, w.getQuantity());
+            st.setDouble(4, w.getPriceIn());
+            st.setDouble(5, w.getPriceOut());
+            st.setDate(6, (Date) w.gethSD());
 
             //b3: thuc thi cau lenh sql
             kq = st.executeUpdate();
@@ -140,5 +144,4 @@ public class ItemServiceDAO implements IItemService {
             return false;
         }
     }
-
 }
