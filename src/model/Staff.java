@@ -25,6 +25,24 @@ public class Staff {
     public Staff() {
     }
 
+    public Staff(int maNhanVien) {
+        this.maNhanVien = maNhanVien;
+    }
+    
+    
+
+    public Staff(String tenNhanVien, Date ngaySinh, String gioiTinh, int maChucVu, String sdt, String diaChi, int maLuong) {
+        this.tenNhanVien = tenNhanVien;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.maChucVu = maChucVu;
+        this.sdt = sdt;
+        this.diaChi = diaChi;
+        this.maLuong = maLuong;
+    }
+    
+    
+
     public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, int maChucVu, String sdt, String diaChi, int maLuong) {
         this.maNhanVien = maNhanVien;
         this.tenNhanVien = tenNhanVien;
@@ -98,6 +116,11 @@ public class Staff {
 
     public void setMaLuong(int maLuong) {
         this.maLuong = maLuong;
+    }
+
+    @Override
+    public String toString() {
+        return "Staff{" + "maNhanVien=" + maNhanVien + ", tenNhanVien=" + tenNhanVien + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", maChucVu=" + maChucVu + ", sdt=" + sdt + ", diaChi=" + diaChi + ", maLuong=" + maLuong + '}';
     }
 
    
