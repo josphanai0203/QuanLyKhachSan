@@ -24,7 +24,7 @@ public class WareHouse {
     }
 
     public static Date convertToDate(String dateString) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         java.util.Date parsedDate = format.parse(dateString);
         return new Date(parsedDate.getTime());
     }
