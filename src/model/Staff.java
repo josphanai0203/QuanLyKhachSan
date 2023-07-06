@@ -11,49 +11,69 @@ import java.util.*;
  * @author Admin
  */
 public class Staff {
-    private String maNhanVien;
-    private  String chucVu;
-    private String hoVaTen;
+    private int maNhanVien;
+    
+    private String tenNhanVien;
+    private Date ngaySinh;
+    private String gioiTinh;
+    private  int maChucVu;   
     private String sdt;
-    private Date ngayThangNamSinh;
-    private double luong;
-    private String khuVuc;
+    private String diaChi;
+    private int maLuong;
+    
 
     public Staff() {
     }
 
-    public Staff(String maNhanVien, String chucVu, String hoVaTen, String sdt, Date ngayThangNamSinh, double luong, String khuVuc) {
+    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, int maChucVu, String sdt, String diaChi, int maLuong) {
         this.maNhanVien = maNhanVien;
-        this.chucVu = chucVu;
-        this.hoVaTen = hoVaTen;
+        this.tenNhanVien = tenNhanVien;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.maChucVu = maChucVu;
         this.sdt = sdt;
-        this.ngayThangNamSinh = ngayThangNamSinh;
-        this.luong = luong;
-        this.khuVuc = khuVuc;
+        this.diaChi = diaChi;
+        this.maLuong = maLuong;
     }
 
-    public String getMaNhanVien() {
+    public int getMaNhanVien() {
         return maNhanVien;
     }
 
-    public void setMaNhanVien(String maNhanVien) {
+    public void setMaNhanVien(int maNhanVien) {
         this.maNhanVien = maNhanVien;
     }
 
-    public String getChucVu() {
-        return chucVu;
+    public String getTenNhanVien() {
+        return tenNhanVien;
     }
 
-    public void setChucVu(String chucVu) {
-        this.chucVu = chucVu;
+    public void setTenNhanVien(String tenNhanVien) {
+        this.tenNhanVien = tenNhanVien;
     }
 
-    public String getHoVaTen() {
-        return hoVaTen;
+    public Date getNgaySinh() {
+        return ngaySinh;
     }
 
-    public void setHoVaTen(String hoVaTen) {
-        this.hoVaTen = hoVaTen;
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
+    }
+
+    public String getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public int getMaChucVu() {
+        return maChucVu;
+    }
+
+    public void setMaChucVu(int maChucVu) {
+        this.maChucVu = maChucVu;
     }
 
     public String getSdt() {
@@ -64,29 +84,23 @@ public class Staff {
         this.sdt = sdt;
     }
 
-    public Date getNgayThangNamSinh() {
-        return ngayThangNamSinh;
+    public String getDiaChi() {
+        return diaChi;
     }
 
-    public void setNgayThangNamSinh(Date ngayThangNamSinh) {
-        this.ngayThangNamSinh = ngayThangNamSinh;
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
 
-    public double getLuong() {
-        return luong;
+    public int getMaLuong() {
+        return maLuong;
     }
 
-    public void setLuong(double luong) {
-        this.luong = luong;
+    public void setMaLuong(int maLuong) {
+        this.maLuong = maLuong;
     }
 
-    public String getKhuVuc() {
-        return khuVuc;
-    }
-
-    public void setKhuVuc(String khuVuc) {
-        this.khuVuc = khuVuc;
-    }
+   
     
     
 }

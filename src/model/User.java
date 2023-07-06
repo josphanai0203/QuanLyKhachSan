@@ -1,41 +1,44 @@
 package model;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class User {
-    private String account;
+    private String username;
     private String password;
     private boolean isAdmin;
 
-    public User() {
-    }
-
-    public User(String account, String password, boolean isAdmin) {
-        this.account = account;
-        this.password = password;
+    public User(String username, String password, boolean isAdmin) {
+        this.username = username;
+        this.password = encryptPassword(password);
         this.isAdmin = isAdmin;
     }
 
-    public String getAccount() {
-        return account;
+    public String getUsername() {
+        return username;
     }
 
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean isIsAdmin() {
+    public boolean isAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public boolean authenticate(String password) {
+        String encryptedPassword = encryptPassword(password);
+        return this.password.equals(encryptedPassword);
     }
-    
-    
+
+    private String encryptPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(password.getBytes());
+            byte[] digest = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte b : digest) {
+                sb.append(String.format("%02x", b & 0xff));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
