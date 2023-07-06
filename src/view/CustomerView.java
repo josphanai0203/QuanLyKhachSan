@@ -4,6 +4,14 @@
  */
 package view;
 
+import dao.CustomerDAO;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import model.Customer;
+
 /**
  *
  * @author Admin
@@ -13,8 +21,56 @@ public class CustomerView extends javax.swing.JPanel {
     /**
      * Creates new form khachHang
      */
+    private ArrayList<Customer> list;
     public CustomerView() {
+        CustomerDAO cd = new CustomerDAO();
+        list = cd.selectAll();
         initComponents();
+        setTableCustomer();
+        
+    }
+
+    private void setTableCustomer() {
+        DefaultTableModel dtm = new DefaultTableModel();
+        cusTable.setModel(dtm);
+        dtm.addColumn("ID");
+        dtm.addColumn("Tên Khách Hàng");
+        dtm.addColumn("Năm Sinh");
+        dtm.addColumn("Giới Tính");
+        dtm.addColumn("Địa Chỉ");
+        dtm.addColumn("Quốc Tịch");
+        dtm.addColumn("Số CMND");
+        dtm.addColumn("Số Điện Thoại");
+        setColumnWidths(cusTable, 50, 400, 100, 100, 400, 200, 200, 200);
+        setRow(dtm);
+    }
+
+    public void setColumnWidths(JTable table, int... widths) {
+        TableColumnModel columnModel = table.getColumnModel();
+        for (int i = 0; i < widths.length; i++) {
+            if (i < columnModel.getColumnCount()) {
+                columnModel.getColumn(i).setMaxWidth(widths[i]);
+            } else {
+                break;
+            }
+        }
+    }
+    public void setRow(DefaultTableModel dfm){
+        Vector v = null;
+         for(Customer c : list){
+             v =new Vector();
+             v.removeAllElements();
+            v.add(c.getMaKhachHang());
+            v.add(c.getTenKhachHang());
+            v.add(c.getNamSinh());
+            v.add(c.getGioiTinh());
+            v.add(c.getDiaChi());
+            v.add(c.getQuocTich());
+            v.add(c.getSoCMN());
+            v.add(c.getSdt());
+            dfm.addRow(v);
+        }
+        
     }
 
     /**
@@ -26,30 +82,97 @@ public class CustomerView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        cusMenu = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        cusView = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        cusTable = new javax.swing.JTable();
 
-        jLabel1.setText("Khách Hàng");
+        setPreferredSize(new java.awt.Dimension(1110, 800));
+
+        jButton1.setText("Thêm Khách Hàng");
+
+        jButton2.setText("Thêm Dịch Vụ");
+
+        javax.swing.GroupLayout cusMenuLayout = new javax.swing.GroupLayout(cusMenu);
+        cusMenu.setLayout(cusMenuLayout);
+        cusMenuLayout.setHorizontalGroup(
+            cusMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cusMenuLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        cusMenuLayout.setVerticalGroup(
+            cusMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cusMenuLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(cusMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        cusTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(cusTable);
+
+        javax.swing.GroupLayout cusViewLayout = new javax.swing.GroupLayout(cusView);
+        cusView.setLayout(cusViewLayout);
+        cusViewLayout.setHorizontalGroup(
+            cusViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cusViewLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1092, Short.MAX_VALUE))
+        );
+        cusViewLayout.setVerticalGroup(
+            cusViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cusViewLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(246, 246, 246)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(400, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cusView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cusMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(cusMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cusView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel cusMenu;
+    private javax.swing.JTable cusTable;
+    private javax.swing.JPanel cusView;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

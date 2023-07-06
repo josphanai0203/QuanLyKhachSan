@@ -20,13 +20,12 @@ import service.IUser;
  *
  * @author Trinh
  */
-public class UserDAO implements IUser{
+public class UserDAO  {
     private static UserService cu = new UserService();
     public static UserDAO getInstance(){
         return new UserDAO();
     }
    
-    @Override
     public  boolean add(User t) {
         int update = 0;
         try {
@@ -56,9 +55,6 @@ public class UserDAO implements IUser{
             return false;
         }
     }
-
-
-    @Override
     public ArrayList<User> selectAll() {
         ArrayList<User> kq = new ArrayList<>();
         try {
@@ -89,8 +85,6 @@ public class UserDAO implements IUser{
 
         return kq;
     }
-
-
     public boolean update(User t) {
          int kq = 0;
         try {
@@ -123,7 +117,6 @@ public class UserDAO implements IUser{
         }
     }
 
-
     public boolean delete(User t) {
         int kq = 0;
         try {
@@ -149,8 +142,4 @@ public class UserDAO implements IUser{
         }
     
     }
-
- 
-
-    
 }
