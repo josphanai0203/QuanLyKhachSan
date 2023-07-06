@@ -23,7 +23,7 @@ public class ItemServiceDAO implements IItemService {
         try {
             Connection con = JDBCUtil.getConnection();
             String sql = "INSERT INTO dich_vu (ten_dich_vu, ma_khach_hang, so_luong, don_gia, ma_kho_hang )"
-                    + " VALUES (?, ?,?, ?, ? )";
+                    + " VALUES (?, ?, ?, ?, ? )";
 
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, s.getNameItem());
@@ -48,7 +48,7 @@ public class ItemServiceDAO implements IItemService {
 
     @Override
     public ArrayList<Service> selectAll() {
-        ArrayList<Service> s = new ArrayList<Service>();
+        ArrayList<Service> s = new ArrayList<>();
         try {
             Connection con = JDBCUtil.getConnection();
             String sql = "SELECT * FROM dich_vu";
@@ -87,13 +87,15 @@ public class ItemServiceDAO implements IItemService {
             Connection con = JDBCUtil.getConnection();
             String sql = "UPDATE dich_vu "
                     + "SET "
-                    + "ten_dich_vu=?" + "ngay_nhap=?" + "so_luong=?" + "don_gia=?" + "thanh_tien=?"
+                    + "ten_dich_vu=?" + "ma_khach_hang=?" + "ngay_nhap=?" + "so_luong=?" + "don_gia=?" + "ma_kho_hang=?" + "thanh_tien=?"
                     + "WHERE ten_dich_vu=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, s.getNameItem());
-            st.setInt(2, s.getQuantity());
-            st.setDouble(3, s.getBill());
-            st.setDouble(4, s.getBillOut());
+            st.setInt(2,s.getConditionkhach());
+            st.setInt(3, s.getQuantity());
+            st.setDouble(4, s.getBill());
+            st.setInt(5,s.getConditionkho());
+            st.setDouble(6, s.getBillOut());
 
             //b3: thuc thi cau lenh sql
             wq = st.executeUpdate();
@@ -121,9 +123,11 @@ public class ItemServiceDAO implements IItemService {
                     + "WHERE =?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, s.getNameItem());
-            st.setInt(2, s.getQuantity());
-            st.setDouble(3, s.getBill());
-            st.setDouble(4, s.getBillOut());
+            st.setInt(2,s.getConditionkhach());
+            st.setInt(3, s.getQuantity());
+            st.setDouble(4, s.getBill());
+            st.setInt(5,s.getConditionkho());
+            st.setDouble(6, s.getBillOut());
 
             //b3: thuc thi cau lenh sql
             kq = st.executeUpdate();
