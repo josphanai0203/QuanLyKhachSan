@@ -23,8 +23,34 @@ public class CustomerDAO implements ICustomerService {
 
     @Override
     public boolean add(Customer t) {
+        int update = 0;
+        try {
+            Connection con = JDBCUtil.getConnection();
+            String sql = "INSERT INTO khach_hang (ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai) "
+                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
-        return true;
+            PreparedStatement st = con.prepareStatement(sql);
+            //st.setInt(1, t.getMaNhanVien());
+            st.setString(1, t.getTenKhachHang());
+            st.setInt(2, t.getNamSinh());
+            st.setString(3, t.getGioiTinh());
+            st.setString(4, t.getDiaChi());
+            st.setString(5, t.getQuocTich());
+            st.setInt(6, t.getSoCMND());
+            st.setString(7, t.getSdt());
+
+            update = st.executeUpdate();
+
+            System.out.println("Ban da thuc thi: " + sql);
+            System.out.println("Co " + update + " bi thay doi");
+
+            JDBCUtil.closeConnection(con);
+            return update > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
@@ -65,12 +91,64 @@ public class CustomerDAO implements ICustomerService {
 
     @Override
     public boolean update(Customer t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int kq = 0;
+        try {
+            Connection con = JDBCUtil.getConnection();
+            String sql = "UPDATE khach_hang "
+                    + "SET "
+                    + "ten_khach_hang=?, " + "nam_sinh=?, " + "gioi_tinh=?, " + "dia_chi=?, " + "quoc_tich=?, " + "so_cmnd=?, " + "so_dien_thoai=?"
+                    + " WHERE ma_khach_hang=?";
+            PreparedStatement st = con.prepareStatement(sql);
+            //st.setInt(1, t.getMaNhanVien());
+            st.setString(1, t.getTenKhachHang());
+            st.setInt(2, t.getNamSinh());
+            st.setString(3, t.getGioiTinh());
+            st.setString(4, t.getDiaChi());
+            st.setString(5, t.getQuocTich());
+            st.setInt(6, t.getSoCMND());
+            st.setString(7, t.getSdt());
+            st.setInt(8, t.getMaKhachHang());
+            //b3: thuc thi cau lenh sql	
+            kq = st.executeUpdate();
+            //b4: xu li 
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + kq + " bi thay doi");
+
+            //b5: ngat ket noi
+            JDBCUtil.closeConnection(con);
+            return kq > 0;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean delete(Customer t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int kq = 0;
+        try {
+            Connection con = JDBCUtil.getConnection();
+
+            String sql = "DELETE from khach_hang "
+                    + "WHERE ma_khach_hang=?";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, t.getMaKhachHang());
+
+            //b3: thuc thi cau lenh sql
+            kq = st.executeUpdate();
+            //b4: xu li 
+            System.out.println("Ban da thuc thi: " + sql);
+            System.out.println("Co " + kq + " bi thay doi");
+
+            //b5: ngat ket noi
+            JDBCUtil.closeConnection(con);
+            return kq>0;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }

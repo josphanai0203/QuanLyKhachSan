@@ -16,20 +16,20 @@ public class Customer {
     private String gioiTinh;
     private String diaChi;
     private String quocTich;
-    private int soCMN;
+    private int soCMND;
     private String sdt;
 
     public Customer() {
     }
 
-    public Customer(int maKhachHang, String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMN, String sdt) {
+    public Customer(int maKhachHang, String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt) {
         this.maKhachHang = maKhachHang;
         this.tenKhachHang = tenKhachHang;
         this.namSinh = namSinh;
         this.gioiTinh = gioiTinh;
         this.diaChi = diaChi;
         this.quocTich = quocTich;
-        this.soCMN = soCMN;
+        this.soCMND = soCMND;
         this.sdt = sdt;
     }
 
@@ -81,12 +81,12 @@ public class Customer {
         this.quocTich = quocTich;
     }
 
-    public int getSoCMN() {
-        return soCMN;
+    public int getSoCMND() {
+        return soCMND;
     }
 
-    public void setSoCMN(int soCMN) {
-        this.soCMN = soCMN;
+    public void setSoCMND(int soCMND) {
+        this.soCMND = soCMND;
     }
 
     public String getSdt() {
@@ -99,8 +99,10 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" + "maKhachHang=" + maKhachHang + ", tenKhachHang=" + tenKhachHang + ", namSinh=" + namSinh + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", quocTich=" + quocTich + ", soCMN=" + soCMN + ", sdt=" + sdt + '}';
+        return "Customer{" + "maKhachHang=" + maKhachHang + ", tenKhachHang=" + tenKhachHang + ", namSinh=" + namSinh + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", quocTich=" + quocTich + ", soCMND=" + soCMND + ", sdt=" + sdt + '}';
     }
+
+   
     
     
 
