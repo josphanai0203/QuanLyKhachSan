@@ -1,40 +1,36 @@
 package dao;
 
 import database.JDBCUtil;
-import model.*;
-import service.*;
+import model.Service;
+import service.IItemService;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ItemServiceDAO implements IItemService {
 
-    public static ItemServiceDAO getInstance(){
+    public static ItemServiceDAO getInstance() {
         return new ItemServiceDAO();
-    }
-    private ArrayList<Service> serviceList;
-
-    public ItemServiceDAO() {
-        serviceList = new ArrayList<>();
     }
 
     @Override
     public boolean add(Service s) {
+
         int update = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO dich_vu (ma_dich_vu, ma_khach_hang, ten_dich_vu, so_luong, don_gia, ma_kho_hang, thanh_tien) "
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO dich_vu (ten_dich_vu, ma_khach_hang, so_luong, don_gia, ma_kho_hang )"
+                    + " VALUES (?, ?, ?, ?, ? )";
 
             PreparedStatement st = con.prepareStatement(sql);
-            st.setInt(1, s.getIdItem());
-            st.setInt(2, s.getIdItem());
-            st.setString(3, s.getNameItem());
-            st.setInt(4, s.getQuantity());
-            st.setDouble(5, s.getPrice());
-            st.setInt(6, s.getiDWareHouse());
-            st.setDouble(7, s.getPriceOut());
-
+            st.setString(1, s.getNameItem());
+            st.setInt(2, s.getConditionkhach());
+            st.setInt(3, s.getQuantity());
+            st.setDouble(4, s.getBill());
+            st.setInt(5, s.getConditionkho());
 
             update = st.executeUpdate();
 
@@ -52,22 +48,101 @@ public class ItemServiceDAO implements IItemService {
 
     @Override
     public ArrayList<Service> selectAll() {
-        return serviceList;
+        ArrayList<Service> s = new ArrayList<>();
+        try {
+            Connection con = JDBCUtil.getConnection();
+            String sql = "SELECT * FROM dich_vu";
+            PreparedStatement st = con.prepareStatement(sql);
+            //b3: thuc thi cau lenh sql
+            System.out.println("Ban da thuc thi: " + sql);
+
+            ResultSet rs = st.executeQuery();
+
+            //b4: xu li
+            while (rs.next()) {
+                String ten_dich_vu = rs.getString("ten_dich_vu");
+                int ma_khach_hang = rs.getInt("ma_khach_hang");
+                int so_luong = rs.getInt("so_luong");
+                Double don_gia = rs.getDouble("don_gia");
+                int ma_kho_hang = rs.getInt("ma_kho_hang");
+                Double thanh_tien = rs.getDouble("thanh_tien");
+
+                Service s1 = new Service(ten_dich_vu, ma_khach_hang, so_luong, don_gia, ma_kho_hang, thanh_tien);
+                //Staff s1 = new User(username, password, hoVaTen);
+                //kq.add(u1);
+            }
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return s;
     }
 
     @Override
     public boolean update(Service s) {
-        int index = serviceList.indexOf(s);
-        if (index != -1) {
-            serviceList.set(index, s);
-            return true;
+        int wq = 0;
+        try {
+            Connection con = JDBCUtil.getConnection();
+            String sql = "UPDATE dich_vu "
+                    + "SET "
+                    + "ten_dich_vu=?" + "ma_khach_hang=?" + "ngay_nhap=?" + "so_luong=?" + "don_gia=?" + "ma_kho_hang=?" + "thanh_tien=?"
+                    + "WHERE ten_dich_vu=?";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1, s.getNameItem());
+            st.setInt(2,s.getConditionkhach());
+            st.setInt(3, s.getQuantity());
+            st.setDouble(4, s.getBill());
+            st.setInt(5,s.getConditionkho());
+            st.setDouble(6, s.getBillOut());
+
+            //b3: thuc thi cau lenh sql
+            wq = st.executeUpdate();
+            //b4: xu li
+            System.out.println("Ban da thuc thi: " + sql);
+            System.out.println("Co " + wq + " dong bi thay doi");
+
+            //b5: ngat ket noi
+            JDBCUtil.closeConnection(con);
+            return wq > 0;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
     @Override
     public boolean delete(Service s) {
-        return serviceList.remove(s);
+        int kq = 0;
+        try {
+            Connection con = JDBCUtil.getConnection();
+
+            String sql = "DELETE from dich_vu "
+                    + "WHERE =?";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1, s.getNameItem());
+            st.setInt(2,s.getConditionkhach());
+            st.setInt(3, s.getQuantity());
+            st.setDouble(4, s.getBill());
+            st.setInt(5,s.getConditionkho());
+            st.setDouble(6, s.getBillOut());
+
+            //b3: thuc thi cau lenh sql
+            kq = st.executeUpdate();
+            //b4: xu li
+            System.out.println("Ban da thuc thi: " + sql);
+            System.out.println("Co " + kq + " dong bi thay doi");
+
+            //b5: ngat ket noi
+            JDBCUtil.closeConnection(con);
+            return kq > 0;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }

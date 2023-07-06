@@ -1,6 +1,6 @@
 package service;
-import java.util.List;
-import model. *;
+
+import model.*;
 
 public interface IItemService extends IService<Service> {
 

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controller;
 
 import dao.UserDAO;
@@ -12,15 +9,16 @@ import java.util.Scanner;
 import model.User;
 import service.IUser;
 
-/**
- *
- * @author Trinh
- */
 public class UserService {
 
     private static UserDAO ud = new UserDAO();
     private static User currentUser;
     private static Scanner sc = new Scanner(System.in);
+    
+
+
+    public UserService() {
+    }
     
 
     public boolean checkTenTaiKhoan(String tenTaiKhoan) {

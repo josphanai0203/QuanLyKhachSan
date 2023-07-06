@@ -72,8 +72,4 @@ public class User {
     public String toString() {
         return "User{" + "maTaiKhoan=" + maTaiKhoan + ", tenTaiKhoan=" + tenTaiKhoan + ", matKhau=" + matKhau + ", isAdmin=" + isAdmin + '}';
     }
-
-
-
-    
 }
