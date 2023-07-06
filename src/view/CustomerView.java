@@ -4,9 +4,13 @@
  */
 package view;
 
+import dao.CustomerDAO;
+import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import model.Customer;
 
 /**
  *
@@ -17,13 +21,16 @@ public class CustomerView extends javax.swing.JPanel {
     /**
      * Creates new form khachHang
      */
+    private ArrayList<Customer> list;
     public CustomerView() {
+        CustomerDAO cd = new CustomerDAO();
+        list = cd.selectAll();
         initComponents();
-       setTableCustomer();
+        setTableCustomer();
+        
     }
 
-    
-    private void setTableCustomer(){
+    private void setTableCustomer() {
         DefaultTableModel dtm = new DefaultTableModel();
         cusTable.setModel(dtm);
         dtm.addColumn("ID");
@@ -34,17 +41,38 @@ public class CustomerView extends javax.swing.JPanel {
         dtm.addColumn("Quốc Tịch");
         dtm.addColumn("Số CMND");
         dtm.addColumn("Số Điện Thoại");
-        setColumnWidths(cusTable, 50,400,100,100,400,200,200,200);
+        setColumnWidths(cusTable, 50, 400, 100, 100, 400, 200, 200, 200);
+        setRow(dtm);
     }
+
     public void setColumnWidths(JTable table, int... widths) {
         TableColumnModel columnModel = table.getColumnModel();
-    for (int i = 0; i < widths.length; i++) {
-        if (i < columnModel.getColumnCount()) {
-            columnModel.getColumn(i).setMaxWidth(widths[i]);
+        for (int i = 0; i < widths.length; i++) {
+            if (i < columnModel.getColumnCount()) {
+                columnModel.getColumn(i).setMaxWidth(widths[i]);
+            } else {
+                break;
+            }
         }
-        else break;
     }
-}
+    public void setRow(DefaultTableModel dfm){
+        Vector v = null;
+         for(Customer c : list){
+             v =new Vector();
+             v.removeAllElements();
+            v.add(c.getMaKhachHang());
+            v.add(c.getTenKhachHang());
+            v.add(c.getNamSinh());
+            v.add(c.getGioiTinh());
+            v.add(c.getDiaChi());
+            v.add(c.getQuocTich());
+            v.add(c.getSoCMN());
+            v.add(c.getSdt());
+            dfm.addRow(v);
+        }
+        
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

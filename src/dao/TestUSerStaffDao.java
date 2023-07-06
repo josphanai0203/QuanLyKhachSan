@@ -74,8 +74,11 @@ public class TestUSerStaffDao {
 //            System.out.println("Fail");
 //        }
 //check tenNhanVien
-String name ="Nguyen van a12";
-if(ss.checkTenNhanVien(name)) System.out.println("Succes");
-else System.out.println("Fail");
+//        String name = "Nguyen van a12";
+//        if (ss.checkTenNhanVien(name)) {
+//            System.out.println("Succes");
+//        } else {
+//            System.out.println("Fail");
+//        }
     }
 }
