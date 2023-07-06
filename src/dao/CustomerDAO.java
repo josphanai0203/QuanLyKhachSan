@@ -13,7 +13,7 @@ import database.JDBCUtil;
  *
  * @author Trinh
  */
-public class CustomerDAO implements ICustomerService{
+public class CustomerDAO implements ICustomerService {
 
     @Override
     public boolean add(Customer t) {
@@ -34,5 +34,5 @@ public class CustomerDAO implements ICustomerService{
     public boolean delete(Customer t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

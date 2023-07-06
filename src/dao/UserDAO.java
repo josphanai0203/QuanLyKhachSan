@@ -45,7 +45,7 @@ public class UserDAO  {
             update = st.executeUpdate();
 
             System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + update + " dong bi thay doi");
+            System.out.println("Co " + update + " bi thay doi");
 
             JDBCUtil.closeConnection(con);
             return update > 0;
@@ -55,8 +55,6 @@ public class UserDAO  {
             return false;
         }
     }
-
-   
     public ArrayList<User> selectAll() {
         ArrayList<User> kq = new ArrayList<>();
         try {
@@ -87,8 +85,6 @@ public class UserDAO  {
 
         return kq;
     }
-
-   
     public boolean update(User t) {
          int kq = 0;
         try {
@@ -121,7 +117,6 @@ public class UserDAO  {
         }
     }
 
-   
     public boolean delete(User t) {
         int kq = 0;
         try {
@@ -135,7 +130,7 @@ public class UserDAO  {
             kq = st.executeUpdate();
             //b4: xu li 
             System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + kq + " dong bi thay doi");
+            System.out.println("Co " + kq + " bi thay doi");
 
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
@@ -147,14 +142,4 @@ public class UserDAO  {
         }
     
     }
-
-   
-    public boolean checkTenTaiKhoan(String tenTaiKhoan) {
-        return cu.checkTenTaiKhoan(tenTaiKhoan);
-    }
-
-    public boolean checkLogIn(String tenTaiKhoan, String matKhau) {
-        return cu.checkLogIn(tenTaiKhoan, matKhau);
-    }
-    
 }

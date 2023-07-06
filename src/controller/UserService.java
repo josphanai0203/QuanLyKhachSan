@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controller;
 
 import dao.UserDAO;
@@ -12,22 +9,20 @@ import java.util.Scanner;
 import model.User;
 import service.IUser;
 
-/**
- *
- * @author Trinh
- */
-public class UserService implements IUser {
+public class UserService {
 
     private static UserDAO ud = new UserDAO();
     private static User currentUser;
     private static Scanner sc = new Scanner(System.in);
+    
+
 
     public UserService() {
     }
     
-    @Override
+
     public boolean checkTenTaiKhoan(String tenTaiKhoan) {
-        ArrayList<User> list = selectAll();
+        ArrayList<User> list = ud.selectAll();
 
         if (tenTaiKhoan.isEmpty()) {
             return false;
@@ -40,10 +35,9 @@ public class UserService implements IUser {
         return true;
     }
 
-    @Override
     public boolean checkLogIn(String tenTaiKhoan, String matKhau) {
         String matKhauMaHoa = encryptPassword(matKhau);
-        ArrayList<User> list = selectAll();
+        ArrayList<User> list = ud.selectAll();
         for (int i = 0; i < list.size(); i++) {
             if (tenTaiKhoan.equals(list.get(i).getTenTaiKhoan()) && matKhauMaHoa.equals(list.get(i).getMatKhau())) {
                 currentUser = new User(list.get(i).getTenTaiKhoan(), list.get(i).getMatKhau(), list.get(i).isAdmin());
@@ -53,10 +47,15 @@ public class UserService implements IUser {
         return false;
     }
 
+
+    public boolean checkAdmin(User currentUser) {
+        return currentUser.isAdmin();
+    }
 //    public boolean authenticate(String matKhau) {
 //        String encryptedPassword = encryptPassword(matKhau);
 //        return matKhau.equals(encryptedPassword);
 //    }
+
     public String encryptPassword(String matKhau) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -71,26 +70,6 @@ public class UserService implements IUser {
             e.printStackTrace();
             return null;
         }
-    }
-
-    @Override
-    public boolean add(User t) {
-        return ud.add(t);
-    }
-
-    @Override
-    public ArrayList<User> selectAll() {
-        return ud.selectAll();
-    }
-
-    @Override
-    public boolean update(User t) {
-        return ud.update(t);
-    }
-
-    @Override
-    public boolean delete(User t) {
-        return ud.delete(t);
     }
 
 }
