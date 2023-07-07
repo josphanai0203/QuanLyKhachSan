@@ -50,5 +50,25 @@ public class StaffService {
         }
         return false;
     }
+    
+    //Kiểm tra mã nhân viên, mã lương, và mã chức vụ là số
+    public boolean checkInteger(String rawNum){
+        try {
+            int num = Integer.parseInt(rawNum);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    //Kiem tra mã nhân viên có tồn tại không
+    public boolean checkStaffExist(int maNhanVien){
+        for (Staff s : list) {
+            if(s.getMaNhanVien() == maNhanVien){
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

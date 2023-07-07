@@ -46,18 +46,19 @@ public class WareHouseDAO implements IWareHouseService {
 
     @Override
     public ArrayList<WareHouse> selectAll() {
-        ArrayList<WareHouse> w = new ArrayList<WareHouse>();
+        ArrayList<WareHouse> w = new ArrayList<>();
         try {
             Connection con = JDBCUtil.getConnection();
             String sql = "SELECT * FROM kho_hang";
             PreparedStatement st = con.prepareStatement(sql);
             //b3: thuc thi cau lenh sql
-            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Ban da thuc thi: " + sql);
 
             ResultSet rs = st.executeQuery();
 
             //b4: xu li
             while (rs.next()) {
+                int ma_kho_hang = rs.getInt("ma_kho_hang");
                 String ten_san_pham = rs.getString("ten_san_pham");
                 Date ngay_nhap = rs.getDate("ngay_nhap");
                 int so_luong = rs.getInt("so_luong");
@@ -66,9 +67,8 @@ public class WareHouseDAO implements IWareHouseService {
                 Date han_su_dung = rs.getDate("han_su_dung");
 
 
-                WareHouse w1 = new WareHouse(ten_san_pham, ngay_nhap, so_luong, gia_nhap, gia_ban, han_su_dung);
-                //Staff s1 = new User(username, password, hoVaTen);
-                //kq.add(u1);
+                WareHouse w1 = new WareHouse(ma_kho_hang, ten_san_pham, ngay_nhap, so_luong, gia_nhap, gia_ban, han_su_dung);
+                w.add(w1);
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
@@ -88,7 +88,7 @@ public class WareHouseDAO implements IWareHouseService {
             String sql = "UPDATE kho_hang "
                     + "SET "
                     + "ten_san_pham=?," + "ngay_nhap=?," + "so_luong=?," + "gia_nhap=?," + "gia_ban=?," + "han_su_dung=?"
-                    + "WHERE ma_san_pham=?";
+                    + " WHERE ma_kho_hang= ?";
             PreparedStatement st = con.prepareStatement(sql);
 
             st.setString(1, w.getnameW());
@@ -96,8 +96,8 @@ public class WareHouseDAO implements IWareHouseService {
             st.setInt(3, w.getQuantity());
             st.setDouble(4, w.getPriceIn());
             st.setDouble(5, w.getPriceOut());
-            st.setDate(6, w.gethSD());
-           st.setInt(7,w.getMaW());
+            st.setDate(6, (Date) w.gethSD());
+            st.setInt(7, w.getMaW());
 
             //b3: thuc thi cau lenh sql
             wq = st.executeUpdate();
@@ -124,7 +124,7 @@ public class WareHouseDAO implements IWareHouseService {
             String sql = "DELETE from kho_hang "
                     + "WHERE ma_kho_hang=?";
             PreparedStatement st = con.prepareStatement(sql);
-            st.setInt(1,w.getMaW());
+            st.setInt(1, w.getMaW());
 //            st.setString(2, w.getnameW());
 //            st.setDate(3, (Date) w.getDayIn());
 //            st.setInt(4, w.getQuantity());

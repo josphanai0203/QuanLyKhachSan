@@ -17,7 +17,7 @@ public int maW;
         this.maW = maW;
     }
 
-    public WareHouse(String nameW, Date dayIn, int quantity, Double priceIn, double priceOut, Date hSD) {
+    public WareHouse(String nameW, Date dayIn, int quantity, double priceIn, double priceOut, Date hSD) {
 
         this.nameW = nameW;
         this.quantity = quantity;
@@ -27,10 +27,21 @@ public int maW;
         this.priceOut = priceOut;
     }
 
-    public static Date convertToDate(String dateString) throws ParseException {
+    public WareHouse(int maW ,String nameW, Date dayIn, int quantity, double priceIn, double priceOut, Date hSD) {
+
+        this.nameW = nameW;
+        this.quantity = quantity;
+        this.dayIn = dayIn;
+        this.hSD = hSD;
+        this.priceIn = priceIn;
+        this.priceOut = priceOut;
+        this.maW = maW;
+    }
+
+    public static java.sql.Date convertToDate(String dateString) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         java.util.Date parsedDate = format.parse(dateString);
-        return new Date(parsedDate.getTime());
+        return new java.sql.Date(parsedDate.getTime());
     }
 
     public int getMaW() {
@@ -94,4 +105,16 @@ public int maW;
         this.priceOut = priceOut;
     }
 
+    @Override
+    public String toString() {
+        return "WareHouse{" +
+                "maW=" + maW +
+                ", nameW='" + nameW +
+                ", quantity=" + quantity +
+                ", dayIn=" + dayIn +
+                ", hSD=" + hSD +
+                ", priceIn=" + priceIn +
+                ", priceOut=" + priceOut +
+                '}';
+    }
 }

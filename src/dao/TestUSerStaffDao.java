@@ -27,15 +27,15 @@ public class TestUSerStaffDao {
 //        User s1 = new User( "fpt", "0123", false);
 //        UserDAO.getInstance().add(s1);
 //      ----Select all---
-//        ArrayList<User> list = UserDAO.getInstance().selectAll();
-//        for (User user : list) {
-//            System.out.println(user.toString());
-//        }
+        ArrayList<User> list = UserDAO.getInstance().selectAll();
+        for (User user : list) {
+            System.out.println(user.toString());
+        }
         // ---Delete---
 //        User s1 = new User(10, "root", "abc", false);
 //       UserDAO.getInstance().delete(s1);
 // --update--
-//        User s2 = new User(4, "xyz", "xyz", true);
+//        User s2 = new User(3, "xyz", "xyz", true);
 //        UserDAO.getInstance().update(s2);
 //checkTenTaiKhoan
 //        User s1 = new User("Name3", "abc", false);
@@ -74,8 +74,11 @@ public class TestUSerStaffDao {
 //            System.out.println("Fail");
 //        }
 //check tenNhanVien
-String name ="Nguyen van a12";
-if(ss.checkTenNhanVien(name)) System.out.println("Succes");
-else System.out.println("Fail");
+//        String name = "Nguyen van a12";
+//        if (ss.checkTenNhanVien(name)) {
+//            System.out.println("Succes");
+//        } else {
+//            System.out.println("Fail");
+//        }
     }
 }

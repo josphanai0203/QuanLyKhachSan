@@ -4,6 +4,7 @@
  */
 package dao;
 
+import controller.StaffService;
 import java.util.ArrayList;
 import model.Staff;
 import service.IStaffService;
@@ -11,7 +12,8 @@ import java.sql.*;
 import database.JDBCUtil;
 
 public class StaffDAO implements IStaffService {
-
+    public static StaffService ss = new StaffService();
+    
     public static StaffDAO getInstance() {
         return new StaffDAO();
     }
@@ -57,7 +59,7 @@ public class StaffDAO implements IStaffService {
             String sql = "SELECT * FROM nhan_vien";
             PreparedStatement st = con.prepareStatement(sql);
             //b3: thuc thi cau lenh sql  
-            System.out.println("Ban da thuc thi: " + sql);
+            //System.out.println("Ban da thuc thi: " + sql);
 
             ResultSet rs = st.executeQuery();
 

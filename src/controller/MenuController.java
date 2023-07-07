@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package service;
+package controller;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import view.BillView;
 import view.CustomerView;
 import view.DefaultView;
+import view.ReportView;
+import view.RoomView;
 import view.ServiceView;
 import view.StaffView;
 
@@ -30,23 +30,23 @@ public class MenuController {
 
     public void setView(JButton btn) {
         switch (btn.getText()) {
-            case "Quản Lý Nhân Viên":
+            case "Nhân Viên":
                 node = new StaffView();
                 break;
-            case "Quản Lý Khách Hàng":
+            case "Khách Hàng":
                 node = new CustomerView();
                 break;
-            case "Quản Lý Dịch vụ":
+            case "Dịch vụ":
                 node = new ServiceView();
                 break;
-            case "Quản Lý Phòng":
-                node = new CustomerView();
+            case "Phòng":
+                node = new RoomView();
                 break;
             case "Hoá Đơn":
                 node = new BillView();
                 break;
             case "Báo Cáo":
-                node = new CustomerView();
+                node = new ReportView();
                 break;
             default:
                 node = new DefaultView();
