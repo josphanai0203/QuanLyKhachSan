@@ -32,8 +32,8 @@ public class WareHouseDAO implements IWareHouseService {
 
             update = st.executeUpdate();
 
-            System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + update + " dong bi thay doi");
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + update + " dong bi thay doi");
 
             JDBCUtil.closeConnection(con);
             return update > 0;
@@ -52,7 +52,7 @@ public class WareHouseDAO implements IWareHouseService {
             String sql = "SELECT * FROM kho_hang";
             PreparedStatement st = con.prepareStatement(sql);
             //b3: thuc thi cau lenh sql
-//            System.out.println("Ban da thuc thi: " + sql);
+//           System.out.println("Ban da thuc thi: " + sql);
 
             ResultSet rs = st.executeQuery();
 
@@ -125,18 +125,12 @@ public class WareHouseDAO implements IWareHouseService {
                     + "WHERE ma_kho_hang=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, w.getMaW());
-//            st.setString(2, w.getnameW());
-//            st.setDate(3, (Date) w.getDayIn());
-//            st.setInt(4, w.getQuantity());
-//            st.setDouble(5, w.getPriceIn());
-//            st.setDouble(6, w.getPriceOut());
-//            st.setDate(7, (Date) w.gethSD());
-
+            
             //b3: thuc thi cau lenh sql
             kq = st.executeUpdate();
             //b4: xu li
-            System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + kq + " dong bi thay doi");
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + kq + " dong bi thay doi");
 
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
