@@ -2,6 +2,7 @@ package model;
 
 public class Service {
 
+    public int idItem;
     public String nameItem;
 
     public int quantity;
@@ -13,7 +14,11 @@ public class Service {
     public int conditionkhach;
 
     public int conditionkho;
-    
+
+    public Service(int idItem) {
+        this.idItem = idItem;
+    }
+
     public Service(String nameItem, int conditionkhach, int quantity, double bill, int conditionkho) {
         this(nameItem, conditionkhach, quantity, bill, conditionkho, 0.0);
     }
@@ -26,6 +31,14 @@ public class Service {
         this.conditionkho = conditionkho;
         this.conditionkhach = conditionkhach;
 
+    }
+
+    public int getIdItem() {
+        return idItem;
+    }
+
+    public void setIdItem(int idItem) {
+        this.idItem = idItem;
     }
 
     public String getNameItem() {

@@ -87,21 +87,23 @@ public class WareHouseDAO implements IWareHouseService {
             Connection con = JDBCUtil.getConnection();
             String sql = "UPDATE kho_hang "
                     + "SET "
-                    + "ten_san_pham=?" + "ngay_nhap=?" + "so_luong=?" + "gia_nhap=?" + "gia_ban=?" + "han_su_dung=?"
-                    + "WHERE ten_san_pham=?";
+                    + "ten_san_pham=?," + "ngay_nhap=?," + "so_luong=?," + "gia_nhap=?," + "gia_ban=?," + "han_su_dung=?"
+                    + "WHERE ma_san_pham=?";
             PreparedStatement st = con.prepareStatement(sql);
+
             st.setString(1, w.getnameW());
             st.setDate(2, (Date) w.getDayIn());
             st.setInt(3, w.getQuantity());
             st.setDouble(4, w.getPriceIn());
             st.setDouble(5, w.getPriceOut());
             st.setDate(6, w.gethSD());
+           st.setInt(7,w.getMaW());
 
             //b3: thuc thi cau lenh sql
             wq = st.executeUpdate();
             //b4: xu li
-            System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + wq + " dong bi thay doi");
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + wq + " dong bi thay doi");
 
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
@@ -120,14 +122,15 @@ public class WareHouseDAO implements IWareHouseService {
             Connection con = JDBCUtil.getConnection();
 
             String sql = "DELETE from kho_hang "
-                    + "WHERE =?";
+                    + "WHERE ma_kho_hang=?";
             PreparedStatement st = con.prepareStatement(sql);
-            st.setString(1, w.getnameW());
-            st.setDate(2, (Date) w.getDayIn());
-            st.setInt(3, w.getQuantity());
-            st.setDouble(4, w.getPriceIn());
-            st.setDouble(5, w.getPriceOut());
-            st.setDate(6, (Date) w.gethSD());
+            st.setInt(1,w.getMaW());
+//            st.setString(2, w.getnameW());
+//            st.setDate(3, (Date) w.getDayIn());
+//            st.setInt(4, w.getQuantity());
+//            st.setDouble(5, w.getPriceIn());
+//            st.setDouble(6, w.getPriceOut());
+//            st.setDate(7, (Date) w.gethSD());
 
             //b3: thuc thi cau lenh sql
             kq = st.executeUpdate();

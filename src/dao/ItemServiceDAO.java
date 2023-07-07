@@ -87,8 +87,8 @@ public class ItemServiceDAO implements IItemService {
             Connection con = JDBCUtil.getConnection();
             String sql = "UPDATE dich_vu "
                     + "SET "
-                    + "ten_dich_vu=?" + "ma_khach_hang=?" + "ngay_nhap=?" + "so_luong=?" + "don_gia=?" + "ma_kho_hang=?" + "thanh_tien=?"
-                    + "WHERE ten_dich_vu=?";
+                    + "ten_dich_vu=?," + "ma_khach_hang=?," + "so_luong=?," + "don_gia=?," + "ma_kho_hang=?," + "thanh_tien=?"
+                    + "WHERE ma_dich_vu=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, s.getNameItem());
             st.setInt(2,s.getConditionkhach());
@@ -96,6 +96,7 @@ public class ItemServiceDAO implements IItemService {
             st.setDouble(4, s.getBill());
             st.setInt(5,s.getConditionkho());
             st.setDouble(6, s.getBillOut());
+            st.setInt(7, s.getIdItem());
 
             //b3: thuc thi cau lenh sql
             wq = st.executeUpdate();
@@ -120,14 +121,15 @@ public class ItemServiceDAO implements IItemService {
             Connection con = JDBCUtil.getConnection();
 
             String sql = "DELETE from dich_vu "
-                    + "WHERE =?";
+                    + "WHERE ma_dich_vu=?";
             PreparedStatement st = con.prepareStatement(sql);
-            st.setString(1, s.getNameItem());
-            st.setInt(2,s.getConditionkhach());
-            st.setInt(3, s.getQuantity());
-            st.setDouble(4, s.getBill());
-            st.setInt(5,s.getConditionkho());
-            st.setDouble(6, s.getBillOut());
+            st.setInt(1, s.getIdItem());
+//            st.setString(2, s.getNameItem());
+//            st.setInt(3,s.getConditionkhach());
+//            st.setInt(4, s.getQuantity());
+//            st.setDouble(5, s.getBill());
+//            st.setInt(6,s.getConditionkho());
+//            st.setDouble(7, s.getBillOut());
 
             //b3: thuc thi cau lenh sql
             kq = st.executeUpdate();

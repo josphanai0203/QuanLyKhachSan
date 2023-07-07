@@ -5,13 +5,17 @@ import java.sql.Date;
 import java.text.ParseException;
 
 public class WareHouse {
-
+public int maW;
     public String nameW;
     public int quantity;
     public Date dayIn;
     public Date hSD;
     public double priceIn;
     public double priceOut;
+
+    public WareHouse(int maW) {
+        this.maW = maW;
+    }
 
     public WareHouse(String nameW, Date dayIn, int quantity, Double priceIn, double priceOut, Date hSD) {
 
@@ -28,6 +32,15 @@ public class WareHouse {
         java.util.Date parsedDate = format.parse(dateString);
         return new Date(parsedDate.getTime());
     }
+
+    public int getMaW() {
+        return maW;
+    }
+
+    public void setMaW(int maW) {
+        this.maW = maW;
+    }
+
 
     public String getnameW() {
         return nameW;

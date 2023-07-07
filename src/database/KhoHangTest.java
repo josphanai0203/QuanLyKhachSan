@@ -6,8 +6,8 @@ import java.text.ParseException;
 
 public class KhoHangTest {
     public static void main(String[] args) throws ParseException {
-       WareHouse w2 = new WareHouse("Sprice", WareHouse.convertToDate("01/01/2023"), 10, 10000.0, 13000.0, WareHouse.convertToDate("06/06/2023"));
+       WareHouse w = new WareHouse("RedBUll", WareHouse.convertToDate("02/02/2023"), 5, 10000.0, 14000.0, WareHouse.convertToDate("09/09/2023"));
 
-        WareHouseDAO.getInstance().add(w2);
+        WareHouseDAO.getInstance().update(w);
     }
 }
