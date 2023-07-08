@@ -66,7 +66,7 @@ public class CustomerDAO implements ICustomerService {
             String sql = "SELECT * FROM khach_hang";
             PreparedStatement st = con.prepareStatement(sql);
             //b3: thuc thi cau lenh sql  
-            System.out.println("Ban da thuc thi: " + sql);
+            //System.out.println("Ban da thuc thi: " + sql);
 
             ResultSet rs = st.executeQuery();
 
