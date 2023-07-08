@@ -21,13 +21,17 @@ import model.Staff;
  */
 public class CustomerDAO implements ICustomerService {
 
+    public static CustomerDAO getInstance() {
+        return new CustomerDAO();
+    }
+
     @Override
     public boolean add(Customer t) {
         int update = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO khach_hang (ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai) "
-                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO khach_hang (ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, ma_phong) "
+                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement st = con.prepareStatement(sql);
             //st.setInt(1, t.getMaNhanVien());
@@ -38,12 +42,12 @@ public class CustomerDAO implements ICustomerService {
             st.setString(5, t.getQuocTich());
             st.setInt(6, t.getSoCMND());
             st.setString(7, t.getSdt());
+            st.setInt(8, t.getMaPhong());
 
             update = st.executeUpdate();
 
-            System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + update + " bi thay doi");
-
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + update + " bi thay doi");
             JDBCUtil.closeConnection(con);
             return update > 0;
 
@@ -75,8 +79,9 @@ public class CustomerDAO implements ICustomerService {
                 String quoc_tich = rs.getString("quoc_tich");
                 int so_cmnd = rs.getInt("so_cmnd");
                 String so_dien_thoai = rs.getString("so_dien_thoai");
+                int ma_phong = rs.getInt("ma_phong");
 
-                Customer c1 = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai);
+                Customer c1 = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, ma_phong);
                 kq.add(c1);
             }
             JDBCUtil.closeConnection(con);
@@ -96,7 +101,7 @@ public class CustomerDAO implements ICustomerService {
             Connection con = JDBCUtil.getConnection();
             String sql = "UPDATE khach_hang "
                     + "SET "
-                    + "ten_khach_hang=?, " + "nam_sinh=?, " + "gioi_tinh=?, " + "dia_chi=?, " + "quoc_tich=?, " + "so_cmnd=?, " + "so_dien_thoai=?"
+                    + "ten_khach_hang=?, " + "nam_sinh=?, " + "gioi_tinh=?, " + "dia_chi=?, " + "quoc_tich=?, " + "so_cmnd=?, " + "so_dien_thoai=?, " + "ma_phong=?"
                     + " WHERE ma_khach_hang=?";
             PreparedStatement st = con.prepareStatement(sql);
             //st.setInt(1, t.getMaNhanVien());
@@ -108,6 +113,7 @@ public class CustomerDAO implements ICustomerService {
             st.setInt(6, t.getSoCMND());
             st.setString(7, t.getSdt());
             st.setInt(8, t.getMaKhachHang());
+            st.setInt(9, t.getMaPhong());
             //b3: thuc thi cau lenh sql	
             kq = st.executeUpdate();
             //b4: xu li 
@@ -138,12 +144,12 @@ public class CustomerDAO implements ICustomerService {
             //b3: thuc thi cau lenh sql
             kq = st.executeUpdate();
             //b4: xu li 
-            System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + kq + " bi thay doi");
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + kq + " bi thay doi");
 
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
-            return kq>0;
+            return kq > 0;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

@@ -18,11 +18,25 @@ public class Customer {
     private String quocTich;
     private int soCMND;
     private String sdt;
+    private int maPhong;
 
     public Customer() {
     }
 
-    public Customer(int maKhachHang, String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt) {
+    public Customer(String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt, int maPhong) {
+        this.tenKhachHang = tenKhachHang;
+        this.namSinh = namSinh;
+        this.gioiTinh = gioiTinh;
+        this.diaChi = diaChi;
+        this.quocTich = quocTich;
+        this.soCMND = soCMND;
+        this.sdt = sdt;
+        this.maPhong = maPhong;
+    }
+    
+    
+
+    public Customer(int maKhachHang, String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt, int maPhong) {
         this.maKhachHang = maKhachHang;
         this.tenKhachHang = tenKhachHang;
         this.namSinh = namSinh;
@@ -31,7 +45,10 @@ public class Customer {
         this.quocTich = quocTich;
         this.soCMND = soCMND;
         this.sdt = sdt;
+        this.maPhong = maPhong;
     }
+
+
 
     public int getMaKhachHang() {
         return maKhachHang;
@@ -97,13 +114,19 @@ public class Customer {
         this.sdt = sdt;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" + "maKhachHang=" + maKhachHang + ", tenKhachHang=" + tenKhachHang + ", namSinh=" + namSinh + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", quocTich=" + quocTich + ", soCMND=" + soCMND + ", sdt=" + sdt + '}';
+    public int getMaPhong() {
+        return maPhong;
     }
 
-   
-    
-    
+    public void setMaPhong(int maPhong) {
+        this.maPhong = maPhong;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" + "maKhachHang=" + maKhachHang + ", tenKhachHang=" + tenKhachHang + ", namSinh=" + namSinh + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", quocTich=" + quocTich + ", soCMND=" + soCMND + ", sdt=" + sdt + ", maPhong=" + maPhong + '}';
+    }
+
+  
 
 }
