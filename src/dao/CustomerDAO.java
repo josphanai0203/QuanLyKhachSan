@@ -5,17 +5,14 @@
 package dao;
 
 import controller.CustomerService;
-import controller.StaffService;
 import java.util.ArrayList;
 import model.Customer;
 import service.ICustomerService;
 import database.JDBCUtil;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import model.Staff;
 
 /**
  *

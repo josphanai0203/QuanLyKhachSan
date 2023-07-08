@@ -4,16 +4,21 @@
  */
 package view.customerView;
 
+import controller.CustomerService;
+
 /**
  *
  * @author Admin
  */
 public class AddCustomerView extends javax.swing.JPanel {
 
+    private CustomerService cs;
+
     /**
      * Creates new form AddCustomerView
      */
     public AddCustomerView() {
+        cs = new CustomerService();
         initComponents();
     }
 
@@ -49,6 +54,11 @@ public class AddCustomerView extends javax.swing.JPanel {
         addBtn = new javax.swing.JButton();
 
         jButton1.setText("Trở Lại");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Tên Khách Hàng");
 
@@ -199,20 +209,25 @@ public class AddCustomerView extends javax.swing.JPanel {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
 
-                String ten_khach_hang = customerName.getText();
-                int nam_sinh = customerYear.getText();
-                String gender = "";
-                if(genderMale.isSelected()){
-                    gender += "Nam";
-                }else{
-                    gender += "Nữ";
-                }
-                String dia_chi = customerAddress.getText();
-                String quoc_tich = customerNation.getText();
-                int so_cmnd = Integer.parseInt(customerCard.getText());
-                String so_dien_thoai = customerPhone.getText();
-                String ma_phong = (String)customerRoom.getSelectedItem();
+        String ten_khach_hang = customerName.getText();
+        int nam_sinh = Integer.parseInt(customerYear.getText());
+        String gender = "";
+        if (genderMale.isSelected()) {
+            gender += "Nam";
+        } else {
+            gender += "Nữ";
+        }
+        String dia_chi = customerAddress.getText();
+        String quoc_tich = customerNation.getText();
+        int so_cmnd = Integer.parseInt(customerCard.getText());
+        String so_dien_thoai = customerPhone.getText();
+        String ma_phong = (String) customerRoom.getSelectedItem();
+        cs.createCustomer(ten_khach_hang, nam_sinh, gender, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, ma_phong);
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

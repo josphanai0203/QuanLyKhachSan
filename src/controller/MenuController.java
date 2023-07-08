@@ -65,6 +65,9 @@ public class MenuController {
             case "Thêm Khách Hàng":
                 node = new AddCustomerView();
                 break;
+            case "Trở Lại":
+                node = new CustomerView();
+                break;
             default:
                 break;
 

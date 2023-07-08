@@ -18,8 +18,10 @@ import service.IService;
 public class CustomerService implements IService<Customer>{
     private static  RoomDAO rd = new RoomDAO();
     private static CustomerDAO cd = new CustomerDAO();
-    public void createCustomer(String tenKhachHang, int namSinh, , String diaChi, String quocTich, int soCMND, String sdt, String maPhong){
-        Room n = 
+    public void createCustomer(String tenKhachHang, int namSinh,String gioiTinh , String diaChi, String quocTich, int soCMND, String sdt, String maPhong){
+        Room n = rd.findByName(maPhong);
+        Customer c = new Customer(tenKhachHang, namSinh, gioiTinh, diaChi, quocTich, soCMND, sdt, n);
+        add(c);
     }
     @Override
     public boolean add(Customer t) {

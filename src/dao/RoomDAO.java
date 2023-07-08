@@ -220,4 +220,30 @@ public class RoomDAO implements IService<Room> {
         return kq;
 
     }
+    public Room findByName(String Name) {
+        Room kq = null;
+        try {
+            Connection con = JDBCUtil.getConnection();
+            String sql = "SELECT * FROM phong p left JOIN kieu_thue kt ON kt.ma_kieu_thue = p.ma_kieu_thue left JOIN loai_phong lp ON lp.ma_loai_phong = p.ma_loai_phong WHERE p.ten_phong =? ";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1, Name);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int ma_phong = rs.getInt("ma_phong");
+                String ten_phong = rs.getString("ten_phong");
+                int so_nguoi_toi_da = rs.getInt("so_nguoi_toi_da");
+                double dien_tich = rs.getDouble("dien_tich");
+                String loai_phong = rs.getString("Loai_phong");
+                String kieu_thue = rs.getString("ten_kieu_thue");
+                boolean isUsed = rs.getBoolean("isUsed");
+                kq = new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, kieu_thue, isUsed);
+            }
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return kq;
+
+    }
 }
