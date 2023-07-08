@@ -12,16 +12,22 @@ import java.util.Date;
  */
 public class Bill {
     private int maHoaDon;
-    private int maKhachHang;
-    private int maNhanVien;
+    private Customer maKhachHang;
+    private Staff maNhanVien;
     private Date ngayNhap;
     private double tongTien;
-    private int maHoaDonChiTiet;
+    private DetailedBill maHoaDonChiTiet;
 
     public Bill() {
     }
 
-    public Bill(int maHoaDon, int maKhachHang, int maNhanVien, Date ngayNhap, double tongTien, int maHoaDonChiTiet) {
+    public Bill(int maHoaDon, Date ngayNhap, double tongTien) {
+        this.maHoaDon = maHoaDon;
+        this.ngayNhap = ngayNhap;
+        this.tongTien = tongTien;
+    }
+
+    public Bill(int maHoaDon, Customer maKhachHang, Staff maNhanVien, Date ngayNhap, double tongTien, DetailedBill maHoaDonChiTiet) {
         this.maHoaDon = maHoaDon;
         this.maKhachHang = maKhachHang;
         this.maNhanVien = maNhanVien;
@@ -38,19 +44,19 @@ public class Bill {
         this.maHoaDon = maHoaDon;
     }
 
-    public int getMaKhachHang() {
+    public Customer getMaKhachHang() {
         return maKhachHang;
     }
 
-    public void setMaKhachHang(int maKhachHang) {
+    public void setMaKhachHang(Customer maKhachHang) {
         this.maKhachHang = maKhachHang;
     }
 
-    public int getMaNhanVien() {
+    public Staff getMaNhanVien() {
         return maNhanVien;
     }
 
-    public void setMaNhanVien(int maNhanVien) {
+    public void setMaNhanVien(Staff maNhanVien) {
         this.maNhanVien = maNhanVien;
     }
 
@@ -70,13 +76,16 @@ public class Bill {
         this.tongTien = tongTien;
     }
 
-    public int getMaHoaDonChiTiet() {
+    public DetailedBill getMaHoaDonChiTiet() {
         return maHoaDonChiTiet;
     }
 
-    public void setMaHoaDonChiTiet(int maHoaDonChiTiet) {
+    public void setMaHoaDonChiTiet(DetailedBill maHoaDonChiTiet) {
         this.maHoaDonChiTiet = maHoaDonChiTiet;
     }
+
     
     
+    
+   
 }

@@ -9,26 +9,28 @@ package model;
  * @author Trinh
  */
 public class DetailedBill {
-    private int maHoaDon;
+    private Bill maHoaDon;
     private int tienPhong;
     private int tienDichVu;
     private int vat;
 
     public DetailedBill() {
     }
-
-    public DetailedBill(int maHoaDon, int tienPhong, int tienDichVu, int vat) {
+    
+    public DetailedBill(Bill maHoaDon, int tienPhong, int tienDichVu, int vat) {
         this.maHoaDon = maHoaDon;
         this.tienPhong = tienPhong;
         this.tienDichVu = tienDichVu;
         this.vat = vat;
     }
+    
+    
 
-    public int getMaHoaDon() {
+    public Bill getMaHoaDon() {
         return maHoaDon;
     }
 
-    public void setMaHoaDon(int maHoaDon) {
+    public void setMaHoaDon(Bill maHoaDon) {
         this.maHoaDon = maHoaDon;
     }
 

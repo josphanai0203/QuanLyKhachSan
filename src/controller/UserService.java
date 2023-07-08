@@ -9,11 +9,12 @@ import java.util.Scanner;
 import model.User;
 import service.IUser;
 
-public class UserService {
+public class UserService implements IUser{
 
     private static UserDAO ud = new UserDAO();
     private static User currentUser;
     private static Scanner sc = new Scanner(System.in);
+    public static ArrayList<User> list = UserDAO.getInstance().selectAll();
     
 
 
@@ -70,6 +71,36 @@ public class UserService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public boolean add(User t) {
+        return ud.add(t);
+    }
+
+    @Override
+    public ArrayList<User> selectAll() {
+        return ud.selectAll();
+    }
+
+    @Override
+    public boolean update(User t) {
+        return ud.update(t);
+    }
+
+    @Override
+    public boolean delete(User t) {
+        return ud.delete(t);
+    }
+
+    @Override
+    public User findById(User t) {
+        for (int i = 0; i < list.size(); i++) {
+            if(list.get(i).getMaTaiKhoan() == t.getMaTaiKhoan()){
+                return t;
+            }
+        }
+        return null;
     }
 
 }

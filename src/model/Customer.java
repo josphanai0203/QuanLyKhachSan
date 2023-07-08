@@ -18,12 +18,25 @@ public class Customer {
     private String quocTich;
     private int soCMND;
     private String sdt;
-    private int maPhong;
+    private Room maPhong;
 
     public Customer() {
     }
 
-    public Customer(String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt, int maPhong) {
+    public Customer(int maKhachHang, String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt) {
+        this.maKhachHang = maKhachHang;
+        this.tenKhachHang = tenKhachHang;
+        this.namSinh = namSinh;
+        this.gioiTinh = gioiTinh;
+        this.diaChi = diaChi;
+        this.quocTich = quocTich;
+        this.soCMND = soCMND;
+        this.sdt = sdt;
+    }
+
+    
+    
+    public Customer(String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt, Room maPhong) {
         this.tenKhachHang = tenKhachHang;
         this.namSinh = namSinh;
         this.gioiTinh = gioiTinh;
@@ -36,7 +49,7 @@ public class Customer {
     
     
 
-    public Customer(int maKhachHang, String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt, int maPhong) {
+    public Customer(int maKhachHang, String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt, Room maPhong) {
         this.maKhachHang = maKhachHang;
         this.tenKhachHang = tenKhachHang;
         this.namSinh = namSinh;
@@ -114,11 +127,11 @@ public class Customer {
         this.sdt = sdt;
     }
 
-    public int getMaPhong() {
+    public Room getMaPhong() {
         return maPhong;
     }
 
-    public void setMaPhong(int maPhong) {
+    public void setMaPhong(Room maPhong) {
         this.maPhong = maPhong;
     }
 
