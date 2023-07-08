@@ -1,5 +1,7 @@
 package dao;
 
+import controller.ItemServiceService;
+import controller.RoomService;
 import database.JDBCUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +12,7 @@ import model.Room;
 import service.IService;
 
 public class RoomDAO implements IService<Room> {
-
+    private static RoomService rd = new RoomService();
     public static RoomDAO getInstance() {
         return new RoomDAO();
     }
