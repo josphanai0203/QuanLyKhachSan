@@ -8,16 +8,16 @@ import java.util.Date;
 
 public class RegistrationForm {
     private int maSoDangKi;
-    private int maNhanVien;
-    private int maKhachhang;
-    private int maPhong;
+    private Staff maNhanVien;
+    private Customer maKhachhang;
+    private Room maPhong;
     private int soPhong;
     private Date ngayDangKi;
 
     public RegistrationForm() {
     }
 
-    public RegistrationForm(int maSoDangKi, int maNhanVien, int maKhachhang, int maPhong, int soPhong, Date ngayDangKi) {
+    public RegistrationForm(int maSoDangKi, Staff maNhanVien, Customer maKhachhang, Room maPhong, int soPhong, Date ngayDangKi) {
         this.maSoDangKi = maSoDangKi;
         this.maNhanVien = maNhanVien;
         this.maKhachhang = maKhachhang;
@@ -34,27 +34,27 @@ public class RegistrationForm {
         this.maSoDangKi = maSoDangKi;
     }
 
-    public int getMaNhanVien() {
+    public Staff getMaNhanVien() {
         return maNhanVien;
     }
 
-    public void setMaNhanVien(int maNhanVien) {
+    public void setMaNhanVien(Staff maNhanVien) {
         this.maNhanVien = maNhanVien;
     }
 
-    public int getMaKhachhang() {
+    public Customer getMaKhachhang() {
         return maKhachhang;
     }
 
-    public void setMaKhachhang(int maKhachhang) {
+    public void setMaKhachhang(Customer maKhachhang) {
         this.maKhachhang = maKhachhang;
     }
 
-    public int getMaPhong() {
+    public Room getMaPhong() {
         return maPhong;
     }
 
-    public void setMaPhong(int maPhong) {
+    public void setMaPhong(Room maPhong) {
         this.maPhong = maPhong;
     }
 
@@ -73,6 +73,13 @@ public class RegistrationForm {
     public void setNgayDangKi(Date ngayDangKi) {
         this.ngayDangKi = ngayDangKi;
     }
+
+    @Override
+    public String toString() {
+        return "RegistrationForm{" + "maSoDangKi=" + maSoDangKi + ", maNhanVien=" + maNhanVien + ", maKhachhang=" + maKhachhang + ", maPhong=" + maPhong + ", soPhong=" + soPhong + ", ngayDangKi=" + ngayDangKi + '}';
+    }
+
     
-    
+
+ 
 }

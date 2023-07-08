@@ -8,7 +8,7 @@ import java.util.Date;
 import model.Staff;
 import service.IStaffService;
 
-public class StaffService {
+public class StaffService implements IStaffService{
 
     public static StaffDAO sd = new StaffDAO();
     public static ArrayList<Staff> list = StaffDAO.getInstance().selectAll();
@@ -69,6 +69,36 @@ public class StaffService {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean add(Staff t) {
+        return sd.add(t);
+    }
+
+    @Override
+    public ArrayList<Staff> selectAll() {
+        return sd.selectAll();
+    }
+
+    @Override
+    public boolean update(Staff t) {
+        return sd.update(t);
+    }
+
+    @Override
+    public boolean delete(Staff t) {
+        return sd.delete(t);
+    }
+
+    @Override
+    public Staff findById(Staff t) {
+        for (int i = 0; i < list.size(); i++) {
+            if(t.getMaNhanVien() == list.get(i).getMaNhanVien()){
+                return t;
+            }
+        }
+        return null;
     }
 
 }

@@ -20,7 +20,7 @@ import service.IUser;
  *
  * @author Trinh
  */
-public class UserDAO  {
+public class UserDAO implements IUser{
     private static UserService cu = new UserService();
     public static UserDAO getInstance(){
         return new UserDAO();
@@ -141,5 +141,10 @@ public class UserDAO  {
             return false;
         }
     
+    }
+
+    @Override
+    public User findById(User t) {
+        return cu.findById(t);
     }
 }

@@ -11,27 +11,32 @@ import java.util.*;
  * @author Admin
  */
 public class Staff {
-    private int maNhanVien;
-    
+    private int maNhanVien;   
     private String tenNhanVien;
     private Date ngaySinh;
     private String gioiTinh;
-    private  int maChucVu;   
+    private  Position maChucVu;   
     private String sdt;
     private String diaChi;
-    private int maLuong;
+    private Payroll maLuong;
     
 
     public Staff() {
     }
 
-    public Staff(int maNhanVien) {
+    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, String sdt, String diaChi) {
         this.maNhanVien = maNhanVien;
+        this.tenNhanVien = tenNhanVien;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.maChucVu = maChucVu;
+        this.sdt = sdt;
+        this.diaChi = diaChi;
     }
     
     
 
-    public Staff(String tenNhanVien, Date ngaySinh, String gioiTinh, int maChucVu, String sdt, String diaChi, int maLuong) {
+    public Staff(String tenNhanVien, Date ngaySinh, String gioiTinh, String sdt, String diaChi) {
         this.tenNhanVien = tenNhanVien;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
@@ -43,7 +48,7 @@ public class Staff {
     
     
 
-    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, int maChucVu, String sdt, String diaChi, int maLuong) {
+    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, Position maChucVu, String sdt, String diaChi, Payroll maLuong) {
         this.maNhanVien = maNhanVien;
         this.tenNhanVien = tenNhanVien;
         this.ngaySinh = ngaySinh;
@@ -86,11 +91,11 @@ public class Staff {
         this.gioiTinh = gioiTinh;
     }
 
-    public int getMaChucVu() {
+    public Position getMaChucVu() {
         return maChucVu;
     }
 
-    public void setMaChucVu(int maChucVu) {
+    public void setMaChucVu(Position maChucVu) {
         this.maChucVu = maChucVu;
     }
 
@@ -110,12 +115,12 @@ public class Staff {
         this.diaChi = diaChi;
     }
 
-    public int getMaLuong() {
+    public Payroll getMaLuong() {
         return maLuong;
     }
 
-    public void setMaLuong(int maLuong) {
-        this.maLuong = maLuong;
+    public Payroll setMaLuong(Payroll maLuong) {
+        return this.maLuong = maLuong;
     }
 
     @Override

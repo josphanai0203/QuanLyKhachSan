@@ -1,6 +1,9 @@
 package dao;
 
+import controller.StaffService;
+import controller.WareHouseService;
 import database.JDBCUtil;
+import model.Staff;
 import model.WareHouse;
 import service.IWareHouseService;
 
@@ -8,6 +11,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class WareHouseDAO implements IWareHouseService {
+    public static WareHouseService ws = new WareHouseService();
+
+
     public static WareHouseDAO getInstance() {
         return new WareHouseDAO();
     }
@@ -140,5 +146,9 @@ public class WareHouseDAO implements IWareHouseService {
             e.printStackTrace();
             return false;
         }
+    }
+    @Override
+    public WareHouse findById(WareHouse w) {
+        return ws.findById(w);
     }
 }

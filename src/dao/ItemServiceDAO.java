@@ -1,9 +1,11 @@
 package dao;
 
+import controller.ItemServiceService;
 import database.JDBCUtil;
 import model.Service;
 import service.IItemService;
 
+import java.awt.event.ItemEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ItemServiceDAO implements IItemService {
+    private static ItemServiceService id = new ItemServiceService();
 
     public static ItemServiceDAO getInstance() {
         return new ItemServiceDAO();
@@ -142,4 +145,8 @@ public class ItemServiceDAO implements IItemService {
         }
     }
 
+    @Override
+    public Service findById(Service s) {
+        return id.findById(s);
+    }
 }

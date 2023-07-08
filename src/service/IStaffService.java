@@ -11,5 +11,4 @@ import model.Staff;
  * @author Admin
  */
 public interface IStaffService extends IService<Staff>{
-    public boolean checkSDT (String sdt);
 }

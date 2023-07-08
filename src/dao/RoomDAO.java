@@ -210,7 +210,7 @@ public class RoomDAO implements IService<Room> {
                 String loai_phong = rs.getString("Loai_phong");
                 String kieu_thue = rs.getString("ten_kieu_thue");
                 boolean isUsed = rs.getBoolean("isUsed");
-                kq= new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, kieu_thue, isUsed);
+                kq = new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, kieu_thue, isUsed);
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {

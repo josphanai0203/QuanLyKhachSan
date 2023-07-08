@@ -23,18 +23,18 @@ public class StaffDAO implements IStaffService {
         int update = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO nhan_vien (ten_nhan_vien, ngay_sinh, gioi_tinh, ma_chuc_vu, so_dien_thoai, dia_chi, ma_luong) "
-                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO nhan_vien (ten_nhan_vien, ngay_sinh, gioi_tinh, so_dien_thoai, dia_chi) "
+                    + " VALUES ( ?, ?, ?, ?, ?)";
 
             PreparedStatement st = con.prepareStatement(sql);
             //st.setInt(1, t.getMaNhanVien());
             st.setString(1, t.getTenNhanVien());
             st.setDate(2, (Date) t.getNgaySinh());
             st.setString(3, t.getGioiTinh());
-            st.setInt(4, t.getMaChucVu());
-            st.setString(5, t.getSdt());
-            st.setString(6, t.getDiaChi());
-            st.setInt(7, t.getMaLuong());
+            //st.setInt(4, t.getMaChucVu());
+            st.setString(4, t.getSdt());
+            st.setString(5, t.getDiaChi());
+           // st.setInt(7, t.getMaLuong());
 
             update = st.executeUpdate();
 
@@ -69,12 +69,12 @@ public class StaffDAO implements IStaffService {
                 String ten_nhan_vien = rs.getString("ten_nhan_vien");
                 Date ngay_sinh = rs.getDate("ngay_sinh");
                 String gioi_tinh = rs.getString("gioi_tinh");
-                int ma_chuc_vu = rs.getInt("ma_chuc_vu");
+                //int ma_chuc_vu = rs.getInt("ma_chuc_vu");
                 String so_dien_thoai = rs.getString("so_dien_thoai");
                 String dia_chi = rs.getString("dia_chi");
-                int ma_luong = rs.getInt("ma_luong");
+                //int ma_luong = rs.getInt("ma_luong");
 
-                Staff s1 = new Staff(ma_nhan_vien, ten_nhan_vien, ngay_sinh, gioi_tinh, ma_chuc_vu, so_dien_thoai, dia_chi, ma_luong);
+                Staff s1 = new Staff(ma_nhan_vien, ten_nhan_vien, ngay_sinh, gioi_tinh, so_dien_thoai, dia_chi);
                 //Staff s1 = new User(username, password, hoVaTen);
                 kq.add(s1);
             }
@@ -95,18 +95,18 @@ public class StaffDAO implements IStaffService {
             Connection con = JDBCUtil.getConnection();
             String sql = "UPDATE nhan_vien "
                     + "SET "
-                    + "ten_nhan_vien=?, " + "ngay_sinh=?, " + "gioi_tinh=?, " + "ma_chuc_vu=?, " + "so_dien_thoai=?, " + "dia_chi=?, " + "ma_luong=?"
+                    + "ten_nhan_vien=?, " + "ngay_sinh=?, " + "gioi_tinh=?, " + "so_dien_thoai=?, " + "dia_chi=?" 
                     + " WHERE ma_nhan_vien=?";
             PreparedStatement st = con.prepareStatement(sql);
             //st.setInt(1, t.getMaNhanVien());
             st.setString(1, t.getTenNhanVien());
             st.setDate(2, (Date) t.getNgaySinh());
             st.setString(3, t.getGioiTinh());
-            st.setInt(4, t.getMaChucVu());
-            st.setString(5, t.getSdt());
-            st.setString(6, t.getDiaChi());
-            st.setInt(7, t.getMaLuong());
-            st.setInt(8, t.getMaNhanVien());
+            //st.setInt(4, t.getMaChucVu());
+            st.setString(4, t.getSdt());
+            st.setString(5, t.getDiaChi());
+            //st.setInt(7, t.getMaLuong());
+            st.setInt(6, t.getMaNhanVien());
             //b3: thuc thi cau lenh sql	
             kq = st.executeUpdate();
             //b4: xu li 
@@ -156,9 +156,11 @@ public class StaffDAO implements IStaffService {
         }
     }
 
+
+
     @Override
-    public boolean checkSDT(String sdt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Staff findById(Staff t) {
+        return ss.findById(t);
     }
 
 }
