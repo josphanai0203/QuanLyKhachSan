@@ -9,14 +9,19 @@ import java.util.ArrayList;
 import model.Room;
 
 public class RoomDAO {
-    
-    public static RoomDAO getInstance(){
+
+    public static RoomDAO getInstance() {
         return new RoomDAO();
     }
+<<<<<<< HEAD
     
     public boolean add(Room r) { 
+=======
+
+    public boolean add(Room r) {
+>>>>>>> 5bb58d97c5d890152bdcb64a529ac072e5f5df04
         int update = 0;
-        try{
+        try {
             Connection con = JDBCUtil.getConnection();
             String sql = "INSERT INTO phong (ma_phong, ten_phong, so_nguoi_toi_da, dien_tich, ma_loai_phong, ma_kieu_thue) VALUES (?,?,?,?,?,?)";
 
@@ -27,19 +32,19 @@ public class RoomDAO {
             st.setDouble(4, r.getArea());
             st.setInt(5, r.getId_room_type());
             st.setInt(6, r.getId_rent_type());
-            
+
             update = st.executeUpdate();
-            
-            System.out.println("Ban da thuc thi: " +sql);
+
+            System.out.println("Ban da thuc thi: " + sql);
             System.out.println("Co " + update + " dong bi thay doi ");
-             
+
             JDBCUtil.closeConnection(con);
             return update > 0;
-            
-        }catch (SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
-            return false;  
-        } 
+            return false;
+        }
     }
     
     public ArrayList<Room> selectAll() {

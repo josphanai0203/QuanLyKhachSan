@@ -1,26 +1,49 @@
 package model;
+
 public class Service {
 
-    protected int idItem;
-    protected String nameItem;
+    public int idItem;
+    public String nameItem;
 
-    protected int quantity;
+    public int quantity;
 
-    private double price;
-    public int iDWareHouse;
-    public double priceOut;
+    public double bill;
+
+    public double billOut;
+
+    public int conditionkhach;
+
+    public int conditionkho;
 
     public Service() {
-        super();
     }
 
-    public Service(int idItem, String nameItem, int quantity, double price, int iDWareHouse, double priceOut) {
+    public Service(int idItem) {
+        this.idItem = idItem;
+    }
+
+    public Service(String nameItem, int conditionkhach, int quantity, double bill, int conditionkho) {
+        this(conditionkhach, nameItem,  quantity, bill, conditionkho, 0.0);
+    }
+
+    public Service( int conditionkhach, String nameItem,  int quantity, double bill, int conditionkho, double billOut) {
+        this.nameItem = nameItem;
+        this.quantity = quantity;
+        this.bill = bill;
+        setBillOut(billOut);
+        this.conditionkho = conditionkho;
+        this.conditionkhach = conditionkhach;
+
+    }
+
+    public Service(int idItem, int conditionkhach, String nameItem, int quantity, double bill, int conditionkho, double billOut) {
         this.idItem = idItem;
         this.nameItem = nameItem;
         this.quantity = quantity;
-        this.price = price;
-        this.iDWareHouse = iDWareHouse;
-        this.priceOut = priceOut;
+        this.bill = bill;
+        this.billOut = billOut;
+        this.conditionkhach = conditionkhach;
+        this.conditionkho = conditionkho;
     }
 
     public int getIdItem() {
@@ -39,7 +62,6 @@ public class Service {
         this.nameItem = nameItem;
     }
 
-
     public int getQuantity() {
         return quantity;
     }
@@ -48,38 +70,37 @@ public class Service {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
-        return price;
+    public double getBill() {
+        return bill;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setBill(double bill) {
+        this.bill = bill;
     }
 
-    public int getiDWareHouse() {
-        return iDWareHouse;
+    public int getConditionkhach() {
+        return conditionkhach;
     }
 
-    public void setiDWareHouse(int iDWareHouse) {
-        this.iDWareHouse = iDWareHouse;
+    public void setConditionkhach(int conditionkhach) {
+        this.conditionkhach = conditionkhach;
     }
 
-    public double getPriceOut() {
-        return priceOut;
+    public int getConditionkho() {
+        return conditionkho;
     }
 
-    public void setPriceOut(double priceOut) {
-        this.priceOut = priceOut;
+    public void setConditionkho(int conditionkho) {
+        this.conditionkho = conditionkho;
     }
-    @Override
-    public String toString() {
-        return "Service{" +
-                "idItem=" + idItem +
-                ", nameItem='" + nameItem + '\'' +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", iDWareHouse=" + iDWareHouse +
-                ", priceOut=" + priceOut +
-                '}';
+
+    public double getBillOut() {
+        return billOut;
+    }
+
+    public void setBillOut(double billOut) {
+        if (!Double.isNaN(billOut)) {
+            this.billOut = billOut;
+        }
     }
 }

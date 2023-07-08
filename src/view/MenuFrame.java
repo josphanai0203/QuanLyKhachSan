@@ -4,17 +4,33 @@
  */
 package view;
 
+import java.awt.Toolkit;
+import javax.swing.JButton;
+import controller.MenuController;
+
 /**
  *
  * @author Admin
  */
 public class MenuFrame extends javax.swing.JFrame {
 
+    public MenuController controler;
+
     /**
      * Creates new form MenuFrame
      */
     public MenuFrame() {
+        this.setUndecorated(false);                 //false for title bar. True for no title bar
+        this.setAlwaysOnTop(true);
+        this.setResizable(true);
+        this.setVisible(true);
         initComponents();
+        Toolkit a = Toolkit.getDefaultToolkit();
+        int xSize = (int) a.getScreenSize().getWidth();
+        int ySize = (int) a.getScreenSize().getHeight();
+        this.setSize(xSize, ySize);
+        controler = new MenuController(viewPane);
+        controler.setView(new JButton());
     }
 
     /**
@@ -27,62 +43,83 @@ public class MenuFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jPanel2 = new javax.swing.JPanel();
-        nhanVienButton = new javax.swing.JButton();
-        khachHangButton = new javax.swing.JButton();
-        dichVuButton = new javax.swing.JButton();
-        phongButton = new javax.swing.JButton();
-        hoaDonButton = new javax.swing.JButton();
-        baoCaoButton = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        menuPane = new javax.swing.JPanel();
+        customerBtn = new javax.swing.JButton();
+        billBtn = new javax.swing.JButton();
+        serviceBtn = new javax.swing.JButton();
+        roomBtn = new javax.swing.JButton();
+        staffBtn = new javax.swing.JButton();
+        reportBtn = new javax.swing.JButton();
+        viewPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quản Lý Khách sạn");
+        setAlwaysOnTop(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator1.setToolTipText("");
-        jSeparator1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jSeparator1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jPanel1.setName(""); // NOI18N
+        jPanel1.setPreferredSize(new java.awt.Dimension(1400, 800));
 
-        jPanel2.setLayout(new java.awt.GridLayout(6, 1, 30, 30));
+        menuPane.setToolTipText("");
+        menuPane.setLayout(new java.awt.GridLayout(6, 0, 20, 20));
 
-        nhanVienButton.setText("Quản Lý Nhân Viên");
-        nhanVienButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        nhanVienButton.addActionListener(new java.awt.event.ActionListener() {
+        customerBtn.setText("Khách Hàng");
+        customerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nhanVienButtonActionPerformed(evt);
+                customerBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(nhanVienButton);
+        menuPane.add(customerBtn);
 
-        khachHangButton.setText("Quản Lý Khách Hàng");
-        jPanel2.add(khachHangButton);
-
-        dichVuButton.setText("Quản Lý Dịch vụ");
-        jPanel2.add(dichVuButton);
-
-        phongButton.setText("Quản Lý Phòng");
-        jPanel2.add(phongButton);
-
-        hoaDonButton.setText("Hoá Đơn");
-        jPanel2.add(hoaDonButton);
-
-        baoCaoButton.setText("Báo Cáo");
-        baoCaoButton.addActionListener(new java.awt.event.ActionListener() {
+        billBtn.setText("Hoá Đơn");
+        billBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                baoCaoButtonActionPerformed(evt);
+                billBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(baoCaoButton);
+        menuPane.add(billBtn);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1038, Short.MAX_VALUE)
+        serviceBtn.setText("Dịch vụ");
+        serviceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                serviceBtnActionPerformed(evt);
+            }
+        });
+        menuPane.add(serviceBtn);
+
+        roomBtn.setText("Phòng");
+        roomBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roomBtnActionPerformed(evt);
+            }
+        });
+        menuPane.add(roomBtn);
+
+        staffBtn.setText("Nhân Viên");
+        staffBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staffBtnActionPerformed(evt);
+            }
+        });
+        menuPane.add(staffBtn);
+
+        reportBtn.setText("Báo Cáo");
+        reportBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportBtnActionPerformed(evt);
+            }
+        });
+        menuPane.add(reportBtn);
+
+        javax.swing.GroupLayout viewPaneLayout = new javax.swing.GroupLayout(viewPane);
+        viewPane.setLayout(viewPaneLayout);
+        viewPaneLayout.setHorizontalGroup(
+            viewPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1110, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        viewPaneLayout.setVerticalGroup(
+            viewPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -92,54 +129,63 @@ public class MenuFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(viewPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                .addComponent(menuPane, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(viewPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(menuPane, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void baoCaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baoCaoButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_baoCaoButtonActionPerformed
+    private void billBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billBtnActionPerformed
+        controler.setView(billBtn);
+    }//GEN-LAST:event_billBtnActionPerformed
 
-    private void nhanVienButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nhanVienButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nhanVienButtonActionPerformed
+    private void serviceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serviceBtnActionPerformed
+        controler.setView(serviceBtn);
+    }//GEN-LAST:event_serviceBtnActionPerformed
+
+    private void customerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerBtnActionPerformed
+       controler.setView(customerBtn);
+    }//GEN-LAST:event_customerBtnActionPerformed
+
+    private void roomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomBtnActionPerformed
+        controler.setView(roomBtn);
+    }//GEN-LAST:event_roomBtnActionPerformed
+
+    private void staffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffBtnActionPerformed
+         controler.setView(staffBtn);
+    }//GEN-LAST:event_staffBtnActionPerformed
+
+    private void reportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportBtnActionPerformed
+         controler.setView(reportBtn);
+    }//GEN-LAST:event_reportBtnActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton baoCaoButton;
-    private javax.swing.JButton dichVuButton;
-    private javax.swing.JButton hoaDonButton;
+    private javax.swing.JButton billBtn;
+    private javax.swing.JButton customerBtn;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton khachHangButton;
-    private javax.swing.JButton nhanVienButton;
-    private javax.swing.JButton phongButton;
+    private javax.swing.JPanel menuPane;
+    private javax.swing.JButton reportBtn;
+    private javax.swing.JButton roomBtn;
+    private javax.swing.JButton serviceBtn;
+    private javax.swing.JButton staffBtn;
+    private javax.swing.JPanel viewPane;
     // End of variables declaration//GEN-END:variables
 }
