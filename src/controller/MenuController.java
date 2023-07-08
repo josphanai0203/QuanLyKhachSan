@@ -8,12 +8,12 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import view.BillView;
-import view.CustomerView;
+import view.customerView.CustomerView;
 import view.DefaultView;
 import view.ReportView;
-import view.RoomView;
+import view.roomView.RoomView;
 import view.ServiceView;
-import view.StaffView;
+import view.staffView.StaffView;
 
 /**
  *

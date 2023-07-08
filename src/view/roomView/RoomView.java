@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view;
+package view.roomView;
 
 /**
  *
  * @author Admin
  */
-public class StaffView extends javax.swing.JPanel {
+public class RoomView extends javax.swing.JPanel {
 
     /**
-     * Creates new form nhanVien
+     * Creates new form RoomView
      */
-    public StaffView() {
+    public RoomView() {
         initComponents();
     }
 
@@ -30,7 +30,7 @@ public class StaffView extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1050, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
