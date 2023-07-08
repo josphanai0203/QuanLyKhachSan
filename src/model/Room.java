@@ -7,14 +7,25 @@ public class Room {
     private int max_people;
     private int id_room_type;
     private int id_rent_type;
+    private boolean isUsed;
 
-    public Room(int id_room, String name, double area, int max_people, int id_room_type, int id_rent_type){
+    public Room(int id_room, String name, int max_people, double area, int id_room_type, int id_rent_type, boolean isUsed){
         this.id_room = id_room;
         this.name = name;
-        this.area = area;
         this.max_people = max_people;
+        this.area = area;
         this.id_room_type = id_room_type;
         this.id_rent_type = id_rent_type;
+        this.isUsed = isUsed;
+        
+    }
+
+    public void setIsUsed(boolean isUsed) {
+        this.isUsed = isUsed;
+    }
+
+    public boolean isIsUsed() {
+        return isUsed;
     }
 
     public int getId_room() {
