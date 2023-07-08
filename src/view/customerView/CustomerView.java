@@ -71,6 +71,7 @@ public class CustomerView extends javax.swing.JPanel {
             v.add(c.getQuocTich());
             v.add(c.getSoCMND());
             v.add(c.getSdt());
+            v.add(c.getMaPhong().getName());
             dfm.addRow(v);
         }
         

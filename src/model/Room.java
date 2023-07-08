@@ -19,6 +19,10 @@ public class Room {
         this.isUsed = isUsed;
     }
 
+    public Room(int id_room) {
+        this.id_room = id_room;
+    }
+
     
 
     public void setIsUsed(boolean isUsed) {

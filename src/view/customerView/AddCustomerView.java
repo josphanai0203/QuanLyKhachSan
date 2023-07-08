@@ -5,13 +5,16 @@
 package view.customerView;
 
 import controller.CustomerService;
+import dao.RoomDAO;
+import java.util.ArrayList;
+import model.Room;
 
 /**
  *
  * @author Admin
  */
 public class AddCustomerView extends javax.swing.JPanel {
-
+    private RoomDAO rd = new RoomDAO();
     private CustomerService cs;
 
     /**
@@ -20,8 +23,14 @@ public class AddCustomerView extends javax.swing.JPanel {
     public AddCustomerView() {
         cs = new CustomerService();
         initComponents();
+        addRoomFiel();
     }
-
+    private void addRoomFiel(){
+        ArrayList<Room> list = rd.getAvailableRooms();
+        for(Room r :list){
+            customerRoom.addItem(r.getName());
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,8 +101,6 @@ public class AddCustomerView extends javax.swing.JPanel {
         });
 
         jLabel8.setText("Mã Phòng");
-
-        customerRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         addBtn.setText("Thêm Khách Hàng");
         addBtn.addActionListener(new java.awt.event.ActionListener() {

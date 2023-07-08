@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import model.Room;
 
 /**
  *
@@ -21,6 +22,7 @@ import java.sql.SQLException;
 public class CustomerDAO implements ICustomerService {
 
     private CustomerService cs = new CustomerService();
+    private RoomDAO rd = new RoomDAO();
     
     public static CustomerDAO getInstance() {
         return new CustomerDAO();
@@ -80,10 +82,10 @@ public class CustomerDAO implements ICustomerService {
                 String quoc_tich = rs.getString("quoc_tich");
                 int so_cmnd = rs.getInt("so_cmnd");
                 String so_dien_thoai = rs.getString("so_dien_thoai");
-                //int ma_phong = rs.getInt("ma_phong");
-
-                Customer c1 = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai);
-                kq.add(c1);
+                int ma_phong = rs.getInt("ma_phong");
+                Room r = rd.findById(new Room(ma_phong));
+                Customer c1 = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, r);
+                        kq.add(c1);
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
