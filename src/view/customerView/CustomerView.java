@@ -4,6 +4,7 @@
  */
 package view.customerView;
 
+import controller.MenuController;
 import dao.CustomerDAO;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -17,7 +18,7 @@ import model.Customer;
  * @author Admin
  */
 public class CustomerView extends javax.swing.JPanel {
-
+    private MenuController controller;
     /**
      * Creates new form khachHang
      */
@@ -26,6 +27,7 @@ public class CustomerView extends javax.swing.JPanel {
         CustomerDAO cd = new CustomerDAO();
         list = cd.selectAll();
         initComponents();
+        controller = new MenuController(cusView);
         setTableCustomer();
         
     }
@@ -41,7 +43,8 @@ public class CustomerView extends javax.swing.JPanel {
         dtm.addColumn("Quốc Tịch");
         dtm.addColumn("Số CMND");
         dtm.addColumn("Số Điện Thoại");
-        setColumnWidths(cusTable, 50, 400, 100, 100, 400, 200, 200, 200);
+        dtm.addColumn("Phòng");
+        setColumnWidths(cusTable, 50, 400, 100, 100, 400, 200, 200, 200,100);
         setRow(dtm);
     }
 
@@ -83,36 +86,58 @@ public class CustomerView extends javax.swing.JPanel {
     private void initComponents() {
 
         cusMenu = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        addCustomerBtn = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
         cusView = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         cusTable = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(1110, 800));
 
-        jButton1.setText("Thêm Khách Hàng");
+        addCustomerBtn.setText("Thêm Khách Hàng");
+        addCustomerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCustomerBtnActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Thêm Dịch Vụ");
+        jButton3.setText("Sửa Khách Hàng");
+
+        jButton4.setText("Xoá Khách Hàng");
+
+        backBtn.setText("Trở Lại");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout cusMenuLayout = new javax.swing.GroupLayout(cusMenu);
         cusMenu.setLayout(cusMenuLayout);
         cusMenuLayout.setHorizontalGroup(
             cusMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cusMenuLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addComponent(addCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
         cusMenuLayout.setVerticalGroup(
             cusMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cusMenuLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(cusMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(addCustomerBtn)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)
+                    .addComponent(backBtn))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -166,13 +191,23 @@ public class CustomerView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backBtnActionPerformed
+
+    private void addCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerBtnActionPerformed
+       controller.setViewCustomer(addCustomerBtn);
+    }//GEN-LAST:event_addCustomerBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addCustomerBtn;
+    private javax.swing.JButton backBtn;
     private javax.swing.JPanel cusMenu;
     private javax.swing.JTable cusTable;
     private javax.swing.JPanel cusView;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

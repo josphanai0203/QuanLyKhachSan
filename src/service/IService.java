@@ -15,4 +15,5 @@ public interface IService<T> {
     public ArrayList<T> selectAll();
     public boolean update(T t);
     public boolean delete(T t);
+    public T findById(T t);
 }

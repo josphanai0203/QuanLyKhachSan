@@ -13,6 +13,7 @@ import view.DefaultView;
 import view.ReportView;
 import view.roomView.RoomView;
 import view.ServiceView;
+import view.customerView.AddCustomerView;
 import view.staffView.StaffView;
 
 /**
@@ -50,6 +51,21 @@ public class MenuController {
                 break;
             default:
                 node = new DefaultView();
+                break;
+
+        }
+        root.removeAll();
+        root.setLayout(new BorderLayout());
+        root.add(node);
+        root.validate();
+        root.repaint();
+    }
+     public void setViewCustomer(JButton btn) {
+        switch (btn.getText()) {
+            case "Thêm Khách Hàng":
+                node = new AddCustomerView();
+                break;
+            default:
                 break;
 
         }

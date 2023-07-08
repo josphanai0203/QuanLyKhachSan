@@ -161,6 +161,7 @@ public class LoginLayout extends javax.swing.JFrame {
 //        wrongAccount.setText("");
 //        String account = accountInput.getText();
 //        String pass = passInput.getText();
+//        System.out.println(us.encryptPassword("123456"));
 //        if (account.isBlank()) {
 //            accountError.setText("Vui lòng nhập tài khoản!");
 //        } else if (pass.isBlank()) {
@@ -169,7 +170,7 @@ public class LoginLayout extends javax.swing.JFrame {
             MenuFrame menu = new MenuFrame();
             menu.setVisible(true);
             this.setVisible(false);
-//
+
 //        } else {
 //            wrongAccount.setText("Tài Khoản Hoặc Mật Khẩu Không Chính Xác!");
 //        }
