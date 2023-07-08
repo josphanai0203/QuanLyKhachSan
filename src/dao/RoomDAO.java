@@ -13,13 +13,8 @@ public class RoomDAO {
     public static RoomDAO getInstance() {
         return new RoomDAO();
     }
-<<<<<<< HEAD
     
-    public boolean add(Room r) { 
-=======
-
     public boolean add(Room r) {
->>>>>>> 5bb58d97c5d890152bdcb64a529ac072e5f5df04
         int update = 0;
         try {
             Connection con = JDBCUtil.getConnection();
