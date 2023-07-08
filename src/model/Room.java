@@ -8,11 +8,11 @@ public class Room {
     private int id_room_type;
     private int id_rent_type;
 
-    public Room(int id_room, String name, double area, int max_people, int id_room_type, int id_rent_type){
+    public Room(int id_room, String name, int max_people, double area, int id_room_type, int id_rent_type){
         this.id_room = id_room;
         this.name = name;
-        this.area = area;
         this.max_people = max_people;
+        this.area = area;
         this.id_room_type = id_room_type;
         this.id_rent_type = id_rent_type;
     }
