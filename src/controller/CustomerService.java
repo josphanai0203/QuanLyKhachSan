@@ -5,8 +5,10 @@
 package controller;
 
 import dao.CustomerDAO;
+import dao.RoomDAO;
 import java.util.ArrayList;
 import model.Customer;
+import model.Room;
 import service.IService;
 
 /**
@@ -14,7 +16,11 @@ import service.IService;
  * @author Admin
  */
 public class CustomerService implements IService<Customer>{
+    private static  RoomDAO rd = new RoomDAO();
     private static CustomerDAO cd = new CustomerDAO();
+    public void createCustomer(String tenKhachHang, int namSinh, , String diaChi, String quocTich, int soCMND, String sdt, String maPhong){
+        Room n = 
+    }
     @Override
     public boolean add(Customer t) {
         return cd.add(t);

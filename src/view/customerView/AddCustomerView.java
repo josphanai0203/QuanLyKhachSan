@@ -36,8 +36,8 @@ public class AddCustomerView extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        genderMale = new javax.swing.JRadioButton();
+        genderFemale = new javax.swing.JRadioButton();
         customerName = new javax.swing.JTextField();
         customerYear = new javax.swing.JTextField();
         customerAddress = new javax.swing.JTextField();
@@ -46,7 +46,7 @@ public class AddCustomerView extends javax.swing.JPanel {
         customerPhone = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         customerRoom = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        addBtn = new javax.swing.JButton();
 
         jButton1.setText("Trở Lại");
 
@@ -64,14 +64,14 @@ public class AddCustomerView extends javax.swing.JPanel {
 
         jLabel7.setText("Số Điện Thoại");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Nam");
+        buttonGroup1.add(genderMale);
+        genderMale.setText("Nam");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Nữ");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(genderFemale);
+        genderFemale.setText("Nữ");
+        genderFemale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                genderFemaleActionPerformed(evt);
             }
         });
 
@@ -85,10 +85,10 @@ public class AddCustomerView extends javax.swing.JPanel {
 
         customerRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton2.setText("Thêm Khách Hàng");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        addBtn.setText("Thêm Khách Hàng");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                addBtnActionPerformed(evt);
             }
         });
 
@@ -110,9 +110,9 @@ public class AddCustomerView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(genderMale)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2))
+                        .addComponent(genderFemale))
                     .addComponent(customerName, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                     .addComponent(customerYear, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                     .addComponent(customerAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
@@ -123,7 +123,7 @@ public class AddCustomerView extends javax.swing.JPanel {
                 .addGap(559, 559, 559))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(619, 619, 619))
         );
         jPanel1Layout.setVerticalGroup(
@@ -140,8 +140,8 @@ public class AddCustomerView extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(genderMale)
+                    .addComponent(genderFemale))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
@@ -163,7 +163,7 @@ public class AddCustomerView extends javax.swing.JPanel {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(customerRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(jButton2)
+                .addComponent(addBtn)
                 .addGap(139, 139, 139))
         );
 
@@ -189,20 +189,34 @@ public class AddCustomerView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void genderFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderFemaleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_genderFemaleActionPerformed
 
     private void customerPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerPhoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_customerPhoneActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+
+                String ten_khach_hang = customerName.getText();
+                int nam_sinh = customerYear.getText();
+                String gender = "";
+                if(genderMale.isSelected()){
+                    gender += "Nam";
+                }else{
+                    gender += "Nữ";
+                }
+                String dia_chi = customerAddress.getText();
+                String quoc_tich = customerNation.getText();
+                int so_cmnd = Integer.parseInt(customerCard.getText());
+                String so_dien_thoai = customerPhone.getText();
+                String ma_phong = (String)customerRoom.getSelectedItem();
+    }//GEN-LAST:event_addBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField customerAddress;
     private javax.swing.JTextField customerCard;
@@ -211,8 +225,9 @@ public class AddCustomerView extends javax.swing.JPanel {
     private javax.swing.JTextField customerPhone;
     private javax.swing.JComboBox<String> customerRoom;
     private javax.swing.JTextField customerYear;
+    private javax.swing.JRadioButton genderFemale;
+    private javax.swing.JRadioButton genderMale;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -222,7 +237,5 @@ public class AddCustomerView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     // End of variables declaration//GEN-END:variables
 }

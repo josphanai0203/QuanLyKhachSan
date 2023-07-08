@@ -5,20 +5,21 @@ public class Room {
     private String name;
     private double area;
     private int max_people;
-    private int id_room_type;
-    private int id_rent_type;
+    private String roomType;
+    private String rentType;
     private boolean isUsed;
 
-    public Room(int id_room, String name, int max_people, double area, int id_room_type, int id_rent_type, boolean isUsed){
+    public Room(int id_room, String name, double area, int max_people, String roomType, String rentType, boolean isUsed) {
         this.id_room = id_room;
         this.name = name;
-        this.max_people = max_people;
         this.area = area;
-        this.id_room_type = id_room_type;
-        this.id_rent_type = id_rent_type;
+        this.max_people = max_people;
+        this.roomType = roomType;
+        this.rentType = rentType;
         this.isUsed = isUsed;
-        
     }
+
+    
 
     public void setIsUsed(boolean isUsed) {
         this.isUsed = isUsed;
@@ -44,13 +45,6 @@ public class Room {
         return max_people;
     }
 
-    public int getId_room_type() {
-        return id_room_type;
-    }
-
-    public int getId_rent_type() {
-        return id_rent_type;
-    }
 
     public void setId_room(int id_room) {
         this.id_room = id_room;
@@ -68,11 +62,25 @@ public class Room {
         this.max_people = max_people;
     }
 
-    public void setId_room_type(int id_room_type) {
-        this.id_room_type = id_room_type;
+    public String getRoomType() {
+        return roomType;
     }
 
-    public void setId_rent_type(int id_rent_type) {
-        this.id_rent_type = id_rent_type;
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
     }
+
+    public String getRentType() {
+        return rentType;
+    }
+
+    public void setRentType(String rentType) {
+        this.rentType = rentType;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" + "id_room=" + id_room + ", name=" + name + ", area=" + area + ", max_people=" + max_people + ", roomType=" + roomType + ", rentType=" + rentType + ", isUsed=" + isUsed + '}';
+    }
+    
 }
