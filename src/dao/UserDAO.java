@@ -44,8 +44,8 @@ public class UserDAO  {
 
             update = st.executeUpdate();
 
-            System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + update + " bi thay doi");
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + update + " bi thay doi");
 
             JDBCUtil.closeConnection(con);
             return update > 0;
@@ -104,8 +104,8 @@ public class UserDAO  {
             //b3: thuc thi cau lenh sql	
             kq = st.executeUpdate();
             //b4: xu li 
-            System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + kq + " dong bi thay doi");
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + kq + " dong bi thay doi");
 
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
@@ -129,8 +129,8 @@ public class UserDAO  {
 
             kq = st.executeUpdate();
             //b4: xu li 
-            System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + kq + " bi thay doi");
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + kq + " bi thay doi");
 
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);

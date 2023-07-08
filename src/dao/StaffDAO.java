@@ -38,8 +38,8 @@ public class StaffDAO implements IStaffService {
 
             update = st.executeUpdate();
 
-            System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + update + " bi thay doi");
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + update + " bi thay doi");
 
             JDBCUtil.closeConnection(con);
             return update > 0;
@@ -143,8 +143,8 @@ public class StaffDAO implements IStaffService {
             //b3: thuc thi cau lenh sql
             kq = st.executeUpdate();
             //b4: xu li 
-            System.out.println("Ban da thuc thi: " + sql);
-            System.out.println("Co " + kq + " bi thay doi");
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + kq + " bi thay doi");
 
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
