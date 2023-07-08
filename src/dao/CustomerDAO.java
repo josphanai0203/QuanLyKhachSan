@@ -4,6 +4,8 @@
  */
 package dao;
 
+import controller.CustomerService;
+import controller.StaffService;
 import java.util.ArrayList;
 import model.Customer;
 import service.ICustomerService;
@@ -21,6 +23,8 @@ import model.Staff;
  */
 public class CustomerDAO implements ICustomerService {
 
+    private CustomerService cs = new CustomerService();
+    
     public static CustomerDAO getInstance() {
         return new CustomerDAO();
     }
@@ -30,8 +34,8 @@ public class CustomerDAO implements ICustomerService {
         int update = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO khach_hang (ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, ma_phong) "
-                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO khach_hang (ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai) "
+                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement st = con.prepareStatement(sql);
             //st.setInt(1, t.getMaNhanVien());
@@ -42,7 +46,7 @@ public class CustomerDAO implements ICustomerService {
             st.setString(5, t.getQuocTich());
             st.setInt(6, t.getSoCMND());
             st.setString(7, t.getSdt());
-            st.setInt(8, t.getMaPhong());
+            //st.setInt(8, t.getMaPhong());
 
             update = st.executeUpdate();
 
@@ -79,9 +83,9 @@ public class CustomerDAO implements ICustomerService {
                 String quoc_tich = rs.getString("quoc_tich");
                 int so_cmnd = rs.getInt("so_cmnd");
                 String so_dien_thoai = rs.getString("so_dien_thoai");
-                int ma_phong = rs.getInt("ma_phong");
+                //int ma_phong = rs.getInt("ma_phong");
 
-                Customer c1 = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, ma_phong);
+                Customer c1 = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai);
                 kq.add(c1);
             }
             JDBCUtil.closeConnection(con);
@@ -101,7 +105,7 @@ public class CustomerDAO implements ICustomerService {
             Connection con = JDBCUtil.getConnection();
             String sql = "UPDATE khach_hang "
                     + "SET "
-                    + "ten_khach_hang=?, " + "nam_sinh=?, " + "gioi_tinh=?, " + "dia_chi=?, " + "quoc_tich=?, " + "so_cmnd=?, " + "so_dien_thoai=?, " + "ma_phong=?"
+                    + "ten_khach_hang=?, " + "nam_sinh=?, " + "gioi_tinh=?, " + "dia_chi=?, " + "quoc_tich=?, " + "so_cmnd=?, " + "so_dien_thoai=?"
                     + " WHERE ma_khach_hang=?";
             PreparedStatement st = con.prepareStatement(sql);
             //st.setInt(1, t.getMaNhanVien());
@@ -113,7 +117,7 @@ public class CustomerDAO implements ICustomerService {
             st.setInt(6, t.getSoCMND());
             st.setString(7, t.getSdt());
             st.setInt(8, t.getMaKhachHang());
-            st.setInt(9, t.getMaPhong());
+            //st.setInt(9, t.getMaPhong());
             //b3: thuc thi cau lenh sql	
             kq = st.executeUpdate();
             //b4: xu li 
@@ -155,6 +159,11 @@ public class CustomerDAO implements ICustomerService {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public Customer findById(Customer t) {
+        return cs.findById(t);
     }
 
 }
