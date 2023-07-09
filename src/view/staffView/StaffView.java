@@ -46,6 +46,7 @@ public class StaffView extends javax.swing.JPanel {
         dtm.addColumn("Mã Lương");
         dtm.addColumn("Mã Tài Khoản");
         setColumnWidth(staffTable, 100, 400, 100, 100, 100, 200, 400, 100, 100);
+        setRow(dtm);
     }
 
     private void setColumnWidth(JTable table, int... width) {
