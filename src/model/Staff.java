@@ -19,7 +19,7 @@ public class Staff {
     private String sdt;
     private String diaChi;
     private Payroll maLuong;
-    
+    private User maTaiKhoan;
 
     public Staff() {
     }
@@ -45,10 +45,8 @@ public class Staff {
         this.diaChi = diaChi;
         this.maLuong = maLuong;
     }
-    
-    
 
-    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, Position maChucVu, String sdt, String diaChi, Payroll maLuong) {
+    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, Position maChucVu, String sdt, String diaChi, Payroll maLuong, User maTaiKhoan) {
         this.maNhanVien = maNhanVien;
         this.tenNhanVien = tenNhanVien;
         this.ngaySinh = ngaySinh;
@@ -57,7 +55,10 @@ public class Staff {
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.maLuong = maLuong;
+        this.maTaiKhoan = maTaiKhoan;
     }
+    
+    
 
     public int getMaNhanVien() {
         return maNhanVien;
@@ -123,12 +124,18 @@ public class Staff {
         return this.maLuong = maLuong;
     }
 
-    @Override
-    public String toString() {
-        return "Staff{" + "maNhanVien=" + maNhanVien + ", tenNhanVien=" + tenNhanVien + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", maChucVu=" + maChucVu + ", sdt=" + sdt + ", diaChi=" + diaChi + ", maLuong=" + maLuong + '}';
+    public User getMaTaiKhoan() {
+        return maTaiKhoan;
     }
 
-   
+    public void setMaTaiKhoan(User maTaiKhoan) {
+        this.maTaiKhoan = maTaiKhoan;
+    }
+
+    @Override
+    public String toString() {
+        return "Staff{" + "maNhanVien=" + maNhanVien + ", tenNhanVien=" + tenNhanVien + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", maChucVu=" + maChucVu + ", sdt=" + sdt + ", diaChi=" + diaChi + ", maLuong=" + maLuong + ", maTaiKhoan=" + maTaiKhoan + '}';
+    } 
     
     
 }
