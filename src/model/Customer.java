@@ -35,6 +35,17 @@ public class Customer {
         this.maPhong = maPhong;
     }
     
+    public Customer( String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt, Room maPhong) {
+        this.tenKhachHang = tenKhachHang;
+        this.namSinh = namSinh;
+        this.gioiTinh = gioiTinh;
+        this.diaChi = diaChi;
+        this.quocTich = quocTich;
+        this.soCMND = soCMND;
+        this.sdt = sdt;
+        this.maPhong = maPhong;
+    }
+    
 
 
 

@@ -8,6 +8,7 @@ import controller.MenuController;
 import dao.CustomerDAO;
 import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -76,7 +77,6 @@ public class CustomerView extends javax.swing.JPanel {
         }
         
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -159,9 +159,10 @@ public class CustomerView extends javax.swing.JPanel {
         cusView.setLayout(cusViewLayout);
         cusViewLayout.setHorizontalGroup(
             cusViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cusViewLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cusViewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1092, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1086, Short.MAX_VALUE)
+                .addContainerGap())
         );
         cusViewLayout.setVerticalGroup(
             cusViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +200,7 @@ public class CustomerView extends javax.swing.JPanel {
     private void addCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerBtnActionPerformed
        controller.setViewCustomer(addCustomerBtn);
     }//GEN-LAST:event_addCustomerBtnActionPerformed
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCustomerBtn;
