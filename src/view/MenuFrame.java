@@ -7,6 +7,7 @@ package view;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import controller.MenuController;
+import javax.swing.JPanel;
 
 /**
  *
@@ -32,6 +33,7 @@ public class MenuFrame extends javax.swing.JFrame {
         controler = new MenuController(viewPane);
         controler.setView(new JButton());
     }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -65,11 +65,8 @@ public class CustomerDAO implements ICustomerService {
         ArrayList<Customer> kq = new ArrayList<>();
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM khach_hang";
+            String sql = "SELECT * FROM khach_hang kh INNER JOIN phong p ON p.ma_phong = kh.ma_phong left JOIN kieu_thue kt ON kt.ma_kieu_thue = p.ma_kieu_thue left JOIN loai_phong lp ON lp.ma_loai_phong = p.ma_loai_phong";
             PreparedStatement st = con.prepareStatement(sql);
-            //b3: thuc thi cau lenh sql  
-            //System.out.println("Ban da thuc thi: " + sql);
-
             ResultSet rs = st.executeQuery();
 
             //b4: xu li 
@@ -83,7 +80,13 @@ public class CustomerDAO implements ICustomerService {
                 int so_cmnd = rs.getInt("so_cmnd");
                 String so_dien_thoai = rs.getString("so_dien_thoai");
                 int ma_phong = rs.getInt("ma_phong");
-                Room r = rd.findById(new Room(ma_phong));
+                String ten_phong = rs.getString("ten_phong");
+                int so_nguoi_toi_da = rs.getInt("so_nguoi_toi_da");
+                double dien_tich = rs.getDouble("dien_tich");
+                String loai_phong = rs.getString("Loai_phong");
+                String kieu_thue = rs.getString("ten_kieu_thue");
+                boolean isUsed = rs.getBoolean("isUsed");
+                Room r = new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, kieu_thue, isUsed);
                 Customer c1 = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, r);
                         kq.add(c1);
             }
