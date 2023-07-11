@@ -4,17 +4,80 @@
  */
 package view.staffView;
 
+import controller.MenuController;
+import dao.StaffDAO;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import model.Staff;
+
 /**
  *
  * @author Admin
  */
 public class StaffView extends javax.swing.JPanel {
 
+    private MenuController controller;
+    private ArrayList<Staff> list;
+
     /**
      * Creates new form nhanVien
      */
     public StaffView() {
+        StaffDAO sd = new StaffDAO();
+        list = sd.selectAll();
         initComponents();
+        controller = new MenuController(cusView);
+        setTableStaff();
+    }
+
+    private void setTableStaff() {
+        DefaultTableModel dtm = new DefaultTableModel();
+        staffTable.setModel(dtm);
+        dtm.addColumn("Mã nhân viên");
+        dtm.addColumn("Tên nhân viên");
+        dtm.addColumn("Ngày Sinh");
+        dtm.addColumn("Giới Tính");
+        dtm.addColumn("Mã Chức Vụ");
+        dtm.addColumn("Số Điện Thoại");
+        dtm.addColumn("Địa Chỉ");
+        dtm.addColumn("Mã Lương");
+        dtm.addColumn("Mã Tài Khoản");
+        setColumnWidth(staffTable, 100, 400, 100, 100, 100, 200, 400, 100, 100);
+        setRow(dtm);
+    }
+
+    private void setColumnWidth(JTable table, int... width) {
+        TableColumnModel tbColumnModel = table.getColumnModel();
+        for (int i = 0; i < width.length; i++) {
+            if (i < tbColumnModel.getColumnCount()) {
+                tbColumnModel.getColumn(i).setMaxWidth(width[i]);
+
+            } else {
+                break;
+            }
+        }
+    }
+
+    public void setRow(DefaultTableModel dtm) {
+        Vector v = null;
+        for (Staff s : list) {
+            v = new Vector();
+            v.removeAllElements();
+            v.add(s.getMaNhanVien());
+            v.add(s.getTenNhanVien());
+            v.add(s.getNgaySinh());
+            v.add(s.getGioiTinh());
+            v.add(s.getMaChucVu());
+            v.add(s.getSdt());
+            v.add(s.getDiaChi());
+            v.add(s.getMaLuong());
+            v.add(s.getMaTaiKhoan());
+            dtm.addRow(v);
+
+        }
     }
 
     /**
@@ -26,19 +89,127 @@ public class StaffView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        staffMenu = new javax.swing.JPanel();
+        addStaffBtn = new javax.swing.JButton();
+        updateStaffBtn = new javax.swing.JButton();
+        deleteStaffBtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
+        cusView = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        staffTable = new javax.swing.JTable();
+
+        addStaffBtn.setText("Thêm Nhân Viên");
+        addStaffBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStaffBtnActionPerformed(evt);
+            }
+        });
+
+        updateStaffBtn.setText("Sửa Nhân Viên");
+
+        deleteStaffBtn.setText("Xoá Nhân Viên");
+
+        backBtn.setText("Trở Lại");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout staffMenuLayout = new javax.swing.GroupLayout(staffMenu);
+        staffMenu.setLayout(staffMenuLayout);
+        staffMenuLayout.setHorizontalGroup(
+            staffMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(staffMenuLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(addStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(updateStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(deleteStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+        );
+        staffMenuLayout.setVerticalGroup(
+            staffMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(staffMenuLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(staffMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addStaffBtn)
+                    .addComponent(updateStaffBtn)
+                    .addComponent(deleteStaffBtn)
+                    .addComponent(backBtn))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        staffTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(staffTable);
+
+        javax.swing.GroupLayout cusViewLayout = new javax.swing.GroupLayout(cusView);
+        cusView.setLayout(cusViewLayout);
+        cusViewLayout.setHorizontalGroup(
+            cusViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cusViewLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE))
+        );
+        cusViewLayout.setVerticalGroup(
+            cusViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cusViewLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1050, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cusView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(staffMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(staffMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cusView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStaffBtnActionPerformed
+        controller.setViewCustomer(addStaffBtn);
+    }//GEN-LAST:event_addStaffBtnActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        controller.setViewCustomer(backBtn);
+    }//GEN-LAST:event_backBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addStaffBtn;
+    private javax.swing.JButton backBtn;
+    private javax.swing.JPanel cusView;
+    private javax.swing.JButton deleteStaffBtn;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel staffMenu;
+    private javax.swing.JTable staffTable;
+    private javax.swing.JButton updateStaffBtn;
     // End of variables declaration//GEN-END:variables
 }
