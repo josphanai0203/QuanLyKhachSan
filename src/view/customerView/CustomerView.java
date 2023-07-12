@@ -5,13 +5,8 @@
 package view.customerView;
 
 import controller.MenuController;
-import dao.CustomerDAO;
-import java.util.ArrayList;
-import java.util.Vector;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import model.Customer;
 
 /**
@@ -20,63 +15,15 @@ import model.Customer;
  */
 public class CustomerView extends javax.swing.JPanel {
     private MenuController controller;
-    /**
-     * Creates new form khachHang
-     */
-    private ArrayList<Customer> list;
     public CustomerView() {
-        CustomerDAO cd = new CustomerDAO();
-        list = cd.selectAll();
+        
         initComponents();
         controller = new MenuController(cusView);
-        setTableCustomer();
+        controller.setViewCustomer(new JButton());
         
     }
 
-    private void setTableCustomer() {
-        DefaultTableModel dtm = new DefaultTableModel();
-        cusTable.setModel(dtm);
-        dtm.addColumn("ID");
-        dtm.addColumn("Tên Khách Hàng");
-        dtm.addColumn("Năm Sinh");
-        dtm.addColumn("Giới Tính");
-        dtm.addColumn("Địa Chỉ");
-        dtm.addColumn("Quốc Tịch");
-        dtm.addColumn("Số CMND");
-        dtm.addColumn("Số Điện Thoại");
-        dtm.addColumn("Phòng");
-        setColumnWidths(cusTable, 50, 400, 100, 100, 400, 200, 200, 200,100);
-        setRow(dtm);
-    }
-
-    public void setColumnWidths(JTable table, int... widths) {
-        TableColumnModel columnModel = table.getColumnModel();
-        for (int i = 0; i < widths.length; i++) {
-            if (i < columnModel.getColumnCount()) {
-                columnModel.getColumn(i).setMaxWidth(widths[i]);
-            } else {
-                break;
-            }
-        }
-    }
-    public void setRow(DefaultTableModel dfm){
-        Vector v = null;
-         for(Customer c : list){
-             v =new Vector();
-             v.removeAllElements();
-            v.add(c.getMaKhachHang());
-            v.add(c.getTenKhachHang());
-            v.add(c.getNamSinh());
-            v.add(c.getGioiTinh());
-            v.add(c.getDiaChi());
-            v.add(c.getQuocTich());
-            v.add(c.getSoCMND());
-            v.add(c.getSdt());
-            v.add(c.getMaPhong().getName());
-            dfm.addRow(v);
-        }
-        
-    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,12 +35,10 @@ public class CustomerView extends javax.swing.JPanel {
 
         cusMenu = new javax.swing.JPanel();
         addCustomerBtn = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        fixCusBtn = new javax.swing.JButton();
+        delCusBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         cusView = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        cusTable = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(1110, 800));
 
@@ -104,9 +49,14 @@ public class CustomerView extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("Sửa Khách Hàng");
+        fixCusBtn.setText("Sửa Khách Hàng");
+        fixCusBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fixCusBtnActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Xoá Khách Hàng");
+        delCusBtn.setText("Xoá Khách Hàng");
 
         backBtn.setText("Trở Lại");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -123,9 +73,9 @@ public class CustomerView extends javax.swing.JPanel {
                 .addGap(49, 49, 49)
                 .addComponent(addCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fixCusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(delCusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
@@ -136,39 +86,21 @@ public class CustomerView extends javax.swing.JPanel {
                 .addGap(16, 16, 16)
                 .addGroup(cusMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addCustomerBtn)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
+                    .addComponent(fixCusBtn)
+                    .addComponent(delCusBtn)
                     .addComponent(backBtn))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
-
-        cusTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(cusTable);
 
         javax.swing.GroupLayout cusViewLayout = new javax.swing.GroupLayout(cusView);
         cusView.setLayout(cusViewLayout);
         cusViewLayout.setHorizontalGroup(
             cusViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cusViewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1086, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 1098, Short.MAX_VALUE)
         );
         cusViewLayout.setVerticalGroup(
             cusViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cusViewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE))
+            .addGap(0, 716, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -200,16 +132,23 @@ public class CustomerView extends javax.swing.JPanel {
     private void addCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerBtnActionPerformed
        controller.setViewCustomer(addCustomerBtn);
     }//GEN-LAST:event_addCustomerBtnActionPerformed
+
+    private void fixCusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixCusBtnActionPerformed
+        Customer c = DefaultCustomerView.getCustomerSelected();
+        if(c==null){
+            JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Nhân Viên Cần Sửa Thông Tin","Thông Báo",JOptionPane.ERROR_MESSAGE);
+        }else {
+           controller.setViewCustomer(fixCusBtn);
+        }
+    }//GEN-LAST:event_fixCusBtnActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCustomerBtn;
     private javax.swing.JButton backBtn;
     private javax.swing.JPanel cusMenu;
-    private javax.swing.JTable cusTable;
     private javax.swing.JPanel cusView;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton delCusBtn;
+    private javax.swing.JButton fixCusBtn;
     // End of variables declaration//GEN-END:variables
 }

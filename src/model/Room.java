@@ -6,18 +6,18 @@ public class Room {
     private double area;
     private int max_people;
     private String roomType;
-    private String rentType;
     private boolean isUsed;
 
-    public Room(int id_room, String name, double area, int max_people, String roomType, String rentType, boolean isUsed) {
+    public Room(int id_room, String name, double area, int max_people, String roomType, boolean isUsed) {
         this.id_room = id_room;
         this.name = name;
         this.area = area;
         this.max_people = max_people;
         this.roomType = roomType;
-        this.rentType = rentType;
         this.isUsed = isUsed;
     }
+
+  
 
     public Room(int id_room) {
         this.id_room = id_room;
@@ -74,17 +74,10 @@ public class Room {
         this.roomType = roomType;
     }
 
-    public String getRentType() {
-        return rentType;
-    }
-
-    public void setRentType(String rentType) {
-        this.rentType = rentType;
-    }
-
     @Override
     public String toString() {
-        return "Room{" + "id_room=" + id_room + ", name=" + name + ", area=" + area + ", max_people=" + max_people + ", roomType=" + roomType + ", rentType=" + rentType + ", isUsed=" + isUsed + '}';
+        return "Room{" + "id_room=" + id_room + ", name=" + name + ", area=" + area + ", max_people=" + max_people + ", roomType=" + roomType + ", isUsed=" + isUsed + '}';
     }
+
     
 }
