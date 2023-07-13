@@ -7,7 +7,7 @@ package controller;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import view.BillView;
+import view.billView.BillView;
 import view.customerView.CustomerView;
 import view.DefaultView;
 import view.ReportView;
@@ -83,9 +83,6 @@ public class MenuController {
         root.add(node);
         root.validate();
         root.repaint();
-    }
-    public void sentDate(Object data){
-        
-    }
+     }
      
 }

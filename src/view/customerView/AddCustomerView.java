@@ -9,12 +9,14 @@ import controller.RoomService;
 import java.awt.Color;
 import java.util.ArrayList;
 import model.Room;
+import util.Validate;
 
 /**
  *
  * @author Admin
  */
 public class AddCustomerView extends javax.swing.JPanel {
+
     private RoomService rs = new RoomService();
     private CustomerService cs;
 
@@ -26,12 +28,14 @@ public class AddCustomerView extends javax.swing.JPanel {
         initComponents();
         addRoomFiel();
     }
-    private void addRoomFiel(){
+
+    private void addRoomFiel() {
         ArrayList<Room> list = rs.getAvailableRooms();
-        for(Room r :list){
+        for (Room r : list) {
             customerRoom.addItem(r.getName());
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,6 +69,15 @@ public class AddCustomerView extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         totalTime = new javax.swing.JTextField();
         type = new javax.swing.JComboBox<>();
+        error1 = new javax.swing.JLabel();
+        error2 = new javax.swing.JLabel();
+        errorGender = new javax.swing.JLabel();
+        error3 = new javax.swing.JLabel();
+        error4 = new javax.swing.JLabel();
+        error5 = new javax.swing.JLabel();
+        error6 = new javax.swing.JLabel();
+        error7 = new javax.swing.JLabel();
+        error8 = new javax.swing.JLabel();
 
         jLabel1.setText("Tên Khách Hàng");
 
@@ -123,6 +136,15 @@ public class AddCustomerView extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(313, 313, 313)
+                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
@@ -133,15 +155,22 @@ public class AddCustomerView extends javax.swing.JPanel {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(error1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(genderMale)
                         .addGap(18, 18, 18)
-                        .addComponent(genderFemale))
+                        .addComponent(genderFemale)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(customerName, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
                     .addComponent(customerYear)
                     .addComponent(customerAddress)
                     .addComponent(customerNation)
-                    .addComponent(customerCard))
+                    .addComponent(customerCard)
+                    .addComponent(error2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(errorGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(error3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(error4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(error5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -154,21 +183,16 @@ public class AddCustomerView extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(totalTime, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(error6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(customerRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(error7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(customerRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(error8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(51, 51, 51))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(313, 313, 313)
-                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,38 +201,58 @@ public class AddCustomerView extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(customerName))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(customerYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(genderMale)
-                    .addComponent(genderFemale)
-                    .addComponent(jLabel7)
-                    .addComponent(customerPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(error1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(customerAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(totalTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(customerYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(error2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(genderMale)
+                                    .addComponent(genderFemale)
+                                    .addComponent(jLabel7)
+                                    .addComponent(customerPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(errorGender, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(error6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel6)
+                                .addComponent(customerAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(totalTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(error3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(error7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(customerNation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(customerRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(41, 41, 41)
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(error4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(error8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(customerCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(132, 132, 132)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(error5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(184, 184, 184)
                 .addComponent(addBtn)
                 .addGap(18, 18, 18)
                 .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,36 +287,132 @@ public class AddCustomerView extends javax.swing.JPanel {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         boolean check;
-        String ten_khach_hang = customerName.getText();
-        int nam_sinh = Integer.parseInt(customerYear.getText());
-        String gender = "";
-        if (genderMale.isSelected()) {
-            gender += "Nam";
+        config();
+        //validate
+        ArrayList<Integer> test1 = Validate.checkMutiLine("empty", customerName.getText(), customerYear.getText(), customerAddress.getText(), customerNation.getText(), customerCard.getText(), customerPhone.getText(), totalTime.getText(), (String) customerRoom.getSelectedItem());
+        ArrayList<Integer> test2 = Validate.checkMutiLine("isNumber", customerYear.getText(), customerCard.getText(), customerPhone.getText(), totalTime.getText());
+        if (!test1.isEmpty() || (!genderFemale.isSelected() && !genderMale.isSelected())) {
+            if(!genderFemale.isSelected() && !genderMale.isSelected()){
+                
+            error2.setForeground(new Color(255, 0, 0));
+            errorGender.setText("Vui Lòng Tích vào trường này");
+            }
+
+            callMessErrorEmpty(test1);
+        } else if (!test2.isEmpty()) {
+            callMessErrorNumber(test2);
         } else {
-            gender += "Nữ";
+
+            String ten_khach_hang = customerName.getText();
+            int nam_sinh = Integer.parseInt(customerYear.getText());
+            String gender = "";
+            if (genderMale.isSelected()) {
+                gender += "Nam";
+            } else {
+                gender += "Nữ";
+            }
+            String dia_chi = customerAddress.getText();
+            String quoc_tich = customerNation.getText();
+            int so_cmnd = Integer.parseInt(customerCard.getText());
+            String so_dien_thoai = customerPhone.getText();
+            String ma_phong = (String) customerRoom.getSelectedItem();
+            int totalTimeCus = Integer.parseInt(totalTime.getText());
+            String typeRent = (String) type.getSelectedItem();
+            check = cs.createCustomer(ten_khach_hang, nam_sinh, gender, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, ma_phong, totalTimeCus, typeRent);
+            if (check) {
+                message.setForeground(new Color(13, 110, 253));
+                message.setText("Thêm Khách Hàng Thành Công");
+            } else {
+                message.setForeground(new Color(255, 0, 0));
+                message.setText("Thêm Khách Hàng Thất Bại");
+            }
         }
-        String dia_chi = customerAddress.getText();
-        String quoc_tich = customerNation.getText();
-        int so_cmnd = Integer.parseInt(customerCard.getText());
-        String so_dien_thoai = customerPhone.getText();
-        String ma_phong = (String) customerRoom.getSelectedItem();
-        int totalTimeCus =Integer.parseInt( totalTime.getText());
-        String typeRent = (String)type.getSelectedItem();
-        check = cs.createCustomer(ten_khach_hang, nam_sinh, gender, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, ma_phong,totalTimeCus,typeRent);
-        if(check){
-            message.setForeground(new Color(13,110,253));
-             message.setText("Thêm Khách Hàng Thành Công");
-        }else{
-            message.setForeground(new Color(255,0,0));
-            message.setText("Thêm Khách Hàng Thất Bại");
-        }
+//        //code
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_typeActionPerformed
+    private void callMessErrorNumber(ArrayList<Integer> idError) {
+        for (Integer i : idError) {
 
+            switch (i) {
+                case 1:
+                    error2.setForeground(new Color(255, 0, 0));
+                    error2.setText("Vui lòng Chỉ Nhập Số");
+                    break;
+                case 2:
+                    error5.setForeground(new Color(255, 0, 0));
+                    error5.setText("Vui lòng Chỉ Nhập Số");
+                    break;
+                case 3:
+                    error6.setForeground(new Color(255, 0, 0));
+                    error6.setText("Vui lòng Chỉ Nhập Số");
+                    break;
+                case 4:
+                    error7.setForeground(new Color(255, 0, 0));
+                    error7.setText("Vui lòng Chỉ Nhập Số");
+                    break;
+                default:
+                    break;
+            }
+        }
 
+    }
+
+    private void callMessErrorEmpty(ArrayList<Integer> idError) {
+        for (Integer i : idError) {
+
+            switch (i) {
+                case 1:
+                    error1.setForeground(new Color(255, 0, 0));
+                    error1.setText("Vui lòng Nhập Trường Này");
+                    break;
+                case 2:
+                    error2.setForeground(new Color(255, 0, 0));
+                    error2.setText("Vui lòng Nhập Trường Này");
+                    break;
+                case 3:
+                    error3.setForeground(new Color(255, 0, 0));
+                    error3.setText("Vui lòng Nhập Trường Này");
+                    break;
+                case 4:
+                    error4.setForeground(new Color(255, 0, 0));
+                    error4.setText("Vui lòng Nhập Trường Này");
+                    break;
+                case 5:
+                    error5.setForeground(new Color(255, 0, 0));
+                    error5.setText("Vui lòng Nhập Trường Này");
+                    break;
+                case 6:
+                    error6.setForeground(new Color(255, 0, 0));
+                    error6.setText("Vui lòng Nhập Trường Này");
+                    break;
+                case 7:
+                    error7.setForeground(new Color(255, 0, 0));
+                    error7.setText("Vui lòng Nhập Trường Này");
+                    break;
+                case 8:
+                    error8.setForeground(new Color(255, 0, 0));
+                    error8.setText("Vui lòng Nhập Trường Này");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    }
+
+    private void config() {
+        error1.setText("");
+        error2.setText("");
+        error3.setText("");
+        error4.setText("");
+        error5.setText("");
+        error6.setText("");
+        error7.setText("");
+        error8.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -283,6 +423,15 @@ public class AddCustomerView extends javax.swing.JPanel {
     private javax.swing.JTextField customerPhone;
     private javax.swing.JComboBox<String> customerRoom;
     private javax.swing.JTextField customerYear;
+    private javax.swing.JLabel error1;
+    private javax.swing.JLabel error2;
+    private javax.swing.JLabel error3;
+    private javax.swing.JLabel error4;
+    private javax.swing.JLabel error5;
+    private javax.swing.JLabel error6;
+    private javax.swing.JLabel error7;
+    private javax.swing.JLabel error8;
+    private javax.swing.JLabel errorGender;
     private javax.swing.JRadioButton genderFemale;
     private javax.swing.JRadioButton genderMale;
     private javax.swing.JLabel jLabel1;
