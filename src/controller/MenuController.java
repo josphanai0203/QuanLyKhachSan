@@ -16,7 +16,9 @@ import view.ServiceView;
 import view.customerView.AddCustomerView;
 import view.customerView.DefaultCustomerView;
 import view.customerView.FixCusView;
+import view.staffView.AddStaffView;
 import view.staffView.DefaultStaffView;
+import view.staffView.FixStaffView;
 import view.staffView.StaffView;
 
 /**
@@ -92,13 +94,13 @@ public class MenuController {
     public void setViewStaff(JButton btn){
         switch (btn.getText()) {
             case "Thêm Nhân Viên":
-                node = new AddCustomerView();
+                node = new AddStaffView();
                 break;
             case "Sửa Nhân Viên":
-                node = new FixCusView();
+                node = new FixStaffView();
                 break;
             case "Trở Lại":
-                node = new DefaultCustomerView();
+                node = new DefaultStaffView();
                 break;
             default:
                 node = new DefaultStaffView();
