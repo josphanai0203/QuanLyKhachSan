@@ -23,22 +23,12 @@ public class RoomDAO implements IService<Room> {
         int update = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO phong ( ten_phong, so_nguoi_toi_da, dien_tich, ma_loai_phong,,isUsed) VALUES (?,?,?,?,?)";
-            String findRoomTypeSql = "Select * from loai_phong lk where lk.Loai_phong=?";
-            PreparedStatement st = con.prepareStatement(findRoomTypeSql);
-            st.setString(1, r.getRoomType());
-            ResultSet rs = st.executeQuery();
-            int maLoaiPhong = 0;
-            if (rs.next()) {
-                maLoaiPhong = rs.getInt("ma_loai_phong");
-            }
-
+            String sql = "INSERT INTO phong ( ten_phong, dien_tich, ma_loai_phong,isUsed) VALUES (?,?,?,?)";
             PreparedStatement st2 = con.prepareStatement(sql);
             st2.setString(1, r.getName());
-            st2.setInt(2, r.getMax_people());
-            st2.setDouble(3, r.getArea());
-            st2.setInt(4, maLoaiPhong);
-            st2.setBoolean(5, r.isIsUsed());
+            st2.setDouble(2, r.getArea());
+            st2.setInt(3, r.getId_room());
+            st2.setBoolean(4, r.isIsUsed());
             update = st2.executeUpdate();
             JDBCUtil.closeConnection(con);
             return update > 0;
@@ -59,11 +49,10 @@ public class RoomDAO implements IService<Room> {
             while (rs.next()) {
                 int ma_phong = rs.getInt("ma_phong");
                 String ten_phong = rs.getString("ten_phong");
-                int so_nguoi_toi_da = rs.getInt("so_nguoi_toi_da");
                 double dien_tich = rs.getDouble("dien_tich");
                 String loai_phong = rs.getString("Loai_phong");
                 boolean isUsed = rs.getBoolean("isUsed");
-                kq.add(new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, isUsed));
+                kq.add(new Room(ma_phong, ten_phong, dien_tich, loai_phong, isUsed));
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
@@ -83,11 +72,10 @@ public class RoomDAO implements IService<Room> {
             while (rs.next()) {
                 int ma_phong = rs.getInt("ma_phong");
                 String ten_phong = rs.getString("ten_phong");
-                int so_nguoi_toi_da = rs.getInt("so_nguoi_toi_da");
                 double dien_tich = rs.getDouble("dien_tich");
                 String loai_phong = rs.getString("Loai_phong");
                 boolean isUsed = rs.getBoolean("isUsed");
-                kq.add(new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, isUsed));
+                kq.add(new Room(ma_phong, ten_phong, dien_tich, loai_phong, isUsed));
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
@@ -107,11 +95,10 @@ public class RoomDAO implements IService<Room> {
             while (rs.next()) {
                 int ma_phong = rs.getInt("ma_phong");
                 String ten_phong = rs.getString("ten_phong");
-                int so_nguoi_toi_da = rs.getInt("so_nguoi_toi_da");
                 double dien_tich = rs.getDouble("dien_tich");
                 String loai_phong = rs.getString("Loai_phong");
                 boolean isUsed = rs.getBoolean("isUsed");
-                kq.add(new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, isUsed));
+                kq.add(new Room(ma_phong, ten_phong, dien_tich, loai_phong, isUsed));
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
@@ -127,7 +114,7 @@ public class RoomDAO implements IService<Room> {
             Connection con = JDBCUtil.getConnection();
             String findRoomTypeSql = "Select * from loai_phong lk where lk.Loai_phong=?";
             String sql = "UPDATE phong "
-                    + "SET ten_phong=? ,so_nguoi_toi_da=? ,dien_tich=? ,ma_loai_phong=? , isUsed=? WHERE ma_phong = ?";
+                    + "SET ten_phong=?  ,dien_tich=? ,ma_loai_phong=? , isUsed=? WHERE ma_phong = ?";
             PreparedStatement st1 = con.prepareStatement(findRoomTypeSql);
             st1.setString(1, r.getRoomType());
             ResultSet rs1 = st1.executeQuery();
@@ -137,12 +124,11 @@ public class RoomDAO implements IService<Room> {
             }
 
             PreparedStatement st = con.prepareStatement(sql);
-            st.setInt(6, r.getId_room());
+            st.setInt(5, r.getId_room());
             st.setString(1, r.getName());
-            st.setInt(2, r.getMax_people());
-            st.setDouble(3, r.getArea());
-            st.setInt(4, maLoaiPhong);
-            st.setBoolean(5, r.isIsUsed());
+            st.setDouble(2, r.getArea());
+            st.setInt(3, maLoaiPhong);
+            st.setBoolean(4, r.isIsUsed());
 
             kq = st.executeUpdate();
 
@@ -186,12 +172,11 @@ public class RoomDAO implements IService<Room> {
             while (rs.next()) {
                 int ma_phong = rs.getInt("ma_phong");
                 String ten_phong = rs.getString("ten_phong");
-                int so_nguoi_toi_da = rs.getInt("so_nguoi_toi_da");
                 double dien_tich = rs.getDouble("dien_tich");
                 String loai_phong = rs.getString("Loai_phong");
 
                 boolean isUsed = rs.getBoolean("isUsed");
-                kq = new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, isUsed);
+                kq = new Room(ma_phong, ten_phong, dien_tich, loai_phong, isUsed);
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
@@ -213,11 +198,10 @@ public class RoomDAO implements IService<Room> {
             while (rs.next()) {
                 int ma_phong = rs.getInt("ma_phong");
                 String ten_phong = rs.getString("ten_phong");
-                int so_nguoi_toi_da = rs.getInt("so_nguoi_toi_da");
                 double dien_tich = rs.getDouble("dien_tich");
                 String loai_phong = rs.getString("Loai_phong");
                 boolean isUsed = rs.getBoolean("isUsed");
-                kq = new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, isUsed);
+                kq = new Room(ma_phong, ten_phong, dien_tich, loai_phong, isUsed);
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {

@@ -1,29 +1,24 @@
 package model;
 
 public class Room {
+
     private int id_room;
     private String name;
     private double area;
-    private int max_people;
     private String roomType;
     private boolean isUsed;
 
-    public Room(int id_room, String name, double area, int max_people, String roomType, boolean isUsed) {
+    public Room(int id_room, String name, double area, String roomType, boolean isUsed) {
         this.id_room = id_room;
         this.name = name;
         this.area = area;
-        this.max_people = max_people;
         this.roomType = roomType;
         this.isUsed = isUsed;
     }
 
-  
-
     public Room(int id_room) {
         this.id_room = id_room;
     }
-
-    
 
     public void setIsUsed(boolean isUsed) {
         this.isUsed = isUsed;
@@ -45,11 +40,6 @@ public class Room {
         return area;
     }
 
-    public int getMax_people() {
-        return max_people;
-    }
-
-
     public void setId_room(int id_room) {
         this.id_room = id_room;
     }
@@ -62,10 +52,6 @@ public class Room {
         this.area = area;
     }
 
-    public void setMax_people(int max_people) {
-        this.max_people = max_people;
-    }
-
     public String getRoomType() {
         return roomType;
     }
@@ -74,10 +60,6 @@ public class Room {
         this.roomType = roomType;
     }
 
-    @Override
-    public String toString() {
-        return "Room{" + "id_room=" + id_room + ", name=" + name + ", area=" + area + ", max_people=" + max_people + ", roomType=" + roomType + ", isUsed=" + isUsed + '}';
-    }
+  
 
-    
 }

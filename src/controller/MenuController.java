@@ -7,7 +7,7 @@ package controller;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import view.BillView;
+import view.billView.BillView;
 import view.customerView.CustomerView;
 import view.DefaultView;
 import view.ReportView;
@@ -18,6 +18,9 @@ import view.WareHouseView.WareHouseView;
 import view.customerView.AddCustomerView;
 import view.customerView.DefaultCustomerView;
 import view.customerView.FixCusView;
+import view.roomView.AddRoomView;
+import view.roomView.DefaultRoomView;
+import view.roomView.FixRoomView;
 import view.staffView.AddStaffView;
 import view.staffView.DefaultStaffView;
 import view.staffView.FixStaffView;
@@ -67,19 +70,20 @@ public class MenuController {
         root.validate();
         root.repaint();
     }
-     public void setViewCustomer(JButton btn) {
+
+    public void setViewRoom(JButton btn) {
         switch (btn.getText()) {
-            case "Thêm Khách Hàng":
-                node = new AddCustomerView();
+            case "Tạo Phòng Mới":
+                node = new AddRoomView();
                 break;
-            case "Sửa Khách Hàng":
-                node = new FixCusView();
+            case "Sửa Thông Tin Phòng":
+                node = new FixRoomView();
                 break;
             case "Trở Lại":
-                node = new DefaultCustomerView();
+                node = new DefaultRoomView();
                 break;
             default:
-                node = new DefaultCustomerView();
+                node = new DefaultRoomView();
                 break;
 
         }
@@ -88,12 +92,10 @@ public class MenuController {
         root.add(node);
         root.validate();
         root.repaint();
+
     }
-    public void sentDate(Object data){
-        
-    }
-    
-    public void setViewStaff(JButton btn){
+
+    public void setViewStaff(JButton btn) {
         switch (btn.getText()) {
             case "Thêm Nhân Viên":
                 node = new AddStaffView();
@@ -114,8 +116,28 @@ public class MenuController {
         root.add(node);
         root.validate();
         root.repaint();
-    } 
-      public void setViewWareHouse(JButton btn) {
+    }
+
+    public void setViewCustomer(JButton btn) {
+        switch (btn.getText()) {
+            case "Thêm Khách Hàng":
+                node = new AddCustomerView();
+                break;
+            case "Sửa Khách Hàng":
+                node = new FixCusView();
+                break;
+            case "Trở Lại":
+                node = new DefaultCustomerView();
+                break;
+            default:
+                node = new DefaultCustomerView();
+                break;
+
+        }
+        root.removeAll();
+    }
+
+    public void setViewWareHouse(JButton btn) {
         switch (btn.getText()) {
             case "Them Ma Hang":
 //                node = new AddWareHouseView();
@@ -129,10 +151,12 @@ public class MenuController {
             default:
                 node = new DefauseWareHouseView();
                 root.removeAll();
-        root.setLayout(new BorderLayout());
-        root.add(node);
-        root.validate();
-        root.repaint();
+                root.setLayout(new BorderLayout());
+                root.add(node);
+                root.validate();
+                root.repaint();
+
         }
-      }
+
+    }
 }

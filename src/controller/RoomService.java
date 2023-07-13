@@ -42,4 +42,13 @@ public class RoomService implements  IService<Room> {
     public void chaneRoom(int idRoomOLd , int idRoomNew) {
          rd.chaneRoom(idRoomOLd, idRoomNew);
     }
+    public boolean testName(String name){
+        ArrayList<Room> rl = selectAll();
+        for(Room r : rl){
+            if(r.getName().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -131,7 +131,7 @@ public class CustomerView extends javax.swing.JPanel {
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void addCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerBtnActionPerformed
-       controller.setViewStaff(addCustomerBtn);
+       controller.setViewCustomer(addCustomerBtn);
     }//GEN-LAST:event_addCustomerBtnActionPerformed
 
     private void fixCusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixCusBtnActionPerformed
