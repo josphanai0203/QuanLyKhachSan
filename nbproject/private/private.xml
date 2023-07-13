@@ -2,16 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-
         <group/>
-        <group>
-          <file>file:/D:/ws/src/model/Room.java</file>
-            <file>file:/D:/ws/src/view/customerView/CustomerView.java</file>
-            <file>file:/D:/ws/src/dao/CustomerDAO.java</file>
-            <file>file:/D:/ws/src/model/Customer.java</file>
-            <file>file:/D:/ws/src/view/LoginLayout.java</file>
-            <file>file:/D:/ws/src/view/customerView/AddCustomerView.java</file>
-        </group>
-
+        <group/>
     </open-files>
 </project-private>
