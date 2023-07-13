@@ -17,6 +17,12 @@ public class Position {
         this.tenChucVu = tenChucVu;
     }
 
+    public Position(int maChucVu) {
+        this.maChucVu = maChucVu;
+    }
+
+    
+    
     public int getMaChucVu() {
         return maChucVu;
     }

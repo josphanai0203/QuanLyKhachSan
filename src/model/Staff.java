@@ -36,11 +36,12 @@ public class Staff {
     }
     
 
-    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, String sdt, String diaChi) {
+    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, Position maChucVu, String sdt, String diaChi) {
         this.maNhanVien = maNhanVien;
         this.tenNhanVien = tenNhanVien;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
+        this.maChucVu = maChucVu;
         this.maChucVu = maChucVu;
         this.sdt = sdt;
         this.diaChi = diaChi;
@@ -69,8 +70,16 @@ public class Staff {
         this.maLuong = maLuong;
         this.maTaiKhoan = maTaiKhoan;
     }
-    
-    
+
+    public Staff(String tenNhanVien, Date ngaySinh, String gioiTinh, Position maChucVu, String sdt, String diaChi ) {
+        this.tenNhanVien = tenNhanVien;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.maChucVu = maChucVu;
+        this.sdt = sdt;
+        this.diaChi = diaChi;
+
+    }
 
     public int getMaNhanVien() {
         return maNhanVien;

@@ -19,10 +19,12 @@ public class StaffService implements IStaffService{
     
     public static ArrayList<Staff> list = StaffDAO.getInstance().selectAll();
     
-    public boolean createStaff(String tenNhanVien, Date ngaySinh, String gioiTinh, String diaChi, String sdt, int maChucVu){
+    public boolean createStaff(String tenNhanVien, Date ngaySinh, String gioiTinh, String diaChi, String sdt,int maChucVu){
         boolean check;
-        Position p = sd.findTenChucVu(maChucVu);
-        Staff s = new Staff(tenNhanVien, ngaySinh, gioiTinh, p, sdt, diaChi);
+        //Position p = sd.findTenChucVu(maChucVu);
+        Staff s = new Staff(tenNhanVien, ngaySinh, gioiTinh, sdt, diaChi);
+        Position position = new Position(maChucVu);
+        s.setMaChucVu(position);
         check = add(s);
         return check;
     }
@@ -115,5 +117,8 @@ public class StaffService implements IStaffService{
         return null;
     }
 
+    public Staff findID(int maNhanVien){
+        return sd.findID(maNhanVien);
+    }
 
 }
