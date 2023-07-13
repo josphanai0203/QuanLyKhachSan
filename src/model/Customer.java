@@ -24,7 +24,6 @@ public class Customer {
     public Customer() {
     }
 
-<<<<<<< HEAD
     public Customer(String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt, Room maPhong) {
         this.tenKhachHang = tenKhachHang;
         this.namSinh = namSinh;
@@ -35,13 +34,21 @@ public class Customer {
         this.sdt = sdt;
         this.maPhong = maPhong;
     }
-    
-    
 
     public Customer(int maKhachHang, String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt, Room maPhong) {
-=======
+        this.maKhachHang = maKhachHang;
+        this.tenKhachHang = tenKhachHang;
+        this.namSinh = namSinh;
+        this.gioiTinh = gioiTinh;
+        this.diaChi = diaChi;
+        this.quocTich = quocTich;
+        this.soCMND = soCMND;
+        this.sdt = sdt;
+        this.maPhong = maPhong;
+    }
+
     public Customer(int maKhachHang, String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt, Room maPhong, String kieuthue) {
->>>>>>> 40f2f7a83881d61e4e4a9fc54917721bba561add
+
         this.maKhachHang = maKhachHang;
         this.tenKhachHang = tenKhachHang;
         this.namSinh = namSinh;
@@ -53,8 +60,6 @@ public class Customer {
         this.maPhong = maPhong;
         this.kieuthue = kieuthue;
     }
-<<<<<<< HEAD
-=======
 
     public Customer(String tenKhachHang, int namSinh, String gioiTinh, String diaChi, String quocTich, int soCMND, String sdt, Room maPhong, String kieuthue) {
         this.tenKhachHang = tenKhachHang;
@@ -67,12 +72,6 @@ public class Customer {
         this.maPhong = maPhong;
         this.kieuthue = kieuthue;
     }
-
-   
-    
-
-
->>>>>>> 40f2f7a83881d61e4e4a9fc54917721bba561add
 
     public int getMaKhachHang() {
         return maKhachHang;
@@ -153,12 +152,10 @@ public class Customer {
     public void setKieuthue(String kieuthue) {
         this.kieuthue = kieuthue;
     }
-    
+
     @Override
     public String toString() {
         return "Customer{" + "maKhachHang=" + maKhachHang + ", tenKhachHang=" + tenKhachHang + ", namSinh=" + namSinh + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", quocTich=" + quocTich + ", soCMND=" + soCMND + ", sdt=" + sdt + ", maPhong=" + maPhong + '}';
     }
-
-  
 
 }
