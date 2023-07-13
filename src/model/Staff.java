@@ -11,11 +11,12 @@ import java.util.*;
  * @author Admin
  */
 public class Staff {
-    private int maNhanVien;   
+
+    private int maNhanVien;
     private String tenNhanVien;
     private Date ngaySinh;
     private String gioiTinh;
-    private Position maChucVu;   
+    private String chucVu;
     private String sdt;
     private String diaChi;
     private Payroll maLuong;
@@ -24,61 +25,25 @@ public class Staff {
     public Staff() {
     }
 
-    public Staff(String tenNhanVien, Date ngaySinh, String gioiTinh, Position maChucVu, String sdt, String diaChi, Payroll maLuong, User maTaiKhoan) {
+    public Staff(String tenNhanVien, Date ngaySinh, String gioiTinh, String chucVu, String sdt, String diaChi, Payroll maLuong, User maTaiKhoan) {
         this.tenNhanVien = tenNhanVien;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
-        this.maChucVu = maChucVu;
-        this.sdt = sdt;
-        this.diaChi = diaChi;
-        this.maLuong = maLuong;
-        this.maTaiKhoan = maTaiKhoan;
-    }
-    
-
-    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, Position maChucVu, String sdt, String diaChi) {
-        this.maNhanVien = maNhanVien;
-        this.tenNhanVien = tenNhanVien;
-        this.ngaySinh = ngaySinh;
-        this.gioiTinh = gioiTinh;
-        this.maChucVu = maChucVu;
-        this.maChucVu = maChucVu;
-        this.sdt = sdt;
-        this.diaChi = diaChi;
-    }
-    
-    
-
-    public Staff(String tenNhanVien, Date ngaySinh, String gioiTinh, String sdt, String diaChi) {
-        this.tenNhanVien = tenNhanVien;
-        this.ngaySinh = ngaySinh;
-        this.gioiTinh = gioiTinh;
-        this.maChucVu = maChucVu;
-        this.sdt = sdt;
-        this.diaChi = diaChi;
-        this.maLuong = maLuong;
-    }
-
-    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, Position maChucVu, String sdt, String diaChi, Payroll maLuong, User maTaiKhoan) {
-        this.maNhanVien = maNhanVien;
-        this.tenNhanVien = tenNhanVien;
-        this.ngaySinh = ngaySinh;
-        this.gioiTinh = gioiTinh;
-        this.maChucVu = maChucVu;
+        this.chucVu = chucVu;
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.maLuong = maLuong;
         this.maTaiKhoan = maTaiKhoan;
     }
 
-    public Staff(String tenNhanVien, Date ngaySinh, String gioiTinh, Position maChucVu, String sdt, String diaChi ) {
+    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, String maChucVu, String sdt, String diaChi) {
+        this.maNhanVien = maNhanVien;
         this.tenNhanVien = tenNhanVien;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
-        this.maChucVu = maChucVu;
+        this.chucVu = maChucVu;
         this.sdt = sdt;
         this.diaChi = diaChi;
-
     }
 
     public int getMaNhanVien() {
@@ -113,14 +78,6 @@ public class Staff {
         this.gioiTinh = gioiTinh;
     }
 
-    public Position getMaChucVu() {
-        return maChucVu;
-    }
-
-    public void setMaChucVu(Position maChucVu) {
-        this.maChucVu = maChucVu;
-    }
-
     public String getSdt() {
         return sdt;
     }
@@ -153,8 +110,12 @@ public class Staff {
         this.maTaiKhoan = maTaiKhoan;
     }
 
+    public String getChucVu() {
+        return chucVu;
+    }
 
+    public void setChucVu(String chucVu) {
+        this.chucVu = chucVu;
+    }
 
-    
-    
 }

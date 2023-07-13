@@ -135,6 +135,10 @@ public class MenuController {
 
         }
         root.removeAll();
+        root.setLayout(new BorderLayout());
+        root.add(node);
+        root.validate();
+        root.repaint();
     }
 
     public void setViewWareHouse(JButton btn) {

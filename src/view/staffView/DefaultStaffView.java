@@ -10,7 +10,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-import model.Position;
 import model.Staff;
 
 /*
@@ -138,16 +137,9 @@ public class DefaultStaffView extends javax.swing.JPanel {
             v.add(s.getTenNhanVien());
             v.add(s.getNgaySinh());
             v.add(s.getGioiTinh());    
-            
-            Position p = s.getMaChucVu();
-            int id = p.getMaChucVu();
-            Position po = StaffDAO.getInstance().findTenChucVu(id);
-            String tenChucVu = (po != null) ? po.getTenChucVu() : "1";
-            v.add(tenChucVu);
+            v.add(s.getChucVu());
             v.add(s.getSdt());
             v.add(s.getDiaChi());
-//            v.add(s.getMaLuong());
-//            v.add(s.getMaTaiKhoan());
             dfm.addRow(v);
 
         }
