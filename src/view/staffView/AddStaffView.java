@@ -4,6 +4,9 @@
  */
 package view.staffView;
 
+import controller.CustomerService;
+import controller.StaffService;
+import java.awt.Color;
 import java.sql.Date;
 
 /**
@@ -11,6 +14,8 @@ import java.sql.Date;
  * @author Trinh
  */
 public class AddStaffView extends javax.swing.JPanel {
+
+    private StaffService ss = new StaffService();
 
     /**
      * Creates new form AddStaffView
@@ -31,7 +36,7 @@ public class AddStaffView extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         message = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        payroID = new javax.swing.JComboBox<>();
+        payrollID = new javax.swing.JComboBox<>();
         positionID = new javax.swing.JComboBox<>();
         addBtn = new javax.swing.JButton();
         genderMale = new javax.swing.JRadioButton();
@@ -54,9 +59,9 @@ public class AddStaffView extends javax.swing.JPanel {
 
         jLabel6.setText("Địa Chỉ");
 
-        payroID.addActionListener(new java.awt.event.ActionListener() {
+        payrollID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                payroIDActionPerformed(evt);
+                payrollIDActionPerformed(evt);
             }
         });
 
@@ -147,7 +152,7 @@ public class AddStaffView extends javax.swing.JPanel {
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(payroID, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(payrollID, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGap(254, 254, 254))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addGap(286, 286, 286)
@@ -198,7 +203,7 @@ public class AddStaffView extends javax.swing.JPanel {
                     .addGap(22, 22, 22)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel4)
-                        .addComponent(payroID, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(payrollID, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
@@ -230,9 +235,9 @@ public class AddStaffView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void payroIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payroIDActionPerformed
+    private void payrollIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payrollIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_payroIDActionPerformed
+    }//GEN-LAST:event_payrollIDActionPerformed
 
     private void positionIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionIDActionPerformed
         // TODO add your handling code here:
@@ -250,13 +255,18 @@ public class AddStaffView extends javax.swing.JPanel {
         }
         String dia_chi = staffAddress.getText();
         String so_dien_thoai = customerPhone.getText();
-        //        check = cs.createCustomer(ten_khach_hang, nam_sinh, gender, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, ma_phong);
-        //        if(check){
-            //            message.setText("Thêm Khách Hàng Thành Công");
-            //        }else{
-            //            message.setForeground(new Color(255,0,0));
-            //            message.setText("Thêm Khách Hàng Thất Bại");
-            //        }
+
+        String maChucVu = (String) positionID.getSelectedItem();
+        int maLuong = (Integer) payrollID.getSelectedItem();
+        String maTaiKhoan = (String) userID.getSelectedItem();
+
+        check = ss.createStaff(ten_nhan_vien, nam_sinh, dia_chi, maChucVu, gender, dia_chi, maLuong, maTaiKhoan);
+        if (check) {
+            message.setText("Thêm Nhân Viên Thành Công");
+        } else {
+            message.setForeground(new Color(255, 0, 0));
+            message.setText("Thêm Nhân Viên Thất Bại");
+        }
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void genderFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderFemaleActionPerformed
@@ -287,7 +297,7 @@ public class AddStaffView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel message;
-    private javax.swing.JComboBox<String> payroID;
+    private javax.swing.JComboBox<String> payrollID;
     private javax.swing.JComboBox<String> positionID;
     private javax.swing.JTextField staffAddress;
     private javax.swing.JTextField staffName;

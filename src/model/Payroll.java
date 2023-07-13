@@ -9,25 +9,36 @@ package model;
  * @author Trinh
  */
 public class Payroll {
+
     private int maLuong;
     private int thang;
     private int soNgayLamViec;
     private double heSoLuong;
     private float tangCa;
+    private int luongTangCa;
     private double tienPhat;
     private double tongLuong;
 
     public Payroll() {
     }
 
-    public Payroll(int maLuong, int thang, int soNgayLamViec, double heSoLuong, float tangCa, double tienPhat, double tongLuong) {
+    public Payroll(int maLuong, int thang, int soNgayLamViec, double heSoLuong, float tangCa, int luongTangCa, double tienPhat, double tongLuong) {
         this.maLuong = maLuong;
         this.thang = thang;
         this.soNgayLamViec = soNgayLamViec;
         this.heSoLuong = heSoLuong;
         this.tangCa = tangCa;
+        this.luongTangCa = luongTangCa;
         this.tienPhat = tienPhat;
         this.tongLuong = tongLuong;
+    }
+
+    public int getLuongTangCa() {
+        return luongTangCa;
+    }
+
+    public void setLuongTangCa(int luongTangCa) {
+        this.luongTangCa = luongTangCa;
     }
 
     public int getMaLuong() {
@@ -85,6 +96,5 @@ public class Payroll {
     public void setTongLuong(double tongLuong) {
         this.tongLuong = tongLuong;
     }
-    
-    
+
 }

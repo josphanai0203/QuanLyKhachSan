@@ -1,5 +1,7 @@
 package controller;
 
+import dao.PayrollDAO;
+import dao.PositionDAO;
 import dao.StaffDAO;
 import dao.UserDAO;
 import java.text.ParseException;
@@ -7,16 +9,27 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import model.Payroll;
+import model.Position;
 import model.Staff;
+import model.User;
 import service.IStaffService;
 
 public class StaffService implements IStaffService{
 
     public static StaffDAO sd = new StaffDAO();
     public static UserDAO ud = new UserDAO();
+    public static PayrollDAO pd = new PayrollDAO();
+    public static PositionDAO pod = new PositionDAO();
     public static ArrayList<Staff> list = StaffDAO.getInstance().selectAll();
     
-    public boolean createStaff(String tenNhanVien, Date ngaySinh, String gioiTinh, String maChucVu, String sdt, String diaChi, String maLuong, String maTaiKhoan){
+    public boolean createStaff(String tenNhanVien, Date ngaySinh, String gioiTinh, String maChucVu, String sdt, String diaChi, int maLuong, String maTaiKhoan){
+        User u = ud.findByName(maTaiKhoan);
+        ud.update(u);
+        Payroll p = pd.findByIdUpdate(maLuong);
+        pd.update(p);
+        Position po = pod.findByName(maChucVu);
+        pod.update(po);
+        Staff s = new Staff(tenNhanVien, ngaySinh, gioiTinh, po, sdt, diaChi, p, u);
         return true;
     }
 

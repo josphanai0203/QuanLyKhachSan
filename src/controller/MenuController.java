@@ -87,5 +87,28 @@ public class MenuController {
     public void sentDate(Object data){
         
     }
+    
+    public void setViewStaff(JButton btn){
+        switch (btn.getText()) {
+            case "Thêm Nhân Viên":
+                node = new AddCustomerView();
+                break;
+            case "Sửa Nhân Viên":
+                node = new FixCusView();
+                break;
+            case "Trở Lại":
+                node = new DefaultCustomerView();
+                break;
+            default:
+                node = new DefaultCustomerView();
+                break;
+
+        }
+        root.removeAll();
+        root.setLayout(new BorderLayout());
+        root.add(node);
+        root.validate();
+        root.repaint();
+    } 
      
 }

@@ -39,7 +39,11 @@ public class PayrollService implements IPayrollService {
 
     @Override
     public Payroll findById(Payroll t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return pd.findById(t);
+    }
+
+    public Payroll findByIdUpdate(int maLuong) {
+        return pd.findByIdUpdate(maLuong);
     }
 
 }

@@ -105,5 +105,8 @@ public class UserService implements IUser{
         return ud.findById(t);
     }
     
+    public User findByName(String name){
+        return ud.findByName(name);
+    }
 
 }

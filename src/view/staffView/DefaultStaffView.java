@@ -94,7 +94,7 @@ public class DefaultStaffView extends javax.swing.JPanel {
         lsm.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                crearteCustomer();
+                crearteStaff();
             }
         });
         setColumnName(dtm);
@@ -145,7 +145,7 @@ public class DefaultStaffView extends javax.swing.JPanel {
 
     }
 
-    public void crearteCustomer() {
+    public void crearteStaff() {
         int row = staffTable.getSelectedRow();
         int maNhanVien = (Integer) staffTable.getValueAt(row, 0);
         staffSelect = new Staff();

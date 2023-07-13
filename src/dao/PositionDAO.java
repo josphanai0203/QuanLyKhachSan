@@ -18,7 +18,7 @@ import service.IPosition;
  *
  * @author Trinh
  */
-public class PositionDAO implements IPosition{
+public class PositionDAO implements IPosition {
 
     @Override
     public boolean add(Position t) {
@@ -32,7 +32,32 @@ public class PositionDAO implements IPosition{
 
     @Override
     public boolean update(Position t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int kq = 0;
+        try {
+            Connection con = JDBCUtil.getConnection();
+            String sql = "UPDATE chuc_vu "
+                    + "SET "
+                    + "ten_chuc_vu=?" 
+                    + " WHERE ma_chuc_vu=?";
+            PreparedStatement st = con.prepareStatement(sql);
+            //st.setInt(1, t.getMaTaiKhoan());
+
+            st.setString(1, t.getTenChucVu());
+            st.setInt(2, t.getMaChucVu());
+            //b3: thuc thi cau lenh sql	
+            kq = st.executeUpdate();
+            //b4: xu li 
+//            System.out.println("Ban da thuc thi: " + sql);
+//            System.out.println("Co " + kq + " dong bi thay doi");
+
+            //b5: ngat ket noi
+            JDBCUtil.closeConnection(con);
+            return kq > 0;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
@@ -62,7 +87,7 @@ public class PositionDAO implements IPosition{
 
         return kq;
     }
-    
+
     public Position findByName(String name) {
         Position kq = null;
         try {
@@ -84,5 +109,5 @@ public class PositionDAO implements IPosition{
 
         return kq;
     }
-    
+
 }
