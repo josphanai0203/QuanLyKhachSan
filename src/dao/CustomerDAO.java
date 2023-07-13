@@ -21,9 +21,8 @@ import model.Room;
  */
 public class CustomerDAO implements ICustomerService {
 
-    private CustomerService cs = new CustomerService();
     private RoomDAO rd = new RoomDAO();
-    
+
     public static CustomerDAO getInstance() {
         return new CustomerDAO();
     }
@@ -33,11 +32,10 @@ public class CustomerDAO implements ICustomerService {
         int update = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO khach_hang (ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai) "
-                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO khach_hang (ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai,ma_phong) "
+                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?,?)";
 
             PreparedStatement st = con.prepareStatement(sql);
-            //st.setInt(1, t.getMaNhanVien());
             st.setString(1, t.getTenKhachHang());
             st.setInt(2, t.getNamSinh());
             st.setString(3, t.getGioiTinh());
@@ -45,12 +43,8 @@ public class CustomerDAO implements ICustomerService {
             st.setString(5, t.getQuocTich());
             st.setInt(6, t.getSoCMND());
             st.setString(7, t.getSdt());
-            //st.setInt(8, t.getMaPhong());
-
+            st.setInt(8, t.getMaPhong().getId_room());
             update = st.executeUpdate();
-
-//            System.out.println("Ban da thuc thi: " + sql);
-//            System.out.println("Co " + update + " bi thay doi");
             JDBCUtil.closeConnection(con);
             return update > 0;
 
@@ -65,7 +59,7 @@ public class CustomerDAO implements ICustomerService {
         ArrayList<Customer> kq = new ArrayList<>();
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM khach_hang kh INNER JOIN phong p ON p.ma_phong = kh.ma_phong left JOIN kieu_thue kt ON kt.ma_kieu_thue = p.ma_kieu_thue left JOIN loai_phong lp ON lp.ma_loai_phong = p.ma_loai_phong";
+            String sql = "SELECT * FROM khach_hang kh INNER JOIN phong p ON p.ma_phong = kh.ma_phong left JOIN loai_phong lp ON lp.ma_loai_phong = p.ma_loai_phong";
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
 
@@ -84,11 +78,10 @@ public class CustomerDAO implements ICustomerService {
                 int so_nguoi_toi_da = rs.getInt("so_nguoi_toi_da");
                 double dien_tich = rs.getDouble("dien_tich");
                 String loai_phong = rs.getString("Loai_phong");
-                String kieu_thue = rs.getString("ten_kieu_thue");
                 boolean isUsed = rs.getBoolean("isUsed");
-                Room r = new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, kieu_thue, isUsed);
+                Room r = new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, isUsed);
                 Customer c1 = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, r);
-                        kq.add(c1);
+                kq.add(c1);
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
@@ -107,10 +100,10 @@ public class CustomerDAO implements ICustomerService {
             Connection con = JDBCUtil.getConnection();
             String sql = "UPDATE khach_hang "
                     + "SET "
-                    + "ten_khach_hang=?, " + "nam_sinh=?, " + "gioi_tinh=?, " + "dia_chi=?, " + "quoc_tich=?, " + "so_cmnd=?, " + "so_dien_thoai=?"
+                    + "ten_khach_hang=?, " + "nam_sinh=?, " + "gioi_tinh=?, " + "dia_chi=?, " + "quoc_tich=?, " + "so_cmnd=?, " + "so_dien_thoai=?,"+ "ma_phong =?"
                     + " WHERE ma_khach_hang=?";
             PreparedStatement st = con.prepareStatement(sql);
-            //st.setInt(1, t.getMaNhanVien());
+
             st.setString(1, t.getTenKhachHang());
             st.setInt(2, t.getNamSinh());
             st.setString(3, t.getGioiTinh());
@@ -118,15 +111,10 @@ public class CustomerDAO implements ICustomerService {
             st.setString(5, t.getQuocTich());
             st.setInt(6, t.getSoCMND());
             st.setString(7, t.getSdt());
-            st.setInt(8, t.getMaKhachHang());
-            //st.setInt(9, t.getMaPhong());
-            //b3: thuc thi cau lenh sql	
-            kq = st.executeUpdate();
-            //b4: xu li 
-//            System.out.println("Ban da thuc thi: " + sql);
-//            System.out.println("Co " + kq + " bi thay doi");
+            st.setInt(8, t.getMaPhong().getId_room());
+            st.setInt(9, t.getMaKhachHang());
 
-            //b5: ngat ket noi
+            kq = st.executeUpdate();
             JDBCUtil.closeConnection(con);
             return kq > 0;
         } catch (SQLException e) {
@@ -147,13 +135,8 @@ public class CustomerDAO implements ICustomerService {
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, t.getMaKhachHang());
 
-            //b3: thuc thi cau lenh sql
             kq = st.executeUpdate();
-            //b4: xu li 
-//            System.out.println("Ban da thuc thi: " + sql);
-//            System.out.println("Co " + kq + " bi thay doi");
 
-            //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
             return kq > 0;
         } catch (SQLException e) {
@@ -165,7 +148,38 @@ public class CustomerDAO implements ICustomerService {
 
     @Override
     public Customer findById(Customer t) {
-        return cs.findById(t);
+        Customer kq = null;
+        try {
+            Connection con = JDBCUtil.getConnection();
+            String sql = "SELECT * FROM khach_hang kh INNER JOIN phong p ON p.ma_phong = kh.ma_phong left JOIN loai_phong lp ON lp.ma_loai_phong = p.ma_loai_phong WHERE kh.ma_khach_hang =? ";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, t.getMaKhachHang());
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int ma_khach_hang = rs.getInt("ma_khach_hang");
+                String ten_khach_hang = rs.getString("ten_khach_hang");
+                int nam_sinh = rs.getInt("nam_sinh");
+                String gioi_tinh = rs.getString("gioi_tinh");
+                String dia_chi = rs.getString("dia_chi");
+                String quoc_tich = rs.getString("quoc_tich");
+                int so_cmnd = rs.getInt("so_cmnd");
+                String so_dien_thoai = rs.getString("so_dien_thoai");
+                int ma_phong = rs.getInt("ma_phong");
+                String ten_phong = rs.getString("ten_phong");
+                int so_nguoi_toi_da = rs.getInt("so_nguoi_toi_da");
+                double dien_tich = rs.getDouble("dien_tich");
+                String loai_phong = rs.getString("Loai_phong");
+                boolean isUsed = rs.getBoolean("isUsed");
+                Room r = new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, isUsed);
+                kq = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, r);
+
+            }
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return kq;
     }
 
 }

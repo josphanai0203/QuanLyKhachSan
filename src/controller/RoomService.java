@@ -30,4 +30,16 @@ public class RoomService implements  IService<Room> {
     public Room findById(Room r) {
         return rd.findById(r);
     }
+    public Room findByName(String Name){
+        return rd.findByName(Name);
+    }
+    public ArrayList<Room> getAvailableRooms() {
+        return  rd.getAvailableRooms();
+    }
+    public ArrayList<Room> getBookedRooms() {
+        return  rd.getBookedRooms();
+    }
+    public void chaneRoom(int idRoomOLd , int idRoomNew) {
+         rd.chaneRoom(idRoomOLd, idRoomNew);
+    }
 }

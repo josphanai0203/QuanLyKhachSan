@@ -18,10 +18,12 @@ import service.IService;
 public class CustomerService implements IService<Customer>{
     private static  RoomDAO rd = new RoomDAO();
     private static CustomerDAO cd = new CustomerDAO();
-    public void createCustomer(String tenKhachHang, int namSinh,String gioiTinh , String diaChi, String quocTich, int soCMND, String sdt, String maPhong){
+    public boolean createCustomer(String tenKhachHang, int namSinh,String gioiTinh , String diaChi, String quocTich, int soCMND, String sdt, String maPhong){
         Room n = rd.findByName(maPhong);
+        n.setIsUsed(true);
+        rd.update(n);
         Customer c = new Customer( tenKhachHang, namSinh, gioiTinh, diaChi, quocTich, soCMND, sdt, n);
-        add(c);
+        return add(c);
     }
     @Override
     public boolean add(Customer t) {
@@ -45,7 +47,8 @@ public class CustomerService implements IService<Customer>{
 
     @Override
     public Customer findById(Customer t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return  cd.findById(t);
     }
+    
     
 }

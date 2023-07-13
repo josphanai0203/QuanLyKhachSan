@@ -14,6 +14,8 @@ import view.ReportView;
 import view.roomView.RoomView;
 import view.ServiceView;
 import view.customerView.AddCustomerView;
+import view.customerView.DefaultCustomerView;
+import view.customerView.FixCusView;
 import view.staffView.StaffView;
 
 /**
@@ -65,10 +67,14 @@ public class MenuController {
             case "Thêm Khách Hàng":
                 node = new AddCustomerView();
                 break;
+            case "Sửa Khách Hàng":
+                node = new FixCusView();
+                break;
             case "Trở Lại":
-                node = new CustomerView();
+                node = new DefaultCustomerView();
                 break;
             default:
+                node = new DefaultCustomerView();
                 break;
 
         }
@@ -78,5 +84,8 @@ public class MenuController {
         root.validate();
         root.repaint();
     }
-
+    public void sentDate(Object data){
+        
+    }
+     
 }
