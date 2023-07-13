@@ -12,7 +12,9 @@ import view.customerView.CustomerView;
 import view.DefaultView;
 import view.ReportView;
 import view.roomView.RoomView;
-import view.ServiceView;
+import view.WareHouseView.AddWareHouseView;
+import view.WareHouseView.DefauseWareHouseView;
+import view.WareHouseView.WareHouseView;
 import view.customerView.AddCustomerView;
 import view.customerView.DefaultCustomerView;
 import view.customerView.FixCusView;
@@ -42,8 +44,8 @@ public class MenuController {
             case "Khách Hàng":
                 node = new CustomerView();
                 break;
-            case "Dịch vụ":
-                node = new ServiceView();
+            case "Kho Hàng":
+                node = new WareHouseView();
                 break;
             case "Phòng":
                 node = new RoomView();
@@ -113,5 +115,24 @@ public class MenuController {
         root.validate();
         root.repaint();
     } 
-     
+      public void setViewWareHouse(JButton btn) {
+        switch (btn.getText()) {
+            case "Them Ma Hang":
+//                node = new AddWareHouseView();
+                break;
+//            case "jButton2":
+//                node = new FixCusView();
+//                break;
+//            case "jButton4":
+//                node = new DefaultWareHouseView();
+//                break;
+            default:
+                node = new DefauseWareHouseView();
+                root.removeAll();
+        root.setLayout(new BorderLayout());
+        root.add(node);
+        root.validate();
+        root.repaint();
+        }
+      }
 }
