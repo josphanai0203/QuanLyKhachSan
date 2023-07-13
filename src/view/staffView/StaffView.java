@@ -37,13 +37,14 @@ public class StaffView extends javax.swing.JPanel {
         addStaffBtn = new javax.swing.JButton();
         fixStaffBtn = new javax.swing.JButton();
         delStaffBtn = new javax.swing.JButton();
+        createAccount = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
 
         javax.swing.GroupLayout staffViewLayout = new javax.swing.GroupLayout(staffView);
         staffView.setLayout(staffViewLayout);
         staffViewLayout.setHorizontalGroup(
             staffViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1148, Short.MAX_VALUE)
         );
         staffViewLayout.setVerticalGroup(
             staffViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,6 +67,13 @@ public class StaffView extends javax.swing.JPanel {
 
         delStaffBtn.setText("Xoá Nhân Viên");
 
+        createAccount.setText("Tạo tài khoản");
+        createAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAccountActionPerformed(evt);
+            }
+        });
+
         backBtn.setText("Trở Lại");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,15 +86,17 @@ public class StaffView extends javax.swing.JPanel {
         staffMenuLayout.setHorizontalGroup(
             staffMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(staffMenuLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(33, 33, 33)
                 .addComponent(addStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(39, 39, 39)
                 .addComponent(fixStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addGap(34, 34, 34)
                 .addComponent(delStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addComponent(createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         staffMenuLayout.setVerticalGroup(
             staffMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,6 +106,7 @@ public class StaffView extends javax.swing.JPanel {
                     .addComponent(addStaffBtn)
                     .addComponent(fixStaffBtn)
                     .addComponent(delStaffBtn)
+                    .addComponent(createAccount)
                     .addComponent(backBtn))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -139,10 +150,15 @@ public class StaffView extends javax.swing.JPanel {
         controller.setViewStaff(backBtn);
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void createAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createAccountActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addStaffBtn;
     private javax.swing.JButton backBtn;
+    private javax.swing.JButton createAccount;
     private javax.swing.JButton delStaffBtn;
     private javax.swing.JButton fixStaffBtn;
     private javax.swing.JPanel staffMenu;

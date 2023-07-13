@@ -15,7 +15,7 @@ public class Staff {
     private String tenNhanVien;
     private Date ngaySinh;
     private String gioiTinh;
-    private  Position maChucVu;   
+    private Position maChucVu;   
     private String sdt;
     private String diaChi;
     private Payroll maLuong;
@@ -144,10 +144,8 @@ public class Staff {
         this.maTaiKhoan = maTaiKhoan;
     }
 
-    @Override
-    public String toString() {
-        return "Staff{" + "maNhanVien=" + maNhanVien + ", tenNhanVien=" + tenNhanVien + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", maChucVu=" + maChucVu + ", sdt=" + sdt + ", diaChi=" + diaChi + ", maLuong=" + maLuong + ", maTaiKhoan=" + maTaiKhoan + '}';
-    } 
+
+
     
     
 }

@@ -1,7 +1,6 @@
 package controller;
 
 import dao.PayrollDAO;
-import dao.PositionDAO;
 import dao.StaffDAO;
 import dao.UserDAO;
 import java.text.ParseException;
@@ -17,20 +16,15 @@ import service.IStaffService;
 public class StaffService implements IStaffService{
 
     public static StaffDAO sd = new StaffDAO();
-    public static UserDAO ud = new UserDAO();
-    public static PayrollDAO pd = new PayrollDAO();
-    public static PositionDAO pod = new PositionDAO();
+    
     public static ArrayList<Staff> list = StaffDAO.getInstance().selectAll();
     
-    public boolean createStaff(String tenNhanVien, Date ngaySinh, String gioiTinh, String maChucVu, String sdt, String diaChi, int maLuong, String maTaiKhoan){
-        User u = ud.findByName(maTaiKhoan);
-        ud.update(u);
-        Payroll p = pd.findByIdUpdate(maLuong);
-        pd.update(p);
-        Position po = pod.findByName(maChucVu);
-        pod.update(po);
-        Staff s = new Staff(tenNhanVien, ngaySinh, gioiTinh, po, sdt, diaChi, p, u);
-        return true;
+    public boolean createStaff(String tenNhanVien, Date ngaySinh, String gioiTinh, String diaChi, String sdt, int maChucVu){
+        boolean check;
+        Position p = sd.findTenChucVu(maChucVu);
+        Staff s = new Staff(tenNhanVien, ngaySinh, gioiTinh, p, sdt, diaChi);
+        check = add(s);
+        return check;
     }
 
     public boolean checkTenNhanVien(String hoVaTen){
@@ -120,5 +114,6 @@ public class StaffService implements IStaffService{
         }
         return null;
     }
+
 
 }

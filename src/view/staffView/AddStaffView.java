@@ -260,13 +260,13 @@ public class AddStaffView extends javax.swing.JPanel {
         int maLuong = (Integer) payrollID.getSelectedItem();
         String maTaiKhoan = (String) userID.getSelectedItem();
 
-        check = ss.createStaff(ten_nhan_vien, nam_sinh, dia_chi, maChucVu, gender, dia_chi, maLuong, maTaiKhoan);
-        if (check) {
-            message.setText("Thêm Nhân Viên Thành Công");
-        } else {
-            message.setForeground(new Color(255, 0, 0));
-            message.setText("Thêm Nhân Viên Thất Bại");
-        }
+//        check = ss.createStaff(ten_nhan_vien, nam_sinh, dia_chi, maChucVu, gender, dia_chi, maLuong, maTaiKhoan);
+//        if (check) {
+//            message.setText("Thêm Nhân Viên Thành Công");
+//        } else {
+//            message.setForeground(new Color(255, 0, 0));
+//            message.setText("Thêm Nhân Viên Thất Bại");
+//        }
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void genderFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderFemaleActionPerformed

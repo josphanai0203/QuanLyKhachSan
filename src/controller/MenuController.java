@@ -16,6 +16,7 @@ import view.ServiceView;
 import view.customerView.AddCustomerView;
 import view.customerView.DefaultCustomerView;
 import view.customerView.FixCusView;
+import view.staffView.DefaultStaffView;
 import view.staffView.StaffView;
 
 /**
@@ -100,7 +101,7 @@ public class MenuController {
                 node = new DefaultCustomerView();
                 break;
             default:
-                node = new DefaultCustomerView();
+                node = new DefaultStaffView();
                 break;
 
         }

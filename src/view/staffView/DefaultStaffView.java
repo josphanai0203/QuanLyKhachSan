@@ -10,6 +10,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import model.Position;
 import model.Staff;
 
 /*
@@ -24,6 +25,8 @@ public class DefaultStaffView extends javax.swing.JPanel {
 
     private static Staff staffSelect;
     private ArrayList<Staff> list;
+    private StaffDAO sd = new StaffDAO();
+    
 
     //null contructor
     public DefaultStaffView(int num) {
@@ -107,11 +110,11 @@ public class DefaultStaffView extends javax.swing.JPanel {
         dtm.addColumn("Tên nhân viên");
         dtm.addColumn("Ngày Sinh");
         dtm.addColumn("Giới Tính");
-        dtm.addColumn("Mã Chức Vụ");
+        dtm.addColumn("Tên Chức Vụ");
         dtm.addColumn("Số Điện Thoại");
         dtm.addColumn("Địa Chỉ");
-        dtm.addColumn("Mã Lương");
-        dtm.addColumn("Mã Tài Khoản");
+//        dtm.addColumn("Mã Lương");
+//        dtm.addColumn("Mã Tài Khoản");
     }
 
     public void setColumnWidths(JTable table, int... widths) {
@@ -129,16 +132,22 @@ public class DefaultStaffView extends javax.swing.JPanel {
         Vector v = null;
         for (Staff s : list) {
             v = new Vector();
+            
             v.removeAllElements();
             v.add(s.getMaNhanVien());
             v.add(s.getTenNhanVien());
             v.add(s.getNgaySinh());
-            v.add(s.getGioiTinh());
-            v.add(s.getMaChucVu());
+            v.add(s.getGioiTinh());    
+            
+            Position p = s.getMaChucVu();
+            int id = p.getMaChucVu();
+            Position po = StaffDAO.getInstance().findTenChucVu(id);
+            String tenChucVu = (po != null) ? po.getTenChucVu() : "1";
+            v.add(tenChucVu);
             v.add(s.getSdt());
             v.add(s.getDiaChi());
-            v.add(s.getMaLuong());
-            v.add(s.getMaTaiKhoan());
+//            v.add(s.getMaLuong());
+//            v.add(s.getMaTaiKhoan());
             dfm.addRow(v);
 
         }
