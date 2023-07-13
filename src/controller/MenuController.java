@@ -16,6 +16,7 @@ import view.ServiceView;
 import view.customerView.AddCustomerView;
 import view.customerView.DefaultCustomerView;
 import view.customerView.FixCusView;
+import view.staffView.DefaultStaffView;
 import view.staffView.StaffView;
 
 /**
@@ -62,7 +63,8 @@ public class MenuController {
         root.validate();
         root.repaint();
     }
-     public void setViewCustomer(JButton btn) {
+
+    public void setViewCustomer(JButton btn) {
         switch (btn.getText()) {
             case "Thêm Khách Hàng":
                 node = new AddCustomerView();
@@ -83,6 +85,56 @@ public class MenuController {
         root.add(node);
         root.validate();
         root.repaint();
-     }
+
+    }
+
+    public void setViewStaff(JButton btn) {
+        switch (btn.getText()) {
+            case "Thêm Nhân Viên":
+                node = new AddCustomerView();
+                break;
+            case "Sửa Nhân Viên":
+                node = new FixCusView();
+                break;
+            case "Trở Lại":
+                node = new DefaultCustomerView();
+                break;
+            default:
+                node = new DefaultStaffView();
+                break;
+
+        }
+        root.removeAll();
+        root.setLayout(new BorderLayout());
+        root.add(node);
+        root.validate();
+        root.repaint();
+    }
+   public void setViewRoom(JButton btn) {
+        switch (btn.getText()) {
+            case "Tạo Phòng Mới":
+                node = new AddCustomerView();
+                break;
+            case "Sửa Thông Tin Phòng":
+                node = new FixCusView();
+                break;
+            case "Xoá Phòng":
+                node = new FixCusView();
+                break;
+            case "Trở Lại":
+                node = new DefaultCustomerView();
+                break;
+            default:
+                node = new DefaultCustomerView();
+                break;
+
+        }
+        root.removeAll();
+        root.setLayout(new BorderLayout());
+        root.add(node);
+        root.validate();
+        root.repaint();
+
+    }
      
 }

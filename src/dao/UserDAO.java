@@ -145,6 +145,52 @@ public class UserDAO implements IUser{
 
     @Override
     public User findById(User t) {
-        return cu.findById(t);
+        User kq = null;
+        try {
+            Connection con = JDBCUtil.getConnection();
+            String sql = "SELECT * FROM tai_khoan tk WHERE tk.ma_tai_khoan =? ";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, t.getMaTaiKhoan());
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int ma_tai_khoan = rs.getInt("ma_tai_khoan");
+                String ten_tai_khoan = rs.getString("ten_tai_khoan");
+                String mat_khau = rs.getString("mat_khau");
+                boolean admin = rs.getBoolean("admin");
+
+                boolean isUsed = rs.getBoolean("isUsed");
+                kq = new User(ma_tai_khoan, ten_tai_khoan, mat_khau, admin);
+            }
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return kq;
+    }
+    
+    public User findByName(String name) {
+        User kq = null;
+        try {
+            Connection con = JDBCUtil.getConnection();
+            String sql = "SELECT * FROM tai_khoan tk WHERE tk.ten_tai_khoan =? ";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1,name );
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int ma_tai_khoan = rs.getInt("ma_tai_khoan");
+                String ten_tai_khoan = rs.getString("ten_tai_khoan");
+                String mat_khau = rs.getString("mat_khau");
+                boolean admin = rs.getBoolean("admin");
+
+                boolean isUsed = rs.getBoolean("isUsed");
+                kq = new User(ma_tai_khoan, ten_tai_khoan, mat_khau, admin);
+            }
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return kq;
     }
 }

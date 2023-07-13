@@ -15,7 +15,7 @@ public class Staff {
     private String tenNhanVien;
     private Date ngaySinh;
     private String gioiTinh;
-    private  Position maChucVu;   
+    private Position maChucVu;   
     private String sdt;
     private String diaChi;
     private Payroll maLuong;
@@ -23,6 +23,18 @@ public class Staff {
 
     public Staff() {
     }
+
+    public Staff(String tenNhanVien, Date ngaySinh, String gioiTinh, Position maChucVu, String sdt, String diaChi, Payroll maLuong, User maTaiKhoan) {
+        this.tenNhanVien = tenNhanVien;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.maChucVu = maChucVu;
+        this.sdt = sdt;
+        this.diaChi = diaChi;
+        this.maLuong = maLuong;
+        this.maTaiKhoan = maTaiKhoan;
+    }
+    
 
     public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, String sdt, String diaChi) {
         this.maNhanVien = maNhanVien;
@@ -132,10 +144,8 @@ public class Staff {
         this.maTaiKhoan = maTaiKhoan;
     }
 
-    @Override
-    public String toString() {
-        return "Staff{" + "maNhanVien=" + maNhanVien + ", tenNhanVien=" + tenNhanVien + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", maChucVu=" + maChucVu + ", sdt=" + sdt + ", diaChi=" + diaChi + ", maLuong=" + maLuong + ", maTaiKhoan=" + maTaiKhoan + '}';
-    } 
+
+
     
     
 }

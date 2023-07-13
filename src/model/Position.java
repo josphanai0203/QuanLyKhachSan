@@ -12,9 +12,6 @@ public class Position {
     private int maChucVu;
     private String tenChucVu;
 
-    public Position() {
-    }
-
     public Position(int maChucVu, String tenChucVu) {
         this.maChucVu = maChucVu;
         this.tenChucVu = tenChucVu;

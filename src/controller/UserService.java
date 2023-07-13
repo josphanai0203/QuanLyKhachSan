@@ -1,11 +1,18 @@
 
 package controller;
-
+import controller.UserService;
 import dao.UserDAO;
+import database.JDBCUtil;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import model.Staff;
 import model.User;
 import service.IUser;
 
@@ -95,12 +102,11 @@ public class UserService implements IUser{
 
     @Override
     public User findById(User t) {
-        for (int i = 0; i < list.size(); i++) {
-            if(list.get(i).getMaTaiKhoan() == t.getMaTaiKhoan()){
-                return t;
-            }
-        }
-        return null;
+        return ud.findById(t);
+    }
+    
+    public User findByName(String name){
+        return ud.findByName(name);
     }
 
 }

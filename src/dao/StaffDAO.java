@@ -10,6 +10,7 @@ import model.Staff;
 import service.IStaffService;
 import java.sql.*;
 import database.JDBCUtil;
+import model.Position;
 
 public class StaffDAO implements IStaffService {
     public static StaffService ss = new StaffService();
@@ -69,13 +70,15 @@ public class StaffDAO implements IStaffService {
                 String ten_nhan_vien = rs.getString("ten_nhan_vien");
                 Date ngay_sinh = rs.getDate("ngay_sinh");
                 String gioi_tinh = rs.getString("gioi_tinh");
-                //int ma_chuc_vu = rs.getInt("ma_chuc_vu");
+                int ma_chuc_vu = rs.getInt("ma_chuc_vu");
+                Position position = findTenChucVu(ma_chuc_vu);
+                
                 String so_dien_thoai = rs.getString("so_dien_thoai");
                 String dia_chi = rs.getString("dia_chi");
                 //int ma_luong = rs.getInt("ma_luong");
 
                 Staff s1 = new Staff(ma_nhan_vien, ten_nhan_vien, ngay_sinh, gioi_tinh, so_dien_thoai, dia_chi);
-                //Staff s1 = new User(username, password, hoVaTen);
+                s1.setMaChucVu(position);
                 kq.add(s1);
             }
             JDBCUtil.closeConnection(con);
@@ -133,20 +136,9 @@ public class StaffDAO implements IStaffService {
                     + "WHERE ma_nhan_vien=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, t.getMaNhanVien());
-//            st.setString(2, t.getTenNhanVien());
-//            st.setDate(3, (Date) t.getNgaySinh());
-//            st.setString(4, t.getGioiTinh());
-//            st.setInt(5, t.getMaChucVu());
-//            st.setString(6, t.getSdt());
-//            st.setString(7, t.getDiaChi());
-//            st.setInt(8, t.getMaLuong());
-            //b3: thuc thi cau lenh sql
-            kq = st.executeUpdate();
-            //b4: xu li 
-//            System.out.println("Ban da thuc thi: " + sql);
-//            System.out.println("Co " + kq + " bi thay doi");
 
-            //b5: ngat ket noi
+            kq = st.executeUpdate();
+ 
             JDBCUtil.closeConnection(con);
             return kq>0;
         } catch (SQLException e) {
@@ -162,5 +154,28 @@ public class StaffDAO implements IStaffService {
     public Staff findById(Staff t) {
         return ss.findById(t);
     }
+
+    public Position findTenChucVu(int maChucVu) {
+        Position kq = null;
+        try {
+            Connection con = JDBCUtil.getConnection();
+            String sql = "SELECT * FROM chuc_vu WHERE ma_chuc_vu = ?";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, maChucVu);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+               // int ma_chuc_vu = rs.getInt("ma_chuc_vu");
+                String ten_chuc_vu = rs.getString("ten_chuc_vu");
+
+                kq = new Position(maChucVu, ten_chuc_vu);
+            }
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return kq;
+    }
+
 
 }

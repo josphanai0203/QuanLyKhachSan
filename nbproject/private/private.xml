@@ -2,6 +2,27 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group>
+            <file>file:/D:/ws/src/view/customerView/DefaultCustomerView.java</file>
+            <file>file:/D:/ws/src/controller/CustomerService.java</file>
+            <file>file:/D:/ws/src/view/customerView/CustomerView.java</file>
+            <file>file:/D:/ws/src/view/customerView/FixCusView.java</file>
+            <file>file:/D:/ws/src/view/customerView/AddCustomerView.java</file>
+        </group>
+        <group>
+            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/model/Customer.java</file>
+            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/controller/ItemServiceService.java</file>
+            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/controller/RoomService.java</file>
+            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/controller/CustomerService.java</file>
+            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/dao/RoomDAO.java</file>
+        </group>
+        <group>
+            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/customerView/AddCustomerView.java</file>
+            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/staffView/AddStaffView.java</file>
+        </group>
+=======
         <group/>
+>>>>>>> 40f2f7a83881d61e4e4a9fc54917721bba561add
     </open-files>
 </project-private>
