@@ -75,12 +75,11 @@ public class CustomerDAO implements ICustomerService {
                 String so_dien_thoai = rs.getString("so_dien_thoai");
                 int ma_phong = rs.getInt("ma_phong");
                 String ten_phong = rs.getString("ten_phong");
-                int so_nguoi_toi_da = rs.getInt("so_nguoi_toi_da");
                 double dien_tich = rs.getDouble("dien_tich");
                 String loai_phong = rs.getString("Loai_phong");
                 boolean isUsed = rs.getBoolean("isUsed");
                 String kieuThue = rs.getString("kieu_thue");
-                Room r = new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, isUsed);
+                Room r = new Room(ma_phong, ten_phong, dien_tich, loai_phong, isUsed);
                 Customer c1 = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, r,kieuThue);
                 kq.add(c1);
             }
@@ -168,12 +167,11 @@ public class CustomerDAO implements ICustomerService {
                 String so_dien_thoai = rs.getString("so_dien_thoai");
                 int ma_phong = rs.getInt("ma_phong");
                 String ten_phong = rs.getString("ten_phong");
-                int so_nguoi_toi_da = rs.getInt("so_nguoi_toi_da");
                 double dien_tich = rs.getDouble("dien_tich");
                 String loai_phong = rs.getString("Loai_phong");
                 boolean isUsed = rs.getBoolean("isUsed");
                 String kieuThue = rs.getString("kieu_thue");
-                Room r = new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, isUsed);
+                Room r = new Room(ma_phong, ten_phong, dien_tich, loai_phong, isUsed);
                 kq = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, r,kieuThue);
 
             }

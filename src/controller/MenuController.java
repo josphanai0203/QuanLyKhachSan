@@ -16,6 +16,9 @@ import view.ServiceView;
 import view.customerView.AddCustomerView;
 import view.customerView.DefaultCustomerView;
 import view.customerView.FixCusView;
+import view.roomView.AddRoomView;
+import view.roomView.DefaultRoomView;
+import view.roomView.FixRoomView;
 import view.staffView.DefaultStaffView;
 import view.staffView.StaffView;
 
@@ -64,19 +67,19 @@ public class MenuController {
         root.repaint();
     }
 
-    public void setViewCustomer(JButton btn) {
+    public void setViewRoom(JButton btn) {
         switch (btn.getText()) {
-            case "Thêm Khách Hàng":
-                node = new AddCustomerView();
+            case "Tạo Phòng Mới":
+                node = new AddRoomView();
                 break;
-            case "Sửa Khách Hàng":
-                node = new FixCusView();
+            case "Sửa Thông Tin Phòng":
+                node = new FixRoomView();
                 break;
             case "Trở Lại":
-                node = new DefaultCustomerView();
+                node = new DefaultRoomView();
                 break;
             default:
-                node = new DefaultCustomerView();
+                node = new DefaultRoomView();
                 break;
 
         }
@@ -110,15 +113,12 @@ public class MenuController {
         root.validate();
         root.repaint();
     }
-   public void setViewRoom(JButton btn) {
+   public void setViewCustomer(JButton btn) {
         switch (btn.getText()) {
-            case "Tạo Phòng Mới":
+            case "Thêm Khách Hàng":
                 node = new AddCustomerView();
                 break;
-            case "Sửa Thông Tin Phòng":
-                node = new FixCusView();
-                break;
-            case "Xoá Phòng":
+            case "Sửa Khách Hàng":
                 node = new FixCusView();
                 break;
             case "Trở Lại":

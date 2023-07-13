@@ -7,7 +7,9 @@ package view;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import controller.MenuController;
-import javax.swing.JPanel;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -25,6 +27,7 @@ public class MenuFrame extends javax.swing.JFrame {
         this.setAlwaysOnTop(true);
         this.setResizable(true);
         this.setVisible(true);
+        setIcon();
         initComponents();
         Toolkit a = Toolkit.getDefaultToolkit();
         int xSize = (int) a.getScreenSize().getWidth();
@@ -34,7 +37,10 @@ public class MenuFrame extends javax.swing.JFrame {
         controler.setView(new JButton());
     }
   
-
+    private void setIcon(){
+        Image icon = Toolkit.getDefaultToolkit().createImage(new File("").getAbsolutePath()+"/src/img/icon/logo24.png");
+        this.setIconImage(icon);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

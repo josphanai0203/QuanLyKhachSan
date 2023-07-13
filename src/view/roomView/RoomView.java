@@ -5,17 +5,20 @@
 package view.roomView;
 
 import controller.MenuController;
+import controller.RoomService;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import model.Room;
 
-/**
- *
- * @author Admin
- */
+
 public class RoomView extends javax.swing.JPanel {
     private MenuController controller;
+    private RoomService rs = new RoomService();
     public RoomView() {
         initComponents();
         controller = new MenuController(roomViewPanel);
-        
+        controller.setViewRoom(new JButton());
+        backBtn.setEnabled(Boolean.FALSE);
     }
 
     /**
@@ -44,10 +47,25 @@ public class RoomView extends javax.swing.JPanel {
         });
 
         fixRoomBtn.setText("Sửa Thông Tin Phòng");
+        fixRoomBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fixRoomBtnActionPerformed(evt);
+            }
+        });
 
         delRoomBtn.setText("Xoá Phòng");
+        delRoomBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delRoomBtnActionPerformed(evt);
+            }
+        });
 
         backBtn.setText("Trở Lại");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout roomMenePanelLayout = new javax.swing.GroupLayout(roomMenePanel);
         roomMenePanel.setLayout(roomMenePanelLayout);
@@ -105,13 +123,51 @@ public class RoomView extends javax.swing.JPanel {
                 .addComponent(roomMenePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(roomViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void addRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRoomBtnActionPerformed
-        // TODO add your handling code here:
+        backBtn.setEnabled(Boolean.TRUE);
+        fixRoomBtn.setEnabled(Boolean.FALSE);
+        delRoomBtn.setEnabled(Boolean.FALSE);
+        controller.setViewRoom(addRoomBtn);
     }//GEN-LAST:event_addRoomBtnActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        backBtn.setEnabled(Boolean.FALSE);
+        fixRoomBtn.setEnabled(Boolean.TRUE);
+        delRoomBtn.setEnabled(Boolean.TRUE);
+        DefaultRoomView.setRoomNull();
+        controller.setViewRoom(backBtn);
+    }//GEN-LAST:event_backBtnActionPerformed
+
+    private void fixRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixRoomBtnActionPerformed
+        Room c = DefaultRoomView.getRoomSelected();
+        if(c==null){
+            JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Phòng Cần Sửa Thông Tin","Thông Báo",JOptionPane.ERROR_MESSAGE);
+        }else {
+           delRoomBtn.setEnabled(Boolean.FALSE);
+           backBtn.setEnabled(Boolean.TRUE);
+           controller.setViewRoom(fixRoomBtn);
+        }
+    }//GEN-LAST:event_fixRoomBtnActionPerformed
+
+    private void delRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delRoomBtnActionPerformed
+        Room c = DefaultRoomView.getRoomSelected();
+        if(c==null){
+            JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Phòng Cần Xoá","Thông Báo",JOptionPane.INFORMATION_MESSAGE);
+        }else {
+           int check = JOptionPane.showConfirmDialog(this, "Bạn có Chắc Muốn Xoá Khách Hàng này ? \n Việc xoá khách hàng có thể làm mất thông tin mãi mãi " , "", JOptionPane.QUESTION_MESSAGE);
+           if(check == JOptionPane.YES_OPTION){
+                boolean isDel = rs.delete(c);
+                if(isDel){
+                    controller.setViewCustomer(new JButton());
+                    JOptionPane.showMessageDialog(this, "Đã Xoá Thành Công","Thông Báo",JOptionPane.INFORMATION_MESSAGE);
+                }
+           }
+        }
+    }//GEN-LAST:event_delRoomBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
