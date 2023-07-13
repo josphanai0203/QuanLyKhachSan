@@ -4,12 +4,13 @@ import dao.WareHouseDAO;
 import model.WareHouse;
 import service.IService;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class WareHouseService implements IService<WareHouse> {
 
     private static WareHouseDAO wd = new WareHouseDAO();
+    public static ArrayList<WareHouse> list = WareHouseDAO.getInstance().selectAll();
 
     public boolean createWareHouse(String tenSanPham, Date dayIn, int SoLuong, Double giaNhap, Double giaBan, Date hSD) {
         boolean check;
@@ -41,7 +42,14 @@ public class WareHouseService implements IService<WareHouse> {
 
     @Override
     public WareHouse findById(WareHouse w) {
-        return wd.findById(w);
+        for (int i = 0; i < list.size(); i++) {
+            if(w.getMaW() == list.get(i).getMaW()){
+                return w;
+            }
+        }
+        return null;
     }
-
+    public WareHouse findId(int maKhoHang){
+        return wd.findId(maKhoHang);
+    }
 }

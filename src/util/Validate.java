@@ -5,7 +5,9 @@
 package util;
 
 import java.util.ArrayList;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 /**
  *
  * @author Admin
@@ -37,6 +39,8 @@ public class Validate {
                 return checkStringEmpty(str);
             case "isNumber":
                 return checkIsNumber(str);
+            case "validDate":
+                return checkisValidDate(str);
             default:
                 return null;
         }
@@ -64,5 +68,29 @@ public class Validate {
             i++;
         }
         return a;
+    }
+    private static final String DATE_FORMAT = "dd/MM/yyyy";
+
+    public static ArrayList<Integer> checkisValidDate(String[]str){
+        ArrayList<Integer> a = new ArrayList<>();
+        int i = 1;
+        for (String s : str){
+            if(!isValidDate(s)){
+                a.add(i);
+            }
+            i++;
+        }
+        return a;
+    }
+
+    public static boolean isValidDate(String dateStr) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+            sdf.setLenient(false);
+            sdf.parse(dateStr);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
