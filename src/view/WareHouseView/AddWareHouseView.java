@@ -18,39 +18,7 @@ public class AddWareHouseView extends javax.swing.JFrame {
         initComponents();
     }
 
-    private void ActionPerformed(java.awt.event.ActionEvent evt) {
-        int ma_kho_hang = Integer.parseInt(textWid.getText());
-        String ten_san_pham = textWname.getText();
-        //Date ngay_nhap = Date.parseDate(textWDayin.getName());
-        int so_luong = Integer.parseInt(textWquantity.getText());
-        Double gia_nhap = Double.parseDouble(textWpricein.getText());
-        Double gia_ban = Double.parseDouble(textWpriceout.getText());
-        //Date han_su_dung = Date.parseDate(textWhsd.getText());
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date parsedDate;
-
-        try {
-            parsedDate = dateFormat.parse(textWDayin.getText());
-            Date ngay_nhap = new Date(parsedDate.getTime());
-
-            parsedDate = dateFormat.parse(textWhsd.getText());
-            Date han_su_dung = new Date(parsedDate.getTime());
-
-            // Rest of your code...
-            boolean check = ws.createWareHouse(ten_san_pham, ngay_nhap, so_luong, gia_nhap, gia_ban, han_su_dung);
-            if (check) {
-                message.setForeground(new Color(13, 110, 253));
-                message.setText("Thêm Khách Hàng Thành Công");
-            } else {
-                message.setForeground(new Color(255, 0, 0));
-                message.setText("Thêm Khách Hàng Thất Bại");
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return; // Exit the method or handle the error appropriately
-        }
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,6 +63,11 @@ public class AddWareHouseView extends javax.swing.JFrame {
         jLabel7.setText("Han Su Dung");
 
         AddWH.setText("Them Ma Hang");
+        AddWH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddWHActionPerformed(evt);
+            }
+        });
 
         textWname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,6 +240,40 @@ public class AddWareHouseView extends javax.swing.JFrame {
     private void textWquantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textWquantityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textWquantityActionPerformed
+
+    private void AddWHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddWHActionPerformed
+           int ma_kho_hang = Integer.parseInt(textWid.getText());
+        String ten_san_pham = textWname.getText();
+        //Date ngay_nhap = Date.parseDate(textWDayin.getName());
+        int so_luong = Integer.parseInt(textWquantity.getText());
+        Double gia_nhap = Double.parseDouble(textWpricein.getText());
+        Double gia_ban = Double.parseDouble(textWpriceout.getText());
+        //Date han_su_dung = Date.parseDate(textWhsd.getText());
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date parsedDate;
+
+        try {
+            parsedDate = dateFormat.parse(textWDayin.getText());
+            Date ngay_nhap = new Date(parsedDate.getTime());
+
+            parsedDate = dateFormat.parse(textWhsd.getText());
+            Date han_su_dung = new Date(parsedDate.getTime());
+
+            // Rest of your code...
+            boolean check = ws.createWareHouse(ten_san_pham, ngay_nhap, so_luong, gia_nhap, gia_ban, han_su_dung);
+            if (check) {
+                message.setForeground(new Color(13, 110, 253));
+                message.setText("Thêm Khách Hàng Thành Công");
+            } else {
+                message.setForeground(new Color(255, 0, 0));
+                message.setText("Thêm Khách Hàng Thất Bại");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return; // Exit the method or handle the error appropriately
+        }
+    }//GEN-LAST:event_AddWHActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
