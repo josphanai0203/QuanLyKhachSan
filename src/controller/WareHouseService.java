@@ -1,5 +1,6 @@
 package controller;
 import dao.*;
+import java.sql.Date;
 import model.*;
 import service.*;
 
@@ -32,5 +33,9 @@ public class WareHouseService   implements IService<WareHouse> {
     @Override
     public WareHouse findById(WareHouse w) {
         return wd.findById(w);
+    }
+
+    public boolean createWareHouse(String ten_san_pham, Date ngay_nhap, int so_luong, Double gia_nhap, Double gia_ban, Date han_su_dung) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

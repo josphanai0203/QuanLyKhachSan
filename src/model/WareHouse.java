@@ -12,6 +12,9 @@ public int maW;
     public Date hSD;
     public double priceIn;
     public double priceOut;
+    
+    public WareHouse(){
+    }
 
     public WareHouse(int maW) {
         this.maW = maW;
