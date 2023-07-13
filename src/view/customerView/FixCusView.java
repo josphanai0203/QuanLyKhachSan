@@ -5,10 +5,12 @@
 package view.customerView;
 
 import controller.CustomerService;
+import controller.RegisterService;
 import controller.RoomService;
 import java.awt.Color;
 import java.util.ArrayList;
 import model.Customer;
+import model.RegistrationForm;
 import model.Room;
 
 /**
@@ -18,8 +20,10 @@ import model.Room;
 public class FixCusView extends javax.swing.JPanel {
 
     private Customer cusfix;
+    private RegistrationForm re;
     private CustomerService cs = new CustomerService();
     private RoomService rs = new RoomService();
+    private RegisterService reg = new RegisterService();
 
     /**
      * Creates new form FixCusView
@@ -28,6 +32,7 @@ public class FixCusView extends javax.swing.JPanel {
         initComponents();
 
         Customer customer = DefaultCustomerView.getCustomerSelected();
+        re = reg.findByIDCus(customer.getMaKhachHang());
         cusfix = cs.findById(customer);
         customerName.setText(cusfix.getTenKhachHang());
         customerAddress.setText(cusfix.getDiaChi());
@@ -35,12 +40,29 @@ public class FixCusView extends javax.swing.JPanel {
         customerNation.setText(cusfix.getQuocTich());
         customerPhone.setText(cusfix.getSdt());
         customerYear.setText(String.valueOf(cusfix.getNamSinh()));
+        totalTime.setText(String.valueOf(re.getThoiGianThue()));
+        type.setSelectedIndex(typeRentValue(cusfix.getKieuthue()));
         if (cusfix.getGioiTinh() == "Nam") {
             genderMale.setSelected(true);
         } else {
             genderFemale.setSelected(true);
         }
         addRoomFiel();
+    }
+
+    private int typeRentValue(String t) {
+        switch (t) {
+            case "Giờ":
+                return 0;
+            case "Ngày":
+                return 1;
+            case "Tháng":
+                return 2;
+            case "Năm":
+                return 3;
+            default:
+                throw new AssertionError();
+        }
     }
 
     private void addRoomFiel() {
@@ -62,64 +84,29 @@ public class FixCusView extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        genderMale = new javax.swing.JRadioButton();
-        genderFemale = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
+        fixCustomerBtn = new javax.swing.JButton();
         customerName = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
         customerYear = new javax.swing.JTextField();
-        customerAddress = new javax.swing.JTextField();
-        customerNation = new javax.swing.JTextField();
-        customerCard = new javax.swing.JTextField();
-        customerPhone = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        customerAddress = new javax.swing.JTextField();
+        totalTime = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        customerNation = new javax.swing.JTextField();
+        type = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        customerCard = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        customerPhone = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         customerRoom = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        fixCustomerBtn = new javax.swing.JButton();
+        genderMale = new javax.swing.JRadioButton();
+        genderFemale = new javax.swing.JRadioButton();
         message = new javax.swing.JLabel();
-
-        buttonGroup1.add(genderMale);
-        genderMale.setText("Nam");
-
-        buttonGroup1.add(genderFemale);
-        genderFemale.setText("Nữ");
-        genderFemale.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                genderFemaleActionPerformed(evt);
-            }
-        });
-
-        customerPhone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customerPhoneActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setText("Mã Phòng");
-
-        jLabel1.setText("Tên Khách Hàng");
-
-        jLabel2.setText("Năm Sinh");
-
-        jLabel3.setText("Giới Tính");
-
-        jLabel4.setText("Quốc Tịch");
-
-        jLabel5.setText("Số CMND");
-
-        jLabel6.setText("Địa Chỉ");
-
-        customerRoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customerRoomActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("Số Điện Thoại");
 
         fixCustomerBtn.setText("Sửa Thông Tin");
         fixCustomerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -128,103 +115,161 @@ public class FixCusView extends javax.swing.JPanel {
             }
         });
 
+        jLabel10.setText("Thời Gian Thuê");
+
+        jLabel1.setText("Tên Khách Hàng");
+
+        jLabel2.setText("Năm Sinh");
+
+        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giờ", "Ngày", "Tháng", "Năm" }));
+
+        jLabel3.setText("Giới Tính");
+
+        jLabel4.setText("Quốc Tịch");
+
+        customerPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customerPhoneActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Số CMND");
+
+        jLabel8.setText("Mã Phòng");
+
+        jLabel6.setText("Địa Chỉ");
+
+        jLabel7.setText("Số Điện Thoại");
+
+        genderMale.setText("Nam");
+
+        genderFemale.setText("Nữ");
+        genderFemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genderFemaleActionPerformed(evt);
+            }
+        });
+
         message.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         message.setForeground(new java.awt.Color(13, 110, 253));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(genderMale)
+                        .addGap(18, 18, 18)
+                        .addComponent(genderFemale))
+                    .addComponent(customerName, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                    .addComponent(customerYear)
+                    .addComponent(customerAddress)
+                    .addComponent(customerNation)
+                    .addComponent(customerCard))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(customerPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(totalTime, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(customerRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(360, 360, 360)
+                .addComponent(fixCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(278, 278, 278))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(customerName))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(customerYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(genderMale)
+                    .addComponent(genderFemale)
+                    .addComponent(jLabel7)
+                    .addComponent(customerPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(customerAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(totalTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(customerNation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(customerRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(customerCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(167, 167, 167)
+                .addComponent(fixCustomerBtn)
+                .addGap(18, 18, 18)
+                .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(genderMale)
-                                .addGap(18, 18, 18)
-                                .addComponent(genderFemale))
-                            .addComponent(customerName)
-                            .addComponent(customerYear)
-                            .addComponent(customerAddress)
-                            .addComponent(customerNation)
-                            .addComponent(customerCard)
-                            .addComponent(customerPhone)
-                            .addComponent(customerRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fixCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)))
-                .addGap(523, 523, 523))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(customerName))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(customerYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(genderMale)
-                    .addComponent(genderFemale))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(customerAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(customerNation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(customerCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(customerPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(customerRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(fixCustomerBtn)
-                .addGap(45, 45, 45)
-                .addComponent(message)
-                .addGap(182, 182, 182))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(188, 188, 188))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void genderFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderFemaleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_genderFemaleActionPerformed
-
-    private void customerPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerPhoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_customerPhoneActionPerformed
-
     private void fixCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixCustomerBtnActionPerformed
         boolean check;
+        boolean check2;
         String ten_khach_hang = customerName.getText();
         int nam_sinh = Integer.parseInt(customerYear.getText());
         String gender = "";
@@ -238,28 +283,37 @@ public class FixCusView extends javax.swing.JPanel {
         int so_cmnd = Integer.parseInt(customerCard.getText());
         String so_dien_thoai = customerPhone.getText();
         String ma_phong = (String) customerRoom.getSelectedItem();
+        int totalTimeCus = Integer.parseInt(totalTime.getText());
+        String typeRent = (String) type.getSelectedItem();
         if (ma_phong == cusfix.getMaPhong().getName()) {
-            Customer c = new Customer(cusfix.getMaKhachHang(), ten_khach_hang, nam_sinh, gender, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, cusfix.getMaPhong());
+            Customer c = new Customer(cusfix.getMaKhachHang(), ten_khach_hang, nam_sinh, gender, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, cusfix.getMaPhong(), typeRent);
+            check2 = reg.Update(re.getMaSoDangKi(), totalTimeCus);
             check = cs.update(c);
         } else {
             Room r = rs.findByName(ma_phong);
-            Customer c = new Customer(cusfix.getMaKhachHang(), ten_khach_hang, nam_sinh, gender, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, r);
+            Customer c = new Customer(cusfix.getMaKhachHang(), ten_khach_hang, nam_sinh, gender, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, r, typeRent);
             check = cs.update(c);
+            check2 = reg.Update(re.getMaSoDangKi(), totalTimeCus);
             rs.chaneRoom(cusfix.getMaPhong().getId_room(), r.getId_room());
 
         }
-        if (check) {
-            message.setText("Thay đổi Khách Hàng Thành Công");
+        if (check && check2) {
+            message.setForeground(new Color(13, 110, 253));
+            message.setText("Sửa Khách Hàng Thành Công");
         } else {
-            message.setForeground(new Color(255,0,0));
-            message.setText("Thay đổi Khách Hàng Thất Bại");
+            message.setForeground(new Color(255, 0, 0));
+            message.setText("Sửa Khách Hàng Thất Bại");
         }
 
     }//GEN-LAST:event_fixCustomerBtnActionPerformed
 
-    private void customerRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerRoomActionPerformed
+    private void customerPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerPhoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_customerRoomActionPerformed
+    }//GEN-LAST:event_customerPhoneActionPerformed
+
+    private void genderFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderFemaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_genderFemaleActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -275,6 +329,7 @@ public class FixCusView extends javax.swing.JPanel {
     private javax.swing.JRadioButton genderFemale;
     private javax.swing.JRadioButton genderMale;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -282,6 +337,9 @@ public class FixCusView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel message;
+    private javax.swing.JTextField totalTime;
+    private javax.swing.JComboBox<String> type;
     // End of variables declaration//GEN-END:variables
 }

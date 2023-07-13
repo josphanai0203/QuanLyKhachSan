@@ -4,7 +4,6 @@
  */
 package dao;
 
-import controller.CustomerService;
 import java.util.ArrayList;
 import model.Customer;
 import service.ICustomerService;
@@ -32,8 +31,8 @@ public class CustomerDAO implements ICustomerService {
         int update = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO khach_hang (ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai,ma_phong) "
-                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?,?)";
+            String sql = "INSERT INTO khach_hang (ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai,ma_phong,kieu_thue) "
+                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?,?,?)";
 
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, t.getTenKhachHang());
@@ -44,6 +43,7 @@ public class CustomerDAO implements ICustomerService {
             st.setInt(6, t.getSoCMND());
             st.setString(7, t.getSdt());
             st.setInt(8, t.getMaPhong().getId_room());
+            st.setString(9, t.getKieuthue());
             update = st.executeUpdate();
             JDBCUtil.closeConnection(con);
             return update > 0;
@@ -79,8 +79,9 @@ public class CustomerDAO implements ICustomerService {
                 double dien_tich = rs.getDouble("dien_tich");
                 String loai_phong = rs.getString("Loai_phong");
                 boolean isUsed = rs.getBoolean("isUsed");
+                String kieuThue = rs.getString("kieu_thue");
                 Room r = new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, isUsed);
-                Customer c1 = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, r);
+                Customer c1 = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, r,kieuThue);
                 kq.add(c1);
             }
             JDBCUtil.closeConnection(con);
@@ -100,7 +101,7 @@ public class CustomerDAO implements ICustomerService {
             Connection con = JDBCUtil.getConnection();
             String sql = "UPDATE khach_hang "
                     + "SET "
-                    + "ten_khach_hang=?, " + "nam_sinh=?, " + "gioi_tinh=?, " + "dia_chi=?, " + "quoc_tich=?, " + "so_cmnd=?, " + "so_dien_thoai=?,"+ "ma_phong =?"
+                    + "ten_khach_hang=?, " + "nam_sinh=?, " + "gioi_tinh=?, " + "dia_chi=?, " + "quoc_tich=?, " + "so_cmnd=?, " + "so_dien_thoai=?,"+ "ma_phong =? , kieu_thue=?"
                     + " WHERE ma_khach_hang=?";
             PreparedStatement st = con.prepareStatement(sql);
 
@@ -112,7 +113,8 @@ public class CustomerDAO implements ICustomerService {
             st.setInt(6, t.getSoCMND());
             st.setString(7, t.getSdt());
             st.setInt(8, t.getMaPhong().getId_room());
-            st.setInt(9, t.getMaKhachHang());
+            st.setString(9, t.getKieuthue());
+            st.setInt(10, t.getMaKhachHang());
 
             kq = st.executeUpdate();
             JDBCUtil.closeConnection(con);
@@ -170,8 +172,9 @@ public class CustomerDAO implements ICustomerService {
                 double dien_tich = rs.getDouble("dien_tich");
                 String loai_phong = rs.getString("Loai_phong");
                 boolean isUsed = rs.getBoolean("isUsed");
+                String kieuThue = rs.getString("kieu_thue");
                 Room r = new Room(ma_phong, ten_phong, dien_tich, so_nguoi_toi_da, loai_phong, isUsed);
-                kq = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, r);
+                kq = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, r,kieuThue);
 
             }
             JDBCUtil.closeConnection(con);

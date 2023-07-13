@@ -4,6 +4,7 @@
  */
 package view.customerView;
 
+import controller.CustomerService;
 import controller.MenuController;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ import model.Customer;
  */
 public class CustomerView extends javax.swing.JPanel {
     private MenuController controller;
+    private CustomerService cs = new CustomerService();
     public CustomerView() {
         
         initComponents();
@@ -57,6 +59,11 @@ public class CustomerView extends javax.swing.JPanel {
         });
 
         delCusBtn.setText("Xoá Khách Hàng");
+        delCusBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delCusBtnActionPerformed(evt);
+            }
+        });
 
         backBtn.setText("Trở Lại");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +142,22 @@ public class CustomerView extends javax.swing.JPanel {
            controller.setViewCustomer(fixCusBtn);
         }
     }//GEN-LAST:event_fixCusBtnActionPerformed
+
+    private void delCusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delCusBtnActionPerformed
+         Customer c = DefaultCustomerView.getCustomerSelected();
+        if(c==null){
+            JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Nhân Viên Cần Xoá","Thông Báo",JOptionPane.INFORMATION_MESSAGE);
+        }else {
+           int check = JOptionPane.showConfirmDialog(this, "Bạn có Chắc Muốn Xoá Khách Hàng này ? \n Việc xoá khách hàng có thể làm mất thông tin mãi mãi " , "", JOptionPane.QUESTION_MESSAGE);
+           if(check == JOptionPane.YES_OPTION){
+                boolean isDel = cs.delete(c);
+                if(isDel){
+                    controller.setViewCustomer(new JButton());
+                    JOptionPane.showMessageDialog(this, "Đã Xoá Thành Công","Thông Báo",JOptionPane.INFORMATION_MESSAGE);
+                }
+           }
+        }
+    }//GEN-LAST:event_delCusBtnActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

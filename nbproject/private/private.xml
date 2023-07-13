@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/D:/ws/src/view/customerView/DefaultCustomerView.java</file>
             <file>file:/D:/ws/src/controller/CustomerService.java</file>
@@ -20,5 +21,8 @@
             <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/customerView/AddCustomerView.java</file>
             <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/staffView/AddStaffView.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> 40f2f7a83881d61e4e4a9fc54917721bba561add
     </open-files>
 </project-private>

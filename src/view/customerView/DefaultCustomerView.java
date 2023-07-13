@@ -24,7 +24,7 @@ public class DefaultCustomerView extends javax.swing.JPanel {
     private static Customer customerSelect;
     private ArrayList<Customer> list;
 
-    //null contructor
+    
     public DefaultCustomerView(int num) {
 
     }
@@ -153,6 +153,7 @@ public class DefaultCustomerView extends javax.swing.JPanel {
     public static Customer getCustomerSelected() {
         return customerSelect;
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable cusTable;
     private javax.swing.JScrollPane jScrollPane1;
