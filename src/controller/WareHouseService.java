@@ -1,14 +1,23 @@
 package controller;
-import dao.*;
-import java.sql.Date;
-import model.*;
-import service.*;
 
+import dao.WareHouseDAO;
+import model.WareHouse;
+import service.IService;
+
+import java.sql.Date;
 import java.util.ArrayList;
 
-public class WareHouseService   implements IService<WareHouse> {
-    private static WareHouseDAO wd= new WareHouseDAO();
+public class WareHouseService implements IService<WareHouse> {
 
+    private static WareHouseDAO wd = new WareHouseDAO();
+
+    public boolean createWareHouse(String tenSanPham, Date dayIn, int SoLuong, Double giaNhap, Double giaBan, Date hSD) {
+        boolean check;
+        WareHouse w = new WareHouse(tenSanPham, dayIn, SoLuong, giaNhap, giaBan, hSD);
+        check = add(w);
+        return check;
+
+    }
 
     @Override
     public boolean add(WareHouse w) {
@@ -35,7 +44,4 @@ public class WareHouseService   implements IService<WareHouse> {
         return wd.findById(w);
     }
 
-    public boolean createWareHouse(String ten_san_pham, Date ngay_nhap, int so_luong, Double gia_nhap, Double gia_ban, Date han_su_dung) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
