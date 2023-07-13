@@ -14,9 +14,6 @@ import java.util.Vector;
 
 public class DefauseWareHouseView extends javax.swing.JPanel {
 
-    public DefauseWareHouseView() {
-        initComponents();
-    }
     private static WareHouse warehouseSelect;
     private ArrayList<WareHouse> list;
 
@@ -24,17 +21,18 @@ public class DefauseWareHouseView extends javax.swing.JPanel {
         initComponents();
     }
 
-//    public DefauseWareHouseView() {
-//        initComponents();
-//        WareHouseDAO id = new WareHouseDAO();
-//        list = id.selectAll();
-//        setTableWareHouse();
-//    }
+
+public DefauseWareHouseView() {
+        initComponents();
+        WareHouseDAO id = new WareHouseDAO();
+        list = id.selectAll();
+        setTableWareHouse();
+    }
 
     private void setTableWareHouse() {
         DefaultTableModel dtm = new DefaultTableModel() {
             @Override
-            public boolean isCellEditable(int row, int column) {
+public boolean isCellEditable(int row, int column) {
                 //all cells false
                 return false;
             }
@@ -44,7 +42,7 @@ public class DefauseWareHouseView extends javax.swing.JPanel {
         lsm.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         lsm.addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void valueChanged(ListSelectionEvent e) {
+public void valueChanged(ListSelectionEvent e) {
                 createWareHouse();
             }
         });
