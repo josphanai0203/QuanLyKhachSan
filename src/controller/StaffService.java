@@ -17,7 +17,7 @@ public class StaffService implements IStaffService{
     public static ArrayList<Staff> list = StaffDAO.getInstance().selectAll();
     
     public boolean createStaff(String tenNhanVien, Date ngaySinh, String gioiTinh, String maChucVu, String sdt, String diaChi, String maLuong, String maTaiKhoan){
-        
+        return true;
     }
 
     public boolean checkTenNhanVien(String hoVaTen){
