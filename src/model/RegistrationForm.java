@@ -1,30 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-import java.util.Date;
 
 public class RegistrationForm {
     private int maSoDangKi;
-    private Staff maNhanVien;
     private Customer maKhachhang;
     private Room maPhong;
-    private int soPhong;
-    private Date ngayDangKi;
+    private int thoiGianThue;
+    private double tongTien;
 
     public RegistrationForm() {
     }
 
-    public RegistrationForm(int maSoDangKi, Staff maNhanVien, Customer maKhachhang, Room maPhong, int soPhong, Date ngayDangKi) {
+    public RegistrationForm(int maSoDangKi, Customer maKhachhang, Room maPhong, int thoiGianThue, double tongTien) {
         this.maSoDangKi = maSoDangKi;
-        this.maNhanVien = maNhanVien;
         this.maKhachhang = maKhachhang;
         this.maPhong = maPhong;
-        this.soPhong = soPhong;
-        this.ngayDangKi = ngayDangKi;
+        this.thoiGianThue = thoiGianThue;
+        this.tongTien = tongTien;
     }
+
+    public RegistrationForm(Room maPhong, int thoiGianThue) {
+        this.maPhong = maPhong;
+        this.thoiGianThue = thoiGianThue;
+    }
+
+    public RegistrationForm(int maSoDangKi, Customer maKhachhang, Room maPhong, int thoiGianThue) {
+        this.maSoDangKi = maSoDangKi;
+        this.maKhachhang = maKhachhang;
+        this.maPhong = maPhong;
+        this.thoiGianThue = thoiGianThue;
+    }
+    
+   
 
     public int getMaSoDangKi() {
         return maSoDangKi;
@@ -32,14 +39,6 @@ public class RegistrationForm {
 
     public void setMaSoDangKi(int maSoDangKi) {
         this.maSoDangKi = maSoDangKi;
-    }
-
-    public Staff getMaNhanVien() {
-        return maNhanVien;
-    }
-
-    public void setMaNhanVien(Staff maNhanVien) {
-        this.maNhanVien = maNhanVien;
     }
 
     public Customer getMaKhachhang() {
@@ -58,26 +57,23 @@ public class RegistrationForm {
         this.maPhong = maPhong;
     }
 
-    public int getSoPhong() {
-        return soPhong;
+    public int getThoiGianThue() {
+        return thoiGianThue;
     }
 
-    public void setSoPhong(int soPhong) {
-        this.soPhong = soPhong;
+    public void setThoiGianThue(int thoiGianThue) {
+        this.thoiGianThue = thoiGianThue;
     }
 
-    public Date getNgayDangKi() {
-        return ngayDangKi;
+    public double getTongTien() {
+        return tongTien;
     }
 
-    public void setNgayDangKi(Date ngayDangKi) {
-        this.ngayDangKi = ngayDangKi;
+    public void setTongTien(double tongTien) {
+        this.tongTien = tongTien;
     }
 
-    @Override
-    public String toString() {
-        return "RegistrationForm{" + "maSoDangKi=" + maSoDangKi + ", maNhanVien=" + maNhanVien + ", maKhachhang=" + maKhachhang + ", maPhong=" + maPhong + ", soPhong=" + soPhong + ", ngayDangKi=" + ngayDangKi + '}';
-    }
+   
 
     
 
