@@ -64,13 +64,13 @@
                   <Component id="addStaffBtn" min="-2" pref="166" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="fixStaffBtn" min="-2" pref="253" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="delStaffBtn" min="-2" pref="215" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="delStaffBtn" min="-2" pref="253" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="createAccount" min="-2" pref="215" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="backBtn" min="-2" pref="92" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -81,9 +81,9 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="addStaffBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="fixStaffBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="delStaffBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="createAccount" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="backBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="delStaffBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
@@ -107,11 +107,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fixStaffBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="delStaffBtn">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Xo&#xe1; Nh&#xe2;n Vi&#xea;n"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="createAccount">
           <Properties>
             <Property name="text" type="java.lang.String" value="T&#x1ea1;o t&#xe0;i kho&#x1ea3;n"/>
@@ -126,6 +121,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="delStaffBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="X&#xf3;a Nh&#xe2;n Vi&#xea;n"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delStaffBtnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

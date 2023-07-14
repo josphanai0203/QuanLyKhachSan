@@ -5,6 +5,7 @@
 package view.staffView;
 
 import controller.MenuController;
+import controller.StaffService;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import model.Staff;
@@ -16,6 +17,7 @@ import model.Staff;
 public class StaffView extends javax.swing.JPanel {
 
     private MenuController controller;
+    private StaffService ss = new StaffService();
 
     public StaffView() {
         initComponents();
@@ -36,9 +38,9 @@ public class StaffView extends javax.swing.JPanel {
         staffMenu = new javax.swing.JPanel();
         addStaffBtn = new javax.swing.JButton();
         fixStaffBtn = new javax.swing.JButton();
-        delStaffBtn = new javax.swing.JButton();
         createAccount = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        delStaffBtn = new javax.swing.JButton();
 
         javax.swing.GroupLayout staffViewLayout = new javax.swing.GroupLayout(staffView);
         staffView.setLayout(staffViewLayout);
@@ -65,8 +67,6 @@ public class StaffView extends javax.swing.JPanel {
             }
         });
 
-        delStaffBtn.setText("Xoá Nhân Viên");
-
         createAccount.setText("Tạo tài khoản");
         createAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +81,13 @@ public class StaffView extends javax.swing.JPanel {
             }
         });
 
+        delStaffBtn.setText("Xóa Nhân Viên");
+        delStaffBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delStaffBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout staffMenuLayout = new javax.swing.GroupLayout(staffMenu);
         staffMenu.setLayout(staffMenuLayout);
         staffMenuLayout.setHorizontalGroup(
@@ -90,13 +97,13 @@ public class StaffView extends javax.swing.JPanel {
                 .addComponent(addStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(fixStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(delStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
+                .addComponent(delStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         staffMenuLayout.setVerticalGroup(
             staffMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,9 +112,9 @@ public class StaffView extends javax.swing.JPanel {
                 .addGroup(staffMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addStaffBtn)
                     .addComponent(fixStaffBtn)
-                    .addComponent(delStaffBtn)
                     .addComponent(createAccount)
-                    .addComponent(backBtn))
+                    .addComponent(backBtn)
+                    .addComponent(delStaffBtn))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -146,6 +153,8 @@ public class StaffView extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_fixStaffBtnActionPerformed
 
+
+
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         controller.setViewStaff(backBtn);
     }//GEN-LAST:event_backBtnActionPerformed
@@ -153,6 +162,22 @@ public class StaffView extends javax.swing.JPanel {
     private void createAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_createAccountActionPerformed
+
+    private void delStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delStaffBtnActionPerformed
+        Staff c = DefaultStaffView.getStaffSelected();
+        if (c == null) {
+            JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Nhân Viên Cần Xóa", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int check = JOptionPane.showConfirmDialog(this, "Bạn có Chắc Muốn Xoá Nhân Viên này? \n Việc xoá nhân viên có thể làm mất thông tin mãi mãi ", "", JOptionPane.QUESTION_MESSAGE);
+            if (check == JOptionPane.YES_OPTION) {
+                boolean isDel = ss.delete(c);
+                if (isDel) {
+                    controller.setViewCustomer(new JButton());
+                    JOptionPane.showMessageDialog(this, "Đã Xoá Thành Công", "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_delStaffBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
