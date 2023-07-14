@@ -15,21 +15,26 @@ import util.Validate;
  * @author Admin
  */
 public class AddRoomView extends javax.swing.JPanel {
+
     private RoomService rs = new RoomService();
     private Room roomfix;
+
     public AddRoomView() {
         initComponents();
-        
+
     }
-    public AddRoomView(int nul){
+
+    public AddRoomView(int nul) {
         roomfix = rs.findById(DefaultRoomView.getRoomSelected());
         initComponents();
         header.setText("Sửa Phòng");
         addRoomBtn.setText("Sửa Thông Tin");
         roomName.setText(roomfix.getName());
         roomArea.setText(String.valueOf(roomfix.getArea()));
-        roomType.setSelectedItem((Object)roomfix.getRoomType());
-    };
+        roomType.setSelectedItem((Object) roomfix.getRoomType());
+    }
+
+    ;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -152,43 +157,78 @@ public class AddRoomView extends javax.swing.JPanel {
     }//GEN-LAST:event_roomTypeActionPerformed
 
     private void addRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRoomBtnActionPerformed
-        boolean check;
-        config();
-        ArrayList<Integer> t1 = Validate.checkMutiLine("empty", roomName.getText(),roomArea.getText());
-        ArrayList<Integer> t2 = Validate.checkMutiLine("isNumber",roomArea.getText());
-        if(!t1.isEmpty()){
-            callMessErrorEmpty(t1);
-        }else if(!t2.isEmpty()){
-            callMessErrorNumber(t2);
-        }else{
-            String name = roomName.getText();
-            if(rs.testName(name)){
-                error1.setForeground(new Color(255, 0, 0));
-                error1.setText("Tên Phòng đã tồn tại");
-            }else{
-                
-            double area = Double.parseDouble( roomArea.getText());
-            String type = (String)roomType.getSelectedItem();
-            int id = convertToId(type);
-           check =  rs.add(new Room(id, name, area, type,false));
-            if (check) {
-                messInfo.setForeground(new Color(13, 110, 253));
-                messInfo.setText("Thêm Phòng Thành Công");
-            } else {
-                messInfo.setForeground(new Color(255, 0, 0));
-                messInfo.setText("Thêm Phòng Thất Bại");
-            }
-            }
+        if (addRoomBtn.getText() == "Tạo") {
+            addRoom();
+        } else {
+            fixRoom();
         }
-        
+
     }//GEN-LAST:event_addRoomBtnActionPerformed
-     private void config() {
+    private void config() {
         error1.setText("");
         error2.setText("");
         error3.setText("");
-        
+
     }
-     private void callMessErrorEmpty(ArrayList<Integer> idError) {
+
+    private void fixRoom() {
+        boolean check = validateRoom();
+        if (check) {
+            String name = roomName.getText();
+            double area = Double.parseDouble(roomArea.getText());
+            String type = (String) roomType.getSelectedItem();
+            check = rs.update(new Room(roomfix.getId_room(), name, area, type, false));
+            if (check) {
+                messInfo.setForeground(new Color(13, 110, 253));
+                messInfo.setText("Sửa Phòng Thành Công");
+            } else {
+                messInfo.setForeground(new Color(255, 0, 0));
+                messInfo.setText("Sửa Phòng Thất Bại");
+            }
+
+        }
+    }
+
+    private boolean validateRoom() {
+        config();
+        ArrayList<Integer> t1 = Validate.checkMutiLine("empty", roomName.getText(), roomArea.getText());
+        ArrayList<Integer> t2 = Validate.checkMutiLine("isNumber", roomArea.getText());
+        if (!t1.isEmpty()) {
+            callMessErrorEmpty(t1);
+            return false;
+        } else if (!t2.isEmpty()) {
+            callMessErrorNumber(t2);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private void addRoom() {
+        boolean check = validateRoom();
+        if (check) {
+            String name = roomName.getText();
+            if (rs.testName(name)) {
+                error1.setForeground(new Color(255, 0, 0));
+                error1.setText("Tên Phòng đã tồn tại");
+            } else {
+
+                double area = Double.parseDouble(roomArea.getText());
+                String type = (String) roomType.getSelectedItem();
+                int id = convertToId(type);
+                check = rs.add(new Room(id, name, area, type, false));
+                if (check) {
+                    messInfo.setForeground(new Color(13, 110, 253));
+                    messInfo.setText("Thêm Phòng Thành Công");
+                } else {
+                    messInfo.setForeground(new Color(255, 0, 0));
+                    messInfo.setText("Thêm Phòng Thất Bại");
+                }
+            }
+        }
+    }
+
+    private void callMessErrorEmpty(ArrayList<Integer> idError) {
         for (Integer i : idError) {
 
             switch (i) {
@@ -210,7 +250,8 @@ public class AddRoomView extends javax.swing.JPanel {
         }
 
     }
-     private void callMessErrorNumber(ArrayList<Integer> idError) {
+
+    private void callMessErrorNumber(ArrayList<Integer> idError) {
         for (Integer i : idError) {
 
             switch (i) {
@@ -224,7 +265,8 @@ public class AddRoomView extends javax.swing.JPanel {
         }
 
     }
-    private int convertToId(String type){
+
+    private int convertToId(String type) {
         switch (type) {
             case "Phòng Thường":
                 return 1;

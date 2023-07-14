@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
+
 /**
  *
  * @author Admin
@@ -46,11 +47,20 @@ public class Validate {
         }
     }
 
+    public static boolean checkNumberPositive(String str) {
+        int i = Integer.parseInt(str);
+        if (i > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private static ArrayList<Integer> checkIsNumber(String[] str) {
         ArrayList<Integer> a = new ArrayList<>();
         int i = 1;
         for (String s : str) {
-            if (!checkRegex(s,REGEX_NUMBER)) {
+            if (!checkRegex(s, REGEX_NUMBER)) {
                 a.add(i);
             }
             i++;
@@ -71,11 +81,11 @@ public class Validate {
     }
     private static final String DATE_FORMAT = "dd/MM/yyyy";
 
-    public static ArrayList<Integer> checkisValidDate(String[]str){
+    public static ArrayList<Integer> checkisValidDate(String[] str) {
         ArrayList<Integer> a = new ArrayList<>();
         int i = 1;
-        for (String s : str){
-            if(!isValidDate(s)){
+        for (String s : str) {
+            if (!isValidDate(s)) {
                 a.add(i);
             }
             i++;

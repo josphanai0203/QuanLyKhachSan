@@ -2,7 +2,7 @@ package dao;
 
 
 import controller.WareHouseService;
-import database.JDBCUtil;
+import util.JDBCUtil;
 import model.WareHouse;
 import service.IWareHouseService;
 

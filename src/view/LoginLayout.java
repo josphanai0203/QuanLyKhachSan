@@ -156,25 +156,24 @@ public class LoginLayout extends javax.swing.JFrame {
     }//GEN-LAST:event_accountInputActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        accountError.setText("");
-//        passError.setText("");
-//        wrongAccount.setText("");
-//        String account = accountInput.getText();
-//        String pass = passInput.getText();
-//        System.out.println(us.encryptPassword("123456"));
-//        if (account.isBlank()) {
-//            accountError.setText("Vui lòng nhập tài khoản!");
-//        } else if (pass.isBlank()) {
-//            passError.setText("Vui lòng nhập mật khẩu!");
-//        } else if (us.checkLogIn(account, pass)) {
+        accountError.setText("");
+        passError.setText("");
+        wrongAccount.setText("");
+        String account = accountInput.getText();
+        String pass = passInput.getText();
+        if (account.isBlank()) {
+            accountError.setText("Vui lòng nhập tài khoản!");
+        } else if (pass.isBlank()) {
+            passError.setText("Vui lòng nhập mật khẩu!");
+        } else if (us.checkLogIn(account, pass)) {
             MenuFrame menu = new MenuFrame();
             menu.setVisible(true);
             this.setVisible(false);
 
-//        } else {
-//            wrongAccount.setText("Tài Khoản Hoặc Mật Khẩu Không Chính Xác!");
-//        }
-
+        } else {
+            wrongAccount.setText("Tài Khoản Hoặc Mật Khẩu Không Chính Xác!");
+        }
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

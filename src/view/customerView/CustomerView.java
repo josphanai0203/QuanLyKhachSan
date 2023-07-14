@@ -15,17 +15,18 @@ import model.Customer;
  * @author Admin
  */
 public class CustomerView extends javax.swing.JPanel {
+
     private MenuController controller;
     private CustomerService cs = new CustomerService();
+
     public CustomerView() {
-        
         initComponents();
         controller = new MenuController(cusView);
         controller.setViewCustomer(new JButton());
-        
+        backBtn.setEnabled(Boolean.FALSE);
+
     }
 
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,38 +128,49 @@ public class CustomerView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-       controller.setViewCustomer(backBtn);
+        fixCusBtn.setEnabled(Boolean.TRUE);
+        delCusBtn.setEnabled(Boolean.TRUE);
+        backBtn.setEnabled(Boolean.FALSE);
+        DefaultCustomerView.setNullSelect();
+        controller.setViewCustomer(backBtn);
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void addCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerBtnActionPerformed
-       controller.setViewCustomer(addCustomerBtn);
+        fixCusBtn.setEnabled(Boolean.FALSE);
+        delCusBtn.setEnabled(Boolean.FALSE);
+        backBtn.setEnabled(Boolean.TRUE);
+        controller.setViewCustomer(addCustomerBtn);
     }//GEN-LAST:event_addCustomerBtnActionPerformed
 
     private void fixCusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixCusBtnActionPerformed
+
         Customer c = DefaultCustomerView.getCustomerSelected();
-        if(c==null){
-            JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Nhân Viên Cần Sửa Thông Tin","Thông Báo",JOptionPane.ERROR_MESSAGE);
-        }else {
-           controller.setViewCustomer(fixCusBtn);
+        if (c == null) {
+            JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Nhân Viên Cần Sửa Thông Tin", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+        } else {
+            fixCusBtn.setEnabled(Boolean.FALSE);
+            delCusBtn.setEnabled(Boolean.FALSE);
+            backBtn.setEnabled(Boolean.TRUE);
+            controller.setViewCustomer(fixCusBtn);
         }
     }//GEN-LAST:event_fixCusBtnActionPerformed
 
     private void delCusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delCusBtnActionPerformed
-         Customer c = DefaultCustomerView.getCustomerSelected();
-        if(c==null){
-            JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Nhân Viên Cần Xoá","Thông Báo",JOptionPane.INFORMATION_MESSAGE);
-        }else {
-           int check = JOptionPane.showConfirmDialog(this, "Bạn có Chắc Muốn Xoá Khách Hàng này ? \n Việc xoá khách hàng có thể làm mất thông tin mãi mãi " , "", JOptionPane.QUESTION_MESSAGE);
-           if(check == JOptionPane.YES_OPTION){
+        Customer c = DefaultCustomerView.getCustomerSelected();
+        if (c == null) {
+            JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Nhân Viên Cần Xoá", "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            int check = JOptionPane.showConfirmDialog(this, "Bạn có Chắc Muốn Xoá Khách Hàng này ? \n Việc xoá khách hàng có thể làm mất thông tin mãi mãi ", "Xác Nhận",JOptionPane.YES_OPTION);
+            if (check == JOptionPane.YES_OPTION) {
                 boolean isDel = cs.delete(c);
-                if(isDel){
+                if (isDel) {
                     controller.setViewCustomer(new JButton());
-                    JOptionPane.showMessageDialog(this, "Đã Xoá Thành Công","Thông Báo",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Đã Xoá Thành Công", "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
                 }
-           }
+            }
         }
     }//GEN-LAST:event_delCusBtnActionPerformed
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCustomerBtn;

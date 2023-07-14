@@ -18,10 +18,8 @@ import view.WareHouseView.FixWareView;
 import view.WareHouseView.WareHouseView;
 import view.customerView.AddCustomerView;
 import view.customerView.DefaultCustomerView;
-import view.customerView.FixCusView;
 import view.roomView.AddRoomView;
 import view.roomView.DefaultRoomView;
-import view.roomView.FixRoomView;
 import view.staffView.AddStaffView;
 import view.staffView.DefaultStaffView;
 import view.staffView.FixStaffView;
@@ -125,7 +123,7 @@ public class MenuController {
                 node = new AddCustomerView();
                 break;
             case "Sửa Khách Hàng":
-                node = new FixCusView();
+                node = new AddCustomerView("fix");
                 break;
             case "Trở Lại":
                 node = new DefaultCustomerView();
