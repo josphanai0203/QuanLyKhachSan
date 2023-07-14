@@ -68,7 +68,7 @@
                               <Component id="fixiname" min="-2" pref="212" max="-2" attributes="0"/>
                               <Component id="fixiquantity" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="693" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -77,27 +77,28 @@
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel25" min="-2" pref="83" max="-2" attributes="0"/>
-                              <Component id="jLabel24" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jDatengayNhap" min="-2" pref="145" max="-2" attributes="0"/>
+                              <Component id="jDateHSD" min="-2" pref="145" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="fixidayin" min="-2" pref="320" max="-2" attributes="0"/>
-                      <Component id="fixihsd" min="-2" pref="177" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="332" max="-2" attributes="0"/>
-                          <Component id="fixbtn" min="-2" pref="304" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
                           <Component id="message" min="-2" pref="489" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="332" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="fixbtn" min="-2" pref="304" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel25" min="-2" pref="83" max="-2" attributes="0"/>
+                                  <Component id="jLabel24" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="292" max="32767" attributes="0"/>
@@ -117,30 +118,33 @@
                       <Component id="fixiquantity" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fixidayin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jLabel23" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="fixipricein" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                      <Component id="jDatengayNhap" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel23" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="fixipricein" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel25" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel22" max="32767" attributes="0"/>
+                              <Component id="fixipriceout" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+                          <Component id="fixbtn" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                          <Component id="fixihsd" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel25" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <Component id="jDateHSD" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel22" max="32767" attributes="0"/>
-                      <Component id="fixipriceout" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
-                  <Component id="fixbtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="message" min="-2" pref="27" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               </Group>
@@ -181,14 +185,9 @@
         </Component>
         <Component class="javax.swing.JTextField" name="fixipriceout">
         </Component>
-        <Component class="javax.swing.JTextField" name="fixidayin">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fixidayinActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="fixbtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Th&#xea;m Kh&#xe1;ch H&#xe0;ng"/>
+            <Property name="text" type="java.lang.String" value="S&#x1b0;&#x309;a Sa&#x309;n Ph&#xe2;&#x309;m"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fixbtnActionPerformed"/>
@@ -209,7 +208,9 @@
             <Property name="text" type="java.lang.String" value="Ha&#x323;n S&#x1b0;&#x309; Du&#x323;ng"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="fixihsd">
+        <Component class="com.toedter.calendar.JDateChooser" name="jDatengayNhap">
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateHSD">
         </Component>
       </SubComponents>
     </Container>

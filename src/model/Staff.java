@@ -20,12 +20,11 @@ public class Staff {
     private String sdt;
     private String diaChi;
     private Payroll maLuong;
-    private User maTaiKhoan;
 
     public Staff() {
     }
 
-    public Staff(String tenNhanVien, Date ngaySinh, String gioiTinh, String chucVu, String sdt, String diaChi, Payroll maLuong, User maTaiKhoan) {
+    public Staff(String tenNhanVien, Date ngaySinh, String gioiTinh, String chucVu, String sdt, String diaChi, Payroll maLuong) {
         this.tenNhanVien = tenNhanVien;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
@@ -33,11 +32,9 @@ public class Staff {
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.maLuong = maLuong;
-        this.maTaiKhoan = maTaiKhoan;
     }
 
-    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, String maChucVu, String sdt, String diaChi) {
-        this.maNhanVien = maNhanVien;
+    public Staff( String tenNhanVien, Date ngaySinh, String gioiTinh, String maChucVu, String sdt, String diaChi) {
         this.tenNhanVien = tenNhanVien;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
@@ -46,6 +43,19 @@ public class Staff {
         this.diaChi = diaChi;
     }
 
+    public Staff(int maNhanVien, String tenNhanVien, Date ngaySinh, String gioiTinh, String chucVu, String sdt, String diaChi) {
+        this.maNhanVien = maNhanVien;
+        this.tenNhanVien = tenNhanVien;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.chucVu = chucVu;
+        this.sdt = sdt;
+        this.diaChi = diaChi;
+    }
+
+    
+    
+    
     public int getMaNhanVien() {
         return maNhanVien;
     }
@@ -100,14 +110,6 @@ public class Staff {
 
     public Payroll setMaLuong(Payroll maLuong) {
         return this.maLuong = maLuong;
-    }
-
-    public User getMaTaiKhoan() {
-        return maTaiKhoan;
-    }
-
-    public void setMaTaiKhoan(User maTaiKhoan) {
-        this.maTaiKhoan = maTaiKhoan;
     }
 
     public String getChucVu() {

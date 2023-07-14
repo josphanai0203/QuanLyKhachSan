@@ -39,8 +39,8 @@ public class CustomerView extends javax.swing.JPanel {
         cusMenu = new javax.swing.JPanel();
         addCustomerBtn = new javax.swing.JButton();
         fixCusBtn = new javax.swing.JButton();
-        delCusBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        delCusBtn1 = new javax.swing.JButton();
         cusView = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1110, 800));
@@ -59,17 +59,17 @@ public class CustomerView extends javax.swing.JPanel {
             }
         });
 
-        delCusBtn.setText("Xoá Khách Hàng");
-        delCusBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                delCusBtnActionPerformed(evt);
-            }
-        });
-
         backBtn.setText("Trở Lại");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
+            }
+        });
+
+        delCusBtn1.setText("Xoá Khách Hàng");
+        delCusBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delCusBtn1ActionPerformed(evt);
             }
         });
 
@@ -82,8 +82,8 @@ public class CustomerView extends javax.swing.JPanel {
                 .addComponent(addCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
                 .addComponent(fixCusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(delCusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(delCusBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
@@ -95,8 +95,8 @@ public class CustomerView extends javax.swing.JPanel {
                 .addGroup(cusMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addCustomerBtn)
                     .addComponent(fixCusBtn)
-                    .addComponent(delCusBtn)
-                    .addComponent(backBtn))
+                    .addComponent(backBtn)
+                    .addComponent(delCusBtn1))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -129,7 +129,7 @@ public class CustomerView extends javax.swing.JPanel {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         fixCusBtn.setEnabled(Boolean.TRUE);
-        delCusBtn.setEnabled(Boolean.TRUE);
+        delCusBtn1.setEnabled(Boolean.TRUE);
         backBtn.setEnabled(Boolean.FALSE);
         DefaultCustomerView.setNullSelect();
         controller.setViewCustomer(backBtn);
@@ -137,7 +137,7 @@ public class CustomerView extends javax.swing.JPanel {
 
     private void addCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerBtnActionPerformed
         fixCusBtn.setEnabled(Boolean.FALSE);
-        delCusBtn.setEnabled(Boolean.FALSE);
+        delCusBtn1.setEnabled(Boolean.FALSE);
         backBtn.setEnabled(Boolean.TRUE);
         controller.setViewCustomer(addCustomerBtn);
     }//GEN-LAST:event_addCustomerBtnActionPerformed
@@ -149,18 +149,22 @@ public class CustomerView extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Nhân Viên Cần Sửa Thông Tin", "Thông Báo", JOptionPane.ERROR_MESSAGE);
         } else {
             fixCusBtn.setEnabled(Boolean.FALSE);
-            delCusBtn.setEnabled(Boolean.FALSE);
+            delCusBtn1.setEnabled(Boolean.FALSE);
             backBtn.setEnabled(Boolean.TRUE);
             controller.setViewCustomer(fixCusBtn);
         }
     }//GEN-LAST:event_fixCusBtnActionPerformed
 
     private void delCusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delCusBtnActionPerformed
+
+    }//GEN-LAST:event_delCusBtnActionPerformed
+
+    private void delCusBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delCusBtn1ActionPerformed
         Customer c = DefaultCustomerView.getCustomerSelected();
         if (c == null) {
             JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Nhân Viên Cần Xoá", "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            int check = JOptionPane.showConfirmDialog(this, "Bạn có Chắc Muốn Xoá Khách Hàng này ? \n Việc xoá khách hàng có thể làm mất thông tin mãi mãi ", "Xác Nhận",JOptionPane.YES_OPTION);
+            int check = JOptionPane.showConfirmDialog(this, "Bạn có Chắc Muốn Xoá Khách Hàng này ? \n Việc xoá khách hàng có thể làm mất thông tin mãi mãi ", "Xác Nhận", JOptionPane.YES_OPTION);
             if (check == JOptionPane.YES_OPTION) {
                 boolean isDel = cs.delete(c);
                 if (isDel) {
@@ -169,7 +173,8 @@ public class CustomerView extends javax.swing.JPanel {
                 }
             }
         }
-    }//GEN-LAST:event_delCusBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delCusBtn1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -177,7 +182,7 @@ public class CustomerView extends javax.swing.JPanel {
     private javax.swing.JButton backBtn;
     private javax.swing.JPanel cusMenu;
     private javax.swing.JPanel cusView;
-    private javax.swing.JButton delCusBtn;
+    private javax.swing.JButton delCusBtn1;
     private javax.swing.JButton fixCusBtn;
     // End of variables declaration//GEN-END:variables
 }
