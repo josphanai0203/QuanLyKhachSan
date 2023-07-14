@@ -20,6 +20,13 @@ public class Room {
         this.id_room = id_room;
     }
 
+    public Room(String name) {
+        this.name = name;
+    }
+
+    public Room() {
+    }
+    
     public void setIsUsed(boolean isUsed) {
         this.isUsed = isUsed;
     }

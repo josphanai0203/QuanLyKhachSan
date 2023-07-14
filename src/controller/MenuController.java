@@ -77,7 +77,7 @@ public class MenuController {
                 node = new AddRoomView();
                 break;
             case "Sửa Thông Tin Phòng":
-                node = new FixRoomView();
+                node = new AddRoomView(1);
                 break;
             case "Trở Lại":
                 node = new DefaultRoomView();
