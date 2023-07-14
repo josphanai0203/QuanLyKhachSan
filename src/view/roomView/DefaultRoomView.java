@@ -35,7 +35,6 @@ public class DefaultRoomView extends javax.swing.JPanel {
 
             @Override
             public boolean isCellEditable(int row, int column) {
-                //all cells false
                 return false;
             }
         };
@@ -49,6 +48,7 @@ public class DefaultRoomView extends javax.swing.JPanel {
             }
         });
         setColumnName(dtm);
+        setColumnWidths(roomTable,100,4000,100,200,200);
         setRow(dtm);
     }
 
@@ -88,8 +88,8 @@ public class DefaultRoomView extends javax.swing.JPanel {
 
     public void crearteCustomer() {
         int row = roomTable.getSelectedRow();
-        int idRoom = (Integer) roomTable.getValueAt(row, 0);
-        roomSelect = new Room(idRoom);
+        int id =  (Integer)roomTable.getValueAt(row, 0);
+        roomSelect = new Room(id);
     }
 
     public static Room getRoomSelected() {

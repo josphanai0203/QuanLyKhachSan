@@ -4,21 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group/>
         <group>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/controller/MenuController.java</file>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/view/customerView/CustomerView.java</file>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/view/WareHouseView/WareHouseView.java</file>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/view/WareHouseView/DefauseWareHouseView.java</file>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/view/WareHouseView/AddWareHouseView.java</file>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/view/MenuFrame.java</file>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/view/LoginLayout.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/view/customerView/CustomerView.java</file>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/view/WareHouseView/DefauseWareHouseView.java</file>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/view/WareHouseView/AddWareHouseView.java</file>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/view/WareHouseView/FixWareView.java</file>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/view/customerView/FixCusView.java</file>
-            <file>file:/C:/Users/PC/Desktop/Assisg/src/view/LoginLayout.java</file>
+            <file>file:/D:/ws/src/view/roomView/AddRoomView.java</file>
+            <file>file:/D:/ws/src/view/customerView/DefaultCustomerView.java</file>
+            <file>file:/D:/ws/src/controller/RoomService.java</file>
+            <file>file:/D:/ws/src/view/WareHouseView/DefauseWareHouseView.java</file>
+            <file>file:/D:/ws/src/view/roomView/DefaultRoomView.java</file>
+            <file>file:/D:/ws/src/controller/MenuController.java</file>
+            <file>file:/D:/ws/src/model/Room.java</file>
+            <file>file:/D:/ws/src/view/MenuFrame.java</file>
+            <file>file:/D:/ws/src/view/roomView/RoomView.java</file>
+            <file>file:/D:/ws/src/view/customerView/FixCusView.java</file>
+            <file>file:/D:/ws/src/dao/RoomDAO.java</file>
+            <file>file:/D:/ws/src/view/WareHouseView/WareHouseView.java</file>
+            <file>file:/D:/ws/src/view/staffView/FixStaffView.java</file>
         </group>
         <group>
             <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/controller/StaffService.java</file>

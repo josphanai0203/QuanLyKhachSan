@@ -205,7 +205,6 @@ public class FixStaffView extends javax.swing.JPanel {
 
     private void fixStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixStaffBtnActionPerformed
         boolean check;
-        
         String ten_nhan_vien = staffName.getText();
         Date ngay_sinh = Date.valueOf(staffYear.getText());
         String gender = "";

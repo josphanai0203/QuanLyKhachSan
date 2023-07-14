@@ -67,7 +67,6 @@ public class StaffDAO implements IStaffService {
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

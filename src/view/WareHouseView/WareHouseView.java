@@ -27,24 +27,12 @@ public class WareHouseView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        wareView = new javax.swing.JPanel();
         wareMenu = new javax.swing.JPanel();
         addbtn = new javax.swing.JButton();
         fixitembtn = new javax.swing.JButton();
         delbtn = new javax.swing.JButton();
         backbtn = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-
-        javax.swing.GroupLayout wareViewLayout = new javax.swing.GroupLayout(wareView);
-        wareView.setLayout(wareViewLayout);
-        wareViewLayout.setHorizontalGroup(
-            wareViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1090, Short.MAX_VALUE)
-        );
-        wareViewLayout.setVerticalGroup(
-            wareViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
-        );
+        wareView = new javax.swing.JPanel();
 
         addbtn.setText("Thêm Sản Phẩm");
         addbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -101,14 +89,14 @@ public class WareHouseView extends javax.swing.JPanel {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout wareViewLayout = new javax.swing.GroupLayout(wareView);
+        wareView.setLayout(wareViewLayout);
+        wareViewLayout.setHorizontalGroup(
+            wareViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        wareViewLayout.setVerticalGroup(
+            wareViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 726, Short.MAX_VALUE)
         );
 
@@ -120,14 +108,14 @@ public class WareHouseView extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(wareMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(wareView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(wareMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(wareView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -172,7 +160,6 @@ public class WareHouseView extends javax.swing.JPanel {
     private javax.swing.JButton backbtn;
     private javax.swing.JButton delbtn;
     private javax.swing.JButton fixitembtn;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel wareMenu;
     private javax.swing.JPanel wareView;
     // End of variables declaration//GEN-END:variables

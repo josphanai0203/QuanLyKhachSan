@@ -16,10 +16,20 @@ import util.Validate;
  */
 public class AddRoomView extends javax.swing.JPanel {
     private RoomService rs = new RoomService();
+    private Room roomfix;
     public AddRoomView() {
         initComponents();
         
     }
+    public AddRoomView(int nul){
+        roomfix = rs.findById(DefaultRoomView.getRoomSelected());
+        initComponents();
+        header.setText("Sửa Phòng");
+        addRoomBtn.setText("Sửa Thông Tin");
+        roomName.setText(roomfix.getName());
+        roomArea.setText(String.valueOf(roomfix.getArea()));
+        roomType.setSelectedItem((Object)roomfix.getRoomType());
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +40,7 @@ public class AddRoomView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        header = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         roomName = new javax.swing.JTextField();
         roomArea = new javax.swing.JTextField();
@@ -43,9 +53,9 @@ public class AddRoomView extends javax.swing.JPanel {
         error2 = new javax.swing.JLabel();
         error3 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Tạo Phòng Mới");
+        header.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        header.setText("Tạo Phòng Mới");
 
         jLabel2.setText("Tên Phòng");
 
@@ -82,7 +92,7 @@ public class AddRoomView extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(428, 428, 428)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(64, 64, 64)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -110,7 +120,7 @@ public class AddRoomView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addComponent(jLabel1)
+                .addComponent(header)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,7 +241,7 @@ public class AddRoomView extends javax.swing.JPanel {
     private javax.swing.JLabel error1;
     private javax.swing.JLabel error2;
     private javax.swing.JLabel error3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel header;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
