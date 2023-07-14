@@ -141,7 +141,13 @@ public class StaffView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStaffBtnActionPerformed
+
+        backBtn.setEnabled(Boolean.TRUE);
+        delStaffBtn.setEnabled(Boolean.FALSE);
+        //fixStaffBtn.setEnabled(Boolean.FALSE);
+        createAccount.setEnabled(Boolean.FALSE);
         controller.setViewStaff(addStaffBtn);
+
     }//GEN-LAST:event_addStaffBtnActionPerformed
 
     private void fixStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixStaffBtnActionPerformed
@@ -150,12 +156,19 @@ public class StaffView extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Nhân Viên Cần Sửa Thông Tin", "Thông Báo", JOptionPane.ERROR_MESSAGE);
         } else {
             controller.setViewStaff(fixStaffBtn);
+            backBtn.setEnabled(Boolean.TRUE);
+            addStaffBtn.setEnabled(Boolean.FALSE);
+            delStaffBtn.setEnabled(Boolean.FALSE);
+            createAccount.setEnabled(Boolean.FALSE);
+            controller.setViewStaff(fixStaffBtn);
         }
     }//GEN-LAST:event_fixStaffBtnActionPerformed
 
-
-
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        backBtn.setEnabled(Boolean.FALSE);
+        addStaffBtn.setEnabled(Boolean.TRUE);
+        delStaffBtn.setEnabled(Boolean.TRUE);
+        createAccount.setEnabled(Boolean.TRUE);
         controller.setViewStaff(backBtn);
     }//GEN-LAST:event_backBtnActionPerformed
 
@@ -168,11 +181,11 @@ public class StaffView extends javax.swing.JPanel {
         if (c == null) {
             JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Nhân Viên Cần Xóa", "Thông Báo", JOptionPane.ERROR_MESSAGE);
         } else {
-            int check = JOptionPane.showConfirmDialog(this, "Bạn có Chắc Muốn Xoá Nhân Viên này? \n Việc xoá nhân viên có thể làm mất thông tin mãi mãi ", "", JOptionPane.QUESTION_MESSAGE);
+            int check = JOptionPane.showConfirmDialog(this, "Bạn có Chắc Muốn Xoá Nhân Viên này? \n Việc xoá nhân viên có thể làm mất thông tin mãi mãi ", "", JOptionPane.YES_NO_OPTION);
             if (check == JOptionPane.YES_OPTION) {
                 boolean isDel = ss.delete(c);
                 if (isDel) {
-                    controller.setViewCustomer(new JButton());
+                    controller.setViewStaff(new JButton());
                     JOptionPane.showMessageDialog(this, "Đã Xoá Thành Công", "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
