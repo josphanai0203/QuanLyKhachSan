@@ -16,7 +16,7 @@ public class StaffService implements IStaffService{
     
     public boolean createStaff(String tenNhanVien, Date ngaySinh, String gioiTinh, String diaChi, String sdt,String maChucVu){
         boolean check;
-        Staff s = new Staff(tenNhanVien, ngaySinh, gioiTinh, maChucVu, sdt, diaChi, null,null);
+        Staff s = new Staff(tenNhanVien, ngaySinh, gioiTinh, maChucVu, sdt, diaChi);
         check = add(s);
         return check;
     }

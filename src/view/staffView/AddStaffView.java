@@ -9,8 +9,10 @@ import controller.StaffService;
 import dao.StaffDAO;
 import java.awt.Color;
 import java.sql.Date;
-import java.util.ArrayList;
+import java.util.*;
 import util.Validate;
+import com.toedter.calendar.JDateChooser;
+
 
 /**
  *
@@ -45,7 +47,6 @@ public class AddStaffView extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         genderFemale = new javax.swing.JRadioButton();
         staffName = new javax.swing.JTextField();
-        staffYear = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -58,6 +59,7 @@ public class AddStaffView extends javax.swing.JPanel {
         errorName = new javax.swing.JLabel();
         errorAdress = new javax.swing.JLabel();
         errorPosition = new javax.swing.JLabel();
+        staffYear = new com.toedter.calendar.JDateChooser();
 
         message.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         message.setForeground(new java.awt.Color(13, 110, 253));
@@ -128,9 +130,7 @@ public class AddStaffView extends javax.swing.JPanel {
                                             .addComponent(staffAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(errorAdress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(188, 188, 188)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(staffYear, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(errorDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(errorDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,17 +152,19 @@ public class AddStaffView extends javax.swing.JPanel {
                         .addComponent(errorGender, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(95, 95, 95))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addComponent(genderFemale)
+                                .addGap(228, 228, 228))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(genderMale)
-                                .addGap(40, 40, 40)))
-                        .addComponent(genderFemale)
-                        .addGap(228, 228, 228))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(genderMale)
+                                    .addComponent(staffYear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(237, 237, 237))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,10 +184,10 @@ public class AddStaffView extends javax.swing.JPanel {
                 .addComponent(errorName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(staffYear, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(staffAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)
-                        .addComponent(staffYear, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2))
                     .addComponent(jLabel6))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -194,7 +196,7 @@ public class AddStaffView extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(errorDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(staffPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,8 +242,8 @@ public class AddStaffView extends javax.swing.JPanel {
         boolean check;
         config();
         //validate 
-        ArrayList<Integer> test1 = Validate.checkMutiLine("empty", staffName.getText(), staffAddress.getText(), staffPhone.getText(), (String) position.getSelectedItem(), staffYear.getText());
-        ArrayList<Integer> test2 = Validate.checkMutiLine("isNumber", staffPhone.getText(), staffYear.getText());
+        ArrayList<Integer> test1 = Validate.checkMutiLine("empty", staffName.getText(), staffAddress.getText(), staffPhone.getText(), (String) position.getSelectedItem());
+        ArrayList<Integer> test2 = Validate.checkMutiLine("isNumber", staffPhone.getText());
         if ((!test1.isEmpty()) || (!genderMale.isSelected() && !genderFemale.isSelected())) {
             if (!genderMale.isSelected() && !genderFemale.isSelected()) {
                 errorGender.setForeground(new Color(255,0,0));
@@ -252,7 +254,7 @@ public class AddStaffView extends javax.swing.JPanel {
             callMessErrorEmpty(test2);
         } else {
             String ten_nhan_vien = staffName.getText();
-            Date nam_sinh = Date.valueOf(staffYear.getText());
+            Date nam_sinh = new Date(staffYear.getDate().getTime());
             String gender = "";
             if (genderMale.isSelected()) {
                 gender += "Nam";
@@ -353,6 +355,6 @@ public class AddStaffView extends javax.swing.JPanel {
     private javax.swing.JTextField staffAddress;
     private javax.swing.JTextField staffName;
     private javax.swing.JTextField staffPhone;
-    private javax.swing.JTextField staffYear;
+    private com.toedter.calendar.JDateChooser staffYear;
     // End of variables declaration//GEN-END:variables
 }
