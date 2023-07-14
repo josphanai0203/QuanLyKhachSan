@@ -1,7 +1,7 @@
 package model;
 
 import java.text.SimpleDateFormat;
-import java.sql.Date;
+import java.util.*;
 import java.text.ParseException;
 
 public class WareHouse {
@@ -12,6 +12,9 @@ public int maW;
     public Date hSD;
     public double priceIn;
     public double priceOut;
+    
+    public WareHouse(){
+    }
 
     public WareHouse(int maW) {
         this.maW = maW;

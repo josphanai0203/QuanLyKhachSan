@@ -212,9 +212,7 @@ public class AddStaffView extends javax.swing.JPanel {
         String dia_chi = staffAddress.getText();
         String so_dien_thoai = staffPhone.getText();
         String tenChucVu = (String) position.getSelectedItem();
-        //int maChucVu = Integer.parseInt(position.getSelectedItem().toString());
-        int maChucVu = StaffDAO.getInstance().findMaChucVu(tenChucVu).getMaChucVu();
-        check = ss.createStaff(ten_nhan_vien, nam_sinh, gender, dia_chi, gender, maChucVu);
+        check = ss.createStaff(ten_nhan_vien, nam_sinh, gender, dia_chi, so_dien_thoai, tenChucVu);
         if (check) {
             message.setText("Thêm Nhân Viên Thành Công");
         } else {

@@ -90,12 +90,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="billBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="serviceBtn">
+            <Component class="javax.swing.JButton" name="warehouseBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="D&#x1ecb;ch v&#x1ee5;"/>
+                <Property name="text" type="java.lang.String" value="Kho Ha&#x300;ng"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="serviceBtnActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="warehouseBtnActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="roomBtn">

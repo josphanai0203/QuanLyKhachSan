@@ -7,7 +7,9 @@ package view;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import controller.MenuController;
-import javax.swing.JPanel;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -25,6 +27,7 @@ public class MenuFrame extends javax.swing.JFrame {
         this.setAlwaysOnTop(true);
         this.setResizable(true);
         this.setVisible(true);
+        setIcon();
         initComponents();
         Toolkit a = Toolkit.getDefaultToolkit();
         int xSize = (int) a.getScreenSize().getWidth();
@@ -34,7 +37,10 @@ public class MenuFrame extends javax.swing.JFrame {
         controler.setView(new JButton());
     }
   
-
+    private void setIcon(){
+        Image icon = Toolkit.getDefaultToolkit().createImage(new File("").getAbsolutePath()+"/src/img/icon/logo24.png");
+        this.setIconImage(icon);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +54,7 @@ public class MenuFrame extends javax.swing.JFrame {
         menuPane = new javax.swing.JPanel();
         customerBtn = new javax.swing.JButton();
         billBtn = new javax.swing.JButton();
-        serviceBtn = new javax.swing.JButton();
+        warehouseBtn = new javax.swing.JButton();
         roomBtn = new javax.swing.JButton();
         staffBtn = new javax.swing.JButton();
         reportBtn = new javax.swing.JButton();
@@ -82,13 +88,13 @@ public class MenuFrame extends javax.swing.JFrame {
         });
         menuPane.add(billBtn);
 
-        serviceBtn.setText("Dịch vụ");
-        serviceBtn.addActionListener(new java.awt.event.ActionListener() {
+        warehouseBtn.setText("Kho Hàng");
+        warehouseBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                serviceBtnActionPerformed(evt);
+                warehouseBtnActionPerformed(evt);
             }
         });
-        menuPane.add(serviceBtn);
+        menuPane.add(warehouseBtn);
 
         roomBtn.setText("Phòng");
         roomBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -155,9 +161,9 @@ public class MenuFrame extends javax.swing.JFrame {
         controler.setView(billBtn);
     }//GEN-LAST:event_billBtnActionPerformed
 
-    private void serviceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serviceBtnActionPerformed
-        controler.setView(serviceBtn);
-    }//GEN-LAST:event_serviceBtnActionPerformed
+    private void warehouseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warehouseBtnActionPerformed
+        controler.setView(warehouseBtn);
+    }//GEN-LAST:event_warehouseBtnActionPerformed
 
     private void customerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerBtnActionPerformed
        controler.setView(customerBtn);
@@ -186,8 +192,8 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JPanel menuPane;
     private javax.swing.JButton reportBtn;
     private javax.swing.JButton roomBtn;
-    private javax.swing.JButton serviceBtn;
     private javax.swing.JButton staffBtn;
     private javax.swing.JPanel viewPane;
+    private javax.swing.JButton warehouseBtn;
     // End of variables declaration//GEN-END:variables
 }

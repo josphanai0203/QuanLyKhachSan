@@ -7,15 +7,21 @@ package controller;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import view.BillView;
+import view.billView.BillView;
 import view.customerView.CustomerView;
 import view.DefaultView;
 import view.ReportView;
 import view.roomView.RoomView;
-import view.ServiceView;
+import view.WareHouseView.AddWareHouseView;
+import view.WareHouseView.DefauseWareHouseView;
+import view.WareHouseView.FixWareView;
+import view.WareHouseView.WareHouseView;
 import view.customerView.AddCustomerView;
 import view.customerView.DefaultCustomerView;
 import view.customerView.FixCusView;
+import view.roomView.AddRoomView;
+import view.roomView.DefaultRoomView;
+import view.roomView.FixRoomView;
 import view.staffView.AddStaffView;
 import view.staffView.DefaultStaffView;
 import view.staffView.FixStaffView;
@@ -42,8 +48,8 @@ public class MenuController {
             case "Khách Hàng":
                 node = new CustomerView();
                 break;
-            case "Dịch vụ":
-                node = new ServiceView();
+            case "Kho Hàng":
+                node = new WareHouseView();
                 break;
             case "Phòng":
                 node = new RoomView();
@@ -65,7 +71,55 @@ public class MenuController {
         root.validate();
         root.repaint();
     }
-     public void setViewCustomer(JButton btn) {
+
+    public void setViewRoom(JButton btn) {
+        switch (btn.getText()) {
+            case "Tạo Phòng Mới":
+                node = new AddRoomView();
+                break;
+            case "Sửa Thông Tin Phòng":
+                node = new FixRoomView();
+                break;
+            case "Trở Lại":
+                node = new DefaultRoomView();
+                break;
+            default:
+                node = new DefaultRoomView();
+                break;
+
+        }
+        root.removeAll();
+        root.setLayout(new BorderLayout());
+        root.add(node);
+        root.validate();
+        root.repaint();
+
+    }
+
+    public void setViewStaff(JButton btn) {
+        switch (btn.getText()) {
+            case "Thêm Nhân Viên":
+                node = new AddStaffView();
+                break;
+            case "Sửa Nhân Viên":
+                node = new FixStaffView();
+                break;
+            case "Trở Lại":
+                node = new DefaultStaffView();
+                break;
+            default:
+                node = new DefaultStaffView();
+                break;
+
+        }
+        root.removeAll();
+        root.setLayout(new BorderLayout());
+        root.add(node);
+        root.validate();
+        root.repaint();
+    }
+
+    public void setViewCustomer(JButton btn) {
         switch (btn.getText()) {
             case "Thêm Khách Hàng":
                 node = new AddCustomerView();
@@ -87,31 +141,28 @@ public class MenuController {
         root.validate();
         root.repaint();
     }
-    public void sentDate(Object data){
-        
-    }
-    
-    public void setViewStaff(JButton btn){
-        switch (btn.getText()) {
-            case "Thêm Nhân Viên":
-                node = new AddStaffView();
-                break;
-            case "Sửa Nhân Viên":
-                node = new FixStaffView();
-                break;
-            case "Trở Lại":
-                node = new DefaultStaffView();
-                break;
-            default:
-                node = new DefaultStaffView();
-                break;
 
+    public void setViewWareHouse(JButton btn) {
+        switch (btn.getText()) {
+            case "Thêm Sản Phẩm":
+                node = new AddWareHouseView();
+                break;
+            case "Sửa Mã Hàng":
+                node = new FixWareView();
+                break;
+            case "Trở Lại":
+                node = new DefauseWareHouseView();
+               break;
+            default:
+                node = new DefauseWareHouseView();
+                break;
         }
         root.removeAll();
         root.setLayout(new BorderLayout());
         root.add(node);
         root.validate();
         root.repaint();
-    } 
-     
+
+    }
+
 }

@@ -217,9 +217,7 @@ public class FixStaffView extends javax.swing.JPanel {
         String dia_chi = staffAdress.getText();
         String so_dien_thoai = staffPhone.getText();
         String tenChucVu = (String) position.getSelectedItem();
-        int maChucVu = StaffDAO.getInstance().findMaChucVu(tenChucVu).getMaChucVu();
-        int maNhanVien = staffFix.getMaNhanVien();
-        Staff s = new Staff(maNhanVien, ten_nhan_vien, ngay_sinh, dia_chi, StaffDAO.getInstance().findTenChucVu(maChucVu), gender, dia_chi);
+        Staff s = new Staff(staffFix.getMaNhanVien(), ten_nhan_vien, ngay_sinh, dia_chi, tenChucVu, so_dien_thoai, dia_chi);
         check = ss.update(s);
 
         if (check) {

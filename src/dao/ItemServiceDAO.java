@@ -54,7 +54,7 @@ public class ItemServiceDAO implements IItemService {
         ArrayList<Service> s = new ArrayList<>();
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM dich_vu";
+            String sql = "SELECT * FROM dich_vu dv inner join kho_hang kh on kh.ma_kho_hang = dv.ma_kho_hang inner join khach_hang kh1 on kh1.ma_khach_hang = dv.ma_khach_hang";
             PreparedStatement st = con.prepareStatement(sql);
             //b3: thuc thi cau lenh sql
 //            System.out.println("Ban da thuc thi: " + sql);

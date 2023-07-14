@@ -1,16 +1,11 @@
 package controller;
 
-import dao.PayrollDAO;
 import dao.StaffDAO;
-import dao.UserDAO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import model.Payroll;
-import model.Position;
 import model.Staff;
-import model.User;
 import service.IStaffService;
 
 public class StaffService implements IStaffService{
@@ -19,12 +14,9 @@ public class StaffService implements IStaffService{
     
     public static ArrayList<Staff> list = StaffDAO.getInstance().selectAll();
     
-    public boolean createStaff(String tenNhanVien, Date ngaySinh, String gioiTinh, String diaChi, String sdt,int maChucVu){
+    public boolean createStaff(String tenNhanVien, Date ngaySinh, String gioiTinh, String diaChi, String sdt,String maChucVu){
         boolean check;
-        //Position p = sd.findTenChucVu(maChucVu);
-        Staff s = new Staff(tenNhanVien, ngaySinh, gioiTinh, sdt, diaChi);
-        Position position = new Position(maChucVu);
-        s.setMaChucVu(position);
+        Staff s = new Staff(tenNhanVien, ngaySinh, gioiTinh, maChucVu, sdt, diaChi, null,null);
         check = add(s);
         return check;
     }
