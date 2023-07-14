@@ -3,9 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/customerView/FixCusView.java</file>
+            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/customerView/AddCustomerView.java</file>
             <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/staffView/AddStaffView.java</file>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/staffView/FixStaffView.java</file>
         </group>
         <group>
             <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/controller/StaffService.java</file>
@@ -13,18 +12,6 @@
             <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/controller/CustomerService.java</file>
             <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/dao/StaffDAO.java</file>
             <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/staffView/FixStaffView.java</file>
-        </group>
-        <group>
-            <file>file:/D:/ws/src/view/roomView/AddRoomView.java</file>
-            <file>file:/D:/ws/src/model/Room.java</file>
-            <file>file:/D:/ws/src/view/customerView/DefaultCustomerView.java</file>
-            <file>file:/D:/ws/src/view/roomView/RoomView.java</file>
-            <file>file:/D:/ws/src/controller/RoomService.java</file>
-            <file>file:/D:/ws/src/view/customerView/FixCusView.java</file>
-            <file>file:/D:/ws/src/dao/RoomDAO.java</file>
-            <file>file:/D:/ws/src/view/roomView/DefaultRoomView.java</file>
-            <file>file:/D:/ws/src/view/staffView/FixStaffView.java</file>
-            <file>file:/D:/ws/src/controller/MenuController.java</file>
         </group>
     </open-files>
 </project-private>

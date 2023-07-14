@@ -2,6 +2,9 @@
 package view.WareHouseView;
 import controller.MenuController;
 import controller.WareHouseService;
+import model.WareHouse;
+
+import javax.swing.*;
 
 public class WareHouseView extends javax.swing.JPanel {
 
@@ -12,7 +15,7 @@ public class WareHouseView extends javax.swing.JPanel {
         initComponents();
          initComponents();
         controller = new MenuController(wareView);
-//        controller.setViewWareHouse(new JButton());
+        controller.setViewWareHouse(new JButton());
     }
 
     /**
@@ -24,138 +27,153 @@ public class WareHouseView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        wareView = new javax.swing.JPanel();
         wareMenu = new javax.swing.JPanel();
-        addMaHang = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        addbtn = new javax.swing.JButton();
+        fixitembtn = new javax.swing.JButton();
+        delbtn = new javax.swing.JButton();
+        backbtn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
-        addMaHang.setText("Them Ma Hang");
-        addMaHang.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout wareViewLayout = new javax.swing.GroupLayout(wareView);
+        wareView.setLayout(wareViewLayout);
+        wareViewLayout.setHorizontalGroup(
+            wareViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1090, Short.MAX_VALUE)
+        );
+        wareViewLayout.setVerticalGroup(
+            wareViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 700, Short.MAX_VALUE)
+        );
+
+        addbtn.setText("Thêm Sản Phẩm");
+        addbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addMaHangActionPerformed(evt);
+                addbtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
+        fixitembtn.setText("Sửa Mã Hàng");
+        fixitembtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fixitembtnActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("jButton3");
+        delbtn.setText("Xoá Mã Hàng");
+        delbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delbtnActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("jButton4");
+        backbtn.setText("Trở Lại");
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout wareMenuLayout = new javax.swing.GroupLayout(wareMenu);
         wareMenu.setLayout(wareMenuLayout);
         wareMenuLayout.setHorizontalGroup(
             wareMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wareMenuLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(addMaHang)
-                .addGap(170, 170, 170)
-                .addComponent(jButton2)
-                .addGap(221, 221, 221)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(97, 97, 97))
+                .addGap(26, 26, 26)
+                .addComponent(addbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(fixitembtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
+                .addComponent(delbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 301, Short.MAX_VALUE)
+                .addComponent(backbtn)
+                .addGap(33, 33, 33))
         );
         wareMenuLayout.setVerticalGroup(
             wareMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wareMenuLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(17, 17, 17)
                 .addGroup(wareMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addMaHang)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addComponent(fixitembtn)
+                    .addComponent(delbtn)
+                    .addComponent(backbtn)
+                    .addComponent(addbtn))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(wareMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(wareMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 726, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1110, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(wareMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(wareMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addMaHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMaHangActionPerformed
-        controller.setViewWareHouse(addMaHang);
-    }//GEN-LAST:event_addMaHangActionPerformed
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backbtnActionPerformed
 
-private javax.swing.JPanel wareView;
+    private void delbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delbtnActionPerformed
+        WareHouse w = DefauseWareHouseView.getWarehouseSelect();
+        if(w==null) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn Mặt Hàng cần Xoá", "thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            int check = JOptionPane.showConfirmDialog(this, "Bạn có muốn xoá vật phẩm này ", "",JOptionPane.INFORMATION_MESSAGE);
+            if(check==JOptionPane.YES_OPTION){
+                boolean isDel = ws.delete(w);
+                if(isDel){
+                    controller.setViewWareHouse(new JButton());
+                    JOptionPane.showMessageDialog(this, "Đã Xoá Thành Công","Thông Báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_delbtnActionPerformed
+
+    private void fixitembtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixitembtnActionPerformed
+        WareHouse w = DefauseWareHouseView.getWarehouseSelect();
+        if(w == null){
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn mặt hàng cần sửa","Thông Báo", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            controller.setViewWareHouse(fixitembtn);
+        }
+    }//GEN-LAST:event_fixitembtnActionPerformed
+
+    private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
+        controller.setViewWareHouse(addbtn);
+    }//GEN-LAST:event_addbtnActionPerformed
+
+
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addMaHang;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton addbtn;
+    private javax.swing.JButton backbtn;
+    private javax.swing.JButton delbtn;
+    private javax.swing.JButton fixitembtn;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel wareMenu;
+    private javax.swing.JPanel wareView;
     // End of variables declaration//GEN-END:variables
 }

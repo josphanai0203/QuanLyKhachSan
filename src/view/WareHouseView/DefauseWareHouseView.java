@@ -1,7 +1,6 @@
 package view.WareHouseView;
 
 import dao.WareHouseDAO;
-
 import model.WareHouse;
 
 import javax.swing.*;
@@ -16,13 +15,14 @@ public class DefauseWareHouseView extends javax.swing.JPanel {
 
     private static WareHouse warehouseSelect;
     private ArrayList<WareHouse> list;
+    private WareHouseDAO wd = new WareHouseDAO();
 
     public DefauseWareHouseView(int num) {
-        initComponents();
+
     }
 
 
-public DefauseWareHouseView() {
+    public DefauseWareHouseView() {
         initComponents();
         WareHouseDAO id = new WareHouseDAO();
         list = id.selectAll();
@@ -32,7 +32,7 @@ public DefauseWareHouseView() {
     private void setTableWareHouse() {
         DefaultTableModel dtm = new DefaultTableModel() {
             @Override
-public boolean isCellEditable(int row, int column) {
+            public boolean isCellEditable(int row, int column) {
                 //all cells false
                 return false;
             }
@@ -42,7 +42,7 @@ public boolean isCellEditable(int row, int column) {
         lsm.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         lsm.addListSelectionListener(new ListSelectionListener() {
             @Override
-public void valueChanged(ListSelectionEvent e) {
+            public void valueChanged(ListSelectionEvent e) {
                 createWareHouse();
             }
         });
@@ -91,9 +91,13 @@ public void valueChanged(ListSelectionEvent e) {
 
     public void createWareHouse() {
         int row = wareTable.getSelectedRow();
-        int maKhohang = (Integer) wareTable.getValueAt(row, 0);
+        int maKhoHang = (Integer) wareTable.getValueAt(row, 0);
         warehouseSelect = new WareHouse();
-        warehouseSelect.setMaW(maKhohang);
+        warehouseSelect.setMaW(maKhoHang);
+    }
+
+    public static WareHouse getWarehouseSelect() {
+        return warehouseSelect;
     }
 
     /**
@@ -105,62 +109,44 @@ public void valueChanged(ListSelectionEvent e) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         wareTable = new javax.swing.JTable();
 
+
         wareTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+                new Object[][]{
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null}
+                },
+                new String[]{
+                        "Title 1", "Title 2", "Title 3", "Title 4"
+                }
         ));
         jScrollPane1.setViewportView(wareTable);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1098, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1086, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 716, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+                                .addGap(15, 15, 15))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+
     private javax.swing.JTable wareTable;
     // End of variables declaration//GEN-END:variables
 }

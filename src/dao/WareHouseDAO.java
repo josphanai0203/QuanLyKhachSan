@@ -1,9 +1,8 @@
 package dao;
 
-import controller.StaffService;
+
 import controller.WareHouseService;
 import database.JDBCUtil;
-import model.Staff;
 import model.WareHouse;
 import service.IWareHouseService;
 
@@ -11,9 +10,8 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class WareHouseDAO implements IWareHouseService {
-    public static WareHouseService ws = new WareHouseService();
 
-
+public static WareHouseService ws = new WareHouseService();
     public static WareHouseDAO getInstance() {
         return new WareHouseDAO();
     }
@@ -131,7 +129,7 @@ public class WareHouseDAO implements IWareHouseService {
                     + "WHERE ma_kho_hang=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, w.getMaW());
-            
+
             //b3: thuc thi cau lenh sql
             kq = st.executeUpdate();
             //b4: xu li
@@ -147,8 +145,40 @@ public class WareHouseDAO implements IWareHouseService {
             return false;
         }
     }
+
     @Override
     public WareHouse findById(WareHouse w) {
         return ws.findById(w);
+    }
+
+    public WareHouse findId(int maKhoHang) {
+
+        WareHouse kq = null;
+        try {
+            Connection con = JDBCUtil.getConnection();
+            String sql = "SELECT * FROM kho_hang kh WHERE kh.ma_kho_hang =? ";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, maKhoHang);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id1 = rs.getInt("ma_kho_hang");
+                String ten_san_pham = rs.getString("ten_san_pham");
+                Date ngay_nhap = rs.getDate("ngay_nhap");
+                int so_luong = rs.getInt("so_luong");
+                double gia_nhap = rs.getDouble("gia_nhap");
+                double gia_ban = rs.getDouble("gia_ban");
+                Date han_su_dung = rs.getDate("han_su_dung");
+                kq = new WareHouse(maKhoHang, ten_san_pham, ngay_nhap, so_luong, gia_nhap, gia_ban, han_su_dung);
+            }
+            JDBCUtil.closeConnection(con);
+            return kq;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+
     }
 }

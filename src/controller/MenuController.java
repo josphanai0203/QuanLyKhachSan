@@ -14,6 +14,7 @@ import view.ReportView;
 import view.roomView.RoomView;
 import view.WareHouseView.AddWareHouseView;
 import view.WareHouseView.DefauseWareHouseView;
+import view.WareHouseView.FixWareView;
 import view.WareHouseView.WareHouseView;
 import view.customerView.AddCustomerView;
 import view.customerView.DefaultCustomerView;
@@ -143,24 +144,25 @@ public class MenuController {
 
     public void setViewWareHouse(JButton btn) {
         switch (btn.getText()) {
-            case "Them Ma Hang":
-//                node = new AddWareHouseView();
+            case "Thêm Sản Phẩm":
+                node = new AddWareHouseView();
                 break;
-//            case "jButton2":
-//                node = new FixCusView();
-//                break;
-//            case "jButton4":
-//                node = new DefaultWareHouseView();
-//                break;
+            case "Sửa Mã Hàng":
+                node = new FixWareView();
+                break;
+            case "Trở Lại":
+                node = new DefauseWareHouseView();
+               break;
             default:
                 node = new DefauseWareHouseView();
-                root.removeAll();
-                root.setLayout(new BorderLayout());
-                root.add(node);
-                root.validate();
-                root.repaint();
-
+                break;
         }
+        root.removeAll();
+        root.setLayout(new BorderLayout());
+        root.add(node);
+        root.validate();
+        root.repaint();
 
     }
+
 }
