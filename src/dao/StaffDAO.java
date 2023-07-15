@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import model.Staff;
 import service.IStaffService;
 import java.sql.*;
-import database.JDBCUtil;
+import util.JDBCUtil;
 
 public class StaffDAO implements IStaffService {
 

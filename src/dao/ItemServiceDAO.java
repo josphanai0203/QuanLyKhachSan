@@ -1,7 +1,7 @@
 package dao;
 
 import controller.ItemServiceService;
-import database.JDBCUtil;
+import util.JDBCUtil;
 import model.Service;
 import service.IItemService;
 

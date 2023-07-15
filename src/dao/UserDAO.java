@@ -5,7 +5,7 @@
 package dao;
 
 import controller.UserService;
-import database.JDBCUtil;
+import util.JDBCUtil;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -20,13 +20,15 @@ import service.IUser;
  *
  * @author Trinh
  */
-public class UserDAO implements IUser{
+public class UserDAO implements IUser {
+
     private static UserService cu = new UserService();
-    public static UserDAO getInstance(){
+
+    public static UserDAO getInstance() {
         return new UserDAO();
     }
-   
-    public  boolean add(User t) {
+
+    public boolean add(User t) {
         int update = 0;
         try {
             Connection con = JDBCUtil.getConnection();
@@ -34,9 +36,9 @@ public class UserDAO implements IUser{
                     + " VALUES ( ?, ?, ?)";
 
             PreparedStatement st = con.prepareStatement(sql);
-            
+
             String matKhau = cu.encryptPassword(t.getMatKhau());
-                        
+
             st.setString(1, t.getTenTaiKhoan());
             //st.setString(2, t.getMatKhau());
             st.setString(2, matKhau);
@@ -46,7 +48,6 @@ public class UserDAO implements IUser{
 
 //            System.out.println("Ban da thuc thi: " + sql);
 //            System.out.println("Co " + update + " bi thay doi");
-
             JDBCUtil.closeConnection(con);
             return update > 0;
 
@@ -55,15 +56,13 @@ public class UserDAO implements IUser{
             return false;
         }
     }
+
     public ArrayList<User> selectAll() {
         ArrayList<User> kq = new ArrayList<>();
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM tai_khoan";
+            String sql = "SELECT * FROM tai_khoan tk inner join nhan_vien nv on nv.ma_nhan_vien = tk.ma_nhan_vien inner join chuc_vu cv on cv.ma_chuc_vu = nv.ma_chuc_vu";
             PreparedStatement st = con.prepareStatement(sql);
-            //b3: thuc thi cau lenh sql  
-            //System.out.println("Ban da thuc thi: " + sql);
-
             ResultSet rs = st.executeQuery();
 
             //b4: xu li 
@@ -72,10 +71,17 @@ public class UserDAO implements IUser{
                 String ten_tai_khoan = rs.getString("ten_tai_khoan");
                 String mat_khau = rs.getString("mat_khau");
                 boolean admin = rs.getBoolean("admin");
-                
-                User u1 = new User(ma_tai_khoan, ten_tai_khoan, mat_khau, admin);
+                int ma_nhan_vien = rs.getInt("ma_nhan_vien");
+                String ten_nhan_vien = rs.getString("ten_nhan_vien");
+                Date ngay_sinh = rs.getDate("ngay_sinh");
+                String gioi_tinh = rs.getString("gioi_tinh");
+                String chuc_vu = rs.getString("ten_chuc_vu");
+                String so_dien_thoai = rs.getString("so_dien_thoai");
+                String dia_chi = rs.getString("dia_chi");
+                Staff s1 = new Staff(ma_nhan_vien, ten_nhan_vien, ngay_sinh, gioi_tinh, chuc_vu, so_dien_thoai, dia_chi);
+                User u1 = new User(ma_tai_khoan, ten_tai_khoan, mat_khau, admin, s1);
                 kq.add(u1);
-                
+
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
@@ -85,8 +91,9 @@ public class UserDAO implements IUser{
 
         return kq;
     }
+
     public boolean update(User t) {
-         int kq = 0;
+        int kq = 0;
         try {
             Connection con = JDBCUtil.getConnection();
             String sql = "UPDATE tai_khoan "
@@ -95,8 +102,7 @@ public class UserDAO implements IUser{
                     + " WHERE ma_tai_khoan=?";
             PreparedStatement st = con.prepareStatement(sql);
             //st.setInt(1, t.getMaTaiKhoan());
-            
-            
+
             st.setString(1, t.getTenTaiKhoan());
             st.setString(2, t.getMatKhau());
             st.setBoolean(3, t.isAdmin());
@@ -134,13 +140,13 @@ public class UserDAO implements IUser{
 
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
-            return kq>0;
+            return kq > 0;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             return false;
         }
-    
+
     }
 
     @Override
@@ -168,14 +174,14 @@ public class UserDAO implements IUser{
 
         return kq;
     }
-    
+
     public User findByName(String name) {
         User kq = null;
         try {
             Connection con = JDBCUtil.getConnection();
             String sql = "SELECT * FROM tai_khoan tk WHERE tk.ten_tai_khoan =? ";
             PreparedStatement st = con.prepareStatement(sql);
-            st.setString(1,name );
+            st.setString(1, name);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 int ma_tai_khoan = rs.getInt("ma_tai_khoan");
@@ -192,5 +198,22 @@ public class UserDAO implements IUser{
         }
 
         return kq;
+    }
+
+    public boolean checkLogin(String tenTaiKhoan, String matKhau) {
+        String sql = "SELECT * FROM tai_khoan tk WHERE tk.ten_tai_khoan = ? and mat_khau = ?";
+        try (Connection con = JDBCUtil.getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
+            st.setString(1, tenTaiKhoan);
+            st.setString(2, matKhau);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+           return false;
+        }
+
     }
 }
