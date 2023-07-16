@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import model.RegistrationForm;
 
 /**
@@ -22,11 +24,14 @@ public class RegisterFormDAO {
         try {
             Connection con = JDBCUtil.getConnection();
             String sql = "INSERT INTO dang_ki (ma_phong,thoi_gian_thue,ngay_dang_ki) "
-                    + " VALUES ( ?, ?)";
+                    + " VALUES ( ?, ?,?)";
 
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, r.getMaPhong().getId_room());
             st.setInt(2, r.getThoiGianThue());
+            LocalDateTime lo = LocalDateTime.now();
+            Timestamp t = Timestamp.valueOf(lo);
+            st.setTimestamp(3, t);
             update = st.executeUpdate();
             JDBCUtil.closeConnection(con);
             return update > 0;
