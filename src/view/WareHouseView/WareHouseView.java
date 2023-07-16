@@ -1,5 +1,5 @@
-
 package view.WareHouseView;
+
 import controller.MenuController;
 import controller.WareHouseService;
 import model.WareHouse;
@@ -10,10 +10,10 @@ public class WareHouseView extends javax.swing.JPanel {
 
     private MenuController controller;
     private WareHouseService ws = new WareHouseService();
-    
+
     public WareHouseView() {
         initComponents();
-         initComponents();
+        initComponents();
         controller = new MenuController(wareView);
         controller.setViewWareHouse(new JButton());
         backbtn.setEnabled(Boolean.FALSE);
@@ -121,48 +121,56 @@ public class WareHouseView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-       fixitembtn.setEnabled(Boolean.TRUE);
-       delbtn.setEnabled(Boolean.TRUE);
-       backbtn.setEnabled(Boolean.FALSE);
+        fixitembtn.setEnabled(Boolean.TRUE);
+        delbtn.setEnabled(Boolean.TRUE);
+        backbtn.setEnabled(Boolean.FALSE);
+        addbtn.setEnabled(Boolean.TRUE);
         DefauseWareHouseView.setNullSelect();
         controller.setViewWareHouse(backbtn);
 
     }//GEN-LAST:event_backbtnActionPerformed
 
-    private void delbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delbtnActionPerformed
+    private void delbtnActionPerformed(java.awt.event.ActionEvent evt) {
+
+//GEN-FIRST:event_delbtnActionPerformed
         WareHouse w = DefauseWareHouseView.getWarehouseSelect();
-        if(w==null) {
+        if (w == null) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn Mặt Hàng cần Xoá", "thông báo", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            int check = JOptionPane.showConfirmDialog(this, "Bạn có muốn xoá mặt hàng này ", "",JOptionPane.INFORMATION_MESSAGE);
-            if(check==JOptionPane.YES_OPTION){
+        } else {
+            int check = JOptionPane.showConfirmDialog(this, "Bạn có muốn xoá mặt hàng này ", "", JOptionPane.INFORMATION_MESSAGE);
+            if (check == JOptionPane.YES_OPTION) {
                 boolean isDel = ws.delete(w);
-                if(isDel){
+                if (isDel) {
                     controller.setViewWareHouse(new JButton());
-                    JOptionPane.showMessageDialog(this, "Đã Xoá Thành Công","Thông Báo", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Đã Xoá Thành Công", "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }
+
     }//GEN-LAST:event_delbtnActionPerformed
 
     private void fixitembtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixitembtnActionPerformed
         WareHouse w = DefauseWareHouseView.getWarehouseSelect();
-        if(w == null){
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn mặt hàng cần sửa","Thông Báo", JOptionPane.INFORMATION_MESSAGE);
-        }else{
+        if (w == null) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn mặt hàng cần sửa", "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            addbtn.setEnabled(Boolean.FALSE);
+            delbtn.setEnabled(Boolean.FALSE);
+            backbtn.setEnabled(Boolean.TRUE);
             controller.setViewWareHouse(fixitembtn);
+
         }
+
+//        DefauseWareHouseView.setNullSelect();
     }//GEN-LAST:event_fixitembtnActionPerformed
 
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
         fixitembtn.setEnabled(Boolean.FALSE);
         delbtn.setEnabled(Boolean.FALSE);
-        backbtn.setEnabled(Boolean.TRUE );
+        backbtn.setEnabled(Boolean.TRUE);
         controller.setViewWareHouse(addbtn);
 
     }//GEN-LAST:event_addbtnActionPerformed
-
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
