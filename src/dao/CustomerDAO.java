@@ -7,7 +7,7 @@ package dao;
 import java.util.ArrayList;
 import model.Customer;
 import service.ICustomerService;
-import database.JDBCUtil;
+import util.JDBCUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

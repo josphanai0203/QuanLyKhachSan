@@ -32,10 +32,8 @@ public class CustomerService implements IService<Customer> {
         check = add(c);
         RegistrationForm r = new RegistrationForm( n, totalTime);
         reg.add(r);
-        
         return check;
     }
-
     @Override
     public boolean add(Customer t) {
         return cd.add(t);

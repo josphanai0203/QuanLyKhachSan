@@ -1,18 +1,10 @@
 
 package controller;
-import controller.UserService;
 import dao.UserDAO;
-import database.JDBCUtil;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import model.Staff;
 import model.User;
 import service.IUser;
 
@@ -45,14 +37,7 @@ public class UserService implements IUser{
 
     public boolean checkLogIn(String tenTaiKhoan, String matKhau) {
         String matKhauMaHoa = encryptPassword(matKhau);
-        ArrayList<User> list = ud.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (tenTaiKhoan.equals(list.get(i).getTenTaiKhoan()) && matKhauMaHoa.equals(list.get(i).getMatKhau())) {
-                currentUser = new User(list.get(i).getTenTaiKhoan(), list.get(i).getMatKhau(), list.get(i).isAdmin());
-                return true;
-            }
-        }
-        return false;
+        return ud.checkLogin(tenTaiKhoan, matKhauMaHoa);
     }
 
 

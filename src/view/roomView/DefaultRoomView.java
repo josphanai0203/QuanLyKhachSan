@@ -48,7 +48,7 @@ public class DefaultRoomView extends javax.swing.JPanel {
             }
         });
         setColumnName(dtm);
-        setColumnWidths(roomTable,100,4000,100,200,200);
+        setColumnWidths(roomTable,100,400,200,200,200);
         setRow(dtm);
     }
 

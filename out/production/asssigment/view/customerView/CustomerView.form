@@ -46,8 +46,8 @@
                   <Component id="addCustomerBtn" min="-2" pref="166" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Component id="fixCusBtn" min="-2" pref="253" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                  <Component id="delCusBtn" min="-2" pref="215" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="delCusBtn1" min="-2" pref="215" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="backBtn" min="-2" pref="92" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -61,8 +61,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="addCustomerBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="fixCusBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="delCusBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="backBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="delCusBtn1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
@@ -86,20 +86,20 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fixCusBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="delCusBtn">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Xo&#xe1; Kh&#xe1;ch H&#xe0;ng"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delCusBtnActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="backBtn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tr&#x1edf; L&#x1ea1;i"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="delCusBtn1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Xo&#xe1; Kh&#xe1;ch H&#xe0;ng"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delCusBtn1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

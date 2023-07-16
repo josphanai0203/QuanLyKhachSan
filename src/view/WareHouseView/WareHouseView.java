@@ -120,7 +120,7 @@ public class WareHouseView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        // TODO add your handling code here:
+       controller.setViewWareHouse(backbtn);
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void delbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delbtnActionPerformed

@@ -9,6 +9,7 @@ public class User {
     private String tenTaiKhoan;
     private String matKhau;
     private boolean isAdmin;
+    private Staff staff;
 
     public User() {
     }
@@ -17,15 +18,13 @@ public class User {
         this.maTaiKhoan = maTaiKhoan;
     }
 
-    
-    
-    public User(String tenTaiKhoan, String matKhau, boolean isAdmin) {
+    public User(int maTaiKhoan, String tenTaiKhoan, String matKhau, boolean isAdmin, Staff staff) {
+        this.maTaiKhoan = maTaiKhoan;
         this.tenTaiKhoan = tenTaiKhoan;
         this.matKhau = matKhau;
         this.isAdmin = isAdmin;
+        this.staff = staff;
     }
-
-    
     
     public User(int maTaiKhoan, String tenTaiKhoan, String matKhau, boolean isAdmin) {
         this.maTaiKhoan = maTaiKhoan;
@@ -66,6 +65,14 @@ public class User {
         return isAdmin;
     }
 
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
+    
     
 
     @Override
