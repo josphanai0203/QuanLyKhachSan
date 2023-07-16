@@ -12,7 +12,7 @@ import service.IUser;
 public class UserService implements IUser{
 
     private static UserDAO ud = new UserDAO();
-    public static Staff currentStaff ;
+    public static User currentUser ;
     private static Scanner sc = new Scanner(System.in);
     public static ArrayList<User> list = UserDAO.getInstance().selectAll();
     

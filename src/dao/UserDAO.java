@@ -209,14 +209,19 @@ public class UserDAO implements IUser {
             st.setString(2, matKhau);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                UserService.currentStaff = sd.findID(rs.getInt("ma_nhan_vien"));
+                Staff s = sd.findID(rs.getInt("ma_nhan_vien"));
+                int ma_tai_khoan = rs.getInt("ma_tai_khoan");
+                String ten_tai_khoan = rs.getString("ten_tai_khoan");
+                String mat_khau = rs.getString("mat_khau");
+                boolean admin = rs.getBoolean("admin");
+                UserService.currentUser = new User(ma_tai_khoan, ten_tai_khoan, mat_khau, admin, s);
                 return true;
-                
+
             } else {
                 return false;
             }
         } catch (SQLException e) {
-           return false;
+            return false;
         }
 
     }

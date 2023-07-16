@@ -7,16 +7,20 @@ package view;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import controller.MenuController;
+import controller.StaffService;
+import controller.UserService;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
+import model.Staff;
+import model.User;
 
 /**
  *
  * @author Admin
  */
 public class MenuFrame extends javax.swing.JFrame {
-
+    private User s = UserService.currentUser;
     public MenuController controler;
 
     /**
@@ -35,6 +39,10 @@ public class MenuFrame extends javax.swing.JFrame {
         this.setSize(xSize, ySize);
         controler = new MenuController(viewPane);
         controler.setView(new JButton());
+        if(!s.isAdmin()){
+            staffBtn.setEnabled(Boolean.FALSE);
+            reportBtn.setEnabled(Boolean.FALSE);
+        }
     }
   
     private void setIcon(){

@@ -21,7 +21,7 @@ public class RegisterFormDAO {
         int update = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO dang_ki (ma_phong,thoi_gian_thue) "
+            String sql = "INSERT INTO dang_ki (ma_phong,thoi_gian_thue,ngay_dang_ki) "
                     + " VALUES ( ?, ?)";
 
             PreparedStatement st = con.prepareStatement(sql);
