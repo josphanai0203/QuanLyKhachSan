@@ -4,6 +4,7 @@
  */
 package dao;
 
+import controller.StaffService;
 import controller.UserService;
 import util.JDBCUtil;
 import java.sql.Connection;
@@ -23,6 +24,7 @@ import service.IUser;
 public class UserDAO implements IUser {
 
     private static UserService cu = new UserService();
+    private static StaffDAO sd = new StaffDAO();
 
     public static UserDAO getInstance() {
         return new UserDAO();
@@ -207,7 +209,9 @@ public class UserDAO implements IUser {
             st.setString(2, matKhau);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
+                UserService.currentStaff = sd.findID(rs.getInt("ma_nhan_vien"));
                 return true;
+                
             } else {
                 return false;
             }

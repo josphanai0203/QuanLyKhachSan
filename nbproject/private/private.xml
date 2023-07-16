@@ -5,6 +5,9 @@
         <group/>
         <group/>
         <group/>
-        <group/>
+        <group>
+            <file>file:/D:/ws/src/util/JDBCUtil.java</file>
+            <file>file:/D:/ws/src/util/.env</file>
+        </group>
     </open-files>
 </project-private>

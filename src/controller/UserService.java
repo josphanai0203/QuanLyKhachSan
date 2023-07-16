@@ -5,13 +5,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import model.Staff;
 import model.User;
 import service.IUser;
 
 public class UserService implements IUser{
 
     private static UserDAO ud = new UserDAO();
-    private static User currentUser;
+    public static Staff currentStaff ;
     private static Scanner sc = new Scanner(System.in);
     public static ArrayList<User> list = UserDAO.getInstance().selectAll();
     

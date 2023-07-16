@@ -1,8 +1,6 @@
 package controller;
 
 import dao.StaffDAO;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import model.Staff;
@@ -11,7 +9,6 @@ import service.IStaffService;
 public class StaffService implements IStaffService{
 
     public static StaffDAO sd = new StaffDAO();
-    
     public static ArrayList<Staff> list = StaffDAO.getInstance().selectAll();
     
     public boolean createStaff(String tenNhanVien, Date ngaySinh, String gioiTinh, String diaChi, String sdt,String maChucVu){
