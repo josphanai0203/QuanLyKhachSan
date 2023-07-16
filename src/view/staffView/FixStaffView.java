@@ -255,7 +255,7 @@ public class FixStaffView extends javax.swing.JPanel {
             }
             callMessErrorEmpty(test1);
         } else if (!test2.isEmpty()) {
-            callMessErrorEmpty(test2);
+            callMessErrorNumber(test2);
         } else {
             String ten_nhan_vien = staffName.getText();
             Date ngay_sinh = new Date(staffYear.getDate().getTime());
@@ -313,6 +313,23 @@ public class FixStaffView extends javax.swing.JPanel {
                 case 5:
                     errorDOB.setForeground(new Color(255, 0, 0));
                     errorDOB.setText("Vui lòng nhập trường này");
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
+    private void callMessErrorNumber(ArrayList<Integer> idError) {
+        for (Integer i : idError) {
+            switch (i) {
+                case 1:
+                    errorPhone.setForeground(new Color(255, 0, 0));
+                    errorPhone.setText("Vui lòng chỉ nhập số");
+                    break;
+                case 2:
+                    errorDOB.setForeground(new Color(255, 0, 0));
+                    errorDOB.setText("Vui lòng chỉ nhập số");
                     break;
                 default:
                     break;

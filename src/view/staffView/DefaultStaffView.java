@@ -156,6 +156,10 @@ public class DefaultStaffView extends javax.swing.JPanel {
     public static Staff getStaffSelected() {
         return staffSelect;
     }
+    
+    public static void setNullSelect() {
+        staffSelect = null;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable staffTable;

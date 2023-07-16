@@ -141,10 +141,9 @@ public class StaffView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStaffBtnActionPerformed
-
         backBtn.setEnabled(Boolean.TRUE);
         delStaffBtn.setEnabled(Boolean.FALSE);
-        //fixStaffBtn.setEnabled(Boolean.FALSE);
+        fixStaffBtn.setEnabled(Boolean.FALSE);
         createAccount.setEnabled(Boolean.FALSE);
         controller.setViewStaff(addStaffBtn);
 
@@ -169,6 +168,8 @@ public class StaffView extends javax.swing.JPanel {
         addStaffBtn.setEnabled(Boolean.TRUE);
         delStaffBtn.setEnabled(Boolean.TRUE);
         createAccount.setEnabled(Boolean.TRUE);
+        fixStaffBtn.setEnabled(Boolean.TRUE);
+        DefaultStaffView.setNullSelect();
         controller.setViewStaff(backBtn);
     }//GEN-LAST:event_backBtnActionPerformed
 

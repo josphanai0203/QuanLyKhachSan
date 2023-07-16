@@ -245,7 +245,7 @@ public class AddStaffView extends javax.swing.JPanel {
             }
             callMessErrorEmpty(test1);
         } else if (!test2.isEmpty()) {
-            callMessErrorEmpty(test2);
+            callMessErrorNumber(test2);
         } else {
             String ten_nhan_vien = staffName.getText();
             Date nam_sinh = new Date(staffYear.getDate().getTime());
