@@ -16,6 +16,7 @@ public class WareHouseView extends javax.swing.JPanel {
          initComponents();
         controller = new MenuController(wareView);
         controller.setViewWareHouse(new JButton());
+        backbtn.setEnabled(Boolean.FALSE);
     }
 
     /**
@@ -120,7 +121,12 @@ public class WareHouseView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-       controller.setViewWareHouse(backbtn);
+       fixitembtn.setEnabled(Boolean.TRUE);
+       delbtn.setEnabled(Boolean.TRUE);
+       backbtn.setEnabled(Boolean.FALSE);
+        DefauseWareHouseView.setNullSelect();
+        controller.setViewWareHouse(backbtn);
+
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void delbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delbtnActionPerformed
@@ -128,7 +134,7 @@ public class WareHouseView extends javax.swing.JPanel {
         if(w==null) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn Mặt Hàng cần Xoá", "thông báo", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            int check = JOptionPane.showConfirmDialog(this, "Bạn có muốn xoá vật phẩm này ", "",JOptionPane.INFORMATION_MESSAGE);
+            int check = JOptionPane.showConfirmDialog(this, "Bạn có muốn xoá mặt hàng này ", "",JOptionPane.INFORMATION_MESSAGE);
             if(check==JOptionPane.YES_OPTION){
                 boolean isDel = ws.delete(w);
                 if(isDel){
@@ -149,7 +155,11 @@ public class WareHouseView extends javax.swing.JPanel {
     }//GEN-LAST:event_fixitembtnActionPerformed
 
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
+        fixitembtn.setEnabled(Boolean.FALSE);
+        delbtn.setEnabled(Boolean.FALSE);
+        backbtn.setEnabled(Boolean.TRUE );
         controller.setViewWareHouse(addbtn);
+
     }//GEN-LAST:event_addbtnActionPerformed
 
 
