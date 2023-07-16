@@ -24,7 +24,6 @@ public class AddWareHouseView extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         itemName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        quantityItem = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         PriceIn = new javax.swing.JTextField();
@@ -32,23 +31,23 @@ public class AddWareHouseView extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         AddBtn = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         Message = new javax.swing.JLabel();
-        error1 = new javax.swing.JLabel();
-        error2 = new javax.swing.JLabel();
-        error3 = new javax.swing.JLabel();
-        error4 = new javax.swing.JLabel();
-        error5 = new javax.swing.JLabel();
-        error6 = new javax.swing.JLabel();
         jDateNgayNhap = new com.toedter.calendar.JDateChooser();
         jDateHSD = new com.toedter.calendar.JDateChooser();
         errorName = new javax.swing.JLabel();
         errorQuantity = new javax.swing.JLabel();
         errorPriceIn = new javax.swing.JLabel();
         errorPriceOut = new javax.swing.JLabel();
+        quantityItem = new javax.swing.JTextField();
         Title = new javax.swing.JLabel();
 
         jLabel1.setText("Tên Sản Phẩm");
+
+        itemName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemNameActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Số Lượng");
 
@@ -67,24 +66,12 @@ public class AddWareHouseView extends javax.swing.JPanel {
             }
         });
 
+        Message.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+
         javax.swing.GroupLayout AddWviewLayout = new javax.swing.GroupLayout(AddWview);
         AddWview.setLayout(AddWviewLayout);
         AddWviewLayout.setHorizontalGroup(
             AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddWviewLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(AddWviewLayout.createSequentialGroup()
-                .addGap(260, 260, 260)
-                .addComponent(error5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(AddWviewLayout.createSequentialGroup()
-                .addGap(405, 405, 405)
-                .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(AddWviewLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,117 +85,97 @@ public class AddWareHouseView extends javax.swing.JPanel {
                 .addGap(40, 40, 40)
                 .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddWviewLayout.createSequentialGroup()
-                        .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(AddWviewLayout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addComponent(error4))
-                            .addComponent(errorPriceIn, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(error6)
-                        .addGap(282, 282, 282))
-                    .addGroup(AddWviewLayout.createSequentialGroup()
-                        .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(quantityItem, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                            .addComponent(itemName)
-                            .addComponent(PriceIn, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(errorName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(errorQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 34, Short.MAX_VALUE)
                         .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(AddWviewLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                                .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5))
-                                .addGap(64, 64, 64)
-                                .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jDateNgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateHSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(error2)
-                                .addGap(253, 253, 253))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddWviewLayout.createSequentialGroup()
-                                .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddWviewLayout.createSequentialGroup()
-                                        .addGap(60, 60, 60)
-                                        .addComponent(error1))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddWviewLayout.createSequentialGroup()
-                                        .addGap(78, 78, 78)
-                                        .addComponent(error3)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(138, 138, 138))
+                            .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(154, 154, 154))
                     .addGroup(AddWviewLayout.createSequentialGroup()
                         .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PriceOut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(errorPriceOut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(AddWviewLayout.createSequentialGroup()
+                        .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(errorPriceIn, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(itemName, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddWviewLayout.createSequentialGroup()
+                        .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(AddWviewLayout.createSequentialGroup()
+                                .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(AddWviewLayout.createSequentialGroup()
+                                        .addComponent(PriceIn, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(errorName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(errorQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(129, 129, 129))
+                            .addGroup(AddWviewLayout.createSequentialGroup()
+                                .addComponent(quantityItem)
+                                .addGap(85, 85, 85)))
+                        .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(69, 69, 69)
+                        .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDateNgayNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(jDateHSD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(6, 6, 6))))
         );
         AddWviewLayout.setVerticalGroup(
             AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddWviewLayout.createSequentialGroup()
-                .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(AddWviewLayout.createSequentialGroup()
-                        .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(AddWviewLayout.createSequentialGroup()
-                                .addGap(182, 182, 182)
-                                .addComponent(error2)
-                                .addGap(28, 28, 28))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddWviewLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jDateNgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
-                        .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jDateHSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addComponent(error6))
-                    .addGroup(AddWviewLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(AddWviewLayout.createSequentialGroup()
-                                .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(itemName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(error1))
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(errorName, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(quantityItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(error3)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(errorQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(9, 9, 9))
-                            .addComponent(jLabel5))
-                        .addGap(38, 38, 38)
-                        .addComponent(error4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(PriceIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(errorPriceIn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(95, 95, 95)
+                .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(itemName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(errorName, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddWviewLayout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addComponent(jLabel7))
-                    .addGroup(AddWviewLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PriceOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(errorPriceOut, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(error5)
-                        .addGap(56, 56, 56)
-                        .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                        .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(AddWviewLayout.createSequentialGroup()
+                                .addComponent(quantityItem, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(errorQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(AddWviewLayout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(AddWviewLayout.createSequentialGroup()
+                                        .addComponent(jDateNgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jDateHSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(AddWviewLayout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(41, 41, 41))))))
+                    .addGroup(AddWviewLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel2)
+                        .addGap(41, 41, 41)))
+                .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(PriceIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(errorPriceIn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PriceOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(errorPriceOut, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        Title.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         Title.setText("Thêm Sản Phẩm");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -216,23 +183,22 @@ public class AddWareHouseView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(AddWview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(438, 438, 438))))
+                .addGap(134, 134, 134)
+                .addComponent(AddWview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(177, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(417, 417, 417))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(19, 19, 19)
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AddWview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -241,7 +207,7 @@ public class AddWareHouseView extends javax.swing.JPanel {
         config();
         //validate:
         ArrayList<Integer> test1 = Validate.checkMutiLine("empty", itemName.getText(), quantityItem.getText(), PriceIn.getText(), PriceOut.getText());
-        ArrayList<Integer> test2 = Validate.checkMutiLine("isNumber", quantityItem.getText(), PriceIn.getText(), PriceOut.getText());
+        ArrayList<Integer> test2 = Validate.checkMutiLine("isNumber", PriceIn.getText(), PriceOut.getText());
         ArrayList<Integer> test3 = Validate.checkMutiLine("validDate");
         if (!test1.isEmpty()) {
             callMessErrorEmpty(test1);
@@ -252,13 +218,20 @@ public class AddWareHouseView extends javax.swing.JPanel {
         }
         String ten_san_pham = itemName.getText();
         Date ngay_nhap = getSelectedDate(jDateNgayNhap);
+        
+        java.util.Date utilDate = getSelectedDate(jDateNgayNhap);
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        
         int so_luong = Integer.parseInt(quantityItem.getText());
         Double gia_nhap = Double.parseDouble(PriceIn.getText());
         Double gia_ban = Double.parseDouble(PriceOut.getText());
         Date han_su_dung = getSelectedDate(jDateHSD);
+        
+        java.util.Date utilDate2 = getSelectedDate(jDateHSD);
+        java.sql.Date sqlDate2 = new java.sql.Date(utilDate2.getTime());
         ;
 
-        check = ws.createWareHouse(ten_san_pham, ngay_nhap, so_luong, gia_nhap, gia_ban, han_su_dung);
+        check = ws.createWareHouse(ten_san_pham, sqlDate, so_luong, gia_nhap, gia_ban, sqlDate2);
         if (check) {
             Message.setForeground(new Color(13, 110, 253));
             Message.setText("Thêm Mặt Hàng Thành Công");
@@ -267,6 +240,10 @@ public class AddWareHouseView extends javax.swing.JPanel {
             Message.setText("Thêm Mặt Hàng Thất Bại");
         }
     }//GEN-LAST:event_AddBtnActionPerformed
+
+    private void itemNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemNameActionPerformed
 
     private void callMessErrorValideDate(ArrayList<Integer> idError) {
 //        for (Integer i : idError) {
@@ -310,15 +287,15 @@ public class AddWareHouseView extends javax.swing.JPanel {
                     errorName.setText("Vui lòng Nhập Trường Này");
                     break;
 
-                case 2:
+                case 3:
                     errorQuantity.setForeground(new Color(255, 0, 0));
                     errorQuantity.setText("Vui lòng Nhập Trường Này");
                     break;
-                case 3:
+                case 4:
                     errorPriceIn.setForeground(new Color(255, 0, 0));
                     errorPriceIn.setText("Vui lòng Nhập Trường Này");
                     break;
-                case 4:
+                case 5:
                     errorPriceOut.setForeground(new Color(255, 0, 0));
                     errorPriceOut.setText("Vui lòng Nhập Trường Này");
                     break;
@@ -331,15 +308,14 @@ public class AddWareHouseView extends javax.swing.JPanel {
 
     private void config() {
         errorName.setText("");
-        error2.setText("");
         errorQuantity.setText("");
         errorPriceIn.setText("");
         errorPriceOut.setText("");
-        error6.setText("");
+
     }
 
     private Date getSelectedDate(com.toedter.calendar.JDateChooser dateChooser) {
-        return dateChooser.getDate();
+        return (Date) dateChooser.getDate();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -349,12 +325,6 @@ public class AddWareHouseView extends javax.swing.JPanel {
     private javax.swing.JTextField PriceIn;
     private javax.swing.JTextField PriceOut;
     private javax.swing.JLabel Title;
-    private javax.swing.JLabel error1;
-    private javax.swing.JLabel error2;
-    private javax.swing.JLabel error3;
-    private javax.swing.JLabel error4;
-    private javax.swing.JLabel error5;
-    private javax.swing.JLabel error6;
     private javax.swing.JLabel errorName;
     private javax.swing.JLabel errorPriceIn;
     private javax.swing.JLabel errorPriceOut;
@@ -368,7 +338,6 @@ public class AddWareHouseView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField quantityItem;
     // End of variables declaration//GEN-END:variables
 }

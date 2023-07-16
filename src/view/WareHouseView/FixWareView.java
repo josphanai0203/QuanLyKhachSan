@@ -2,7 +2,7 @@ package view.WareHouseView;
 
 import controller.WareHouseService;
 import model.WareHouse;
-
+import java.sql.*;
 import java.awt.*;
 import java.util.Date;
 
@@ -63,7 +63,7 @@ public class FixWareView extends javax.swing.JPanel {
             }
         });
 
-        message.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        message.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         message.setForeground(new java.awt.Color(13, 110, 253));
 
         jLabel25.setText("Hạn Sử Dụng");
@@ -91,10 +91,10 @@ public class FixWareView extends javax.swing.JPanel {
                             .addComponent(fixipriceout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
                             .addComponent(fixipricein, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDatengayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateHSD, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(222, 222, 222))))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDatengayNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                            .addComponent(jDateHSD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(119, 119, 119))))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -181,12 +181,20 @@ public class FixWareView extends javax.swing.JPanel {
         boolean check;
         String ten_san_pham = fixiname.getText();
         Date ngay_nhap = getSelectedDate(jDatengayNhap);
+        
+        java.util.Date utilDate = getSelectedDate(jDatengayNhap);
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        
         int so_luong = Integer.parseInt(fixiquantity.getText());
         Double gia_nhap = Double.parseDouble(fixipricein.getText());
         Double gia_ban = Double.parseDouble(fixipriceout.getText());
         Date han_su_dung = getSelectedDate(jDateHSD);
-        WareHouse w = new WareHouse(warefix.getMaW(), ten_san_pham, ngay_nhap, so_luong, gia_nhap, gia_ban, han_su_dung);
-        check = ws.update(w);
+        
+        java.util.Date utilDate2 = getSelectedDate(jDateHSD);
+        java.sql.Date sqlDat2 = new java.sql.Date(utilDate2.getTime());
+//        WareHouse w = new WareHouse(warefix.getMaW(), ten_san_pham, ngay_nhap, so_luong, gia_nhap, gia_ban, han_su_dung);
+
+        check = ws.updateWareHouse(warefix.maW,ten_san_pham, sqlDate, so_luong, gia_nhap, gia_ban, sqlDat2);
         if (check) {
             message.setForeground(new Color(13, 110, 253));
             message.setText("Sửa Sản Phẩm Thành Công");
@@ -196,8 +204,8 @@ public class FixWareView extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_fixbtnActionPerformed
-    private Date getSelectedDate(com.toedter.calendar.JDateChooser dateChooser) {
-        return dateChooser.getDate();
+    private java.util.Date getSelectedDate(com.toedter.calendar.JDateChooser dateChooser) {
+        return (java.util.Date) dateChooser.getDate();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
