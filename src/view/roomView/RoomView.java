@@ -158,11 +158,11 @@ public class RoomView extends javax.swing.JPanel {
         if(c==null){
             JOptionPane.showMessageDialog(this, "Vui Lòng Chọn Phòng Cần Xoá","Thông Báo",JOptionPane.INFORMATION_MESSAGE);
         }else {
-           int check = JOptionPane.showConfirmDialog(this, "Bạn có Chắc Muốn Xoá Khách Hàng này ? \n Việc xoá khách hàng có thể làm mất thông tin mãi mãi " , "", JOptionPane.QUESTION_MESSAGE);
+           int check = JOptionPane.showConfirmDialog(this, "Bạn có Chắc Muốn Xoá Khách Hàng này ? \n Việc xoá khách hàng có thể làm mất thông tin mãi mãi " , "", JOptionPane.YES_OPTION);
            if(check == JOptionPane.YES_OPTION){
                 boolean isDel = rs.delete(c);
                 if(isDel){
-                    controller.setViewCustomer(new JButton());
+                    controller.setViewRoom(new JButton());
                     JOptionPane.showMessageDialog(this, "Đã Xoá Thành Công","Thông Báo",JOptionPane.INFORMATION_MESSAGE);
                 }
            }
