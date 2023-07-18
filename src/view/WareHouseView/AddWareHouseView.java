@@ -41,6 +41,7 @@ public class AddWareHouseView extends javax.swing.JPanel {
         errorPriceIn = new javax.swing.JLabel();
         errorPriceOut = new javax.swing.JLabel();
         quantityItem = new javax.swing.JTextField();
+        errorPriceIn2 = new javax.swing.JLabel();
         Title = new javax.swing.JLabel();
 
         jLabel1.setText("Tên Sản Phẩm");
@@ -97,7 +98,10 @@ public class AddWareHouseView extends javax.swing.JPanel {
                     .addGroup(AddWviewLayout.createSequentialGroup()
                         .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PriceOut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(errorPriceOut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(AddWviewLayout.createSequentialGroup()
+                                .addComponent(errorPriceIn2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(errorPriceOut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(AddWviewLayout.createSequentialGroup()
                         .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +174,9 @@ public class AddWareHouseView extends javax.swing.JPanel {
                     .addComponent(PriceOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errorPriceOut, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(AddWviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(errorPriceOut, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(errorPriceIn2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -249,15 +255,15 @@ public class AddWareHouseView extends javax.swing.JPanel {
     private void callMessErrorNumber(ArrayList<Integer> idError) {
         for (Integer i : idError) {
             switch (i) {
-                case 3:
+                case 1:
                     errorQuantity.setForeground(new Color(255, 0, 0));
                     errorQuantity.setText("Vui lòng Chỉ Nhập Số");
                     break;
-                case 4:
+                case 2:
                     errorPriceIn.setForeground(new Color(255, 0, 0));
                     errorPriceIn.setText("Vui lòng Chỉ Nhập Số");
                     break;
-                case 5:
+                case 3:
                     errorPriceOut.setForeground(new Color(255, 0, 0));
                     errorPriceOut.setText("Vui lòng Chỉ Nhập Số");
                     break;
@@ -327,6 +333,7 @@ public class AddWareHouseView extends javax.swing.JPanel {
     private javax.swing.JLabel Title;
     private javax.swing.JLabel errorName;
     private javax.swing.JLabel errorPriceIn;
+    private javax.swing.JLabel errorPriceIn2;
     private javax.swing.JLabel errorPriceOut;
     private javax.swing.JLabel errorQuantity;
     private javax.swing.JTextField itemName;

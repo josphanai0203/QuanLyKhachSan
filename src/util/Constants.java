@@ -37,13 +37,6 @@ public class Constants {
     public static final String FIND_MA_CHUC_VU = "SELECT * FROM chuc_vu WHERE ten_chuc_vu = ?";
     public static final String FIND_STAFF_BY_ID = "SELECT * FROM nhan_vien nv inner join chuc_vu cv on cv.ma_chuc_vu = nv.ma_chuc_vu  WHERE nv.ma_nhan_vien = ?";
 
-//Payroll
-    public static final String UPDATE_PAY_BY_ID = "UPDATE bang_luong "
-            + "SET "
-            + "thang=?, " + "so_ngay_lam=?, " + "he_so_luong=?, " + "tang_ca=?, " + "luong_tang_ca=?, " + "tien_phat=?, " + "tong_luong=?"
-            + " WHERE ma_luong=?";
-    public static final String FIND_BY_ID_UPDATE = "SELECT * FROM bang_luong bl WHERE bl.ma_luong =? ";
-
 //Customers
     public static final String ADD_NEW_CUSTOMER = "INSERT INTO khach_hang (ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai,ma_phong,kieu_thue) VALUES ( ?, ?, ?, ?, ?, ?, ?,?,?)";
     public static final String SELECT_ALL_CUSTOMER = "SELECT * FROM khach_hang kh INNER JOIN phong p ON p.ma_phong = kh.ma_phong left JOIN loai_phong lp ON lp.ma_loai_phong = p.ma_loai_phong";
