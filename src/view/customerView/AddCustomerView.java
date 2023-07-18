@@ -316,6 +316,9 @@ public class AddCustomerView extends javax.swing.JPanel {
             if (check) {
                 message.setForeground(new Color(13, 110, 253));
                 message.setText("Thêm Khách Hàng Thành Công");
+                customerRoom.removeItem((String)ma_phong);
+                reset();
+
             } else {
                 message.setForeground(new Color(255, 0, 0));
                 message.setText("Thêm Khách Hàng Thất Bại");
@@ -362,6 +365,20 @@ public class AddCustomerView extends javax.swing.JPanel {
                 message.setText("Sửa Khách Hàng Thất Bại");
             }
         }
+    }
+
+    public void reset() {
+        customerName.setText("");
+        customerYear.setText("");
+        genderMale.setSelected(false);
+        genderFemale.setSelected(false);
+        customerAddress.setText("");
+        customerNation.setText("");
+        customerCard.setText("");
+        customerPhone.setText("");
+        totalTime.setText("");
+        customerRoom.setSelectedIndex(0);
+
     }
     private void genderFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderFemaleActionPerformed
         // TODO add your handling code here:

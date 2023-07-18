@@ -3,25 +3,65 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/customerView/CustomerView.java</file>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/customerView/AddCustomerView.java</file>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/controller/StaffService.java</file>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/staffView/StaffView.java</file>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/staffView/AddStaffView.java</file>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/dao/StaffDAO.java</file>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/controller/UserService.java</file>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/staffView/DefaultStaffView.java</file>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/staffView/FixStaffView.java</file>
+            <file>file:/D:/ws/src/view/billView/DefaultBillView.java</file>
+            <file>file:/D:/ws/src/dao/WareHouseDAO.java</file>
+            <file>file:/D:/ws/src/view/customerView/DefaultCustomerView.java</file>
+            <file>file:/D:/ws/src/model/Service.java</file>
+            <file>file:/D:/ws/src/view/billView/BillView.java</file>
+            <file>file:/D:/ws/src/model/Bill.java</file>
+            <file>file:/D:/ws/src/controller/MenuController.java</file>
+            <file>file:/D:/ws/src/controller/WareHouseService.java</file>
+            <file>file:/D:/ws/src/dao/ItemServiceDAO.java</file>
         </group>
-        <group/>
-        <group/>
-        <group/>
-        <group/>
         <group>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/util/JDBCUtil.java</file>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/LoginLayout.java</file>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/staffView/StaffView.java</file>
-            <file>file:/C:/FPT_UNI/PRO192/Assigment/QuanLyKhachSan/src/view/staffView/AddStaffView.java</file>
+            <file>file:/D:/ws/src/view/billView/DefaultBillView.java</file>
+            <file>file:/D:/ws/src/dao/WareHouseDAO.java</file>
+            <file>file:/D:/ws/src/view/customerView/DefaultCustomerView.java</file>
+            <file>file:/D:/ws/src/model/Service.java</file>
+            <file>file:/D:/ws/src/view/billView/BillView.java</file>
+            <file>file:/D:/ws/src/model/Bill.java</file>
+            <file>file:/D:/ws/src/controller/MenuController.java</file>
+            <file>file:/D:/ws/src/controller/WareHouseService.java</file>
+            <file>file:/D:/ws/src/dao/ItemServiceDAO.java</file>
+        </group>
+        <group>
+            <file>file:/D:/ws/src/view/billView/DefaultBillView.java</file>
+            <file>file:/D:/ws/src/dao/WareHouseDAO.java</file>
+            <file>file:/D:/ws/src/view/customerView/DefaultCustomerView.java</file>
+            <file>file:/D:/ws/src/model/Service.java</file>
+            <file>file:/D:/ws/src/view/billView/BillView.java</file>
+            <file>file:/D:/ws/src/model/Bill.java</file>
+            <file>file:/D:/ws/src/controller/MenuController.java</file>
+            <file>file:/D:/ws/src/controller/WareHouseService.java</file>
+            <file>file:/D:/ws/src/dao/ItemServiceDAO.java</file>
+        </group>
+        <group>
+            <file>file:/D:/ws/src/view/billView/DefaultBillView.java</file>
+            <file>file:/D:/ws/src/dao/WareHouseDAO.java</file>
+            <file>file:/D:/ws/src/view/customerView/DefaultCustomerView.java</file>
+            <file>file:/D:/ws/src/util/JDBCUtil.java</file>
+            <file>file:/D:/ws/src/model/Service.java</file>
+            <file>file:/D:/ws/src/view/billView/BillView.java</file>
+            <file>file:/D:/ws/src/model/Bill.java</file>
+            <file>file:/D:/ws/src/controller/MenuController.java</file>
+            <file>file:/D:/ws/src/controller/WareHouseService.java</file>
+            <file>file:/D:/ws/src/dao/ItemServiceDAO.java</file>
+        </group>
+        <group>
+            <file>file:/D:/ws/src/controller/BillDoneService.java</file>
+            <file>file:/D:/ws/src/controller/CustomerService.java</file>
+            <file>file:/D:/ws/src/view/billView/BillView.java</file>
+            <file>file:/D:/ws/src/dao/BillDoneDao.java</file>
+            <file>file:/D:/ws/src/view/billView/DetailBillView.java</file>
+            <file>file:/D:/ws/src/dao/CustomerDAO.java</file>
+        </group>
+        <group>
+            <file>file:/D:/ws/src/controller/BillDoneService.java</file>
+            <file>file:/D:/ws/src/controller/CustomerService.java</file>
+            <file>file:/D:/ws/src/view/billView/BillView.java</file>
+            <file>file:/D:/ws/src/dao/BillDoneDao.java</file>
+            <file>file:/D:/ws/src/view/billView/DetailBillView.java</file>
+            <file>file:/D:/ws/src/dao/CustomerDAO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -53,7 +53,10 @@ public class RegisterFormDAO {
             if(rs.next()){
                 int id1 = rs.getInt("ma_dang_ki");
                 int time = rs.getInt("thoi_gian_thue");
-                r = new RegistrationForm(id1, null, null, time);
+                double total = rs.getDouble("tong_tien_phong");
+                Timestamp t = rs.getTimestamp("ngay_dang_ki");
+                LocalDateTime l = t.toLocalDateTime();
+                r = new RegistrationForm(id1, null, null, time, total, l);
             }
 
             JDBCUtil.closeConnection(con);

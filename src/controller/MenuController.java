@@ -16,6 +16,8 @@ import view.WareHouseView.AddWareHouseView;
 import view.WareHouseView.DefauseWareHouseView;
 import view.WareHouseView.FixWareView;
 import view.WareHouseView.WareHouseView;
+import view.billView.DefaultBillView;
+import view.billView.DetailBillView;
 import view.customerView.AddCustomerView;
 import view.customerView.DefaultCustomerView;
 import view.roomView.AddRoomView;
@@ -162,5 +164,27 @@ public class MenuController {
         root.repaint();
 
     }
+    public void setBillView(JButton btn ){
+        switch (btn.getText()) {
+            case "Hoá Đơn Chi Tiết":
+                node = new DetailBillView();
+                break;
+            case "Thanh Toán":
+                node = new DefauseWareHouseView();
+               break;
+            case "Trở lại":
+                node = new DefaultBillView();
+               break;
+            default:
+                node = new DefaultBillView();
+                break;
+        }
+        root.removeAll();
+        root.setLayout(new BorderLayout());
+        root.add(node);
+        root.validate();
+        root.repaint();
+    }
+    
 
 }

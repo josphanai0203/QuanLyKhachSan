@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDateTime;
+
 
 public class RegistrationForm {
     private int maSoDangKi;
@@ -7,17 +9,21 @@ public class RegistrationForm {
     private Room maPhong;
     private int thoiGianThue;
     private double tongTien;
+    private LocalDateTime ngayDangki;
 
     public RegistrationForm() {
     }
 
-    public RegistrationForm(int maSoDangKi, Customer maKhachhang, Room maPhong, int thoiGianThue, double tongTien) {
+    public RegistrationForm(int maSoDangKi, Customer maKhachhang, Room maPhong, int thoiGianThue, double tongTien, LocalDateTime ngayDangki) {
         this.maSoDangKi = maSoDangKi;
         this.maKhachhang = maKhachhang;
         this.maPhong = maPhong;
         this.thoiGianThue = thoiGianThue;
         this.tongTien = tongTien;
+        this.ngayDangki = ngayDangki;
     }
+
+   
 
     public RegistrationForm(Room maPhong, int thoiGianThue) {
         this.maPhong = maPhong;
