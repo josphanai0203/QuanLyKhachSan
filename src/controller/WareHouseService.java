@@ -4,7 +4,7 @@ import dao.WareHouseDAO;
 import model.WareHouse;
 import service.IService;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class WareHouseService implements IService<WareHouse> {
@@ -17,7 +17,13 @@ public class WareHouseService implements IService<WareHouse> {
         WareHouse w = new WareHouse(tenSanPham, dayIn, SoLuong, giaNhap, giaBan, hSD);
         check = add(w);
         return check;
+    }
 
+    public boolean updateWareHouse(int maSanPham, String tenSanPham, Date dayIn, int SoLuong, Double giaNhap, Double giaBan, Date hSD) {
+        boolean check;
+        WareHouse w = new WareHouse(maSanPham, tenSanPham, dayIn, SoLuong, giaNhap, giaBan, hSD);
+        check = update(w);
+        return check;
     }
 
     @Override
@@ -43,13 +49,14 @@ public class WareHouseService implements IService<WareHouse> {
     @Override
     public WareHouse findById(WareHouse w) {
         for (int i = 0; i < list.size(); i++) {
-            if(w.getMaW() == list.get(i).getMaW()){
+            if (w.getMaW() == list.get(i).getMaW()) {
                 return w;
             }
         }
         return null;
     }
-    public WareHouse findId(int maKhoHang){
+
+    public WareHouse findId(int maKhoHang) {
         return wd.findId(maKhoHang);
     }
 }

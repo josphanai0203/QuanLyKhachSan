@@ -76,11 +76,11 @@
                               <Component id="fixipricein" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jDatengayNhap" min="-2" pref="145" max="-2" attributes="0"/>
-                              <Component id="jDateHSD" min="-2" pref="145" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jDatengayNhap" pref="248" max="32767" attributes="0"/>
+                              <Component id="jDateHSD" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -196,7 +196,7 @@
         <Component class="javax.swing.JLabel" name="message">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="24" style="1"/>
+              <Font name="Dialog" size="36" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fd" green="6e" red="d" type="rgb"/>

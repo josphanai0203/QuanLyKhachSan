@@ -2,17 +2,8 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/ws/src/view/billView/DefaultBillView.java</file>
-            <file>file:/D:/ws/src/dao/WareHouseDAO.java</file>
-            <file>file:/D:/ws/src/view/customerView/DefaultCustomerView.java</file>
-            <file>file:/D:/ws/src/model/Service.java</file>
-            <file>file:/D:/ws/src/view/billView/BillView.java</file>
-            <file>file:/D:/ws/src/model/Bill.java</file>
-            <file>file:/D:/ws/src/controller/MenuController.java</file>
-            <file>file:/D:/ws/src/controller/WareHouseService.java</file>
-            <file>file:/D:/ws/src/dao/ItemServiceDAO.java</file>
-        </group>
+        <group/>
+        <group/>
         <group>
             <file>file:/D:/ws/src/view/billView/DefaultBillView.java</file>
             <file>file:/D:/ws/src/dao/WareHouseDAO.java</file>
@@ -62,6 +53,31 @@
             <file>file:/D:/ws/src/dao/BillDoneDao.java</file>
             <file>file:/D:/ws/src/view/billView/DetailBillView.java</file>
             <file>file:/D:/ws/src/dao/CustomerDAO.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/view/WareHouseView/AddWareHouseView.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/model/Customer.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/view/WareHouseView/DefauseWareHouseView.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/view/customerView/AddCustomerView.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/view/WareHouseView/FixWareView.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/model/WareHouse.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/controller/CustomerService.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/controller/WareHouseService.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/view/WareHouseView/WareHouseView.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/view/WareHouseView/AddWareHouseView.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/model/Customer.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/view/WareHouseView/DefauseWareHouseView.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/view/customerView/AddCustomerView.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/view/WareHouseView/FixWareView.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/model/WareHouse.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/controller/CustomerService.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/controller/WareHouseService.java</file>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/view/WareHouseView/WareHouseView.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/PC/Desktop/New%20folder%20(3)/src/view/staffView/AddStaffView.java</file>
         </group>
     </open-files>
 </project-private>

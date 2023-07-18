@@ -1,21 +1,24 @@
 package dao;
 
-
 import controller.WareHouseService;
 import util.JDBCUtil;
 import model.WareHouse;
 import service.IWareHouseService;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.*;
+//import java.util.*;
 import java.util.ArrayList;
 
 public class WareHouseDAO implements IWareHouseService {
 
-public static WareHouseService ws = new WareHouseService();
+    public static WareHouseService ws = new WareHouseService();
+
     public static WareHouseDAO getInstance() {
         return new WareHouseDAO();
     }
-
 
     @Override
     public boolean add(WareHouse w) {
@@ -33,12 +36,10 @@ public static WareHouseService ws = new WareHouseService();
             st.setDouble(5, w.getPriceOut());
             st.setDate(6, (Date) w.gethSD());
 
-
             update = st.executeUpdate();
 
 //            System.out.println("Ban da thuc thi: " + sql);
 //            System.out.println("Co " + update + " dong bi thay doi");
-
             JDBCUtil.closeConnection(con);
             return update > 0;
 
@@ -69,7 +70,6 @@ public static WareHouseService ws = new WareHouseService();
                 Double gia_nhap = rs.getDouble("gia_nhap");
                 Double gia_ban = rs.getDouble("gia_ban");
                 Date han_su_dung = rs.getDate("han_su_dung");
-
 
                 WareHouse w1 = new WareHouse(ma_kho_hang, ten_san_pham, ngay_nhap, so_luong, gia_nhap, gia_ban, han_su_dung);
                 w.add(w1);
@@ -178,7 +178,6 @@ public static WareHouseService ws = new WareHouseService();
         }
 
         return null;
-
 
     }
 }

@@ -174,7 +174,11 @@ public class StaffView extends javax.swing.JPanel {
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void createAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountActionPerformed
-        // TODO add your handling code here:
+        backBtn.setEnabled(Boolean.TRUE);
+        delStaffBtn.setEnabled(Boolean.FALSE);
+        fixStaffBtn.setEnabled(Boolean.FALSE);
+        addStaffBtn.setEnabled(Boolean.FALSE);
+        controller.setViewStaff(createAccount);
     }//GEN-LAST:event_createAccountActionPerformed
 
     private void delStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delStaffBtnActionPerformed
