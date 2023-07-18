@@ -2,6 +2,7 @@ package dao;
 
 import controller.ItemServiceService;
 import util.JDBCUtil;
+import util.Constants;
 import model.Service;
 import service.IItemService;
 
@@ -26,16 +27,16 @@ public class ItemServiceDAO {
     public boolean add(Service s) {
 
         int update = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO dich_vu ( ma_khach_hang,ten_dich_vu, so_luong)"
-                    + " VALUES (?, ?, ?)";
-
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.ADD_SERVICE);
+            con.setAutoCommit(false);
             st.setInt(1, s.getCustomer().getMaKhachHang());
             st.setString(2, s.getNameItem());
             st.setInt(3, s.getQuantity());
             update = st.executeUpdate();
+            con.commit();
             JDBCUtil.closeConnection(con);
             return update > 0;
 
@@ -44,12 +45,14 @@ public class ItemServiceDAO {
             return false;
         }
     }
-     public ArrayList<Service> findByIdCus(int id){
+
+    public ArrayList<Service> findByIdCus(int id) {
         ArrayList<Service> s = new ArrayList<>();
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM dich_vu dv inner join kho_hang kh on kh.ma_kho_hang = dv.ma_kho_hang inner join khach_hang kh1 on kh1.ma_khach_hang = dv.ma_khach_hang where dv.ma_khach_hang = ?";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.FIND_BY_ID_CUS_IN_SV);
+            con.setAutoCommit(false);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -64,6 +67,7 @@ public class ItemServiceDAO {
                 WareHouse w = whd.findId(ma_kho_hang);
                 Service s1 = new Service(ma_dich_vu, c, ten_dich_vu, so_luong, don_gia, w, thanh_tien);
                 s.add(s1);
+                con.commit();
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
@@ -72,13 +76,16 @@ public class ItemServiceDAO {
         }
 
         return s;
-     }
+    }
+
     public ArrayList<Service> selectAll() {
         ArrayList<Service> s = new ArrayList<>();
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM dich_vu dv inner join kho_hang kh on kh.ma_kho_hang = dv.ma_kho_hang inner join khach_hang kh1 on kh1.ma_khach_hang = dv.ma_khach_hang";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.SELECT_ALL_SERVICE);
+            con.setAutoCommit(false);
+
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 int ma_dich_vu = rs.getInt("ma_dich_vu");
@@ -92,6 +99,7 @@ public class ItemServiceDAO {
                 WareHouse w = whd.findId(ma_kho_hang);
                 Service s1 = new Service(ma_dich_vu, c, ten_dich_vu, so_luong, don_gia, w, thanh_tien);
                 s.add(s1);
+                con.commit();
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
@@ -104,13 +112,12 @@ public class ItemServiceDAO {
 
     public boolean update(Service s) {
         int wq = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "UPDATE dich_vu "
-                    + "SET "
-                    + "ma_khach_hang=?," + "ten_dich_vu=?," + "so_luong=?," + "don_gia=?," + "ma_kho_hang=?,"
-                    + "WHERE ma_dich_vu=?";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.UPDATE_SERVICE_BY_ID);
+            con.setAutoCommit(false);
+
             st.setInt(1, s.getCustomer().getMaKhachHang());
             st.setString(2, s.getNameItem());
             st.setInt(3, s.getQuantity());
@@ -119,7 +126,7 @@ public class ItemServiceDAO {
             st.setInt(6, s.getIdItem());
 
             wq = st.executeUpdate();
-
+            con.commit();
             JDBCUtil.closeConnection(con);
             return wq > 0;
         } catch (SQLException e) {
@@ -131,13 +138,14 @@ public class ItemServiceDAO {
 
     public boolean delete(Service s) {
         int kq = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "DELETE from dich_vu "
-                    + "WHERE ma_dich_vu=?";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.DELETE_SERVICE_BY_ID);
+            con.setAutoCommit(false);
             st.setInt(1, s.getIdItem());
             kq = st.executeUpdate();
+            con.commit();
             JDBCUtil.closeConnection(con);
             return kq > 0;
         } catch (SQLException e) {
@@ -149,15 +157,17 @@ public class ItemServiceDAO {
 
     public double totalPrice(int makhachHang) {
         double total = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT Sum(thanh_tien) as total from dich_vu dv where dv.ma_khach_hang = ?";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.TOTAL_PRICE_IN_SV);
+            con.setAutoCommit(false);
             st.setInt(1, makhachHang);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 total = rs.getDouble("total");
             }
+            con.commit();
             JDBCUtil.closeConnection(con);
             return total;
         } catch (SQLException e) {
@@ -166,5 +176,5 @@ public class ItemServiceDAO {
             return total;
         }
     }
-    
+
 }

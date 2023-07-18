@@ -5,6 +5,7 @@
 package dao;
 
 import util.JDBCUtil;
+import util.Constants;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -21,18 +22,18 @@ public class RegisterFormDAO {
 
     public boolean add(RegistrationForm r) {
         int update = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO dang_ki (ma_phong,thoi_gian_thue,ngay_dang_ki) "
-                    + " VALUES ( ?, ?,?)";
-
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.ADD_NEW_FORM);
+            con.setAutoCommit(false);
             st.setInt(1, r.getMaPhong().getId_room());
             st.setInt(2, r.getThoiGianThue());
             LocalDateTime lo = LocalDateTime.now();
             Timestamp t = Timestamp.valueOf(lo);
             st.setTimestamp(3, t);
             update = st.executeUpdate();
+            con.commit();
             JDBCUtil.closeConnection(con);
             return update > 0;
 
@@ -44,19 +45,22 @@ public class RegisterFormDAO {
 
     public RegistrationForm findByIDCus(int id) {
         RegistrationForm r = null;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM dang_ki dk WHERE dk.ma_khach_hang = ?";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.FIND_FORM_BY_ID);
+            con.setAutoCommit(false);
+
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 int id1 = rs.getInt("ma_dang_ki");
                 int time = rs.getInt("thoi_gian_thue");
                 double total = rs.getDouble("tong_tien_phong");
                 Timestamp t = rs.getTimestamp("ngay_dang_ki");
                 LocalDateTime l = t.toLocalDateTime();
                 r = new RegistrationForm(id1, null, null, time, total, l);
+                con.commit();
             }
 
             JDBCUtil.closeConnection(con);
@@ -64,20 +68,24 @@ public class RegisterFormDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            
+
         }
-        return  null;
+        return null;
     }
-    public boolean Update(int id,int time){
+
+    public boolean Update(int id, int time) {
         int kq = 0;
-            String sql = "UPDATE dang_ki SET thoi_gian_thue = ?  WHERE ma_dang_ki= ? ";
-        try (Connection con = JDBCUtil.getConnection();
-            PreparedStatement st = con.prepareStatement(sql);
-                ){
-             st.setInt(1, time);
+        Connection con = null;
+
+        try {
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.UPDATE_FORM_BY_ID);
+            con.setAutoCommit(false);
+            st.setInt(1, time);
             st.setInt(2, id);
 
             kq = st.executeUpdate();
+            con.commit();
             JDBCUtil.closeConnection(con);
             return kq > 0;
         } catch (SQLException e) {

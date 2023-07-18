@@ -10,6 +10,7 @@ import model.Staff;
 import service.IStaffService;
 import java.sql.*;
 import util.JDBCUtil;
+import util.Constants;
 
 public class StaffDAO implements IStaffService {
 
@@ -22,12 +23,11 @@ public class StaffDAO implements IStaffService {
     @Override
     public boolean add(Staff t) {
         int update = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO nhan_vien (ten_nhan_vien, ngay_sinh, gioi_tinh, ma_chuc_vu, so_dien_thoai, dia_chi) "
-                    + " VALUES ( ?, ?, ?, ?, ?, ?)";
-
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.ADD_NEW_STAFF);
+            con.setAutoCommit(false);
             st.setString(1, t.getTenNhanVien());
             st.setDate(2, new java.sql.Date(t.getNgaySinh().getTime()));
             st.setString(3, t.getGioiTinh());
@@ -36,6 +36,7 @@ public class StaffDAO implements IStaffService {
             st.setString(5, t.getSdt());
             st.setString(6, t.getDiaChi());
             update = st.executeUpdate();
+            con.commit();
             JDBCUtil.closeConnection(con);
             return update > 0;
 
@@ -49,10 +50,11 @@ public class StaffDAO implements IStaffService {
     @Override
     public ArrayList<Staff> selectAll() {
         ArrayList<Staff> kq = new ArrayList<Staff>();
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM nhan_vien nv inner join chuc_vu cv on cv.ma_chuc_vu = nv.ma_chuc_vu";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.SELECT_ALL_STAFF);
+            con.setAutoCommit(false);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 int ma_nhan_vien = rs.getInt("ma_nhan_vien");
@@ -64,6 +66,7 @@ public class StaffDAO implements IStaffService {
                 String dia_chi = rs.getString("dia_chi");
                 Staff s1 = new Staff(ma_nhan_vien, ten_nhan_vien, ngay_sinh, gioi_tinh, chuc_vu, so_dien_thoai, dia_chi);
                 kq.add(s1);
+                con.commit();
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
@@ -77,13 +80,11 @@ public class StaffDAO implements IStaffService {
     @Override
     public boolean update(Staff t) {
         int kq = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "UPDATE nhan_vien "
-                    + "SET "
-                    + "ten_nhan_vien=?, " + "ngay_sinh=?, " + "gioi_tinh=?, " + "ma_chuc_vu=?, " + "so_dien_thoai=?, " + "dia_chi=?"
-                    + " WHERE ma_nhan_vien=?";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.UPDATE_STAFF_BY_ID);
+            con.setAutoCommit(false);
             st.setString(1, t.getTenNhanVien());
             st.setDate(2, new java.sql.Date(t.getNgaySinh().getTime()));
             st.setString(3, t.getGioiTinh());
@@ -92,7 +93,9 @@ public class StaffDAO implements IStaffService {
             st.setString(6, t.getDiaChi());
             st.setInt(7, t.getMaNhanVien());
             kq = st.executeUpdate();
+            con.commit();
             JDBCUtil.closeConnection(con);
+
             return kq > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -103,16 +106,14 @@ public class StaffDAO implements IStaffService {
     @Override
     public boolean delete(Staff t) {
         int kq = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-
-            String sql = "DELETE from nhan_vien "
-                    + "WHERE ma_nhan_vien=?";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.DELETE_STAFF_BY_ID);
+            con.setAutoCommit(false);
             st.setInt(1, t.getMaNhanVien());
-
             kq = st.executeUpdate();
-
+            con.commit();
             JDBCUtil.closeConnection(con);
             return kq > 0;
         } catch (SQLException e) {
@@ -126,17 +127,20 @@ public class StaffDAO implements IStaffService {
     public Staff findById(Staff t) {
         return ss.findById(t);
     }
+
     public int findMaChucVu(String tenChucVu) {
         int maChucVu = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM chuc_vu WHERE ten_chuc_vu = ?";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.FIND_MA_CHUC_VU);
+            con.setAutoCommit(false);
             st.setString(1, tenChucVu);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 maChucVu = rs.getInt("ma_chuc_vu");
             }
+            con.commit();
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -146,10 +150,12 @@ public class StaffDAO implements IStaffService {
 
     public Staff findID(int maNhanVien) {
         Staff s = null;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM nhan_vien nv inner join chuc_vu cv on cv.ma_chuc_vu = nv.ma_chuc_vu  WHERE nv.ma_nhan_vien = ?";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.FIND_STAFF_BY_ID);
+            con.setAutoCommit(false);
+
             st.setInt(1, maNhanVien);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
@@ -161,6 +167,7 @@ public class StaffDAO implements IStaffService {
                 String so_dien_thoai = rs.getString("so_dien_thoai");
                 String dia_chi = rs.getString("dia_chi");
                 s = new Staff(maNhanVien, ten_nhan_vien, ngay_sinh, gioi_tinh, chuc_vu, so_dien_thoai, dia_chi);
+                con.commit();
             }
 
             JDBCUtil.closeConnection(con);

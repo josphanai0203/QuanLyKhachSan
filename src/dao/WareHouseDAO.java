@@ -2,6 +2,7 @@ package dao;
 
 import controller.WareHouseService;
 import util.JDBCUtil;
+import util.Constants;
 import model.WareHouse;
 import service.IWareHouseService;
 import java.sql.Connection;
@@ -23,12 +24,13 @@ public class WareHouseDAO implements IWareHouseService {
     @Override
     public boolean add(WareHouse w) {
         int update = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "INSERT INTO kho_hang (ten_san_pham, ngay_nhap,so_luong, gia_nhap, gia_ban, han_su_dung) "
-                    + " VALUES (?, ?, ?, ?, ?, ?)";
+            con = JDBCUtil.getConnection();
 
-            PreparedStatement st = con.prepareStatement(sql);
+            PreparedStatement st = con.prepareStatement(Constants.ADD_NEW_WAREHOUSEITEM);
+
+            con.setAutoCommit(false);
             st.setString(1, w.getnameW());
             st.setDate(2, (Date) w.getDayIn());
             st.setInt(3, w.getQuantity());
@@ -37,9 +39,8 @@ public class WareHouseDAO implements IWareHouseService {
             st.setDate(6, (Date) w.gethSD());
 
             update = st.executeUpdate();
+            con.commit();
 
-//            System.out.println("Ban da thuc thi: " + sql);
-//            System.out.println("Co " + update + " dong bi thay doi");
             JDBCUtil.closeConnection(con);
             return update > 0;
 
@@ -52,13 +53,11 @@ public class WareHouseDAO implements IWareHouseService {
     @Override
     public ArrayList<WareHouse> selectAll() {
         ArrayList<WareHouse> w = new ArrayList<>();
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM kho_hang";
-            PreparedStatement st = con.prepareStatement(sql);
-            //b3: thuc thi cau lenh sql
-//           System.out.println("Ban da thuc thi: " + sql);
-
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.SELECT_ALL_WAREHOUSE);
+            con.setAutoCommit(false);
             ResultSet rs = st.executeQuery();
 
             //b4: xu li
@@ -73,7 +72,9 @@ public class WareHouseDAO implements IWareHouseService {
 
                 WareHouse w1 = new WareHouse(ma_kho_hang, ten_san_pham, ngay_nhap, so_luong, gia_nhap, gia_ban, han_su_dung);
                 w.add(w1);
+                con.commit();
             }
+
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -87,13 +88,12 @@ public class WareHouseDAO implements IWareHouseService {
     @Override
     public boolean update(WareHouse w) {
         int wq = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "UPDATE kho_hang "
-                    + "SET "
-                    + "ten_san_pham=?," + "ngay_nhap=?," + "so_luong=?," + "gia_nhap=?," + "gia_ban=?," + "han_su_dung=?"
-                    + " WHERE ma_kho_hang= ?";
-            PreparedStatement st = con.prepareStatement(sql);
+
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.UPDATE_WAREHOUSEITEM);
+            con.setAutoCommit(false);
 
             st.setString(1, w.getnameW());
             st.setDate(2, (Date) w.getDayIn());
@@ -102,13 +102,8 @@ public class WareHouseDAO implements IWareHouseService {
             st.setDouble(5, w.getPriceOut());
             st.setDate(6, (Date) w.gethSD());
             st.setInt(7, w.getMaW());
-
-            //b3: thuc thi cau lenh sql
             wq = st.executeUpdate();
-            //b4: xu li
-//            System.out.println("Ban da thuc thi: " + sql);
-//            System.out.println("Co " + wq + " dong bi thay doi");
-
+            con.commit();
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
             return wq > 0;
@@ -122,19 +117,14 @@ public class WareHouseDAO implements IWareHouseService {
     @Override
     public boolean delete(WareHouse w) {
         int kq = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-
-            String sql = "DELETE from kho_hang "
-                    + "WHERE ma_kho_hang=?";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.DELETE_WAREHOUSE_BY_NAME);
+            con.setAutoCommit(false);
             st.setInt(1, w.getMaW());
-
-            //b3: thuc thi cau lenh sql
             kq = st.executeUpdate();
-            //b4: xu li
-//            System.out.println("Ban da thuc thi: " + sql);
-//            System.out.println("Co " + kq + " dong bi thay doi");
+            con.commit();
 
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
@@ -154,10 +144,11 @@ public class WareHouseDAO implements IWareHouseService {
     public WareHouse findId(int maKhoHang) {
 
         WareHouse kq = null;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM kho_hang kh WHERE kh.ma_kho_hang =? ";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.FIND_ID_WAREHOUSE);
+            con.setAutoCommit(false);
             st.setInt(1, maKhoHang);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -169,6 +160,7 @@ public class WareHouseDAO implements IWareHouseService {
                 double gia_ban = rs.getDouble("gia_ban");
                 Date han_su_dung = rs.getDate("han_su_dung");
                 kq = new WareHouse(maKhoHang, ten_san_pham, ngay_nhap, so_luong, gia_nhap, gia_ban, han_su_dung);
+                con.commit();
             }
             JDBCUtil.closeConnection(con);
             return kq;

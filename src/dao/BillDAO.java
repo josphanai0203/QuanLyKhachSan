@@ -16,23 +16,29 @@ import model.Customer;
 import model.RegistrationForm;
 import model.Room;
 import util.JDBCUtil;
+import util.Constants;
 
 /**
  *
  * @author Admin
  */
 public class BillDAO {
+
     private RoomDAO rd = new RoomDAO();
-    public ArrayList<Bill> selectAll(){
-       ArrayList<Bill> s = new ArrayList<>();
+
+    public ArrayList<Bill> selectAll() {
+        ArrayList<Bill> s = new ArrayList<>();
+
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * , IFNULL(SUM(dv.thanh_tien),0) AS total FROM khach_hang kh INNER JOIN dang_ki dk ON dk.ma_khach_hang = kh.ma_khach_hang inner join phong p on p.ma_phong = kh.ma_phong left JOIN dich_vu dv ON dv.ma_khach_hang = kh.ma_khach_hang GROUP BY kh.ma_khach_hang ";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.SELECT_ALL_INFO);
+            con.setAutoCommit(false);
+
             ResultSet rs = st.executeQuery();
-            int i =1;
+            int i = 1;
             while (rs.next()) {
-                 int ma_khach_hang = rs.getInt("ma_khach_hang");
+                int ma_khach_hang = rs.getInt("ma_khach_hang");
                 String ten_khach_hang = rs.getString("ten_khach_hang");
                 int nam_sinh = rs.getInt("nam_sinh");
                 String gioi_tinh = rs.getString("gioi_tinh");
@@ -43,7 +49,7 @@ public class BillDAO {
                 int ma_phong = rs.getInt("ma_phong");
                 String kieuThue = rs.getString("kieu_thue");
                 Room ro = rd.findById(new Room(ma_phong));
-                Customer c = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai,ro, kieuThue);
+                Customer c = new Customer(ma_khach_hang, ten_khach_hang, nam_sinh, gioi_tinh, dia_chi, quoc_tich, so_cmnd, so_dien_thoai, ro, kieuThue);
                 int id1 = rs.getInt("ma_dang_ki");
                 int time = rs.getInt("thoi_gian_thue");
                 double total = rs.getDouble("tong_tien_phong");
@@ -54,12 +60,13 @@ public class BillDAO {
                 s.add(new Bill(i, c, r, price));
                 i++;
             }
+            con.commit();
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        return s; 
+        return s;
     }
 }

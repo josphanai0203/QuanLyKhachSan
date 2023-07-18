@@ -5,6 +5,7 @@
 package dao;
 
 import util.JDBCUtil;
+import util.Constants;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,13 +34,11 @@ public class PayrollDAO implements IPayrollService {
     @Override
     public boolean update(Payroll t) {
         int kq = 0;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "UPDATE bang_luong "
-                    + "SET "
-                    + "thang=?, " + "so_ngay_lam=?, " + "he_so_luong=?, " + "tang_ca=?, " + "luong_tang_ca=?, " + "tien_phat=?, " + "tong_luong=?"
-                    + " WHERE ma_luong=?";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.UPDATE_PAY_BY_ID);
+            con.setAutoCommit(false);
             //st.setInt(1, t.getMaTaiKhoan());
             st.setInt(1, t.getThang());
             st.setInt(2, t.getSoNgayLamViec());
@@ -50,9 +49,7 @@ public class PayrollDAO implements IPayrollService {
             st.setDouble(7, t.getTongLuong());
             //b3: thuc thi cau lenh sql	
             kq = st.executeUpdate();
-            //b4: xu li 
-//            System.out.println("Ban da thuc thi: " + sql);
-//            System.out.println("Co " + kq + " dong bi thay doi");
+            con.commit();
 
             //b5: ngat ket noi
             JDBCUtil.closeConnection(con);
@@ -71,10 +68,12 @@ public class PayrollDAO implements IPayrollService {
 
     public Payroll findByIdUpdate(int maLuong) {
         Payroll kq = null;
+        Connection con = null;
         try {
-            Connection con = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM bang_luong bl WHERE bl.ma_luong =? ";
-            PreparedStatement st = con.prepareStatement(sql);
+            con = JDBCUtil.getConnection();
+            PreparedStatement st = con.prepareStatement(Constants.FIND_BY_ID_UPDATE);
+            con.setAutoCommit(false);
+
             st.setInt(1, maLuong);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -88,6 +87,7 @@ public class PayrollDAO implements IPayrollService {
                 double tong_luong = rs.getDouble("tong_luong");
 
                 kq = new Payroll(maLuong, thang, so_ngay_lam_viec, he_so_luong, tang_ca, luong_tang_ca, tien_phat, tong_luong);
+                con.commit();
             }
             JDBCUtil.closeConnection(con);
         } catch (SQLException e) {
