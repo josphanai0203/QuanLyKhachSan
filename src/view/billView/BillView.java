@@ -379,6 +379,7 @@ public class BillView extends javax.swing.JPanel {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
        controller.setBillView(new JButton());
+       addBtn.setEnabled(true);
        DefaultBillView.setCus();
     }//GEN-LAST:event_backBtnActionPerformed
 
