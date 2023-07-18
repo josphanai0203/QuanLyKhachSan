@@ -38,7 +38,6 @@ public class StaffView extends javax.swing.JPanel {
         staffMenu = new javax.swing.JPanel();
         addStaffBtn = new javax.swing.JButton();
         fixStaffBtn = new javax.swing.JButton();
-        createAccount = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         delStaffBtn = new javax.swing.JButton();
 
@@ -67,13 +66,6 @@ public class StaffView extends javax.swing.JPanel {
             }
         });
 
-        createAccount.setText("Tạo tài khoản");
-        createAccount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createAccountActionPerformed(evt);
-            }
-        });
-
         backBtn.setText("Trở Lại");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,9 +91,7 @@ public class StaffView extends javax.swing.JPanel {
                 .addComponent(fixStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(delStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(255, 255, 255)
                 .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(39, Short.MAX_VALUE))
         );
@@ -112,7 +102,6 @@ public class StaffView extends javax.swing.JPanel {
                 .addGroup(staffMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addStaffBtn)
                     .addComponent(fixStaffBtn)
-                    .addComponent(createAccount)
                     .addComponent(backBtn)
                     .addComponent(delStaffBtn))
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -144,7 +133,7 @@ public class StaffView extends javax.swing.JPanel {
         backBtn.setEnabled(Boolean.TRUE);
         delStaffBtn.setEnabled(Boolean.FALSE);
         fixStaffBtn.setEnabled(Boolean.FALSE);
-        createAccount.setEnabled(Boolean.FALSE);
+        //createAccount.setEnabled(Boolean.FALSE);
         controller.setViewStaff(addStaffBtn);
 
     }//GEN-LAST:event_addStaffBtnActionPerformed
@@ -158,7 +147,7 @@ public class StaffView extends javax.swing.JPanel {
             backBtn.setEnabled(Boolean.TRUE);
             addStaffBtn.setEnabled(Boolean.FALSE);
             delStaffBtn.setEnabled(Boolean.FALSE);
-            createAccount.setEnabled(Boolean.FALSE);
+            //createAccount.setEnabled(Boolean.FALSE);
             controller.setViewStaff(fixStaffBtn);
         }
     }//GEN-LAST:event_fixStaffBtnActionPerformed
@@ -167,19 +156,11 @@ public class StaffView extends javax.swing.JPanel {
         backBtn.setEnabled(Boolean.FALSE);
         addStaffBtn.setEnabled(Boolean.TRUE);
         delStaffBtn.setEnabled(Boolean.TRUE);
-        createAccount.setEnabled(Boolean.TRUE);
+        //createAccount.setEnabled(Boolean.TRUE);
         fixStaffBtn.setEnabled(Boolean.TRUE);
         DefaultStaffView.setNullSelect();
         controller.setViewStaff(backBtn);
     }//GEN-LAST:event_backBtnActionPerformed
-
-    private void createAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountActionPerformed
-        backBtn.setEnabled(Boolean.TRUE);
-        delStaffBtn.setEnabled(Boolean.FALSE);
-        fixStaffBtn.setEnabled(Boolean.FALSE);
-        addStaffBtn.setEnabled(Boolean.FALSE);
-        controller.setViewStaff(createAccount);
-    }//GEN-LAST:event_createAccountActionPerformed
 
     private void delStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delStaffBtnActionPerformed
         Staff c = DefaultStaffView.getStaffSelected();
@@ -201,7 +182,6 @@ public class StaffView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addStaffBtn;
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton createAccount;
     private javax.swing.JButton delStaffBtn;
     private javax.swing.JButton fixStaffBtn;
     private javax.swing.JPanel staffMenu;
