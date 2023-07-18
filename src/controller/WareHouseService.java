@@ -15,20 +15,15 @@ public class WareHouseService implements IService<WareHouse> {
     public boolean createWareHouse(String tenSanPham, Date dayIn, int SoLuong, Double giaNhap, Double giaBan, Date hSD) {
         boolean check;
         WareHouse w = new WareHouse(tenSanPham, dayIn, SoLuong, giaNhap, giaBan, hSD);
-
         check = add(w);
         return check;
-
     }
 
     public boolean updateWareHouse(int maSanPham, String tenSanPham, Date dayIn, int SoLuong, Double giaNhap, Double giaBan, Date hSD) {
         boolean check;
         WareHouse w = new WareHouse(maSanPham, tenSanPham, dayIn, SoLuong, giaNhap, giaBan, hSD);
-
-//        WareHouse w = new WareHouse(tenSanPham, dayIn, SoLuong, giaNhap, giaBan, hSD);
         check = update(w);
         return check;
-
     }
 
     @Override

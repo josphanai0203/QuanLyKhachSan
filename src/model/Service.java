@@ -2,48 +2,30 @@ package model;
 
 public class Service {
 
-    public int idItem;
-    public String nameItem;
+    private int idItem;
+    private Customer customer;
+    private String nameItem;
+    private int quantity;
+    private double price;
+    private WareHouse wareHouse;
+    private double totalPay;
 
-    public int quantity;
-
-    public double bill;
-
-    public double billOut;
-
-    public int conditionkhach;
-
-    public int conditionkho;
-
-    public Service() {
-    }
-
-    public Service(int idItem) {
+    public Service(int idItem, Customer customer, String nameItem, int quantity, double price, WareHouse wareHouse, double totalPay) {
         this.idItem = idItem;
-    }
-
-    public Service(String nameItem, int conditionkhach, int quantity, double bill, int conditionkho) {
-        this(conditionkhach, nameItem,  quantity, bill, conditionkho, 0.0);
-    }
-
-    public Service( int conditionkhach, String nameItem,  int quantity, double bill, int conditionkho, double billOut) {
+        this.customer = customer;
         this.nameItem = nameItem;
         this.quantity = quantity;
-        this.bill = bill;
-        setBillOut(billOut);
-        this.conditionkho = conditionkho;
-        this.conditionkhach = conditionkhach;
-
+        this.price = price;
+        this.wareHouse = wareHouse;
+        this.totalPay = totalPay;
     }
 
-    public Service(int idItem, int conditionkhach, String nameItem, int quantity, double bill, int conditionkho, double billOut) {
-        this.idItem = idItem;
+    public Service(Customer customer, String nameItem, int quantity, double price) {
+        this.customer = customer;
         this.nameItem = nameItem;
         this.quantity = quantity;
-        this.bill = bill;
-        this.billOut = billOut;
-        this.conditionkhach = conditionkhach;
-        this.conditionkho = conditionkho;
+        this.price = price;
+        this.wareHouse = wareHouse;
     }
 
     public int getIdItem() {
@@ -52,6 +34,14 @@ public class Service {
 
     public void setIdItem(int idItem) {
         this.idItem = idItem;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public String getNameItem() {
@@ -70,37 +60,27 @@ public class Service {
         this.quantity = quantity;
     }
 
-    public double getBill() {
-        return bill;
+    public double getPrice() {
+        return price;
     }
 
-    public void setBill(double bill) {
-        this.bill = bill;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public int getConditionkhach() {
-        return conditionkhach;
+    public WareHouse getWareHouse() {
+        return wareHouse;
     }
 
-    public void setConditionkhach(int conditionkhach) {
-        this.conditionkhach = conditionkhach;
+    public void setWareHouse(WareHouse wareHouse) {
+        this.wareHouse = wareHouse;
     }
 
-    public int getConditionkho() {
-        return conditionkho;
+    public double getTotalPay() {
+        return totalPay;
     }
 
-    public void setConditionkho(int conditionkho) {
-        this.conditionkho = conditionkho;
-    }
-
-    public double getBillOut() {
-        return billOut;
-    }
-
-    public void setBillOut(double billOut) {
-        if (!Double.isNaN(billOut)) {
-            this.billOut = billOut;
-        }
-    }
+    public void setTotalPay(double totalPay) {
+        this.totalPay = totalPay;
+    } 
 }

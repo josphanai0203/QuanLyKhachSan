@@ -220,6 +220,7 @@ public class AddRoomView extends javax.swing.JPanel {
                 if (check) {
                     messInfo.setForeground(new Color(13, 110, 253));
                     messInfo.setText("Thêm Phòng Thành Công");
+                    reset();
                 } else {
                     messInfo.setForeground(new Color(255, 0, 0));
                     messInfo.setText("Thêm Phòng Thất Bại");
@@ -227,7 +228,11 @@ public class AddRoomView extends javax.swing.JPanel {
             }
         }
     }
-
+    public void reset(){
+        roomName.setText("");
+        roomArea.setText("");
+        roomType.setSelectedIndex(0);
+    }
     private void callMessErrorEmpty(ArrayList<Integer> idError) {
         for (Integer i : idError) {
 

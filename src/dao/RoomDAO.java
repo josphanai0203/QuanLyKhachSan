@@ -114,7 +114,7 @@ public class RoomDAO implements IService<Room> {
             Connection con = JDBCUtil.getConnection();
             String findRoomTypeSql = "Select * from loai_phong lk where lk.Loai_phong=?";
             String sql = "UPDATE phong "
-                    + "SET ten_phong=?  ,dien_tich=? ,ma_loai_phong=?  WHERE ma_phong = ?";
+                    + "SET ten_phong=?  ,dien_tich=? ,ma_loai_phong=?,isUsed =? WHERE ma_phong = ?";
             PreparedStatement st1 = con.prepareStatement(findRoomTypeSql);
             st1.setString(1, r.getRoomType());
             ResultSet rs1 = st1.executeQuery();
@@ -124,10 +124,11 @@ public class RoomDAO implements IService<Room> {
             }
 
             PreparedStatement st = con.prepareStatement(sql);
-            st.setInt(4, r.getId_room());
+            st.setInt(5, r.getId_room());
             st.setString(1, r.getName());
             st.setDouble(2, r.getArea());
             st.setInt(3, maLoaiPhong);
+            st.setBoolean(4, r.isIsUsed());
 
             kq = st.executeUpdate();
 

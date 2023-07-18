@@ -179,6 +179,8 @@ public class FixWareView extends javax.swing.JPanel {
 
     private void fixbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixbtnActionPerformed
         boolean check;
+        
+        
         String ten_san_pham = fixiname.getText();
         Date ngay_nhap = getSelectedDate(jDatengayNhap);
         

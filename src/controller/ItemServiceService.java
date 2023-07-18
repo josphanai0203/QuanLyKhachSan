@@ -5,6 +5,7 @@ import model.Service;
 import service.IService;
 
 import java.util.ArrayList;
+import model.Customer;
 
 public class ItemServiceService implements IService<Service> {
     private static ItemServiceDAO id = new ItemServiceDAO();
@@ -31,6 +32,19 @@ public class ItemServiceService implements IService<Service> {
 
     @Override
     public Service findById(Service s) {
-        return id.findById(s);
+        return null;
     }
+     public double totalPrice(int makhachHang){
+        return  id.totalPrice(makhachHang);
+    }
+     public boolean addNewService(int c,int soLuong, String serName){
+        Customer cus = new Customer(c);
+        Service ser = new Service(cus, serName, soLuong, 0);
+        
+        
+        return add(ser);
+    }
+     public ArrayList<Service> findByIdCus(int idCus){
+         return id.findByIdCus(idCus);
+     }
 }

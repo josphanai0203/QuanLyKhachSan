@@ -191,7 +191,7 @@ public class UserDAO implements IUser {
                 String mat_khau = rs.getString("mat_khau");
                 boolean admin = rs.getBoolean("admin");
 
-                boolean isUsed = rs.getBoolean("isUsed");
+            
                 kq = new User(ma_tai_khoan, ten_tai_khoan, mat_khau, admin);
             }
             JDBCUtil.closeConnection(con);

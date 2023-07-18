@@ -4,6 +4,8 @@ import controller.WareHouseService;
 import util.Validate;
 
 import java.awt.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -208,25 +210,23 @@ public class AddWareHouseView extends javax.swing.JPanel {
         //validate:
         ArrayList<Integer> test1 = Validate.checkMutiLine("empty", itemName.getText(), quantityItem.getText(), PriceIn.getText(), PriceOut.getText());
         ArrayList<Integer> test2 = Validate.checkMutiLine("isNumber", PriceIn.getText(), PriceOut.getText());
-        ArrayList<Integer> test3 = Validate.checkMutiLine("validDate");
+
         if (!test1.isEmpty()) {
             callMessErrorEmpty(test1);
         } else if (!test2.isEmpty()) {
             callMessErrorNumber(test2);
-        } else if (!test3.isEmpty()) {
-            callMessErrorValideDate(test3);
         }
         String ten_san_pham = itemName.getText();
         Date ngay_nhap = getSelectedDate(jDateNgayNhap);
-        
+
         java.util.Date utilDate = getSelectedDate(jDateNgayNhap);
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-        
+
         int so_luong = Integer.parseInt(quantityItem.getText());
         Double gia_nhap = Double.parseDouble(PriceIn.getText());
         Double gia_ban = Double.parseDouble(PriceOut.getText());
         Date han_su_dung = getSelectedDate(jDateHSD);
-        
+
         java.util.Date utilDate2 = getSelectedDate(jDateHSD);
         java.sql.Date sqlDate2 = new java.sql.Date(utilDate2.getTime());
         ;
@@ -235,6 +235,7 @@ public class AddWareHouseView extends javax.swing.JPanel {
         if (check) {
             Message.setForeground(new Color(13, 110, 253));
             Message.setText("Thêm Mặt Hàng Thành Công");
+            resetForm();
         } else {
             Message.setForeground(new Color(255, 0, 0));
             Message.setText("Thêm Mặt Hàng Thất Bại");
@@ -244,19 +245,6 @@ public class AddWareHouseView extends javax.swing.JPanel {
     private void itemNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemNameActionPerformed
-
-    private void callMessErrorValideDate(ArrayList<Integer> idError) {
-//        for (Integer i : idError) {
-//            switch (i) {
-//                case 2, 6:
-//                    error2.setForeground(new Color(255, 0, 0));
-//                    error6.setText("Vui lòng nhập lại ngày tháng");
-//                    break;
-//                default:
-//                    break;
-//            }
-//        }
-    }
 
     private void callMessErrorNumber(ArrayList<Integer> idError) {
         for (Integer i : idError) {
@@ -286,16 +274,15 @@ public class AddWareHouseView extends javax.swing.JPanel {
                     errorName.setForeground(new Color(255, 0, 0));
                     errorName.setText("Vui lòng Nhập Trường Này");
                     break;
-
-                case 3:
+                case 2:
                     errorQuantity.setForeground(new Color(255, 0, 0));
                     errorQuantity.setText("Vui lòng Nhập Trường Này");
                     break;
-                case 4:
+                case 3:
                     errorPriceIn.setForeground(new Color(255, 0, 0));
                     errorPriceIn.setText("Vui lòng Nhập Trường Này");
                     break;
-                case 5:
+                case 4:
                     errorPriceOut.setForeground(new Color(255, 0, 0));
                     errorPriceOut.setText("Vui lòng Nhập Trường Này");
                     break;
@@ -304,6 +291,19 @@ public class AddWareHouseView extends javax.swing.JPanel {
                     break;
             }
         }
+    }
+
+    private void resetForm() {
+        itemName.setText("");
+        quantityItem.setText("");
+        PriceIn.setText("");
+        PriceOut.setText("");
+        LocalDate today = LocalDate.now();
+        Date date = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        jDateNgayNhap.setDate(date);
+        jDateHSD.setDate(date);
+//        Message.setText("");
+
     }
 
     private void config() {

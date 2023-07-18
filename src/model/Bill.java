@@ -4,7 +4,6 @@
  */
 package model;
 
-import java.util.Date;
 
 /**
  *
@@ -13,29 +12,24 @@ import java.util.Date;
 public class Bill {
     private int maHoaDon;
     private Customer maKhachHang;
-    private Staff maNhanVien;
-    private Date ngayNhap;
-    private double tongTien;
-    private DetailedBill maHoaDonChiTiet;
+    private RegistrationForm dangKi;
+    private double servicePrice;
+    
 
     public Bill() {
     }
 
-    public Bill(int maHoaDon, Date ngayNhap, double tongTien) {
-        this.maHoaDon = maHoaDon;
-        this.ngayNhap = ngayNhap;
-        this.tongTien = tongTien;
-    }
-
-    public Bill(int maHoaDon, Customer maKhachHang, Staff maNhanVien, Date ngayNhap, double tongTien, DetailedBill maHoaDonChiTiet) {
+    public Bill(int maHoaDon, Customer maKhachHang, RegistrationForm dangKi, double servicePrice) {
         this.maHoaDon = maHoaDon;
         this.maKhachHang = maKhachHang;
-        this.maNhanVien = maNhanVien;
-        this.ngayNhap = ngayNhap;
-        this.tongTien = tongTien;
-        this.maHoaDonChiTiet = maHoaDonChiTiet;
+        this.dangKi = dangKi;
+        this.servicePrice = servicePrice;
     }
 
+    public Bill(Customer maKhachHang) {
+        this.maKhachHang = maKhachHang;
+    }
+    
     public int getMaHoaDon() {
         return maHoaDon;
     }
@@ -52,37 +46,23 @@ public class Bill {
         this.maKhachHang = maKhachHang;
     }
 
-    public Staff getMaNhanVien() {
-        return maNhanVien;
+    public RegistrationForm getDangKi() {
+        return dangKi;
     }
 
-    public void setMaNhanVien(Staff maNhanVien) {
-        this.maNhanVien = maNhanVien;
+    public void setDangKi(RegistrationForm dangKi) {
+        this.dangKi = dangKi;
     }
 
-    public Date getNgayNhap() {
-        return ngayNhap;
+    public double getServicePrice() {
+        return servicePrice;
     }
 
-    public void setNgayNhap(Date ngayNhap) {
-        this.ngayNhap = ngayNhap;
+    public void setServicePrice(double servicePrice) {
+        this.servicePrice = servicePrice;
     }
-
-    public double getTongTien() {
-        return tongTien;
-    }
-
-    public void setTongTien(double tongTien) {
-        this.tongTien = tongTien;
-    }
-
-    public DetailedBill getMaHoaDonChiTiet() {
-        return maHoaDonChiTiet;
-    }
-
-    public void setMaHoaDonChiTiet(DetailedBill maHoaDonChiTiet) {
-        this.maHoaDonChiTiet = maHoaDonChiTiet;
-    }
+    
+    
 
     
     

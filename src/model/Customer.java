@@ -73,6 +73,10 @@ public class Customer {
         this.kieuthue = kieuthue;
     }
 
+    public Customer(int maKhachHang) {
+        this.maKhachHang = maKhachHang;
+    }
+    
     public int getMaKhachHang() {
         return maKhachHang;
     }
