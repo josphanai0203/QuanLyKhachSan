@@ -21,8 +21,10 @@ public class StaffView extends javax.swing.JPanel {
 
     public StaffView() {
         initComponents();
+        backBtn.setEnabled(Boolean.FALSE);
         controller = new MenuController(staffView);
         controller.setViewStaff(new JButton());
+
     }
 
     /**
