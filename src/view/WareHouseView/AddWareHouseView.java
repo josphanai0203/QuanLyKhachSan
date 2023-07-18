@@ -4,6 +4,8 @@ import controller.WareHouseService;
 import util.Validate;
 
 import java.awt.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -296,13 +298,12 @@ public class AddWareHouseView extends javax.swing.JPanel {
         quantityItem.setText("");
         PriceIn.setText("");
         PriceOut.setText("");
-        jDateNgayNhap.setDate(null);
-        jDateHSD.setDate(null);
-////        errorName.setText("");
-////        errorQuantity.setText("");
-////        errorPriceIn.setText("");
-////        errorPriceOut.setText("");
-        Message.setText("");
+        LocalDate today = LocalDate.now();
+        Date date = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        jDateNgayNhap.setDate(date);
+        jDateHSD.setDate(date);
+//        Message.setText("");
+
     }
 
     private void config() {
