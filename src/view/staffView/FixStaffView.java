@@ -31,7 +31,8 @@ public class FixStaffView extends javax.swing.JPanel {
         staffName.setText(staffFix.getTenNhanVien());
         staffAddress.setText(staffFix.getDiaChi());
         staffPhone.setText(staffFix.getSdt());
-        staffYear = new com.toedter.calendar.JDateChooser();
+        staffYear.setDate(staffFix.getNgaySinh());
+        staffPosition.setSelectedItem(staffFix.getChucVu());
         if (staffFix.getGioiTinh() == "Nam") {
             genderMale.setSelected(true);
         } else {
@@ -58,7 +59,7 @@ public class FixStaffView extends javax.swing.JPanel {
         staffPhone = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        position = new javax.swing.JComboBox<>();
+        staffPosition = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         genderMale = new javax.swing.JRadioButton();
         genderFemale = new javax.swing.JRadioButton();
@@ -70,6 +71,7 @@ public class FixStaffView extends javax.swing.JPanel {
         staffYear = new com.toedter.calendar.JDateChooser();
         errorGender = new javax.swing.JLabel();
         errorDOB = new javax.swing.JLabel();
+        header = new javax.swing.JLabel();
 
         fixStaffBtn.setText("Sửa Thông Tin");
         fixStaffBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +102,7 @@ public class FixStaffView extends javax.swing.JPanel {
 
         jLabel6.setText("Địa Chỉ");
 
-        position.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giám Đốc", "Kế Toán", "Lễ Tân", "Bảo Vệ" }));
+        staffPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giám Đốc", "Kế Toán", "Lễ Tân", "Bảo Vệ" }));
 
         jLabel7.setText("Số Điện Thoại");
 
@@ -115,6 +117,10 @@ public class FixStaffView extends javax.swing.JPanel {
 
         message.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         message.setForeground(new java.awt.Color(13, 110, 253));
+
+        header.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        header.setText("Sửa Nhân Viên");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -143,7 +149,7 @@ public class FixStaffView extends javax.swing.JPanel {
                     .addComponent(staffName, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
                     .addComponent(staffAddress)
                     .addComponent(staffPhone)
-                    .addComponent(position, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(staffPosition, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
@@ -152,17 +158,21 @@ public class FixStaffView extends javax.swing.JPanel {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(staffYear, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(errorGender, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(genderMale)
-                                .addGap(43, 43, 43)
-                                .addComponent(genderFemale))
-                            .addComponent(staffYear, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(errorGender, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(35, 35, 35)
+                                .addComponent(genderFemale)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(errorPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(316, 316, 316)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(447, 447, 447)
@@ -172,17 +182,15 @@ public class FixStaffView extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(staffName)
-                            .addComponent(jLabel3)
-                            .addComponent(genderMale)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(genderFemale)))
+                .addGap(14, 14, 14)
+                .addComponent(header)
+                .addGap(48, 48, 48)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(staffName)
+                    .addComponent(jLabel3)
+                    .addComponent(genderMale)
+                    .addComponent(genderFemale))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(errorGender, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,7 +208,6 @@ public class FixStaffView extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(staffYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(staffPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
@@ -210,7 +217,7 @@ public class FixStaffView extends javax.swing.JPanel {
                     .addComponent(errorPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(position, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(staffPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(103, 103, 103)
                 .addComponent(fixStaffBtn)
@@ -245,7 +252,7 @@ public class FixStaffView extends javax.swing.JPanel {
     private void fixStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixStaffBtnActionPerformed
         boolean check;
         config();
-        ArrayList<Integer> test1 = Validate.checkMutiLine("empty", staffName.getText(), staffAddress.getText(), staffPhone.getText(), (String) position.getSelectedItem());
+        ArrayList<Integer> test1 = Validate.checkMutiLine("empty", staffName.getText(), staffAddress.getText(), staffPhone.getText(), (String) staffPosition.getSelectedItem());
         ArrayList<Integer> test2 = Validate.checkMutiLine("isNumber", staffPhone.getText());
 
         if ((!test1.isEmpty()) || (!genderMale.isSelected() && !genderFemale.isSelected())) {
@@ -254,11 +261,15 @@ public class FixStaffView extends javax.swing.JPanel {
                 errorGender.setText("Vui Lòng Tích vào trường này");
             }
             callMessErrorEmpty(test1);
-        } else if (!test2.isEmpty()) {
+        }else if (genderFemale.isSelected() && genderMale.isSelected()) {
+            errorGender.setForeground(new Color(255, 0, 0));
+            errorGender.setText("Vui Lòng Tích 1 Lựa Chọn Duy Nhất");
+        } 
+        else if (!test2.isEmpty()) {
             callMessErrorNumber(test2);
         } else {
             String ten_nhan_vien = staffName.getText();
-            Date ngay_sinh = new Date(staffYear.getDate().getTime());
+            java.util.Date nam_sinh = staffYear.getDate();
             String gender = "";
             if (genderMale.isSelected()) {
                 gender += "Nam";
@@ -267,8 +278,8 @@ public class FixStaffView extends javax.swing.JPanel {
             }
             String dia_chi = staffAddress.getText();
             String so_dien_thoai = staffPhone.getText();
-            String tenChucVu = (String) position.getSelectedItem();
-            check = ss.createStaff(ten_nhan_vien, ngay_sinh, dia_chi, dia_chi, gender, tenChucVu);
+            String tenChucVu = (String) staffPosition.getSelectedItem();
+            check = ss.update(new Staff(staffFix.getMaNhanVien(), ten_nhan_vien, nam_sinh, gender, tenChucVu, so_dien_thoai, dia_chi));
             if (check) {
                 message.setForeground(new Color(13, 110, 253));
                 message.setText("Sửa Nhân Viên Thành Công");
@@ -356,6 +367,7 @@ public class FixStaffView extends javax.swing.JPanel {
     private javax.swing.JButton fixStaffBtn;
     private javax.swing.JRadioButton genderFemale;
     private javax.swing.JRadioButton genderMale;
+    private javax.swing.JLabel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
@@ -364,10 +376,10 @@ public class FixStaffView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel message;
-    private javax.swing.JComboBox<String> position;
     private javax.swing.JTextField staffAddress;
     private javax.swing.JTextField staffName;
     private javax.swing.JTextField staffPhone;
+    private javax.swing.JComboBox<String> staffPosition;
     private com.toedter.calendar.JDateChooser staffYear;
     // End of variables declaration//GEN-END:variables
 
